@@ -17,51 +17,27 @@ import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 // } from 'react-native-confirmation-code-field';
 
 const ConfirmPin = () => {
-  const [value, setValue] = useState('');
   const [pass, setPass] = useState('');
 
   return (
     <WrapperContainer>
       <View style={styles.container}>
-        <Image source={imagePath.logo_header}></Image>
+        <Image source={imagePath.logo_header} />
         <Text style={styles.CreatePinHeading}>{strings.confirmPinHeading}</Text>
         <Text style={styles.CreatePinSubheading}>
           {strings.confirmPinSubHeading}
         </Text>
-
         <View style={styles.codefieldView}>
-          {/* pin box code */}
-          {/* <CodeField
-          secureTextEntry
-            ref={ref}
-            {...props}
-            // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-            value={value}
-            onChangeText={setValue}
-            cellCount={CELL_COUNT}
-            rootStyle={styles.codeFieldRoot}
-            keyboardType="number-pad"
-            textContentType="password"
-
-            renderCell={({index, symbol, isFocused}) => (
-              <Text
-                key={index}
-                style={[styles.cell, isFocused && styles.focusCell]}
-                onLayout={getCellOnLayoutHandler(index)}>
-                {symbol || (isFocused ? <Cursor /> : null)}
-              </Text>
-            )}
-          /> */}
-
-
           <SmoothPinCodeInput
             password
-            mask="•"
+            mask={<View style={styles.customMask} />}
             cellStyle={styles.cell}
             cellSize={64}
             codeLength={4}
+            textStyle={styles.pinTextStyle}
             cellStyleFocused={styles.cellouter}
             value={pass}
+            cellSpacing={24}
             animated={false}
             onTextChange={(password) => {
               setPass(password)
@@ -69,11 +45,9 @@ const ConfirmPin = () => {
             }
             }
           />
-
-
         </View>
         <View style={styles.btncontinue}>
-          <ButtonComp btnText={strings.CONTINUE} style={styles.continuebtn} />
+          <ButtonComp btnText={strings.confirm} style={styles.continuebtn} />
         </View>
       </View>
     </WrapperContainer>

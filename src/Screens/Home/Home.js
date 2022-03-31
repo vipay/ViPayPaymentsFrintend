@@ -1,25 +1,135 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  FlatList,
+} from 'react-native';
+
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import imagePath from '../../constants/imagePath';
+import strings from '../../constants/lang';
+import { moderateScale, moderateScaleVertical } from '../../styles/responsiveSize';
+import HomeRenderList from './HomeRenderList';
+import styles from './styles';
 
 // create a component
 const Home = () => {
+  const data = [
+    {
+      id: 1,
+      logo: imagePath.crypto1,
+      name: 'Bitcoin',
+      value: '0.5026703 BTC',
+      price: '$49,214.52',
+      change: '17.23%',
+      indicator: imagePath.ic_up_green,
+      status: 3,
+    },
+    {
+      id: 2,
+      logo: imagePath.crypto2,
+      name: 'Ethereum',
+      value: '0.34 ETH',
+      price: '$2,335.60',
+      change: '10.9%',
+      ndicator: imagePath.ic_down_red,
+      status: 2,
+    },
+    {
+      id: 3,
+      logo: imagePath.crypto3,
+      name: 'ViPay',
+      value: '45739.32 VIP',
+      price: '$0.50',
+      change: '17.23%',
+      indicator: imagePath.ic_up_green,
+      status: 3,
+    },
+    {
+      id: 4,
+      logo: imagePath.crypto4,
+      name: 'Ripple',
+      value: '0.4.77 XRP',
+      price: '$1.34',
+      change: '5.34%',
+      indicator: imagePath.ic_stable,
+      status: 1,
+    },
+    {
+      id: 5,
+      logo: imagePath.crypto5,
+      name: 'Tron',
+      value: '230494.90 TRX',
+      price: '$0.013',
+      change: '4.25%',
+      indicator: imagePath.ic_up_green,
+      status: 1,
+    },
+    {
+      id: 6,
+      logo: imagePath.crypto6,
+      name: 'USDT Tether',
+      value: '137.50 USDT',
+      price: '$0.013',
+      change: '4.25%',
+      indicator: imagePath.ic_up_green,
+      status: 1,
+    },
+  ];
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <View style={styles.header}>
+        <Image source={imagePath.logo_title_header}></Image>
+      </View>
+
+      {/* home card */}
+      <View style={styles.imghomecard}>
+        <ImageBackground
+          source={imagePath.home_card}
+          resizeMode="contain"
+          style={{height: '100%', width: '100%'}}>
+          <View style={styles.viewTotalValue}>
+            <Text style={styles.totalvalue}>{strings.totalvalue}</Text>
+            <Text style={styles.value}>{strings.value}</Text>
+          </View>
+          <View style={styles.homecardLine}></View>
+          <View style={styles.homecardButtons}>
+            <Pressable style={styles.pressable}>
+              <Image source={imagePath.send} />
+              <Text style={styles.txtstylehomecard}>{strings.send}</Text>
+            </Pressable>
+            <Pressable style={styles.pressable}>
+              <Image source={imagePath.receive} />
+              <Text style={styles.txtstylehomecard}>{strings.receive}</Text>
+            </Pressable>
+            <Pressable style={styles.pressable}>
+              <Image source={imagePath.scan} />
+              <Text style={styles.txtstylehomecard}>{strings.scan}</Text>
+            </Pressable>
+            <Pressable style={styles.pressable}>
+              <Image source={imagePath.ucid} />
+              <Text style={styles.txtstylehomecard}>{strings.ucid}</Text>
+            </Pressable>
+          </View>
+        </ImageBackground>
+      </View>
+      {/* flatist */}
+      <View style={styles.flatList}>
+        <FlatList
+          data={data}
+          style={{marginTop:moderateScale(24)}}
+          renderItem={({item, index}) => (
+            <HomeRenderList item={item} index={index} />
+          )}
+        />
+      </View>
     </View>
   );
 };
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50',
-  },
-});
 
 //make this component available to the app
 export default Home;

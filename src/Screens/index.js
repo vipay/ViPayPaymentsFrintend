@@ -12,6 +12,14 @@ export { default as Signup } from './Signup/Signup';
 export { default as ForgotPassword } from './ForgotPassword/ForgotPassword';
 export { default as OtpVerification } from './OtpVerification/OtpVerification';
 export {default as OnBoarding} from './OnBoarding/OnBoarding';
+
+
+
+
+//
 export {default as CreatePin} from './CreatePin/CreatePin';
+export {default as ConfirmPin} from './ConfirmPin/ConfirmPin';
+
+//Main Screen 
 
 

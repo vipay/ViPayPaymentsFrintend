@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
@@ -17,36 +17,41 @@ const styles = StyleSheet.create({
     ...commonStyles.fontBold24,
     fontFamily: fontFamily.RocGroteskBold,
     color: colors.OBSIDIAN,
-    marginTop:moderateScale(24),
+    marginTop: moderateScale(24),
   },
   CreatePinSubheading: {
     ...commonStyles.fontSize16,
-    color:colors.gray,
+    color: colors.gray,
+    fontFamily: fontFamily.poppinsRegular
+  },
+  
+  cell: {
+    backgroundColor: colors.pinInputField,
+    padding: moderateScale(12),
+    borderRadius: 16,
+    marginTop: moderateScale(32),
+
+  },
+  btnview: {
+    flex: 0.15
+
+  },
+  codefieldview: {
+    flex: 0.9,
+  },
+  cellouter: {
+    borderColor: colors.pinInputField
+  },
+  customMask:{
+    height:10,
+    width:10,
+    borderRadius:20,
+    backgroundColor:colors.OBSIDIAN
+  },
+  pinTextStyle:{
+    color:colors.OBSIDIAN,  
     fontFamily:fontFamily.poppinsRegular
   },
-  // codeFieldRoot: {
-  //   marginTop:moderateScale(32),
-   
-  // },
-  cell: {
-    
-    backgroundColor:colors.pinInputField,
-    padding:moderateScale(12),
-    borderRadius:16,
-    marginLeft:24,
-    
-  },
-  btnview:{
-    flex:0.1
-  },
-  codefieldview:{
-    flex:0.9,
-    padding:24,
-  },
-  cellouter:{
-    borderColor:colors.pinInputField
-  }
-
 });
 
 export default styles;

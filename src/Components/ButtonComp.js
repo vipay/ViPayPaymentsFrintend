@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   btnTextStyle: {
     ...commonStyles.fontSize14,
     fontFamily: fontFamily.poppinsSemibold,
-    textTransform:'uppercase',
+    // textTransform:'lowercase',
     color:colors.white,
   },
 });

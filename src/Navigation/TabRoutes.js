@@ -27,6 +27,11 @@ const TabRoutes = (props) => {
                 </>
             )}
             initialRouteName={navigationStrings.HOME}
+            screenOptions={
+                {
+                    headerShown: false
+                }
+            }
             tabBarOptions={{
                 style: styles.customBottomtabsStyle,
                 activeTintColor: colors.blackColor,
@@ -42,8 +47,8 @@ const TabRoutes = (props) => {
                     tabBarIcon: ({ focused }) => {
                         return (
                             focused ?
-                                <Image source={imagePath.firstActiveIcon} />
-                                : <Image source={imagePath.firstInActiveIcon} />
+                                <Image source={imagePath.homeActive} />
+                                : <Image source={imagePath.homeInActive} />
                         );
                     },
                 }}
@@ -55,8 +60,8 @@ const TabRoutes = (props) => {
                     tabBarIcon: ({ focused }) => {
                         return (
                             focused ?
-                                <Image source={imagePath.secondActiveIcon} />
-                                : <Image source={imagePath.secondInActiveIcon} />
+                                <Image source={imagePath.chatActive} />
+                                : <Image source={imagePath.chatInActive} />
                         );
                     },
                 }}
@@ -68,8 +73,8 @@ const TabRoutes = (props) => {
                     tabBarIcon: ({ focused }) => {
                         return (
                             focused ?
-                                <Image source={imagePath.thirdActiveIcon} />
-                                : <Image source={imagePath.thirdInActiveIcon} />
+                                <Image source={imagePath.rewardsActive} />
+                                : <Image source={imagePath.rewardsInActive} />
                         );
                     },
                 }}
@@ -81,13 +86,13 @@ const TabRoutes = (props) => {
                     tabBarIcon: ({ focused }) => {
                         return (
                             focused ?
-                                <Image source={imagePath.fourthActiveIcon} />
-                                : <Image source={imagePath.fourthInActiveIcon} />
+                                <Image source={imagePath.contactsActive} />
+                                : <Image source={imagePath.contactsInActive} />
                         );
                     },
                 }}
             />
-            <BottomTab.Screen
+            {/* <BottomTab.Screen
                 name={navigationStrings.PROFILE}
                 component={Profile}
                 options={{
@@ -99,7 +104,7 @@ const TabRoutes = (props) => {
                         );
                     },
                 }}
-            />
+            /> */}
 
         </BottomTab.Navigator>
     );

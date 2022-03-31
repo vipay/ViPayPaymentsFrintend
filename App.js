@@ -10,6 +10,9 @@ import { getFirstTime, getUserData } from './src/utils/utils';
 import fontFamily from './src/styles/fontFamily';
 import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
+import { Home } from './src/Screens';
+import HomeRenderList from './src/Screens/Home/HomeRenderList';
+import CryptoDetails from './src/Screens/CryptoDetails/CryptoDetails';
 
 const { dispatch } = store;
 
@@ -44,7 +47,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <Routes />
+        {/* <Routes /> */}
+        {/* <Home/> */}
+        {/* <HomeRenderList/> */}
+        <CryptoDetails/>
         <FlashMessage
           titleStyle={{
             marginRight: moderateScale(5),

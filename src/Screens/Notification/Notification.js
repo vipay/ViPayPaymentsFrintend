@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Notification = () => {
     return (
         <View style={styles.container}>
-            <Text>Notification</Text>
+            <Text>contact</Text>
         </View>
     );
 };
@@ -23,3 +23,4 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 export default Notification;
+

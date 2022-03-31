@@ -16,7 +16,7 @@ export default function Routes() {
         <NavigationContainer>
             <Stack.Navigator>
                 {
-                   false? <>{MainStack(Stack)}</>
+                   true? <>{MainStack(Stack)}</>
                         : <>{AuthScreen(Stack, isFirstTime)}</>
 
                 }

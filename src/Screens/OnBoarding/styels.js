@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
@@ -10,10 +10,10 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:colors.white,
-    justifyContent:'space-evenly'
+    backgroundColor: colors.white,
+    // justifyContent: 'space-around'
   },
-  
+
   btnStyle: {
     width: moderateScale(160),
     height: moderateScale(160),
@@ -21,48 +21,65 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
- 
+
   PagerView: {
-    flex: 0.9,
-    
+    flex: 1,
+    // backgroundColor:"green"
     
   },
   getstartedbtn: {
-    marginHorizontal:moderateScale(24),
-    justifyContent:"center",
-    alignItems:"center",
-    
+    marginHorizontal: moderateScale(24),
   
+    alignItems: "center",
   },
   title: {
-      fontFamily:fontFamily.RocGroteskBold,
-      color: colors.OBSIDIAN,
-      fontSize:40,
-      marginTop:moderateScale(56.5),
-      textAlign:'center'
+    fontFamily: fontFamily.RocGroteskBold,
+    color: colors.OBSIDIAN,
+    fontSize: 40,
+    marginTop: moderateScale(56.5),
+    textAlign: 'center'
   },
-  content:{
+  content: {
     ...commonStyles.fontSize15,
-    color:colors.OBSIDIAN,
-    textAlign:'center',
-    padding:moderateScale(24),
-   
+    color: colors.OBSIDIAN,
+    textAlign: 'center',
+    padding: moderateScale(24),
+    fontFamily:fontFamily.poppinsLight
+  },
+
+  imgstyle: {
+    alignSelf: 'center'
+  },
+
+  onboardcontentView: {
+  justifyContent:"flex-end"
+    // justifyContent: 'center',
+  },
+  btngetstart: {
+    flex: 0.1,
+    justifyContent: "flex-end",
+    padding: moderateScale(24),
     
   },
-
-  imgstyle:{
-     
-      alignSelf:'center'
+  activeStyle: {
+    backgroundColor: colors.citrine,
+    width: 40,
+    height: 8,
+    borderRadius: 4
   },
-  
-  viewpager:{
-    flex:0.7,
-   justifyContent:'center'
-
+  inactiveStyle: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.BABABD
   },
-  btngetstart:{
-    flex:0.1,
-    padding:moderateScale(24)
+  dotsView: {
+    flex: 0.1,
+    alignItems: 'center',
+    // backgroundColor:'black'
+  },
+  onboardView: {
+    flex: 1,
   }
 });
 

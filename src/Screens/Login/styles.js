@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-   backgroundColor:colors.white,
+    backgroundColor: colors.white,
     padding: moderateScale(24),
-    
+
   },
   experienceText: {
     ...commonStyles.fontSize18,
@@ -37,13 +37,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grayinput,
     marginTop: moderateScale(16),
     paddingHorizontal: moderateScale(16),
-    paddingVertical: moderateScale(8),
     justifyContent: 'space-between',
     borderRadius: 16,
+    height:moderateScale(56),
+    alignItems:"center"
   },
   welcomeback: {
     ...commonStyles.fontSize16,
-    fontStyle:fontFamily.poppinsRegular,
+    fontStyle: fontFamily.poppinsRegular,
     marginTop: moderateScale(24),
     color: colors.gray,
   },
@@ -54,14 +55,17 @@ const styles = StyleSheet.create({
     // marginVertical:moderateScaleVertical(5)
   },
   locationcode: {
+    ...commonStyles.fontSize15,
     fontFamily: fontFamily.poppinsRegular,
     marginRight: moderateScale(15),
+    color: colors.OBSIDIAN,
+
   },
   phoneNo: {
     ...commonStyles.fontSize15,
     color: colors.OBSIDIAN,
     marginLeft: moderateScale(15),
-    
+    fontFamily: fontFamily.poppinsRegular,
     flex: 1,
   },
   inputline: {
@@ -72,19 +76,21 @@ const styles = StyleSheet.create({
     ...commonStyles.fontSize15,
     color: colors.lightgray,
     alignSelf: 'center',
+    fontFamily: fontFamily.poppinsRegular
     // backgroundColor:'yellow'
   },
   otpholder: {
     backgroundColor: colors.grayinput,
     marginTop: moderateScale(16),
     paddingHorizontal: moderateScale(16),
-    paddingVertical: moderateScale(8),
     borderRadius: 16,
+    height:moderateScale(56),
+    justifyContent:"center"
   },
   otp: {
     ...commonStyles.fontSize15,
     color: colors.OBSIDIAN,
-    fontFamily:fontFamily.poppinsRegular
+    fontFamily: fontFamily.poppinsRegular,
 
   },
   termsCond: {
@@ -93,10 +99,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.OBSIDIAN,
     marginBottom: moderateScale(16),
+    fontFamily:fontFamily.poppinsRegular
   },
   terms: {
+    ...commonStyles.fontSize12,
     color: colors.greenterms,
     textDecorationLine: 'underline',
+    fontFamily:fontFamily.poppinsRegular
   },
   subinputfield: {
     flexDirection: 'row',

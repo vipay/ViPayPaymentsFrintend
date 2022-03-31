@@ -1,8 +1,8 @@
 
 export default {
-    lato_regular: "Poppins-Regular",
-    lato_bold: "Poppins-Bold",
-    lato_medium: "Poppins-Medium",
+    regular: "Poppins-Regular",
+    bold: "Poppins-Bold",
+    medium: "Poppins-Medium",
     poppinsBlack: "Poppins-Black",
     poppinsBlackitalic: "Poppins-BlackItalic",
     poppinsBold: "Poppins-Bold",

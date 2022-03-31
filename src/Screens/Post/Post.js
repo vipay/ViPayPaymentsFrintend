@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Post = () => {
     return (
         <View style={styles.container}>
-            <Text>Post</Text>
+            <Text>reward</Text>
         </View>
     );
 };

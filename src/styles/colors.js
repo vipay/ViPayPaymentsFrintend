@@ -1,8 +1,8 @@
 export default {
     theme: '#D82FB1',
     loader: '#BB1DD8',
-    lighPink:'#FA2DFAC6',
-    gray:"#707070",
+    lighPink: '#FA2DFAC6',
+    gray: "#707070",
 
     black: 'rgba(20,19,19,1)',
     blackOpacity10: 'rgba(0,0,0,0.1)',
@@ -18,19 +18,26 @@ export default {
     blackOpacity90: 'rgba(0,0,0,0.9)',
 
     white: '#FFFFFFFF',
+    whiteOpacity25: 'rgba(255, 255, 255, 0.2)',
     whiteOpacity50: 'rgba(255, 255, 255, 0.5)',
     whiteOpacity70: 'rgba(255, 255, 255, 0.7)',
- 
 
-    OBSIDIAN :"#000000",
-    Blue:"#2874F0",
+
+    OBSIDIAN: "#000000",
+    Blue: "#2874F0",
     txtwhite: "#FFFFFF",
-    gray:"#717171",
-    grayinput:'#F5F5F5',
-    D9D9D9:'#D9D9D9',// input field line
-    lightgray:'#959596',// input text color
-    greenterms:'#53E3AE',
-    pinInputField:"#F5F5F5"
-    
+    gray: "#717171",
+    grayinput: '#F5F5F5',
+    D9D9D9: '#D9D9D9',// input field line
+    lightgray: '#959596',// input text color
+    greenterms: '#53E3AE',
+    pinInputField: "#F5F5F5",
+    citrine: '#F7B500',// onboard active dot color
+    BABABD: "#BABABD", // onboard inactive dot color 
+    up_green: '#35B037',
+    low_red: "#E60023",
+     grayprice: '#7C7C7C' ,
+     F1F1F2: '#F1F1F2'
 
-}
+
+};
