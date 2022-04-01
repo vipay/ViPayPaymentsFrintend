@@ -24,6 +24,7 @@ export default {
   receive: require('../assets/images/ic_receive.png'),
   scan: require('../assets/images/ic_scan.png'),
   ucid: require('../assets/images/ic_ucid.png'),
+  profile: require('../assets/images/profilepic.jpg'),
 
   // home flat list
   crypto1: require('../assets/images/crypto_1.png'),

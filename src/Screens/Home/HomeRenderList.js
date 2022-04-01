@@ -23,11 +23,7 @@ const HomeRenderList = ({item, index}) => {
 
         <View style={styles.priceView}>
           <Text style={{...styles.price}}>{item.price}</Text>
-          {/* {item?.status !==1 ?(
-
-          )} */}
           <Text style={styles.change}>{item.change}</Text>
-       
           {item?.status !==1 ? (
             <Image
               source={

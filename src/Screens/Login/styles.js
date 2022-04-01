@@ -57,8 +57,10 @@ const styles = StyleSheet.create({
   locationcode: {
     ...commonStyles.fontSize15,
     fontFamily: fontFamily.poppinsRegular,
-    marginRight: moderateScale(15),
+    // marginRight: moderateScale(15),
     color: colors.OBSIDIAN,
+    
+
 
   },
   phoneNo: {
@@ -111,6 +113,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
   },
+  countrypicker:{
+    // marginHorizontal:moderateScale(16),
+    flex:0.4,
+    alignItems:'center',
+    alignContent:"center",
+    justifyContent:'center'
+    
+  }
 });
 
 export default styles;

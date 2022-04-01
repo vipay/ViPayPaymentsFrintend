@@ -8,9 +8,11 @@ import {
   OtpVerification,
   ForgotPassword,
   OnBoarding,
+  Home
   
 } from '../Screens';
 import ConfirmPin from '../Screens/ConfirmPin/ConfirmPin';
+import TabRoutes from './TabRoutes';
 
 
 
@@ -45,11 +47,11 @@ export default function (Stack, isFirstTime) {
         options={{headerShown: false}}
       />
 
-      <Stack.Screen
-        name={navigationStrings.SIGNUP}
-        component={Signup}
+      {/* <Stack.Screen
+        name={navigationStrings.HOME}
+        component={Home}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name={navigationStrings.OTP_VERIFICATION}
         component={OtpVerification}
@@ -59,6 +61,11 @@ export default function (Stack, isFirstTime) {
         name={navigationStrings.FORGOT_PASSWORD}
         component={ForgotPassword}
         options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.HOME_TAB}
+        component={TabRoutes}
+        options={{ headerShown: false }}
       />
     </>
   );

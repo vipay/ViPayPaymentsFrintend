@@ -12,7 +12,10 @@ import {
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
-import { moderateScale, moderateScaleVertical } from '../../styles/responsiveSize';
+import {
+  moderateScale,
+  moderateScaleVertical,
+} from '../../styles/responsiveSize';
 import HomeRenderList from './HomeRenderList';
 import styles from './styles';
 
@@ -80,10 +83,20 @@ const Home = () => {
       status: 1,
     },
   ];
+
+  const Button = ({}) => {
+    return (
+      <Pressable style={styles.pressable}>
+        <Image source={imagePath.send} />
+        <Text style={styles.txtstylehomecard}>{strings.send}</Text>
+      </Pressable>
+    );
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={imagePath.logo_title_header}></Image>
+        <Image style={styles.profilepic} source={imagePath.profile}/>
       </View>
 
       {/* home card */}
@@ -121,7 +134,7 @@ const Home = () => {
       <View style={styles.flatList}>
         <FlatList
           data={data}
-          style={{marginTop:moderateScale(24)}}
+          style={{marginTop: moderateScale(24)}}
           renderItem={({item, index}) => (
             <HomeRenderList item={item} index={index} />
           )}

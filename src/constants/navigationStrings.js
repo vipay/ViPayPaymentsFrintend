@@ -15,6 +15,7 @@ export default {
     ANIMATION:"animation",
     CREATEPIN: "createpin",
     CONFIRMPIN:"confirmpin",
+    HOME_TAB:"TabRoutes",
     
 
 }

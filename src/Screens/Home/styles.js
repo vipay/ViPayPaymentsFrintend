@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     header: {
     
         flexDirection: 'row',
-        paddingHorizontal:moderateScale(24)
-    },
+        paddingHorizontal:moderateScale(24),
+    justifyContent:'space-between'    },
     imghomecard: {
         marginTop:moderateScale(24),
         flex: 0.3,
@@ -77,8 +77,12 @@ const styles = StyleSheet.create({
     },
     flatList:{
         flex:0.7
+    },
+    profilepic:{
+        height:moderateScale(32),
+        width:moderateScale(32),
+        borderRadius:10
     }
-
 
 })
 

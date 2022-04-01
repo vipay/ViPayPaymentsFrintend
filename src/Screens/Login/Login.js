@@ -1,48 +1,63 @@
 //import liraries
-import React, { Component, useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import React, {Component, useState} from 'react';
+import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
 import navigationStrings from '../../constants/navigationStrings';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
-import CountryPicker from 'react-native-country-picker-modal'
+import CountryPicker, {getCallingCode} from 'react-native-country-picker-modal';
 import colors from '../../styles/colors';
 import styles from './styles';
 import strings from '../../constants/lang';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 // create a component
-const Login = ({ navigation }) => {
-  const [countryPickerVisible, setCountryPickerVisible] = useState(false);
+const Login = ({navigation}) => {
+  const [countryCode, setcountryCode] = useState('AE');
+  const [iso2, setiso2] = useState();
+  const [callingCode, setcallingCode] = useState('91');
+
+  const countryChange = data => {
+    setcountryCode({iso2: data.cca2});
+    setcountryCode('+' + data.callingCode[0]);
+  };
   return (
     <WrapperContainer>
       <View style={styles.container}>
         <KeyboardAwareScrollView>
           <View style={styles.mainContainer}>
-            <Image source={imagePath.logo_header}></Image>
+            <Image source={imagePath.logo_header} />
             <Text style={styles.welcomeback}>
               {strings.welcomeback} <Image source={imagePath.handwave} />
             </Text>
             <Text style={styles.welcomebacktxt}>{strings.welcomebacktxt}</Text>
             <View style={styles.inputfield}>
               <View style={styles.subinputfield}>
-                <CountryPicker
-                  withCallingCode
-                />
-                <Text style={styles.inputline}></Text>
+                <View style={styles.countrypicker}>
+                  <CountryPicker
+                    withFilter
+                    countryCode={countryCode}
+                    withFlagButton={false}
+                    withCallingCode
+                    withCallingCodeButton={true}
+                    cca2={iso2}
+                    onSelect={country => {
+                      // console.log.apply('country',country);
+                      const {cca2, callingCode} = country;
+                      setcountryCode(cca2);
+                      setcallingCode(cca2);
+                    }}
+                  />
+                </View>
+                <Text style={styles.inputline} />
                 <TextInput
                   style={styles.phoneNo}
                   keyboardType={'numeric'}
                   maxLength={16}
                   autoFocus
                   placeholderTextColor={colors.lightgray}
-                  placeholder={strings.placeholderPHNO} />
+                  placeholder={strings.placeholderPHNO}
+                />
               </View>
               <TouchableOpacity style={styles.getotp}>
                 <Text style={styles.getotp}>{strings.getotp}</Text>
@@ -55,16 +70,20 @@ const Login = ({ navigation }) => {
                   placeholder={strings.placeholderOTP}
                   placeholderTextColor={colors.lightgray}
                   keyboardType={'numeric'}
-                  maxLength={6}></TextInput>
+                  maxLength={6}
+                />
               </View>
             </View>
             <Text style={styles.termsCond}>
               {strings.termsConditiontxt1}
               <Text style={styles.terms}> {strings.termsConditiontxt2}</Text>
-              <Text style={styles.termsCond}> {strings.termsConditiontxt3}</Text>
+              <Text style={styles.termsCond}>{strings.termsConditiontxt3}</Text>
               <Text style={styles.terms}> {strings.termsConditiontxt4}</Text>
             </Text>
-            <ButtonComp btnText={strings.signin} onPress={() => navigation.navigate(navigationStrings.CREATEPIN)} />
+            <ButtonComp
+              btnText={strings.signin}
+              onPress={() => navigation.navigate(navigationStrings.CREATEPIN)}
+            />
           </View>
         </KeyboardAwareScrollView>
       </View>

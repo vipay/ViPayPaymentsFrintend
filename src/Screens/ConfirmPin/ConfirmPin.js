@@ -9,14 +9,9 @@ import ButtonComp from '../../Components/ButtonComp';
 import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
-// import {
-//   CodeField,
-//   Cursor,
-//   useBlurOnFulfill,
-//   useClearByFocusCell,
-// } from 'react-native-confirmation-code-field';
 
-const ConfirmPin = () => {
+
+const ConfirmPin = ({ navigation }) => {
   const [pass, setPass] = useState('');
 
   return (
@@ -47,7 +42,8 @@ const ConfirmPin = () => {
           />
         </View>
         <View style={styles.btncontinue}>
-          <ButtonComp btnText={strings.confirm} style={styles.continuebtn} />
+          <ButtonComp btnText={strings.confirm} style={styles.continuebtn}
+          onPress={() => navigation.navigate(navigationStrings.HOME_TAB)} />
         </View>
       </View>
     </WrapperContainer>

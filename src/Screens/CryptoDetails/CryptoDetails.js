@@ -102,6 +102,11 @@ const CryptoDetails = () => {
       statusindicator: imagePath.ic_send,
     },
   ];
+
+  const renderItem = ({item, index}) => {
+    return <CryptoDetailsRenderList key={index} item={item} index={index} />;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -132,10 +137,9 @@ const CryptoDetails = () => {
       <View style={styles.flatList}>
         <FlatList
           data={data}
-          style={{marginTop:moderateScale(24)}}
-          renderItem={({item, index}) => (
-            <CryptoDetailsRenderList  item={item} index={index} />
-          )}
+          style={{marginTop: moderateScale(24)}}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={renderItem}
         />
       </View>
     </View>
