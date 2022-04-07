@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, Image, StyleSheet, View, Pressable} from 'react-native';
+import { color } from 'react-native-reanimated';
 import ViewNativeComponent from 'react-native/Libraries/Components/View/ViewNativeComponent';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
@@ -11,9 +12,9 @@ import {
   moderateScaleVertical,
 } from '../../styles/responsiveSize';
 
-const HomeRenderList = ({item, index}) => {
+const HomeRenderList = ({item, index,onPress}) => {
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <Image source={item.logo} />
       <View style={styles.subcontainer}>
         <View style={styles.headingView}>
@@ -23,7 +24,15 @@ const HomeRenderList = ({item, index}) => {
 
         <View style={styles.priceView}>
           <Text style={{...styles.price}}>{item.price}</Text>
-          <Text style={styles.change}>{item.change}</Text>
+          <Text style={
+            item?.status!==1?(
+           item?.status >2 ?({...styles.change}) : {...styles.change, color:colors.low_red}):
+           {...styles.change, color:colors.grayprice}}>
+           
+         
+            
+            {item.change}
+          </Text>
           {item?.status !==1 ? (
             <Image
               source={
@@ -46,25 +55,20 @@ export default HomeRenderList;
 const styles = StyleSheet.create({
   container: {
     flex: 0.1,
-    // backgroundColor:'red',
     paddingHorizontal: moderateScale(24),
     paddingTop: moderateScale(8),
     flexDirection: 'row',
-    // marginTop: moderateScale(24),
   },
   subcontainer: {
-    // backgroundColor:'black',
     flex: 1,
     marginLeft: moderateScale(16),
   },
   headingView: {
     flexDirection: 'row',
-    // backgroundColor:'yellow',
     justifyContent: 'space-between',
   },
   priceView: {
     flexDirection: 'row',
-    // backgroundColor:'green',
   },
   name: {
     ...commonStyles.fontSize16,

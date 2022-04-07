@@ -1,9 +1,8 @@
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image ,Platform, Keyboard} from 'react-native';
 import WrapperContainer from '../../Components/WrapperContainer';
 import fontFamily from '../../styles/fontFamily';
 import styles from './styles';
-import PagerView from 'react-native-pager-view';
 import imagePath from '../../constants/imagePath';
 import ButtonComp from '../../Components/ButtonComp';
 import strings from '../../constants/lang';
@@ -31,8 +30,11 @@ const ConfirmPin = ({ navigation }) => {
             codeLength={4}
             textStyle={styles.pinTextStyle}
             cellStyleFocused={styles.cellouter}
+            // keyboardType='numeric'
             value={pass}
             cellSpacing={24}
+            // autoFocus={true}
+            keyboardType= {Platform.OS ==="ios"? "numbers-and-punctuation":"numeric"}
             animated={false}
             onTextChange={(password) => {
               setPass(password)

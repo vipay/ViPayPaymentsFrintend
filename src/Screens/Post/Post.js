@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Post = () => {
     return (
         <View style={styles.container}>
-            <Text>reward</Text>
+            <Text>reward coming soon </Text>
         </View>
     );
 };
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: 'white',
     },
 });
 

@@ -8,7 +8,7 @@ import {
   ImageBackground,
   FlatList,
 } from 'react-native';
-
+import navigationStrings from '../../constants/navigationStrings';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
@@ -18,9 +18,11 @@ import {
 } from '../../styles/responsiveSize';
 import HomeRenderList from './HomeRenderList';
 import styles from './styles';
+import WrapperContainer from '../../Components/WrapperContainer';
+
 
 // create a component
-const Home = () => {
+const Home = ({navigation}) => {
   const data = [
     {
       id: 1,
@@ -70,7 +72,7 @@ const Home = () => {
       price: '$0.013',
       change: '4.25%',
       indicator: imagePath.ic_up_green,
-      status: 1,
+      status: 4,
     },
     {
       id: 6,
@@ -80,12 +82,17 @@ const Home = () => {
       price: '$0.013',
       change: '4.25%',
       indicator: imagePath.ic_up_green,
-      status: 1,
+      status: 2,
     },
   ];
+  const renderItem = ({item, index}) => {
+    return <HomeRenderList key={index} item={item} index={index} 
+    onPress={() => navigation.navigate(navigationStrings.CRYPTODETAILS,{DATA : data[item.name]})} />;
+  };
 
   const Button = ({}) => {
     return (
+      
       <Pressable style={styles.pressable}>
         <Image source={imagePath.send} />
         <Text style={styles.txtstylehomecard}>{strings.send}</Text>
@@ -93,6 +100,7 @@ const Home = () => {
     );
   };
   return (
+    <WrapperContainer>
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={imagePath.logo_title_header}></Image>
@@ -103,8 +111,8 @@ const Home = () => {
       <View style={styles.imghomecard}>
         <ImageBackground
           source={imagePath.home_card}
-          resizeMode="contain"
-          style={{height: '100%', width: '100%'}}>
+          resizeMode='center'
+          style={styles.bgimg}>
           <View style={styles.viewTotalValue}>
             <Text style={styles.totalvalue}>{strings.totalvalue}</Text>
             <Text style={styles.value}>{strings.value}</Text>
@@ -132,15 +140,15 @@ const Home = () => {
       </View>
       {/* flatist */}
       <View style={styles.flatList}>
-        <FlatList
+      <FlatList
           data={data}
           style={{marginTop: moderateScale(24)}}
-          renderItem={({item, index}) => (
-            <HomeRenderList item={item} index={index} />
-          )}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={renderItem}
         />
       </View>
     </View>
+    </WrapperContainer>
   );
 };
 

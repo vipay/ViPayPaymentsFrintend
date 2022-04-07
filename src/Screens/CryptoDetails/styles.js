@@ -75,6 +75,13 @@ const styles = StyleSheet.create({
   },
   flatList:{
     flex:0.75
+},
+bottotab:{
+  zIndex:2000,
+  marginLeft:50,
+  // position:'absolute' ,
+  height:100,
+  backgroundColor:"red"
 }
 });
 export default styles;

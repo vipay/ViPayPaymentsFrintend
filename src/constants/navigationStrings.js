@@ -16,6 +16,13 @@ export default {
     CREATEPIN: "createpin",
     CONFIRMPIN:"confirmpin",
     HOME_TAB:"TabRoutes",
+    CRYPTODETAILS: 'CryptoDetails',
+    PRIVACYPOLICY:'PrivacyPolicy',
+    TERMSCONDITIONS:'TermsConditions',
+    TRANSACTIONDETAILS:'TransactionDetails',
+    
+
+
     
 
 }

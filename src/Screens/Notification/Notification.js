@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Notification = () => {
     return (
         <View style={styles.container}>
-            <Text>contact</Text>
+            <Text>contact coming soon</Text>
         </View>
     );
 };
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: 'white',
     },
 });
 

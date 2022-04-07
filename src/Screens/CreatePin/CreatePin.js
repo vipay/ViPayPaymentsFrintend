@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, {Component, useState} from 'react';
+import {View, Text, StyleSheet, Image, Keyboard,Platform} from 'react-native';
 import WrapperContainer from '../../Components/WrapperContainer';
 import styles from './styles';
 import imagePath from '../../constants/imagePath';
@@ -7,12 +7,13 @@ import ButtonComp from '../../Components/ButtonComp';
 import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
+import {
+  TextInput,
+  TouchableWithoutFeedback,
+} from 'react-native-gesture-handler';
 
-
-const CreatePin = ({ navigation }) => {
+const CreatePin = ({navigation}) => {
   const [pass, setPass] = useState('');
-
-
 
   return (
     <WrapperContainer>
@@ -22,7 +23,8 @@ const CreatePin = ({ navigation }) => {
         <Text style={styles.CreatePinSubheading}>
           {strings.createPinSubHeading}
         </Text>
-        <View style={styles.codefieldview} >
+        {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss()} accessible={false}> */}
+        <View style={styles.codefieldview}>
           <SmoothPinCodeInput
             password
             mask={<View style={styles.customMask} />}
@@ -31,22 +33,26 @@ const CreatePin = ({ navigation }) => {
             cellSize={64}
             codeLength={4}
             cellSpacing={24}
+            // autoFocus={true}
+            // keyboardInput={'number-pad'}
             cellStyleFocused={styles.cellouter}
             value={pass}
+
+            keyboardType= {Platform.OS ==="ios"? "numbers-and-punctuation":"numeric"}
             animated={false}
-            onTextChange={(password) => {
-              setPass(password)
-              console.log(password, pass, "passwordpasswordpassword")
-            }
-            }
+            onTextChange={password => {
+              setPass(password);
+              console.log(password, pass, 'passwordpasswordpassword');
+            }}
           />
+          {/* <TextInput keyboardType='numbers-and-punctuation'/> */}
         </View>
         <View style={styles.btnview}>
           <ButtonComp
             btnText={strings.CONTINUE}
             onPress={() => navigation.navigate(navigationStrings.CONFIRMPIN)}
           />
-        </View>
+          </View>
       </View>
     </WrapperContainer>
   );

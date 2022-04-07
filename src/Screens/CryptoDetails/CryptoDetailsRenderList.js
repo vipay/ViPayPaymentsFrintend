@@ -6,9 +6,9 @@ import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
 import {moderateScale} from '../../styles/responsiveSize';
 
-const CryptoDetailsRenderList = ({item, index}) => {
+const CryptoDetailsRenderList = ({item, index, onPress}) => {
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <Image source={item.profilepic} />
       <View style={{flexDirection: 'row', flex: 1}}>
         <View style={styles.subcontainer}>
@@ -19,16 +19,16 @@ const CryptoDetailsRenderList = ({item, index}) => {
           <View style={styles.priceView}>
             <Text style={{...styles.time}}>{item.time}</Text>
             <View style={styles.status}>
-              <Text style={styles.change}>{item.status}</Text>
-              {item?.status !== 1 ? (
-                <Image
+              <Text style={
+                item?.status !== 'Sent' ?({...styles.change}) : {...styles.change, color:colors.low_red}}
+               >{item.status}</Text>
+            <Image
+            style={styles.indicator}
                   source={
-                    item?.status > 2 ? imagePath.ic_received : imagePath.ic_send
+                    item?.status !== 'Sent' ? imagePath.ic_received : imagePath.ic_send
                   }
                 />
-              ) : (
-                <Image source={imagePath.ic_stable} />
-              )}
+              
             </View>
           </View>
           <View style={styles.line} />
@@ -42,28 +42,23 @@ export default CryptoDetailsRenderList;
 const styles = StyleSheet.create({
   container: {
     flex: 0.1,
-    // backgroundColor:'red',
-    // paddingHorizontal: moderateScale(24),
     paddingTop: moderateScale(8),
     flexDirection: 'row',
-    // marginTop: moderateScale(24),
     paddingLeft: moderateScale(24),
   },
   subcontainer: {
-    // backgroundColor:'black',
     flex: 1,
     marginLeft: moderateScale(16),
   },
   headingView: {
     flexDirection: 'row',
-    // backgroundColor:'yellow',
     justifyContent: 'space-between',
+    marginRight: moderateScale(24)
   },
   priceView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor:'red'
-    // backgroundColor:'green',
+    marginRight: moderateScale(24)
   },
   name: {
     ...commonStyles.fontSize16,
@@ -95,4 +90,7 @@ const styles = StyleSheet.create({
   status: {
     flexDirection: 'row',
   },
+  indicator:{
+    marginLeft:moderateScale(8)
+  }
 });

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: colors.white,
     padding: moderateScale(24),
-
   },
   experienceText: {
     ...commonStyles.fontSize18,
@@ -39,12 +38,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(16),
     justifyContent: 'space-between',
     borderRadius: 16,
-    height:moderateScale(56),
-    alignItems:"center"
+    height: moderateScale(56),
+    alignItems: 'center',
+    // backgroundColor:'yellow'
   },
   welcomeback: {
     ...commonStyles.fontSize16,
-    fontStyle: fontFamily.poppinsRegular,
+    fontFamily: fontFamily.poppinsRegular,
     marginTop: moderateScale(24),
     color: colors.gray,
   },
@@ -59,9 +59,6 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.poppinsRegular,
     // marginRight: moderateScale(15),
     color: colors.OBSIDIAN,
-    
-
-
   },
   phoneNo: {
     ...commonStyles.fontSize15,
@@ -73,12 +70,13 @@ const styles = StyleSheet.create({
   inputline: {
     borderLeftWidth: 1,
     borderColor: colors.D9D9D9,
+    backgroundColor: colors.D9D9D9,
   },
   getotp: {
     ...commonStyles.fontSize15,
     color: colors.lightgray,
     alignSelf: 'center',
-    fontFamily: fontFamily.poppinsRegular
+    fontFamily: fontFamily.poppinsRegular,
     // backgroundColor:'yellow'
   },
   otpholder: {
@@ -86,14 +84,13 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(16),
     paddingHorizontal: moderateScale(16),
     borderRadius: 16,
-    height:moderateScale(56),
-    justifyContent:"center"
+    height: moderateScale(56),
+    justifyContent: 'center',
   },
   otp: {
     ...commonStyles.fontSize15,
     color: colors.OBSIDIAN,
     fontFamily: fontFamily.poppinsRegular,
-
   },
   termsCond: {
     ...commonStyles.fontSize12,
@@ -101,26 +98,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.OBSIDIAN,
     marginBottom: moderateScale(16),
-    fontFamily:fontFamily.poppinsRegular
+    fontFamily: fontFamily.poppinsRegular,
   },
   terms: {
     ...commonStyles.fontSize12,
     color: colors.greenterms,
     textDecorationLine: 'underline',
-    fontFamily:fontFamily.poppinsRegular
+    fontFamily: fontFamily.poppinsRegular,
+    // alignContent:'center'
+    // marginTop:5
   },
   subinputfield: {
     flexDirection: 'row',
     flex: 1,
   },
-  countrypicker:{
+  countrypicker: {
     // marginHorizontal:moderateScale(16),
-    flex:0.4,
-    alignItems:'center',
-    alignContent:"center",
-    justifyContent:'center'
-    
-  }
+    flex: 0.4,
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

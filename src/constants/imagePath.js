@@ -57,9 +57,38 @@ export default {
   //crypto details flatlist
 
   ic_received: require('../assets/images/ic_received.png'),
-  ic_send: require('../assets/images/ic_send2.png')
+  ic_send: require('../assets/images/ic_send2.png'),
 
-  
+  //header component
+  headerprofile: require('../assets/images/profilepic.jpg'),
+  searchblack: require('../assets/images/ic_search_black.png'),
+  searchgrey: require('../assets/images/ic_search_gray.png'),
+
+
+  //transaction details
+
+  ic_done_received: require('../assets/images/ic_done_received.png'),
+  profile2 :require('../assets/images/profile2.jpg'),
+  ic_bitcoin: require('../assets/images/ic_bitcoin.png'),
+  ic_copy: require('../assets/images/ic_copy.png'),
+  ic_ucid_black :require('../assets/images/ic_ucid_black.png'),
+  ic_transaction_id :require('../assets/images/ic_transaction_id.png'),
+
+  //send  screen
+  sendBg: require('../assets/images/sed_bg_card.png'),
+  ic_wallet_white : require('../assets/images/ic_wallet_white.png'),
+  ic_gray_cross: require('../assets/images/ic_gray_cross.png'),
+  ic_gray_arrow: require('../assets/images/ic_gray_arrow.png'),
+
+  //filter 
+  ic_all : require('../assets/images/ic_all.png'),
+  ic_send_gray:require('../assets/images/ic_send_gray.png'),
+  ic_received_gray:require('../assets/images/ic_received_gray.png'),
+
+  activeFilter: require('../assets/images/ic_radio_active.png'),
+  inactiveFilter: require('../assets/images/ic_radio_inactive.png'),
+
+
 
   
 };

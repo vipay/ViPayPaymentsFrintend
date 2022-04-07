@@ -15,17 +15,18 @@
 		145C2149A93D40419EE35301 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB1B21E873A64966A8982E19 /* Lato-Regular.ttf */; };
 		14CD88EC3ACC48CC8F6D4D65 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 387C740C6CC249A4B85B837D /* Poppins-Bold.ttf */; };
 		19DC5C63DC204C27AA342B5E /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E42FB5478A384CC38B0A2F0A /* Poppins-SemiBold.ttf */; };
-		1F92DCE30E0A7834851D5BAC /* libPods-ViPay-ViPayTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C615AFCC12CD6569747C546 /* libPods-ViPay-ViPayTests.a */; };
 		26F9EF89BC7245EAB5C6FEB0 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3A7805D1FAA4E12A25A4571 /* Poppins-Black.ttf */; };
 		2AF429BA00BF4690A3FCEECA /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 336B2FF9EFC14A73953CCEE7 /* Lato-Bold.ttf */; };
 		4416198054EB43A381C02431 /* Roc Grotesk Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88C7F8BD8BC0444BA9204944 /* Roc Grotesk Bold.otf */; };
 		599488FF63444E70AB2802DB /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6C234F569C64C2EB59096D4 /* Poppins-ExtraBold.ttf */; };
 		5FEFD867F7BB4F7895B66FA4 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BC34B0D60E44D23B3CB08FF /* Poppins-SemiBoldItalic.ttf */; };
+		7C53FEA4BC2B8D6961418615 /* libPods-ViPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F57176860962C91EC0FF475 /* libPods-ViPay.a */; };
 		7CCEFED1AEF149CE95F44B7B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B92E27521184052B7F3AC32 /* Poppins-Regular.ttf */; };
 		7D248F426F4D486E9DAA95A9 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4240660539E5485C9106D609 /* Poppins-ThinItalic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		86E6E0B3B34046DD987383E6 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00209EA1C3E041239757BDCF /* Poppins-ExtraBoldItalic.ttf */; };
 		8F420BD5B9294C03AD3864E4 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A69DA5A5D0C4699BCECF5A8 /* Poppins-LightItalic.ttf */; };
+		90FD8EFCDB6EDD3C1EB8F5BE /* libPods-ViPay-ViPayTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79EAEC721AFDFE7D36FF4FEB /* libPods-ViPay-ViPayTests.a */; };
 		A0137D8BE3144E01B9ED770A /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA038DCE54A143D890AF4F72 /* Poppins-MediumItalic.ttf */; };
 		A1690A016F1E4C53A2AB91E0 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBCA98C2FC834AFCB24C6FF6 /* Poppins-Medium.ttf */; };
 		ABE3C28D16DA41B2873A8CFD /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09E27DAD32A94B2FAF0CBC5F /* Poppins-BlackItalic.ttf */; };
@@ -35,7 +36,6 @@
 		D715A65392974AFA99D094C9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB0D1D4FA66A47099EB2A0C0 /* Poppins-Thin.ttf */; };
 		DB35E88B713140DBAB0EBEAF /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF8FF131354344F79DA1306F /* Lato-Medium.ttf */; };
 		DF837B8CE4B242F8BC891D86 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6F87F03D9348618A3FAC5D /* Poppins-Light.ttf */; };
-		E08E336C783FA62F681258F4 /* libPods-ViPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF21D8D1DFA1B8A47BF1980 /* libPods-ViPay.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,27 +61,27 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ViPay/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ViPay/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ViPay/main.m; sourceTree = "<group>"; };
-		2725ECE0A9D2791F8ED1D74C /* Pods-ViPay-ViPayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay-ViPayTests.debug.xcconfig"; path = "Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		28F5FEDC17174C18A4ACDEB0 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../src/assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		29EE4A47A627EFEB599D2D6D /* Pods-ViPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay.debug.xcconfig"; path = "Target Support Files/Pods-ViPay/Pods-ViPay.debug.xcconfig"; sourceTree = "<group>"; };
 		336B2FF9EFC14A73953CCEE7 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../src/assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
-		33D3BD8B5DFD52905D49E2E6 /* Pods-ViPay-ViPayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay-ViPayTests.release.xcconfig"; path = "Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests.release.xcconfig"; sourceTree = "<group>"; };
 		387C740C6CC249A4B85B837D /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		3C0BC203D5F4D5616FA22758 /* Pods-ViPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay.release.xcconfig"; path = "Target Support Files/Pods-ViPay/Pods-ViPay.release.xcconfig"; sourceTree = "<group>"; };
 		4240660539E5485C9106D609 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ThinItalic.ttf"; path = "../src/assets/fonts/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
-		5C615AFCC12CD6569747C546 /* libPods-ViPay-ViPayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViPay-ViPayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F5835773A139A2D2BDAA31 /* Pods-ViPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay.release.xcconfig"; path = "Target Support Files/Pods-ViPay/Pods-ViPay.release.xcconfig"; sourceTree = "<group>"; };
+		4F57176860962C91EC0FF475 /* libPods-ViPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViPay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		659C3E1A6553DB6ABF91558D /* Pods-ViPay-ViPayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay-ViPayTests.release.xcconfig"; path = "Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B93883C830F4936AA026067 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		79EAEC721AFDFE7D36FF4FEB /* libPods-ViPay-ViPayTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViPay-ViPayTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B92E27521184052B7F3AC32 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		7BC34B0D60E44D23B3CB08FF /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ViPay/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85E327EF234144F990F21D28 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		867D04A8380E410697DDF1C8 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BoldItalic.ttf"; path = "../src/assets/fonts/Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		88C7F8BD8BC0444BA9204944 /* Roc Grotesk Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roc Grotesk Bold.otf"; path = "../src/assets/fonts/Roc Grotesk Bold.otf"; sourceTree = "<group>"; };
+		A73E8C9CC57C82E26FA4865E /* Pods-ViPay-ViPayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay-ViPayTests.debug.xcconfig"; path = "Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA038DCE54A143D890AF4F72 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../src/assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		B6C234F569C64C2EB59096D4 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBold.ttf"; path = "../src/assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		BB6F87F03D9348618A3FAC5D /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
-		CE47BC6A74F5F50101424CCE /* Pods-ViPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViPay.debug.xcconfig"; path = "Target Support Files/Pods-ViPay/Pods-ViPay.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8FF131354344F79DA1306F /* Lato-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Medium.ttf"; path = "../src/assets/fonts/Lato-Medium.ttf"; sourceTree = "<group>"; };
-		CFF21D8D1DFA1B8A47BF1980 /* libPods-ViPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViPay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0D1D4FA66A47099EB2A0C0 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		DBCA98C2FC834AFCB24C6FF6 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		E3A7805D1FAA4E12A25A4571 /* Poppins-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Black.ttf"; path = "../src/assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F92DCE30E0A7834851D5BAC /* libPods-ViPay-ViPayTests.a in Frameworks */,
+				90FD8EFCDB6EDD3C1EB8F5BE /* libPods-ViPay-ViPayTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E08E336C783FA62F681258F4 /* libPods-ViPay.a in Frameworks */,
+				7C53FEA4BC2B8D6961418615 /* libPods-ViPay.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,10 +172,10 @@
 		20E0EFA6BCDA69D476097B27 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CE47BC6A74F5F50101424CCE /* Pods-ViPay.debug.xcconfig */,
-				3C0BC203D5F4D5616FA22758 /* Pods-ViPay.release.xcconfig */,
-				2725ECE0A9D2791F8ED1D74C /* Pods-ViPay-ViPayTests.debug.xcconfig */,
-				33D3BD8B5DFD52905D49E2E6 /* Pods-ViPay-ViPayTests.release.xcconfig */,
+				29EE4A47A627EFEB599D2D6D /* Pods-ViPay.debug.xcconfig */,
+				45F5835773A139A2D2BDAA31 /* Pods-ViPay.release.xcconfig */,
+				A73E8C9CC57C82E26FA4865E /* Pods-ViPay-ViPayTests.debug.xcconfig */,
+				659C3E1A6553DB6ABF91558D /* Pods-ViPay-ViPayTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -184,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				CFF21D8D1DFA1B8A47BF1980 /* libPods-ViPay.a */,
-				5C615AFCC12CD6569747C546 /* libPods-ViPay-ViPayTests.a */,
+				4F57176860962C91EC0FF475 /* libPods-ViPay.a */,
+				79EAEC721AFDFE7D36FF4FEB /* libPods-ViPay-ViPayTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,12 +229,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ViPayTests" */;
 			buildPhases = (
-				051471523F08334F8C3FF5B4 /* [CP] Check Pods Manifest.lock */,
+				CB50697CFF6F332EE3296309 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				1409734531DA46338AA6CDBB /* [CP] Embed Pods Frameworks */,
-				A0903E894F9E9697185EFA1C /* [CP] Copy Pods Resources */,
+				986B49216823941935ACEC35 /* [CP] Embed Pods Frameworks */,
+				5A10A9E818D976024CB4C14B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,14 +250,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ViPay" */;
 			buildPhases = (
-				01E3C884148B9D365EE8C8FE /* [CP] Check Pods Manifest.lock */,
+				9B1D3276AE8B1B382C35615D /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B181825C51483C8D43E7A624 /* [CP] Embed Pods Frameworks */,
-				D99E71E066CD53A6095CB87C /* [CP] Copy Pods Resources */,
+				42004EC06C73CA543F14551F /* [CP] Embed Pods Frameworks */,
+				E2B6BD5D9F92CE6CDC17AF54 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -360,7 +360,58 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		01E3C884148B9D365EE8C8FE /* [CP] Check Pods Manifest.lock */ = {
+		42004EC06C73CA543F14551F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViPay/Pods-ViPay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViPay/Pods-ViPay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViPay/Pods-ViPay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A10A9E818D976024CB4C14B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		986B49216823941935ACEC35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B1D3276AE8B1B382C35615D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -382,7 +433,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		051471523F08334F8C3FF5B4 /* [CP] Check Pods Manifest.lock */ = {
+		CB50697CFF6F332EE3296309 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -404,58 +455,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1409734531DA46338AA6CDBB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0903E894F9E9697185EFA1C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViPay-ViPayTests/Pods-ViPay-ViPayTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B181825C51483C8D43E7A624 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ViPay/Pods-ViPay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ViPay/Pods-ViPay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViPay/Pods-ViPay-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D99E71E066CD53A6095CB87C /* [CP] Copy Pods Resources */ = {
+		E2B6BD5D9F92CE6CDC17AF54 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -524,7 +524,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2725ECE0A9D2791F8ED1D74C /* Pods-ViPay-ViPayTests.debug.xcconfig */;
+			baseConfigurationReference = A73E8C9CC57C82E26FA4865E /* Pods-ViPay-ViPayTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -551,7 +551,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33D3BD8B5DFD52905D49E2E6 /* Pods-ViPay-ViPayTests.release.xcconfig */;
+			baseConfigurationReference = 659C3E1A6553DB6ABF91558D /* Pods-ViPay-ViPayTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -575,16 +575,16 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE47BC6A74F5F50101424CCE /* Pods-ViPay.debug.xcconfig */;
+			baseConfigurationReference = 29EE4A47A627EFEB599D2D6D /* Pods-ViPay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5448ZQBK98;
 				ENABLE_BITCODE = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				/*"EXCLUDED_ARCHS[sdk=*]" = arm64;*/
 				INFOPLIST_FILE = ViPay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -604,7 +604,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C0BC203D5F4D5616FA22758 /* Pods-ViPay.release.xcconfig */;
+			baseConfigurationReference = 45F5835773A139A2D2BDAA31 /* Pods-ViPay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -612,7 +612,7 @@
 				DEVELOPMENT_TEAM = 5448ZQBK98;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ViPay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -662,7 +662,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				/* "EXCLUDED_ARCHS[sdk=iphonesimulator*]" = ""; */
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -727,7 +727,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				/* "EXCLUDED_ARCHS[sdk=iphonesimulator*]" = ""; */
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

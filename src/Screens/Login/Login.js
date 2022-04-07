@@ -10,6 +10,7 @@ import colors from '../../styles/colors';
 import styles from './styles';
 import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 // create a component
 const Login = ({navigation}) => {
@@ -76,9 +77,23 @@ const Login = ({navigation}) => {
             </View>
             <Text style={styles.termsCond}>
               {strings.termsConditiontxt1}
-              <Text style={styles.terms}> {strings.termsConditiontxt2}</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate(navigationStrings.TERMSCONDITIONS)
+                }
+                activeOpacity={1}>
+                <Text style={styles.terms}> {strings.termsConditiontxt2}</Text>
+              </TouchableOpacity>
               <Text style={styles.termsCond}>{strings.termsConditiontxt3}</Text>
-              <Text style={styles.terms}> {strings.termsConditiontxt4}</Text>
+
+              <TouchableOpacity
+              style={{alignItems:'baseline',alignSelf:"center"}}
+                onPress={() =>
+                  navigation.navigate(navigationStrings.PRIVACYPOLICY)
+                }
+                activeOpacity={1}>
+                <Text style={styles.terms}>{strings.termsConditiontxt4}</Text>
+              </TouchableOpacity>
             </Text>
             <ButtonComp
               btnText={strings.signin}

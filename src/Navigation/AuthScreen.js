@@ -8,10 +8,15 @@ import {
   OtpVerification,
   ForgotPassword,
   OnBoarding,
-  Home
+  Home,
+  TermsConditions,
+  PrivacyPolicy,
+  TransactionDetails
   
 } from '../Screens';
+import * as Screens from './../Screens/index';
 import ConfirmPin from '../Screens/ConfirmPin/ConfirmPin';
+import CryptoDetails from '../Screens/CryptoDetails/CryptoDetails';
 import TabRoutes from './TabRoutes';
 
 
@@ -36,6 +41,16 @@ export default function (Stack, isFirstTime) {
         component={Login}
         options={{headerShown: false}}
       />
+       <Stack.Screen
+        name={navigationStrings.TERMSCONDITIONS}
+        component={TermsConditions}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name={navigationStrings.PRIVACYPOLICY}
+        component={PrivacyPolicy}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name={navigationStrings.CREATEPIN}
         component={CreatePin}
@@ -47,11 +62,16 @@ export default function (Stack, isFirstTime) {
         options={{headerShown: false}}
       />
 
-      {/* <Stack.Screen
-        name={navigationStrings.HOME}
-        component={Home}
+      <Stack.Screen
+        name={navigationStrings.CRYPTODETAILS}
+        component={CryptoDetails}
         options={{headerShown: false}}
-      /> */}
+      />
+      <Stack.Screen
+        name={navigationStrings.TRANSACTIONDETAILS}
+        component={TransactionDetails}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name={navigationStrings.OTP_VERIFICATION}
         component={OtpVerification}

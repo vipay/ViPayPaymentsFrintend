@@ -1,0 +1,63 @@
+import React from 'react';
+import {Text, Image, StyleSheet, View, Pressable} from 'react-native';
+// import styles from 'react-native-indicators/src/components/ball-indicator/styles';
+import imagePath from '../../constants/imagePath';
+import strings from '../../constants/lang';
+import colors from '../../styles/colors';
+import commonStyles from '../../styles/commonStyles';
+import fontFamily from '../../styles/fontFamily';
+import {moderateScale} from '../../styles/responsiveSize';
+import Filterlist from './Filterlist';
+
+const FilterCryptoDetails=({onpress})=>
+{
+    return(
+        <View style={styles.container}>
+            <View style={styles.head}>
+                <Text style={styles.filtertxt}>{strings.Filter_by}</Text>
+                <Pressable onPress={onpress}>
+                <Image source={imagePath.ic_gray_cross}/>
+                </Pressable>
+            </View>
+            <Filterlist
+            icon={imagePath.ic_all}
+            title={strings.all}
+            onpress={0}/>
+             <Filterlist
+            icon={imagePath.ic_send_gray}
+            title={strings.sent}
+            onpress={0}/>
+             <Filterlist
+            icon={imagePath.ic_received_gray}
+            title={strings.Received}
+            onpress={0}/>
+
+
+
+        </View>
+    )
+}
+export default FilterCryptoDetails;
+
+const styles = StyleSheet.create({
+    container: {
+      flex:0.4,
+      paddingTop: moderateScale(8),
+    //   flexDirection: 'row',
+      padding: moderateScale(24),
+      
+    },
+    head:{
+        flexDirection:'row',
+        justifyContent:'space-between'
+
+
+    },
+
+    filtertxt:{
+        ...commonStyles.fontSize18,
+        fontFamily:fontFamily.RocGroteskBold,
+        color:colors.OBSIDIAN,
+
+    }
+})

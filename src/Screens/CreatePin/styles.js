@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
@@ -22,35 +22,34 @@ const styles = StyleSheet.create({
   CreatePinSubheading: {
     ...commonStyles.fontSize16,
     color: colors.gray,
-    fontFamily: fontFamily.poppinsRegular
+    fontFamily: fontFamily.poppinsRegular,
   },
-  
+
   cell: {
     backgroundColor: colors.pinInputField,
     padding: moderateScale(12),
     borderRadius: 16,
     marginTop: moderateScale(32),
-
   },
   btnview: {
-    flex: 0.15
-
+    flex: 0.15,
+    // backgroundColor: 'red',
   },
   codefieldview: {
     flex: 0.9,
   },
   cellouter: {
-    borderColor: colors.pinInputField
+    borderColor: colors.pinInputField,
   },
-  customMask:{
-    height:10,
-    width:10,
-    borderRadius:20,
-    backgroundColor:colors.OBSIDIAN
+  customMask: {
+    height: 10,
+    width: 10,
+    borderRadius: 20,
+    backgroundColor: colors.OBSIDIAN,
   },
-  pinTextStyle:{
-    color:colors.OBSIDIAN,  
-    fontFamily:fontFamily.poppinsRegular
+  pinTextStyle: {
+    color: colors.OBSIDIAN,
+    fontFamily: fontFamily.poppinsRegular,
   },
 });
 

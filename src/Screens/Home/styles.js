@@ -23,16 +23,23 @@ const styles = StyleSheet.create({
     justifyContent:'space-between'    },
     imghomecard: {
         marginTop:moderateScale(24),
-        flex: 0.3,
+        // flex: 0.35,
+        height:moderateScale(192),
+        width:'100%',
+        // backgroundColor:'red',
         shadowColor: '#42D0B7',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.9,
         shadowRadius: 3,
         elevation:18,
-        paddingHorizontal:moderateScale(24)
+        // margin:24,
+
+        // alignSelf:'center'
+        // paddingHorizontal:moderateScale(24)
     },
     homecardView: {
-        flex: 0.3
+        flex: 0.3,
+     
     },
     viewTotalValue: {
         flexDirection: 'row',
@@ -76,14 +83,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     flatList:{
-        flex:0.7
+        flex:1
     },
     profilepic:{
         height:moderateScale(32),
         width:moderateScale(32),
         borderRadius:10
-    }
+    },
+    bgimg:{
+        width:'100%',
+        height:'100%',
+        // backgroundColor:'yellow'
+        // resizeMode:'contain'
+        
 
+        
+    }
 })
 
 export default styles;
