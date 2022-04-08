@@ -55,7 +55,7 @@ const Login = ({navigation}) => {
                   style={styles.phoneNo}
                   keyboardType={'numeric'}
                   maxLength={16}
-                  autoFocus
+                  // autoFocus
                   placeholderTextColor={colors.lightgray}
                   placeholder={strings.placeholderPHNO}
                 />

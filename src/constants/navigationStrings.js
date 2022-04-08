@@ -20,6 +20,8 @@ export default {
     PRIVACYPOLICY:'PrivacyPolicy',
     TERMSCONDITIONS:'TermsConditions',
     TRANSACTIONDETAILS:'TransactionDetails',
+    SEND:'Send',
+    
     
 
 

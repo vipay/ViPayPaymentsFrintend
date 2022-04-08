@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor:colors.white,
         flex:1,
-        marginTop:moderateScale(20)
+        // marginTop:moderateScale(20)
     },
     subconainer:{
       flex:0.9,

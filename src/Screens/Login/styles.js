@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.grayinput,
     marginTop: moderateScale(16),
-    paddingHorizontal: moderateScale(16),
+    // paddingHorizontal: moderateScale(16),
+    paddingRight:moderateScale(16),
+    
     justifyContent: 'space-between',
     borderRadius: 16,
     height: moderateScale(56),
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
   countrypicker: {
     // marginHorizontal:moderateScale(16),
     flex: 0.4,
+    paddingHorizontal:moderateScale(8),
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'center',

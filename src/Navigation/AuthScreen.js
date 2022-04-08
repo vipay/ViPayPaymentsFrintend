@@ -11,7 +11,8 @@ import {
   Home,
   TermsConditions,
   PrivacyPolicy,
-  TransactionDetails
+  TransactionDetails,
+  Send
   
 } from '../Screens';
 import * as Screens from './../Screens/index';
@@ -72,6 +73,17 @@ export default function (Stack, isFirstTime) {
         component={TransactionDetails}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name={navigationStrings.SEND}
+        component={Send}
+        options={{headerShown: false}}
+      />
+
+
+
+
+
+
       <Stack.Screen
         name={navigationStrings.OTP_VERIFICATION}
         component={OtpVerification}

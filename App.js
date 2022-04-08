@@ -11,6 +11,9 @@ import fontFamily from './src/styles/fontFamily';
 import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
 import Send from './src/Screens/Send/Send'
+import SendRenderList from './src/Screens/Send/SendRenderList';
+import SendUser from './src/Screens/SendUser/SendUser';
+
 
 const {dispatch} = store;
 
@@ -44,8 +47,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <Routes />
-        {/* <Send/> */}
+        {/* <Routes /> */}
+        <SendUser/>
         <FlashMessage
           titleStyle={{
             marginRight: moderateScale(5),

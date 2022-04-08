@@ -88,6 +88,13 @@ export default {
   activeFilter: require('../assets/images/ic_radio_active.png'),
   inactiveFilter: require('../assets/images/ic_radio_inactive.png'),
 
+  //profile pics
+  profile3 :require('../assets/images/profile3.jpg'),
+  profile4 :require('../assets/images/profile4.jpg'),
+  profile5 :require('../assets/images/profile5.jpg'),
+  profile6 :require('../assets/images/profile6.jpg'),
+
+  ic_message :require('../assets/images/ic_message.png'),
 
 
   

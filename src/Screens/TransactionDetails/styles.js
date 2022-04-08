@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   },
   Value: {
     flexDirection: 'row',
-    marginTop: moderateScale(8),
+    // marginTop: moderateScale(8),
+    alignItems:'center'
   },
   coinImg: {
     height: moderateScale(32),
@@ -56,9 +57,10 @@ const styles = StyleSheet.create({
     height: moderateScale(64),
     width: moderateScale(64),
     borderRadius: 40,
-    borderWidth: 4,
+    borderWidth: 3,
     borderColor: colors.white,
     marginTop: -moderateScale(32),
+    backgroundColor:colors.white
   },
   
   transaction_NAME: {

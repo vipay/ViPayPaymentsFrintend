@@ -12,6 +12,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
 import {
+  height,
   moderateScale,
   moderateScaleVertical,
 } from '../../styles/responsiveSize';
@@ -23,13 +24,14 @@ import navigationStrings from '../../constants/navigationStrings';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import FilterCryptoDetails from './FilterCryptoDetails';
 import colors from '../../styles/colors';
+import commonStyles from '../../styles/commonStyles';
 
 const CryptoDetails = ({navigation}) => {
   const refRBSheet = useRef();
   const data = [
     {
       id: 1,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile,
       name: 'Abriel Ramirez',
       value: '0.02223 BTC',
       time: 'Today  •  9:41 am',
@@ -37,7 +39,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 2,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile2,
       name: 'Liani Fesso',
       value: '0.01249 BTC',
       time: 'Today  •  8:00 am',
@@ -45,7 +47,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 3,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile,
       name: 'Josef Fransis',
       value: '0.02223 BTC',
       time: 'Yesterday  •  7:13 pm',
@@ -53,7 +55,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 4,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile,
       name: 'Adrim Dhoke',
       value: '0.02223 BTC',
       time: '19 Feb, 2022  •  2:30 pm',
@@ -61,7 +63,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 5,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile2,
       name: 'Anni Nikola',
       value: '0.02223 BTC',
       time: '19 Feb, 2022  •  12:59 pm',
@@ -69,7 +71,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 6,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile,
       name: 'Rushan Janne',
       value: '0.02223 BTC',
       time: '18 Feb, 2022  •  8:30 am',
@@ -77,7 +79,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 7,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile,
       name: 'Mitchell Curtis',
       value: '0.01249 BTC',
       time: '17 Feb, 2022  •  5:15 pm',
@@ -85,7 +87,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 8,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile2,
       name: 'Abriel Ramirez',
       value: '0.02223 BTC',
       time: 'Today  •  9:41 am',
@@ -93,7 +95,7 @@ const CryptoDetails = ({navigation}) => {
     },
     {
       id: 9,
-      profilepic: imagePath.crypto1,
+      profilepic: imagePath.profile2,
       name: 'Abriel Ramirez',
       value: '0.02223 BTC',
       time: 'Today  •  9:41 am',
@@ -122,8 +124,10 @@ const CryptoDetails = ({navigation}) => {
       <View style={styles.container}>
         <HeaderComp
           text={strings.bitcoin}
+        
           image={imagePath.filterIcon}
           onBackPress={goBack}
+          imagestyle={{height:moderateScale(24),width:moderateScale(24) }}
           onPress={()=>refRBSheet.current.open()}
         />
         <View style={styles.cryptoDetailsCard}>
@@ -149,9 +153,12 @@ const CryptoDetails = ({navigation}) => {
             renderItem={renderItem}
           />
         </View>
-        <View style={styles.bottotab}>
-          <View style={{backgroundColor:colors.Blue}}>
-
+        <View style={styles.bottotabView}>
+          <View style={styles.bottotab}>
+            <Image source={imagePath.send}/>
+            <Image source={imagePath.receive}/>
+            <Image source={imagePath.scan}/>
+            <Image source={imagePath.ucid}/>
           </View>
         </View>
         <RBSheet

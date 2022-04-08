@@ -38,5 +38,6 @@ export default {
   grayprice: '#7C7C7C',
   F1F1F2: '#F1F1F2',
   shadow:'rgba(37,51,75,0.1)',
-  backround:'rgba(255,255,255,0)'
+  backround:'rgba(255,255,255,0.8)',
+  
 };

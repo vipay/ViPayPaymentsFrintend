@@ -28,4 +28,8 @@ export{ default as PrivacyPolicy} from './PrivacyPolicy/PrivacyPolicy';
 
 //transaction details
 
-export {default as TransactionDetails} from './TransactionDetails/TransactionDetails'
+export {default as TransactionDetails} from './TransactionDetails/TransactionDetails';
+
+//SEND screen
+export {default as Send} from './Send/Send';
+

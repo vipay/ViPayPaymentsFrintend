@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flexDirection: 'row',
     // backgroundColor:'red',
-    flex: 0.07,
+    flex: 0.07, 
     justifyContent: 'space-between',
-    paddingHorizontal: moderateScale(24),
+  marginHorizontal: moderateScale(24),
   },
   textStyle: {
     ...commonStyles.fontSize18,

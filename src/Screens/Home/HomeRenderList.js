@@ -28,9 +28,6 @@ const HomeRenderList = ({item, index,onPress}) => {
             item?.status!==1?(
            item?.status >2 ?({...styles.change}) : {...styles.change, color:colors.low_red}):
            {...styles.change, color:colors.grayprice}}>
-           
-         
-            
             {item.change}
           </Text>
           {item?.status !==1 ? (

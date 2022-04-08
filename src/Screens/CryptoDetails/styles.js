@@ -73,15 +73,27 @@ const styles = StyleSheet.create({
   textview: {
     flex: 1,
   },
-  flatList:{
-    flex:0.75
-},
-bottotab:{
-  zIndex:2000,
-  marginLeft:50,
-  // position:'absolute' ,
-  height:100,
-  backgroundColor:"red"
-}
+  flatList: {
+    flex: 0.75,
+  },
+  bottotabView: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 80,
+    backgroundColor:colors.backround,
+    // marginHorizontal:moderateScale(24)
+  },
+  bottotab:{
+    height:moderateScale(56),
+    backgroundColor:colors.Blue,
+    borderRadius:16,
+    marginHorizontal:moderateScale(24),
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingHorizontal:moderateScale(32),
+    alignItems:'center'
+  }
 });
 export default styles;

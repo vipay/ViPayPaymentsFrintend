@@ -9,7 +9,7 @@ import {moderateScale} from '../../styles/responsiveSize';
 const CryptoDetailsRenderList = ({item, index, onPress}) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <Image source={item.profilepic} />
+      <Image  style={styles.profilepic}source={item.profilepic} />
       <View style={{flexDirection: 'row', flex: 1}}>
         <View style={styles.subcontainer}>
           <View style={styles.headingView}>
@@ -92,5 +92,10 @@ const styles = StyleSheet.create({
   },
   indicator:{
     marginLeft:moderateScale(8)
+  },
+  profilepic:{
+    height:moderateScale(48),
+    width:moderateScale(48),
+    borderRadius:24
   }
 });

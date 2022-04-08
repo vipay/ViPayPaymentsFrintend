@@ -12,10 +12,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    // marginTop:moderateScale(24)
   },
   sendBg: {
+    
     height: moderateScale(88),
-    margin: moderateScale(24),
+    marginHorizontal:moderateScale(24),
   },
   bgImg: {
     height: '100%',
@@ -33,6 +35,17 @@ const styles = StyleSheet.create({
   },
   pressable: {
     alignItems: 'center',
+  },
+  a:{
+    ...commonStyles.fontSize16,
+    fontFamily:fontFamily.RocGroteskBold,
+    marginLeft:moderateScale(24)
+    
+
+  },
+  flatList: {
+    marginTop:moderateScale(17),
+    flex:0.9
   },
 });
 

@@ -119,7 +119,8 @@ const Home = ({navigation}) => {
           </View>
           <View style={styles.homecardLine}></View>
           <View style={styles.homecardButtons}>
-            <Pressable style={styles.pressable}>
+            <Pressable style={styles.pressable}
+            onPress={()=>navigation.navigate(navigationStrings.SEND)}>
               <Image source={imagePath.send} />
               <Text style={styles.txtstylehomecard}>{strings.send}</Text>
             </Pressable>

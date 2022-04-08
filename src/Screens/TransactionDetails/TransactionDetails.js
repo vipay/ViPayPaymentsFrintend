@@ -85,9 +85,9 @@ const TransactionDetails = ({navigation}) => {
             <View style={styles.btcsubView}>
               <View style={styles.txtbtcadress}>
                 <Text style={styles.btctxt}>{strings.Transaction_ID}</Text>
-                <Pressable>
+                {/* <Pressable>
                   <Image source={imagePath.ic_copy} />
-                </Pressable>
+                </Pressable> */}
               </View>
               <Text style={styles.btcid}>{strings.transBtnInfoTxtTID}</Text>
             </View>

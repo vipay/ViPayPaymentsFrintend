@@ -94,5 +94,12 @@ export default {
   sent:'Sent',
   Received:'Received',
 
+  // send user
+
+  name_Send:'Abriel Ramirez',
+  phoneNO_Send:'+971 684 987 6479',
+  joinDate_Send:'Joined 10 Feb, 2022',
+  say_Hello_Send:'Say Hello!',
+  request:"Request"
 
 };
