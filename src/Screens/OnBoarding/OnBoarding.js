@@ -29,8 +29,10 @@ const OnBoarding = ({navigation}) => {
             {[{}, {}, {}].map((_, index) => (
               <View style={styles.onboardcontentView} key={index}>
                 <Image style={styles.imgstyle} source={imagePath.onboardImg1} />
+                <View style={{marginTop:moderateScale(56)}}>
                 <Text style={styles.title}>{strings.onBoardingTitle}</Text>
                 <Text style={styles.content}>{strings.onBoardingContent}</Text>
+                </View>
               </View>
             ))}
           </PagerView>

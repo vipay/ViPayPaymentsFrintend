@@ -20,7 +20,10 @@ import HeaderComp from '../../Components/HeaderComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import navigationStrings from '../../constants/navigationStrings';
 
-const SendUser = () => {
+const SendUser = ({navigation}) => {
+  const goBack = () => {
+    navigation.goBack();
+  };
   return (
     <WrapperContainer>
       <View style={styles.container}>
@@ -32,6 +35,8 @@ const SendUser = () => {
             width: moderateScale(32),
             borderRadius: 16,
           }}
+          headerStyle={{marginTop:moderateScale(16)}}
+          onBackPress={goBack}
         />
         <View style={styles.details}>
           <Image style={styles.profilepic} source={imagePath.profile3} />
@@ -45,7 +50,9 @@ const SendUser = () => {
         </View>
         <View style={styles.bottom}>
           <View style={styles.bluebutton}>
-            <Pressable style={styles.buttonstyle}>
+            <Pressable onPress={() => navigation.navigate(navigationStrings.SENDSELECTCRYPTO)}
+            style={styles.buttonstyle}
+            >
               <Image source={imagePath.send} />
               <Text style={styles.buttontxt}>{strings.send}</Text>
             </Pressable>

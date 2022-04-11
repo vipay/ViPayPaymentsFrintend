@@ -13,6 +13,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     // marginTop:moderateScale(24)
+    // marginTop:moderateScale(22),s
   },
+  searchView:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    marginHorizontal:moderateScale(24),
+    backgroundColor:colors.pinInputField,
+    borderRadius:16,
+    paddingHorizontal:moderateScale(16),
+    alignItems:'center',
+    height:moderateScale(56),
+  },
+  searchtxt:{
+    ...commonStyles.fontSize15,
+    color:colors.OBSIDIAN,
+    fontFamily:fontFamily.poppinsRegular,
+    
+    
+  
+
+  }
 })
 export default styles;

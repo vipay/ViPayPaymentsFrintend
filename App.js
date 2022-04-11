@@ -10,9 +10,8 @@ import {getFirstTime, getUserData} from './src/utils/utils';
 import fontFamily from './src/styles/fontFamily';
 import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
-import Send from './src/Screens/Send/Send'
-import SendRenderList from './src/Screens/Send/SendRenderList';
-import SendUser from './src/Screens/SendUser/SendUser';
+
+import EnterAmountComp from './src/Components/EnterAmountComp';
 
 
 const {dispatch} = store;
@@ -41,14 +40,14 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
-    }, 500);
+    }, 1500);
   }, []);
 
   return (
     <Provider store={store}>
       <SafeAreaProvider>
         {/* <Routes /> */}
-        <SendUser/>
+        <EnterAmountComp/>
         <FlashMessage
           titleStyle={{
             marginRight: moderateScale(5),

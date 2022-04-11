@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   subcontainer1: {
-    flex: 0.3,
+    // flex: 1,
+    height:moderateScale(253),
     backgroundColor: colors.up_green,
     paddingTop: moderateScale(24),
   },
@@ -46,17 +47,17 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(8),
   },
   profile: {
-    flex: 0.2,
+    // flex: 0.2,
     marginHorizontal: moderateScale(24),
     marginTop: -moderateScale(70),
-    // position: 'absolute', top: 200, left: 0, right: 0, bottom:400,
     alignItem: 'center',
+    height:moderateScale(144)
     // backgroundColor:'red'
   },
   profilepic: {
     height: moderateScale(64),
     width: moderateScale(64),
-    borderRadius: 40,
+    borderRadius: 32,
     borderWidth: 3,
     borderColor: colors.white,
     marginTop: -moderateScale(32),
@@ -76,10 +77,11 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(8),
   },
   btcaddess: {
-    flex: 0.25,
-    // backgroundColor:'red',
+   
     borderRadius: 16,
     padding: moderateScale(16),
+    
+    paddingHorizontal:moderateScale(16),
     flexDirection: 'row',
     height: moderateScale(104),
     // shadowColor: 'red',
@@ -117,8 +119,9 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    marginVertical:moderateScaleVertical(8),
 
-    flex: 0.2,
+    flex: 0.1,
     padding: moderateScale(10),
   },
   Needhelp: {

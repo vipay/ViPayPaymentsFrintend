@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet, Image, Keyboard,Platform} from 'react-native';
+import {View, Text, StyleSheet, Image, Keyboard, Platform} from 'react-native';
 import WrapperContainer from '../../Components/WrapperContainer';
 import styles from './styles';
 import imagePath from '../../constants/imagePath';
@@ -37,8 +37,9 @@ const CreatePin = ({navigation}) => {
             // keyboardInput={'number-pad'}
             cellStyleFocused={styles.cellouter}
             value={pass}
-
-            keyboardType= {Platform.OS ==="ios"? "numbers-and-punctuation":"numeric"}
+            keyboardType={
+              Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'numeric'
+            }
             animated={false}
             onTextChange={password => {
               setPass(password);
@@ -52,7 +53,7 @@ const CreatePin = ({navigation}) => {
             btnText={strings.CONTINUE}
             onPress={() => navigation.navigate(navigationStrings.CONFIRMPIN)}
           />
-          </View>
+        </View>
       </View>
     </WrapperContainer>
   );

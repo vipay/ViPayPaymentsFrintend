@@ -12,6 +12,7 @@ import {moderateScale} from '../../styles/responsiveSize';
 import HeaderComp from '../../Components/HeaderComp';
 import colors from '../../styles/colors';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const TransactionDetails = ({navigation}) => {
   const goBack = () => {
@@ -20,7 +21,10 @@ const TransactionDetails = ({navigation}) => {
   return (
     <WrapperContainer>
       <StatusBar backgroundColor={colors.up_green} />
+     
       <View style={styles.container}>
+      <ScrollView 
+      contentContainerStyle={{flexGrow:1}}>
         <View style={styles.subcontainer1}>
           <HeaderComp
             onBackPress={goBack}
@@ -41,7 +45,12 @@ const TransactionDetails = ({navigation}) => {
         </View>
         <View style={styles.profile}>
           <View style={styles.subprofile}>
-            <Image style={styles.profilepic} source={imagePath.profile2} />
+            <View style={styles.profilepic}>
+              <Image
+                style={{height: '100%', width: '100%', resizeMode: 'cover',borderRadius:32}}
+                source={imagePath.profile2}
+              />
+            </View>
             <Text style={styles.transaction_NAME}>
               {strings.transaction_NAME}
             </Text>
@@ -53,7 +62,7 @@ const TransactionDetails = ({navigation}) => {
 
         <View style={styles.subcontainer2}>
           <View style={styles.btcaddess}>
-            <View style={{flexDirection: 'row', flex:1}}>
+            <View style={{flexDirection: 'row', flex: 1}}>
               <Image source={imagePath.ic_bitcoin} />
               <View style={styles.btcsubView}>
                 <View style={styles.txtbtcadress}>
@@ -99,7 +108,9 @@ const TransactionDetails = ({navigation}) => {
           </Pressable>
           {/* </View> */}
         </View>
+        </ScrollView>
       </View>
+      
     </WrapperContainer>
   );
 };

@@ -7,7 +7,7 @@ import strings from '../../constants/lang';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
-import {moderateScale} from '../../styles/responsiveSize';
+import {moderateScale, moderateScaleVertical} from '../../styles/responsiveSize';
 
 import styles from './styles'
 
@@ -22,6 +22,7 @@ const PrivacyPolicy=({navigation})=>{
             <HeaderComp
             text={strings.Privacypolicy}
             onBackPress={goBack}
+            headerStyle={{marginVertical:moderateScaleVertical(16)}}
             />
             <View style={styles.subconainer}>
             <Text style={{fontFamily:fontFamily.RocGroteskBold, color:colors.OBSIDIAN}}>coming soon </Text>

@@ -8,7 +8,7 @@ import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
 import {moderateScale} from '../../styles/responsiveSize';
 
-const Filterlist=({icon,title,indicator, onpress})=>
+const Filterlist=({icon,title,indicator, onfilterClick=()=>{}})=>
 
 
 {
@@ -19,7 +19,7 @@ const Filterlist=({icon,title,indicator, onpress})=>
             <View style={styles.sub}>
             <Text style={styles.title}>{title}
             </Text>
-            <Pressable onPress={onpress} >
+            <Pressable onPress={onfilterClick} >
             <Image source={
                     active !== 0 ? imagePath.activeFilter : imagePath.inactiveFilter
                   } />

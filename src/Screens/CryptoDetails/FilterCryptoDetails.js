@@ -9,55 +9,73 @@ import fontFamily from '../../styles/fontFamily';
 import {moderateScale} from '../../styles/responsiveSize';
 import Filterlist from './Filterlist';
 
-const FilterCryptoDetails=({onpress})=>
-{
-    return(
-        <View style={styles.container}>
-            <View style={styles.head}>
-                <Text style={styles.filtertxt}>{strings.Filter_by}</Text>
-                <Pressable onPress={onpress}>
-                <Image source={imagePath.ic_gray_cross}/>
-                </Pressable>
-            </View>
-            <Filterlist
-            icon={imagePath.ic_all}
-            title={strings.all}
-            onpress={0}/>
-             <Filterlist
-            icon={imagePath.ic_send_gray}
-            title={strings.sent}
-            onpress={0}/>
-             <Filterlist
-            icon={imagePath.ic_received_gray}
-            title={strings.Received}
-            onpress={0}/>
-
-
-
-        </View>
-    )
-}
+const FilterCryptoDetails = ({onpress}) => {
+  const data = [
+    {
+      id: 1,
+      image: imagePath.ic_all,
+      title: strings.all,
+      activeIcon: imagePath.activeFilter,
+      inActiveIcon: imagePath.inactiveFilter,
+    },
+    {
+      id: 2,
+      image: imagePath.ic_all,
+      title: strings.all,
+      activeIcon: imagePath.activeFilter,
+      inActiveIcon: imagePath.inactiveFilter,
+    },
+    {
+      id: 3,
+      image: imagePath.ic_all,
+      title: strings.all,
+      activeIcon: imagePath.activeFilter,
+      inActiveIcon: imagePath.inactiveFilter,
+    },
+  ];
+  return (
+    <View style={styles.container}>
+      <View style={styles.head}>
+        <Text style={styles.filtertxt}>{strings.Filter_by}</Text>
+        <Pressable onPress={onpress}>
+          <Image source={imagePath.ic_gray_cross} />
+        </Pressable>
+      </View>
+      <Filterlist
+        icon={imagePath.ic_all}
+        title={strings.all}
+        onfilterClick={onpress}
+      />
+      <Filterlist
+        icon={imagePath.ic_send_gray}
+        title={strings.sent}
+        onpress={0}
+      />
+      <Filterlist
+        icon={imagePath.ic_received_gray}
+        title={strings.Received}
+        onpress={0}
+      />
+    </View>
+  );
+};
 export default FilterCryptoDetails;
 
 const styles = StyleSheet.create({
-    container: {
-      flex:0.4,
-      paddingTop: moderateScale(8),
+  container: {
+    flex: 0.4,
+    paddingTop: moderateScale(8),
     //   flexDirection: 'row',
-      padding: moderateScale(24),
-      
-    },
-    head:{
-        flexDirection:'row',
-        justifyContent:'space-between'
+    padding: moderateScale(24),
+  },
+  head: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 
-
-    },
-
-    filtertxt:{
-        ...commonStyles.fontSize18,
-        fontFamily:fontFamily.RocGroteskBold,
-        color:colors.OBSIDIAN,
-
-    }
-})
+  filtertxt: {
+    ...commonStyles.fontSize18,
+    fontFamily: fontFamily.RocGroteskBold,
+    color: colors.OBSIDIAN,
+  },
+});

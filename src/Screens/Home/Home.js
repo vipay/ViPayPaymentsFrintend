@@ -87,7 +87,7 @@ const Home = ({navigation}) => {
   ];
   const renderItem = ({item, index}) => {
     return <HomeRenderList key={index} item={item} index={index} 
-    onPress={() => navigation.navigate(navigationStrings.CRYPTODETAILS,{DATA : data[item.name]})} />;
+    onPress={() => navigation.navigate(navigationStrings.CRYPTODETAILS)} />;
   };
 
   const Button = ({}) => {

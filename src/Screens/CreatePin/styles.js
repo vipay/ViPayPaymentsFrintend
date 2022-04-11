@@ -32,11 +32,15 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(32),
   },
   btnview: {
-    flex: 0.15,
+    // flex: 0.15,
+    // alignItems:'center',
+    // justifyContent:'center',
+    // alignSelf:'center',
+    // alignContent:'center'
     // backgroundColor: 'red',
   },
   codefieldview: {
-    flex: 0.9,
+    flex: 1,
   },
   cellouter: {
     borderColor: colors.pinInputField,

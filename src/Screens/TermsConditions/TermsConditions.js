@@ -5,7 +5,7 @@ import imagePath from '../../constants/imagePath';
 import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
-import {moderateScale} from '../../styles/responsiveSize';
+import {moderateScale,moderateScaleVertical} from '../../styles/responsiveSize';
 import strings from '../../constants/lang';
 import HeaderComp from '../../Components/HeaderComp';
 import WrapperContainer from '../../Components/WrapperContainer';
@@ -24,6 +24,8 @@ const TermsConditions= ({navigation})=>
               <HeaderComp
             text={strings.Termsconditions}
             onBackPress={goBack}
+            headerStyle={{marginVertical:moderateScaleVertical(16)}}
+
 
             />
             <View style={styles.subconainer}>

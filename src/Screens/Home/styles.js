@@ -21,42 +21,50 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   imghomecard: {
+    // backgroundColor:'red',
     marginTop: moderateScale(24),
     // flex: 0.35,
     height: moderateScale(192),
     width: '100%',
+    // backgroundColor:'#3A6DF9',
     // backgroundColor:'red',
+    borderColor: '#3A6DF9',
+    borderWidth: 0.1,
     shadowColor: '#42D0B7',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.9,
-    shadowRadius: 3,
-    elevation: 5,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 0.4,
+
+    elevation: 60,
     // margin:24,
 
     // alignSelf:'center'
     // paddingHorizontal:moderateScale(24)
   },
-//   imghomecard: {
-//     marginTop: moderateScale(24),
-//     // flex: 0.35,
-//     height: moderateScale(192),
-//     width: '100%',
-//     // backgroundColor:'red',
-//     shadowColor: '#42D0B7' ,
-//     shadowOffset: {
-//         width: 0,
-//         height: 4,
-//     },
-//     shadowOpacity: 0.32,
-//     shadowRadius: 5.46,
-    
-//     elevation: 9,
-    
-//     // margin:24,
+  //   imghomecard: {
+  //     marginTop: moderateScale(24),
+  //     // flex: 0.35,
+  //     height: moderateScale(192),
+  //     width: '100%',
+  //     // backgroundColor:'red',
+  //     shadowColor: '#42D0B7' ,
+  //     shadowOffset: {
+  //         width: 0,
+  //         height: 4,
+  //     },
+  //     shadowOpacity: 0.32,
+  //     shadowRadius: 5.46,
 
-//     // alignSelf:'center'
-//     // paddingHorizontal:moderateScale(24)
-//   },
+  //     elevation: 9,
+
+  //     // margin:24,
+
+  //     // alignSelf:'center'
+  //     // paddingHorizontal:moderateScale(24)
+  //   },
   homecardView: {
     flex: 0.3,
   },
@@ -84,6 +92,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderBottomWidth: 1,
     borderBottomColor: colors.whiteOpacity25,
+    // backgroundColor:'red'
   },
 
   homecardButtons: {
@@ -112,6 +121,7 @@ const styles = StyleSheet.create({
   bgimg: {
     width: '100%',
     height: '100%',
+    // marginHorizontal:24,
     // backgroundColor:'yellow'
     // resizeMode:'contain'
   },

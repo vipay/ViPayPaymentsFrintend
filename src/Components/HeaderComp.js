@@ -21,7 +21,10 @@ export default function HeaderComp({
     <View style={{...styles.headerStyle, ...headerStyle}}>
       <View style={styles.subcontainer}>
         <Pressable onPress={onBackPress}>
-          <Image style={{...styles.backicon, ...backicon}} source={imagePath.backIcon} />
+          <Image
+            style={{...styles.backicon, ...backicon}}
+            source={imagePath.backIcon}
+          />
         </Pressable>
         <Text style={{...styles.textStyle, ...textStyle}}>{text}</Text>
       </View>
@@ -37,9 +40,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flexDirection: 'row',
     // backgroundColor:'red',
-    flex: 0.07, 
+    flex: 0.07,
     justifyContent: 'space-between',
-  marginHorizontal: moderateScale(24),
+    marginHorizontal: moderateScale(24),
   },
   textStyle: {
     ...commonStyles.fontSize18,
@@ -54,8 +57,5 @@ const styles = StyleSheet.create({
     height: moderateScale(32),
     width: moderateScale(32),
     // borderRadius: 12,
-  
-    
   },
- 
 });

@@ -100,6 +100,10 @@ export default {
   phoneNO_Send:'+971 684 987 6479',
   joinDate_Send:'Joined 10 Feb, 2022',
   say_Hello_Send:'Say Hello!',
-  request:"Request"
+  request:"Request",
+
+  // send  select crypto 
+  Selectcrypto:'Select crypto' ,
+  select_placeholer:'Search by name…'
 
 };

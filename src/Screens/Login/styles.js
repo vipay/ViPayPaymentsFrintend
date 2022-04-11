@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     height: moderateScale(56),
     alignItems: 'center',
+    // alignContent:'center',
+    // alignSelf:'center'
     // backgroundColor:'yellow'
   },
   welcomeback: {
@@ -68,6 +70,8 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(15),
     fontFamily: fontFamily.poppinsRegular,
     flex: 1,
+    padding:0,
+    
   },
   inputline: {
     borderLeftWidth: 1,
@@ -79,7 +83,8 @@ const styles = StyleSheet.create({
     color: colors.lightgray,
     alignSelf: 'center',
     fontFamily: fontFamily.poppinsRegular,
-    // backgroundColor:'yellow'
+    // backgroundColor:'yellow',
+    padding:0
   },
   otpholder: {
     backgroundColor: colors.grayinput,
@@ -101,14 +106,14 @@ const styles = StyleSheet.create({
     color: colors.OBSIDIAN,
     marginBottom: moderateScale(16),
     fontFamily: fontFamily.poppinsRegular,
+    height:moderateScale(50),
   },
   terms: {
     ...commonStyles.fontSize12,
     color: colors.greenterms,
     textDecorationLine: 'underline',
     fontFamily: fontFamily.poppinsRegular,
-    // alignContent:'center'
-    // marginTop:5
+    alignSelf:"center",
   },
   subinputfield: {
     flexDirection: 'row',
@@ -122,6 +127,12 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
   },
+  countrycode:{
+    ...commonStyles.fontSize15,
+    fontFamily:fontFamily.poppinsRegular,
+    
+
+  }
 });
 
 export default styles;

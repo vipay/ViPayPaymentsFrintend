@@ -32,4 +32,11 @@ export {default as TransactionDetails} from './TransactionDetails/TransactionDet
 
 //SEND screen
 export {default as Send} from './Send/Send';
+// SEND USER
+export {default as SendUser} from './SendUser/SendUser';
+ 
+// send select crypto 
+export {default as SendSelectCrypto} from './SendSelectCrypto/SendSelectCrypto';
+
+
 

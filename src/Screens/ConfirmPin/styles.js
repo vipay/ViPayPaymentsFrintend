@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
 
   },
   btncontinue: {
-    flex: 0.15,
+    // flex: 0.15,
   },
   codefieldView: {
-    flex: 0.9,
+    flex: 1,
   },
   cellouter: {
     borderColor: colors.pinInputField

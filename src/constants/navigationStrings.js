@@ -21,6 +21,8 @@ export default {
     TERMSCONDITIONS:'TermsConditions',
     TRANSACTIONDETAILS:'TransactionDetails',
     SEND:'Send',
+    SENDUSER: 'SendUser',
+    SENDSELECTCRYPTO:'SendSelectCrypto'
     
     
 

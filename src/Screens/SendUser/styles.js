@@ -22,9 +22,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
-    //   elevation:0.2,
-    //   borderWidth:0.1,
-    //   borderColor:'white'
+      // elevation:0.6,
+      // borderWidth:0.1,
+      // borderColor:'white's
+      shadowColor: "rgba(0,0,0,0.6)",
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.18,
+      shadowRadius: 1.00,
+      
+      elevation: 1,
+     
+      
+
   },
   details: {
     flex: 0.9,
@@ -74,15 +86,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.Blue,
     flexDirection: 'row',
     height: moderateScale(48),
-    width: '48%',
+    width: '48.5%',
     borderRadius: 10,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'space-between',
+    justifyContent:'center',
+    padding:moderateScale(16)
   },
   buttontxt: {
     ...commonStyles.fontSize13,
     fontFamily: fontFamily.poppinsSemibold,
     color: colors.white,
+    // backgroundColor:'red'
+    
     marginLeft: moderateScale(8),
   },
   messagebtn:{

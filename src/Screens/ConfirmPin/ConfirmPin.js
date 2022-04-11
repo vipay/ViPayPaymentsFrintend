@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Image ,Platform, Keyboard} from 'react-native';
+import React, {Component, useState} from 'react';
+import {View, Text, StyleSheet, Image, Platform, Keyboard} from 'react-native';
 import WrapperContainer from '../../Components/WrapperContainer';
 import fontFamily from '../../styles/fontFamily';
 import styles from './styles';
@@ -9,8 +9,7 @@ import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 
-
-const ConfirmPin = ({ navigation }) => {
+const ConfirmPin = ({navigation}) => {
   const [pass, setPass] = useState('');
 
   return (
@@ -34,18 +33,22 @@ const ConfirmPin = ({ navigation }) => {
             value={pass}
             cellSpacing={24}
             // autoFocus={true}
-            keyboardType= {Platform.OS ==="ios"? "numbers-and-punctuation":"numeric"}
+            keyboardType={
+              Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'numeric'
+            }
             animated={false}
-            onTextChange={(password) => {
-              setPass(password)
-              console.log(password, pass, "passwordpasswordpassword")
-            }
-            }
+            onTextChange={password => {
+              setPass(password);
+              console.log(password, pass, 'passwordpasswordpassword');
+            }}
           />
         </View>
         <View style={styles.btncontinue}>
-          <ButtonComp btnText={strings.confirm} style={styles.continuebtn}
-          onPress={() => navigation.navigate(navigationStrings.HOME_TAB)} />
+          <ButtonComp
+            btnText={strings.confirm}
+            style={styles.continuebtn}
+            onPress={() => navigation.navigate(navigationStrings.HOME_TAB)}
+          />
         </View>
       </View>
     </WrapperContainer>

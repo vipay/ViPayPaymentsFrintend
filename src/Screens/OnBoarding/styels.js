@@ -5,55 +5,51 @@ import fontFamily from '../../styles/fontFamily';
 import {
   moderateScale,
   moderateScaleVertical,
+  width,
 } from '../../styles/responsiveSize';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    // justifyContent: 'space-around'
-  },
-
-  btnStyle: {
-    width: moderateScale(160),
-    height: moderateScale(160),
-    borderRadius: moderateScale(80),
-    alignItems: 'center',
-    justifyContent: 'center',
+    // marginHorizontal:moderateScale(24),
+    marginTop:moderateScale(24),
   },
 
   PagerView: {
-    flex: 1,
-    // backgroundColor:"green"
+    flex:1,
     
   },
   getstartedbtn: {
-    marginHorizontal: moderateScale(24),
-  
+    // marginHorizontal: moderateScale(24),
     alignItems: "center",
   },
   title: {
     fontFamily: fontFamily.RocGroteskBold,
     color: colors.OBSIDIAN,
     fontSize: 40,
-    marginTop: moderateScale(56.5),
+    marginHorizontal:moderateScale(24),
+    
     textAlign: 'center'
   },
   content: {
     ...commonStyles.fontSize15,
     color: colors.OBSIDIAN,
     textAlign: 'center',
-    padding: moderateScale(24),
+    marginTop:moderateScale(23),
+    marginHorizontal:moderateScale(24),
     fontFamily:fontFamily.poppinsLight
   },
 
   imgstyle: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    height:moderateScale(300),
+    width:moderateScale(264)
+   
   },
-
-  onboardcontentView: {
-  justifyContent:"flex-end"
-    // justifyContent: 'center',
+onboardcontentView: {
+ justifyContent:'flex-end',
+    // justifyContent:'space-evenly'
   },
   btngetstart: {
     flex: 0.1,
@@ -65,21 +61,27 @@ const styles = StyleSheet.create({
     backgroundColor: colors.citrine,
     width: 40,
     height: 8,
-    borderRadius: 4
+    borderRadius: 4,
+    marginHorizontal:moderateScale(8)
+
   },
   inactiveStyle: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: colors.BABABD
+    backgroundColor: colors.BABABD,
+    marginHorizontal:moderateScale(8)
   },
   dotsView: {
     flex: 0.1,
     alignItems: 'center',
-    // backgroundColor:'black'
+   
+    justifyContent:'center'
+    
   },
   onboardView: {
-    flex: 1,
+    flex:0.8,
+    
   }
 });
 

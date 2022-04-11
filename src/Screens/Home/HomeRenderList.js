@@ -42,7 +42,7 @@ const HomeRenderList = ({item, index,onPress}) => {
             <Image source={imagePath.ic_stable} />
           )}
         </View>
-        <View style={styles.line} />
+        {/* <View style={styles.line} /> */}
       </View>
     </Pressable>
   );
@@ -51,18 +51,24 @@ export default HomeRenderList;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.1,
-    paddingHorizontal: moderateScale(24),
+    // flex: 0.1,
+    // paddingHorizontal: moderateScale(24),
     paddingTop: moderateScale(8),
     flexDirection: 'row',
+    paddingLeft:moderateScale(24),
+    height:moderateScale(72)
   },
   subcontainer: {
     flex: 1,
     marginLeft: moderateScale(16),
+    // paddingLeft:moderateScale(24),
+    borderBottomWidth:0.8,
+    borderColor:colors.F1F1F2,
   },
   headingView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginRight:moderateScale(24),
   },
   priceView: {
     flexDirection: 'row',
@@ -92,6 +98,6 @@ const styles = StyleSheet.create({
     height: moderateScale(1),
     width: '100%',
     backgroundColor: colors.F1F1F2,
-    marginTop: moderateScale(16),
+    // marginTop: moderateScale(16),
   },
 });

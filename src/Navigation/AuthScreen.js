@@ -12,7 +12,9 @@ import {
   TermsConditions,
   PrivacyPolicy,
   TransactionDetails,
-  Send
+  Send,
+  SendUser,
+  SendSelectCrypto
   
 } from '../Screens';
 import * as Screens from './../Screens/index';
@@ -78,6 +80,19 @@ export default function (Stack, isFirstTime) {
         component={Send}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name={navigationStrings.SENDUSER}
+        component={SendUser}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.SENDSELECTCRYPTO}
+        component={SendSelectCrypto}
+        options={{headerShown: false}}
+      />
+
+
+
 
 
 

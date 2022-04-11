@@ -12,16 +12,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    // marginTop:moderateScale(24)
   },
   sendBg: {
+    backgroundColor: 'white',
     
     height: moderateScale(88),
-    marginHorizontal:moderateScale(24),
+    marginHorizontal: moderateScale(24),
+    shadowColor: '#42D0B7',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.36,
+    shadowRadius: 6.68,
+    
+    elevation: 13,
+    borderRadius:20,
   },
   bgImg: {
     height: '100%',
     width: '100%',
+    
   },
   ButtonsView: {
     flexDirection: 'row',
@@ -36,16 +47,17 @@ const styles = StyleSheet.create({
   pressable: {
     alignItems: 'center',
   },
-  a:{
+  a: {
     ...commonStyles.fontSize16,
-    fontFamily:fontFamily.RocGroteskBold,
-    marginLeft:moderateScale(24)
-    
-
+    fontFamily: fontFamily.RocGroteskBold,
+    marginLeft: moderateScale(24),
   },
   flatList: {
-    marginTop:moderateScale(17),
-    flex:0.9
+    marginTop: moderateScale(17),
+    flex: 1,
+  },
+  bgImgView: {
+    // flex:1
   },
 });
 

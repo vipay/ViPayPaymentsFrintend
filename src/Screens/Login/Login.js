@@ -1,6 +1,6 @@
 //import liraries
 import React, {Component, useState} from 'react';
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TextInput, TouchableOpacity,TouchableWithoutFeedback} from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
 import navigationStrings from '../../constants/navigationStrings';
 import WrapperContainer from '../../Components/WrapperContainer';
@@ -11,6 +11,7 @@ import styles from './styles';
 import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+// import {} from 'react-native-gesture-handler';
 
 // create a component
 const Login = ({navigation}) => {
@@ -42,6 +43,9 @@ const Login = ({navigation}) => {
                     withCallingCode
                     withCallingCodeButton={true}
                     cca2={iso2}
+                    // containerButtonStyle={styles.countrycode}
+                    theme={styles.countrycode}
+                    // style={styles.countrycode}
                     onSelect={country => {
                       // console.log.apply('country',country);
                       const {cca2, callingCode} = country;
@@ -77,23 +81,24 @@ const Login = ({navigation}) => {
             </View>
             <Text style={styles.termsCond}>
               {strings.termsConditiontxt1}
-              <TouchableOpacity
+              <TouchableWithoutFeedback
                 onPress={() =>
                   navigation.navigate(navigationStrings.TERMSCONDITIONS)
-                }
-                activeOpacity={1}>
-                <Text style={styles.terms}> {strings.termsConditiontxt2}</Text>
-              </TouchableOpacity>
+                }>
+                <Text
+                  // onPress={()=> navigation.navigate(navigationStrings.TERMSCONDITIONS)}
+                  style={styles.terms}>
+                  {strings.termsConditiontxt2}
+                </Text>
+              </TouchableWithoutFeedback>
+              {/* </TouchableOpacity> */}
               <Text style={styles.termsCond}>{strings.termsConditiontxt3}</Text>
-
-              <TouchableOpacity
-              style={{alignItems:'baseline',alignSelf:"center"}}
+              <TouchableWithoutFeedback
                 onPress={() =>
                   navigation.navigate(navigationStrings.PRIVACYPOLICY)
-                }
-                activeOpacity={1}>
+                }>
                 <Text style={styles.terms}>{strings.termsConditiontxt4}</Text>
-              </TouchableOpacity>
+              </TouchableWithoutFeedback>
             </Text>
             <ButtonComp
               btnText={strings.signin}

@@ -167,18 +167,13 @@ const CryptoDetails = ({navigation}) => {
         closeOnPressMask={true}
         
         customStyles={{
-        
-           
           wrapper: {
             backgroundColor: "rgba(0,0,0,0.6)"
-           
           },
           container:{
             borderRadius:20,
             paddingTop:moderateScale(14)
           }
-          
-          
         }}>
           <FilterCryptoDetails onpress={()=>refRBSheet.current.close()}/>
 

@@ -8,7 +8,7 @@ import {moderateScale} from '../../styles/responsiveSize';
 
 const SendRenderList = ({item, index, onPress}) => {
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.subcontaner}>
         <Image style={styles.profile} source={item.profilepic} />
         <View style={styles.lineview}>
@@ -56,9 +56,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: '#C4C4C6',
-    // alignContent:'center',
     alignItems:'center',
-    justifyContent:'center'
+    justifyContent:'center',
   },
   lineview:{
     flex:1,
@@ -87,7 +86,6 @@ const styles = StyleSheet.create({
     ...commonStyles.fontSize13,
     fontFamily:fontFamily.poppinsRegular,
     color:colors.OBSIDIAN,
-    
-
-  }
+  },
+  
 });
