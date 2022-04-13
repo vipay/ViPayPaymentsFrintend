@@ -29,7 +29,7 @@ export{ default as PrivacyPolicy} from './PrivacyPolicy/PrivacyPolicy';
 //transaction details
 
 export {default as TransactionDetails} from './TransactionDetails/TransactionDetails';
-
+ 
 //SEND screen
 export {default as Send} from './Send/Send';
 // SEND USER
@@ -37,6 +37,21 @@ export {default as SendUser} from './SendUser/SendUser';
  
 // send select crypto 
 export {default as SendSelectCrypto} from './SendSelectCrypto/SendSelectCrypto';
+// send enter aount 
+export {default as SendEnterAmount} from './SendEnterAmount/SendEnterAmount';
+// request select crypto
+ export {default as RequestSelectCrypto} from './RequestSelectCrypto/RequestSelectCrypto';
+ // request enter amount 
+ export {default as RequestEnterAmount} from './RequestEnterAmount/RequestEnterAmount';
+
+ // chat users list
+
+ export {default as ChatUsersList} from './ChatUsersList/ChatUsersList';
+ 
+ // rewards
+  export { default as Rewards} from './Rewards/Rewards';
+  
+
 
 
 

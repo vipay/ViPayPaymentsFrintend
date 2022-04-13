@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     // marginHorizontal:moderateScale(24),
-    marginTop:moderateScale(24),
+    // marginTop:moderateScale(24),
   },
 
   PagerView: {
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
 
   imgstyle: {
     alignSelf: 'center',
-    height:moderateScale(300),
-    width:moderateScale(264)
+    // height:moderateScale(300),
+    // width:moderateScale(264)
    
   },
 onboardcontentView: {

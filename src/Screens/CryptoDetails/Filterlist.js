@@ -12,7 +12,7 @@ const Filterlist=({icon,title,indicator, onfilterClick=()=>{}})=>
 
 
 {
-    const [active, setactive] =useState(0)
+    const [active] =useState(true)
     return(
         <View style={styles.main} >
             <Image source={icon}/>
@@ -21,7 +21,7 @@ const Filterlist=({icon,title,indicator, onfilterClick=()=>{}})=>
             </Text>
             <Pressable onPress={onfilterClick} >
             <Image source={
-                    active !== 0 ? imagePath.activeFilter : imagePath.inactiveFilter
+                    active !== true ? imagePath.activeFilter : imagePath.inactiveFilter
                   } />
                    </Pressable>
             </View>

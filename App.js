@@ -12,6 +12,8 @@ import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
 
 import EnterAmountComp from './src/Components/EnterAmountComp';
+import SendEnterAmount from './src/Screens/SendEnterAmount/SendEnterAmount';
+import ChatUserRenderList from './src/Screens/ChatUsersList/ChatUserRenderList';
 
 
 const {dispatch} = store;
@@ -46,8 +48,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        {/* <Routes /> */}
-        <EnterAmountComp/>
+        <Routes />
+        {/* <EnterAmountComp/> */}
+        {/* <SendEnterAmount/> */}
+        {/* <ChatUserRenderList/> */}
         <FlashMessage
           titleStyle={{
             marginRight: moderateScale(5),

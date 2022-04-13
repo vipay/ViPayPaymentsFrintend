@@ -55,8 +55,9 @@ const SendUser = ({navigation}) => {
             >
               <Image source={imagePath.send} />
               <Text style={styles.buttontxt}>{strings.send}</Text>
-            </Pressable>
-            <Pressable style={styles.buttonstyle}>
+            </Pressable >
+            <Pressable onPress={() => navigation.navigate(navigationStrings.REQUESTSELECTCRYPTO)}
+            style={styles.buttonstyle}>
               <Image source={imagePath.receive} />
               <Text style={styles.buttontxt}>{strings.request}</Text>
             </Pressable>

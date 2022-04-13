@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
     // flex: 1,
     height:moderateScale(253),
     backgroundColor: colors.up_green,
-    paddingTop: moderateScale(24),
+    // paddingTop: moderateScale(24),
   },
   done_received: {
-    marginTop: moderateScale(8),
+    // marginTop: moderateScale(8),
   },
   mainconainer: {
     flex: 1,

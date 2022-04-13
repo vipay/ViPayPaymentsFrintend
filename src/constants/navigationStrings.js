@@ -22,7 +22,16 @@ export default {
     TRANSACTIONDETAILS:'TransactionDetails',
     SEND:'Send',
     SENDUSER: 'SendUser',
-    SENDSELECTCRYPTO:'SendSelectCrypto'
+    SENDSELECTCRYPTO:'SendSelectCrypto',
+    SENDENTERAMOUNT:'SendEnterAmount',
+    REQUESTSELECTCRYPTO:'RequestSelectCrypto',
+    REQUESTENTERAMOUNT:'RequestEnterAmount',
+    CHATUSERSLIST:'ChatUsersList',
+    REWARDS:'Rewards'
+    
+
+    
+
     
     
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {moderateScale} from '../styles/responsiveSize';
+import {moderateScale, moderateScaleVertical} from '../styles/responsiveSize';
 import colors from '../styles/colors';
 import imagePath from '../constants/imagePath';
 import commonStyles from '../styles/commonStyles';
@@ -40,9 +40,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flexDirection: 'row',
     // backgroundColor:'red',
-    flex: 0.07,
+    // height:moderateScale(62),
     justifyContent: 'space-between',
     marginHorizontal: moderateScale(24),
+    marginVertical:moderateScaleVertical(16)
   },
   textStyle: {
     ...commonStyles.fontSize18,

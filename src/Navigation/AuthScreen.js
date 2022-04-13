@@ -14,15 +14,15 @@ import {
   TransactionDetails,
   Send,
   SendUser,
-  SendSelectCrypto
-  
+  SendSelectCrypto,
+  SendEnterAmount,
+  RequestSelectCrypto,
+  RequestEnterAmount,
 } from '../Screens';
 import * as Screens from './../Screens/index';
 import ConfirmPin from '../Screens/ConfirmPin/ConfirmPin';
 import CryptoDetails from '../Screens/CryptoDetails/CryptoDetails';
 import TabRoutes from './TabRoutes';
-
-
 
 export default function (Stack, isFirstTime) {
   console.log('auth stack', isFirstTime);
@@ -44,12 +44,12 @@ export default function (Stack, isFirstTime) {
         component={Login}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={navigationStrings.TERMSCONDITIONS}
         component={TermsConditions}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={navigationStrings.PRIVACYPOLICY}
         component={PrivacyPolicy}
         options={{headerShown: false}}
@@ -90,8 +90,21 @@ export default function (Stack, isFirstTime) {
         component={SendSelectCrypto}
         options={{headerShown: false}}
       />
-
-
+      <Stack.Screen
+        name={navigationStrings.SENDENTERAMOUNT}
+        component={SendEnterAmount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.REQUESTSELECTCRYPTO}
+        component={RequestSelectCrypto}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.REQUESTENTERAMOUNT}
+        component={RequestEnterAmount}
+        options={{headerShown: false}}
+      />
 
 
 
@@ -112,7 +125,7 @@ export default function (Stack, isFirstTime) {
       <Stack.Screen
         name={navigationStrings.HOME_TAB}
         component={TabRoutes}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
     </>
   );

@@ -12,8 +12,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    // marginTop:moderateScale(24)
+    // marginTop:moderateScale(24),
     // marginTop:moderateScale(22),s
+    // backgroundColor:'yellow'
   },
   searchView:{
     flexDirection:'row',

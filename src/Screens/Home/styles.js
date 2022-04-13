@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: moderateScale(24),
+    marginTop: moderateScale(24),
   },
   header: {
     flexDirection: 'row',
@@ -21,57 +21,33 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   imghomecard: {
-    // backgroundColor:'red',
+    marginHorizontal:moderateScale(24),
     marginTop: moderateScale(24),
-    // flex: 0.35,
     height: moderateScale(192),
-    width: '100%',
-    // backgroundColor:'#3A6DF9',
-    // backgroundColor:'red',
-    borderColor: '#3A6DF9',
-    borderWidth: 0.1,
+    
+
+
+    backgroundColor: colors.shadowbg,
     shadowColor: '#42D0B7',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 6,
     },
-    shadowOpacity: 0.4,
-    shadowRadius: 0.4,
+    shadowOpacity: 0.47,
+    shadowRadius: 7.49,
 
-    elevation: 60,
-    // margin:24,
-
-    // alignSelf:'center'
-    // paddingHorizontal:moderateScale(24)
+    elevation: 15,
+  borderRadius:20
   },
-  //   imghomecard: {
-  //     marginTop: moderateScale(24),
-  //     // flex: 0.35,
-  //     height: moderateScale(192),
-  //     width: '100%',
-  //     // backgroundColor:'red',
-  //     shadowColor: '#42D0B7' ,
-  //     shadowOffset: {
-  //         width: 0,
-  //         height: 4,
-  //     },
-  //     shadowOpacity: 0.32,
-  //     shadowRadius: 5.46,
-
-  //     elevation: 9,
-
-  //     // margin:24,
-
-  //     // alignSelf:'center'
-  //     // paddingHorizontal:moderateScale(24)
-  //   },
+  
   homecardView: {
     flex: 0.3,
   },
   viewTotalValue: {
     flexDirection: 'row',
+    height:moderateScale(87),
     // padding: moderateScale(24),
-    flex: 0.47,
+    // flex: 0.47,
     justifyContent: 'space-around',
     alignItems: 'center',
   },
@@ -97,8 +73,10 @@ const styles = StyleSheet.create({
 
   homecardButtons: {
     flexDirection: 'row',
-    flex: 0.4,
+    // flex: 0.4,
     alignItems: 'center',
+    // alignContent:'center',
+    height:moderateScale(104),
     justifyContent: 'space-evenly',
   },
   txtstylehomecard: {
@@ -114,8 +92,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   profilepic: {
-    height: moderateScale(32),
-    width: moderateScale(32),
+    height: moderateScale(40),
+    width: moderateScale(40),
     borderRadius: 10,
   },
   bgimg: {

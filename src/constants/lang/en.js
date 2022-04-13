@@ -104,6 +104,40 @@ export default {
 
   // send  select crypto 
   Selectcrypto:'Select crypto' ,
-  select_placeholer:'Search by name…'
+  select_placeholer:'Search by name…',
+
+  //enter amount comp
+
+  addressName: 'Abriel BTC address',
+  coinAddress:'139ZVZumF************GvfqwFG3GdTZ8',
+  EnterAmount:'Enter amount',
+  maxAmount:"$520.23 Max",
+  inputValue:'0.02223',
+  BTC:'BTC',
+  Available:"Available",
+  AvailableValue:"0.5026703 BTC",
+
+  //confirm transaction
+
+  Confirmtransaction: 'Confirm transaction',
+  From:"From",
+  YourBTCaccount:'Your BTC account',
+  accountaddress1:'256BFEghK************FfgheTB5EhYW9',
+  TO:'TO',
+  AbrielsBTCaccount:`Abriel's BTC account`,
+  accountaddress2:'139ZVZumF************GvfqwFG3GdTZ8',
+  yoursending:"You are sending 0.02223 BTC",
+  Networkfee :'Network fee:',
+  fee:'0.000002 BTC',
+  Enterrequestamount:'Enter request amount',
+
+  // chat screen 
+
+  Chats:'Chats',
+  Chat_search_placeholder:'Search by message or name…',
+
+  //rewards
+  Rewards:'Rewards'
+
 
 };

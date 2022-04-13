@@ -24,7 +24,7 @@ const CreatePin = ({navigation}) => {
           {strings.createPinSubHeading}
         </Text>
         {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss()} accessible={false}> */}
-        <View style={styles.codefieldview}>
+        <View style={styles.codefieldView}>
           <SmoothPinCodeInput
             password
             mask={<View style={styles.customMask} />}
@@ -32,7 +32,8 @@ const CreatePin = ({navigation}) => {
             cellStyle={styles.cell}
             cellSize={64}
             codeLength={4}
-            cellSpacing={24}
+            cellSpacing={21}
+            containerStyle={styles.cellcon}
             // autoFocus={true}
             // keyboardInput={'number-pad'}
             cellStyleFocused={styles.cellouter}

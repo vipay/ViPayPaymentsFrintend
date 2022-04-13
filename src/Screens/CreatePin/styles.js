@@ -39,8 +39,12 @@ const styles = StyleSheet.create({
     // alignContent:'center'
     // backgroundColor: 'red',
   },
-  codefieldview: {
+  codefieldView: {
+    flexDirection:"row",
     flex: 1,
+    // backgroundColor:"red"
+    // backgroundColor:"red",
+    // justifyContent:'space-evenly'
   },
   cellouter: {
     borderColor: colors.pinInputField,
@@ -55,6 +59,15 @@ const styles = StyleSheet.create({
     color: colors.OBSIDIAN,
     fontFamily: fontFamily.poppinsRegular,
   },
+  cellcon:{
+    
+    // backgroundColor:'red',
+    flex:1,
+    // justifyContent:"space-between",
+    // alignContent:"space-between"
+    // alignSelf:'stretch',
+
+  }
 });
 
 export default styles;

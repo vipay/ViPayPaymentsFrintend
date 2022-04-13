@@ -12,7 +12,7 @@ export default {
   fifthInActiveIcon: require('../assets/images/ic_blue_setting.png'),
 
   // Onboard
-  onboardImg1: require('../assets/images/onboarding_graphic_1.png'),
+  onboardImg1: require('../assets/images/onboarding_graphic.png'),
   //logo
   logo_header: require('../assets/images/logo_icon_header.png'),
   //login
@@ -96,6 +96,18 @@ export default {
 
   ic_message :require('../assets/images/ic_message.png'),
 
+  ic_dropdown_arrow: require('../assets/images/ic_dropdown_arrow.png'),
 
+  // confirm transaction
+  confirmation_card: require('../assets/images/confirmation_card.png'),
+
+  //chat users
+
+  ic_sent_check: require('../assets/images/ic_sent_check.png'),
+  ic_delivered_check : require('../assets/images/ic_delivered_check.png'),
+  ic_read_check: require('../assets/images/ic_read_check.png'),
+
+  // rewards
+  reward_card :require('../assets/images/reward_card.png')
   
 };

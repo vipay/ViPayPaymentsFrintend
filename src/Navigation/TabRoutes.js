@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/bottom-tabs';
 import colors from '../styles/colors';
 import {Image, StyleSheet, View, Text} from 'react-native';
-import {Home, Search, Post, Notification, Profile} from '../Screens';
+import {Home, Search, Post, Notification, Profile, ChatUsersList, Rewards} from '../Screens';
 import {
   moderateScale,
   width,
@@ -61,8 +61,8 @@ const TabRoutes = props => {
         }}
       />
       <BottomTab.Screen
-        name={navigationStrings.SEARCH}
-        component={Search}
+        name={navigationStrings.CHATUSERSLIST}
+        component={ChatUsersList}
         options={{
           tabBarIcon: ({focused}) => {
             return focused ? (
@@ -81,8 +81,8 @@ const TabRoutes = props => {
         }}
       />
       <BottomTab.Screen
-        name={navigationStrings.POST}
-        component={Post}
+        name={navigationStrings.REWARDS}
+        component={Rewards}
         options={{
           tabBarIcon: ({focused}) => {
             return focused ? (

@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.pinInputField,
     padding: moderateScale(12),
     borderRadius: 16,
-    marginTop: moderateScale(32)
+    marginTop: moderateScale(32),
+    // justifyContent:"space-evenly",
+    // flex:1,
     // marginLeft:24,
 
 
@@ -48,10 +50,15 @@ const styles = StyleSheet.create({
     // flex: 0.15,
   },
   codefieldView: {
+    flexDirection:"row",
     flex: 1,
+    // backgroundColor:"red",
+    // justifyContent:'space-evenly'
   },
   cellouter: {
-    borderColor: colors.pinInputField
+    borderColor: colors.pinInputField,
+    // backgroundColor:'red',
+    // flex:1
   },
   customMask: {
     height: 10,
@@ -63,7 +70,17 @@ const styles = StyleSheet.create({
     color: colors.OBSIDIAN,
 
 
+  },
+  cellcon:{
+    
+    // backgroundColor:'red',
+    flex:1,
+    // justifyContent:"space-between",
+    // alignContent:"space-between"
+    // alignSelf:'stretch',
+
   }
+  
 
 });
 

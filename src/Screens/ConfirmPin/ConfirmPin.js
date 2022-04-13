@@ -31,7 +31,8 @@ const ConfirmPin = ({navigation}) => {
             cellStyleFocused={styles.cellouter}
             // keyboardType='numeric'
             value={pass}
-            cellSpacing={24}
+            containerStyle={styles.cellcon}
+            cellSpacing={21}
             // autoFocus={true}
             keyboardType={
               Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'numeric'

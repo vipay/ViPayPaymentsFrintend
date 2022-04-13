@@ -14,29 +14,32 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   sendBg: {
-    backgroundColor: 'white',
-    
+    backgroundColor:colors.shadowbg,
+    // borderWidth:0.1,
+    // borderColor:colors.white,
     height: moderateScale(88),
     marginHorizontal: moderateScale(24),
+    // backgroundColor: 'white',
     shadowColor: '#42D0B7',
     shadowOffset: {
       width: 0,
       height: 6,
     },
-    shadowOpacity: 0.36,
-    shadowRadius: 6.68,
-    
-    elevation: 13,
+    shadowOpacity: 0.47,
+    shadowRadius: 7.49,
+
+    elevation: 12,
     borderRadius:20,
+    
   },
   bgImg: {
     height: '100%',
-    width: '100%',
+    // width: '000%',
     
   },
   ButtonsView: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent:'space-around',
     padding: moderateScale(24),
   },
   buttonTxt: {

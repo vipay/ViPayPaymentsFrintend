@@ -1,6 +1,13 @@
 //import liraries
 import React, {Component, useState} from 'react';
-import {View, Text, Image, TextInput, TouchableOpacity,TouchableWithoutFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
 import navigationStrings from '../../constants/navigationStrings';
 import WrapperContainer from '../../Components/WrapperContainer';
@@ -85,13 +92,9 @@ const Login = ({navigation}) => {
                 onPress={() =>
                   navigation.navigate(navigationStrings.TERMSCONDITIONS)
                 }>
-                <Text
-                  // onPress={()=> navigation.navigate(navigationStrings.TERMSCONDITIONS)}
-                  style={styles.terms}>
-                  {strings.termsConditiontxt2}
-                </Text>
+                <Text style={styles.terms}>{strings.termsConditiontxt2}</Text>
               </TouchableWithoutFeedback>
-              {/* </TouchableOpacity> */}
+
               <Text style={styles.termsCond}>{strings.termsConditiontxt3}</Text>
               <TouchableWithoutFeedback
                 onPress={() =>

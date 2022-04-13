@@ -109,22 +109,13 @@ const SendSelectCrypto = ({navigation}) => {
   return (
     <WrapperContainer>
       <View style={styles.container}>
-        {/* <HeaderComp text={strings.Selectcrypto} />
-        <View style={styles.searchView}>
-          <TextInput 
-          style={styles.searchtxt}
-          placeholderTextColor={colors.lightgray}
-           placeholder={strings.select_placeholer}></TextInput>
-          <Image source={imagePath.searchgrey} /> */}
-        {/* </View> */}
-
         <SelectCryptoComp
         data={data}
-        // onlistpress={() => navigation.navigate(navigationStrings.CRYPTODETAILS)}
+        onlistpress={() => navigation.navigate(navigationStrings.SENDENTERAMOUNT)}
         onBackPress={goBack}
         />
       </View>
-    </WrapperContainer>
+     </WrapperContainer>
   );
 };
 export default SendSelectCrypto;

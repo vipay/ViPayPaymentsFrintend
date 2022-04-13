@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: moderateScale(24),
+    // paddingTop: moderateScale(24),
   },
   header: {
     flex: 0.05,
@@ -31,13 +31,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   cryptoDetailsCard: {
-    flex: 0.2,
+    // flex: 0.2,
+    height:moderateScale(96),
+    // borderWidth:0.1,
     shadowColor: '#42D0B7',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.9,
-    shadowRadius: 3,
-    elevation: 18,
-    paddingHorizontal: moderateScale(24),
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.47,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    borderRadius:20,
+    marginHorizontal:moderateScale(24)
+    
+    // paddingHorizontal: moderateScale(24),
+    // backgroundColor:'red'
   },
   logoimgview: {
     backgroundColor: colors.white,
@@ -49,7 +59,7 @@ const styles = StyleSheet.create({
   },
   ImageBackground: {
     height: '100%',
-    width: '100%',
+    // width: '100%',
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -74,7 +84,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   flatList: {
-    flex: 0.75,
+    flex: 1,
+    marginTop:moderateScale(24),
   },
   bottotabView: {
     position: 'absolute',

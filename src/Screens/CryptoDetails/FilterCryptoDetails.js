@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, Image, StyleSheet, View, Pressable} from 'react-native';
-// import styles from 'react-native-indicators/src/components/ball-indicator/styles';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
 import colors from '../../styles/colors';
@@ -9,7 +8,7 @@ import fontFamily from '../../styles/fontFamily';
 import {moderateScale} from '../../styles/responsiveSize';
 import Filterlist from './Filterlist';
 
-const FilterCryptoDetails = ({onpress}) => {
+const FilterCryptoDetails = ({onpress, item}) => {
   const data = [
     {
       id: 1,
@@ -49,12 +48,12 @@ const FilterCryptoDetails = ({onpress}) => {
       <Filterlist
         icon={imagePath.ic_send_gray}
         title={strings.sent}
-        onpress={0}
+        onfilterClick={onpress}
       />
       <Filterlist
         icon={imagePath.ic_received_gray}
         title={strings.Received}
-        onpress={0}
+        onfilterClick={onpress}
       />
     </View>
   );

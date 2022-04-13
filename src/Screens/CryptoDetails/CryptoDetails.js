@@ -165,14 +165,16 @@ const CryptoDetails = ({navigation}) => {
         ref={refRBSheet}
         closeOnDragDown={false}
         closeOnPressMask={true}
-        
+        height={244}
         customStyles={{
           wrapper: {
             backgroundColor: "rgba(0,0,0,0.6)"
           },
           container:{
-            borderRadius:20,
-            paddingTop:moderateScale(14)
+            // borderRadius:20,
+            borderTopLeftRadius:20,
+            paddingTop:moderateScale(14),
+            borderTopRightRadius:20
           }
         }}>
           <FilterCryptoDetails onpress={()=>refRBSheet.current.close()}/>

@@ -49,16 +49,18 @@ const SelectCryptoComp = ({data, onlistpress, onBackPress}) => {
   return (
     <View style={styles.container}>
       <HeaderComp
-      onBackPress={onBackPress}
+        onBackPress={onBackPress}
         text={strings.Selectcrypto}
-        headerStyle={{marginVertical: moderateScaleVertical(16)}}
+        // headerStyle={{marginVertical: moderateScaleVertical(16)}}
       />
       <View style={styles.Searchbar}>
         <View style={styles.searchinput}>
           <TextInput
             placeholder={strings.select_placeholer}
             placeholderTextColor={colors.lightgray}
-            style={styles.inputfield}></TextInput>
+            style={styles.inputfield}
+       
+          />
         </View>
         <TouchableOpacity>
           <Image source={imagePath.searchgrey} />
@@ -67,7 +69,7 @@ const SelectCryptoComp = ({data, onlistpress, onBackPress}) => {
       <View style={styles.flatlist}>
         <FlatList
           data={data}
-          style={{marginTop: moderateScale(24)}}
+          style={{marginTop: moderateScale(16)}}
           keyExtractor={(_, index) => index.toString()}
           renderItem={renderItem}
         />
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
     flex: 1,
+    // backgroundColor:'red'
   },
   Searchbar: {
     marginHorizontal: moderateScale(24),
@@ -103,7 +106,6 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     flex: 1,
-    marginTop: moderateScale(8),
   },
   // flat list render styles
 
