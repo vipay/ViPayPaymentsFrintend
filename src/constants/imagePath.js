@@ -108,6 +108,18 @@ export default {
   ic_read_check: require('../assets/images/ic_read_check.png'),
 
   // rewards
-  reward_card :require('../assets/images/reward_card.png')
+  reward_card :require('../assets/images/reward_card.png'),
+
+  ic_google_fit:require('../assets/images/ic_google_fit.png'),
+  ic_google:require('../assets/images/ic_google.png'),
+  ic_netflix:require('../assets/images/ic_netflix.png'),
+  ic_pinterest:require('../assets/images/ic_pinterest.png'),
+  ic_prime:require('../assets/images/ic_prime.png'),
+  ic_spotify:require('../assets/images/ic_spotify.png'),
+  reward_bg_wave:require('../assets/images/reward_bg_wave.png'),
+  reward_logo :require('../assets/images/reward_logo.png'),
+
+  ic_expire_time: require('../assets/images/ic_expire_time.png')
+
   
 };

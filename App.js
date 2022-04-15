@@ -14,6 +14,8 @@ import SplashScreen from 'react-native-splash-screen';
 import EnterAmountComp from './src/Components/EnterAmountComp';
 import SendEnterAmount from './src/Screens/SendEnterAmount/SendEnterAmount';
 import ChatUserRenderList from './src/Screens/ChatUsersList/ChatUserRenderList';
+import RewardRenderList from './src/Screens/Rewards/RewardRenderList';
+import { Rewards } from './src/Screens';
 
 
 const {dispatch} = store;
@@ -49,9 +51,8 @@ const App = () => {
     <Provider store={store}>
       <SafeAreaProvider>
         <Routes />
-        {/* <EnterAmountComp/> */}
-        {/* <SendEnterAmount/> */}
-        {/* <ChatUserRenderList/> */}
+       {/* <RewardRenderList/> */}
+       {/* <Rewards/> */}
         <FlashMessage
           titleStyle={{
             marginRight: moderateScale(5),

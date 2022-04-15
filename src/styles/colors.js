@@ -39,7 +39,13 @@ export default {
   F1F1F2: '#F1F1F2',
   shadow:'rgba(37,51,75,0.1)',
   backround:'rgba(255,255,255,0.8)',
-  shadowbg:'rgba(67, 208, 182, 0.03)'
+  shadowbg:'rgba(67, 208, 182, 0.03)',
+  E8F5FF:'#E8F5FF',
+  FCEFE7:'#FCEFE7',
+  FBF6D9:'#FBF6D9',
+  EDFFF1:"#EDFFF1",
+  
+
 
   
 };

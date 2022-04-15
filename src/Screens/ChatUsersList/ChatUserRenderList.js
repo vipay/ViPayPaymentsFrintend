@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
         color:colors.grayprice,
         marginRight:moderateScale(24),
         // marginBottom:moderateScale(16),
-        alignItems:'center'
+        alignItems:'center',
+        marginLeft:8
         // height:moderateScale(24),s
 
     },
@@ -86,6 +87,6 @@ const styles = StyleSheet.create({
         // backgroundColor:''
     },
     status:{
-        marginRight:moderateScale(8),
+        // marginRight:moderateScale(8),
     }
 })

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginHorizontal: moderateScale(24),
     marginTop: -moderateScale(70),
     alignItem: 'center',
-    height:moderateScale(144)
+    height:moderateScale(144),
     // backgroundColor:'red'
   },
   profilepic: {
@@ -134,22 +134,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     borderRadius: 16,
-    ...Platform.select({
-      ios: {
-    shadowColor: colors.shadow,
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.9,
-    shadowRadius: 3,
-    elevation: 18,},
-      android: {
-        elevation:1
-      },
-      default: {
-       elevation:1
-      }
-    }),
    
     marginTop: moderateScale(32),
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 5,
+},
+shadowOpacity: 0.34,
+shadowRadius: 6.27,
+
+elevation: 10,
     }
 });
 

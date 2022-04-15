@@ -85,59 +85,72 @@ export default {
 
   //send screen
 
-  Wallet:'Wallet',
+  Wallet: 'Wallet',
 
   //fillter crypto details
 
-  Filter_by:'Filter by',
-  all:'All',
-  sent:'Sent',
-  Received:'Received',
+  Filter_by: 'Filter by',
+  all: 'All',
+  sent: 'Sent',
+  Received: 'Received',
 
   // send user
 
-  name_Send:'Abriel Ramirez',
-  phoneNO_Send:'+971 684 987 6479',
-  joinDate_Send:'Joined 10 Feb, 2022',
-  say_Hello_Send:'Say Hello!',
-  request:"Request",
+  name_Send: 'Abriel Ramirez',
+  phoneNO_Send: '+971 684 987 6479',
+  joinDate_Send: 'Joined 10 Feb, 2022',
+  say_Hello_Send: 'Say Hello!',
+  request: 'Request',
 
-  // send  select crypto 
-  Selectcrypto:'Select crypto' ,
-  select_placeholer:'Search by name…',
+  // send  select crypto
+  Selectcrypto: 'Select crypto',
+  select_placeholer: 'Search by name…',
 
   //enter amount comp
 
   addressName: 'Abriel BTC address',
-  coinAddress:'139ZVZumF************GvfqwFG3GdTZ8',
-  EnterAmount:'Enter amount',
-  maxAmount:"$520.23 Max",
-  inputValue:'0.02223',
-  BTC:'BTC',
-  Available:"Available",
-  AvailableValue:"0.5026703 BTC",
+  coinAddress: '139ZVZumF************GvfqwFG3GdTZ8',
+  EnterAmount: 'Enter amount',
+  maxAmount: '$520.23 Max',
+  inputValue: '0.02223',
+  BTC: 'BTC',
+  Available: 'Available',
+  AvailableValue: '0.5026703 BTC',
 
   //confirm transaction
 
   Confirmtransaction: 'Confirm transaction',
-  From:"From",
-  YourBTCaccount:'Your BTC account',
-  accountaddress1:'256BFEghK************FfgheTB5EhYW9',
-  TO:'TO',
-  AbrielsBTCaccount:`Abriel's BTC account`,
-  accountaddress2:'139ZVZumF************GvfqwFG3GdTZ8',
-  yoursending:"You are sending 0.02223 BTC",
-  Networkfee :'Network fee:',
-  fee:'0.000002 BTC',
-  Enterrequestamount:'Enter request amount',
+  From: 'From',
+  YourBTCaccount: 'Your BTC account',
+  accountaddress1: '256BFEghK************FfgheTB5EhYW9',
+  TO: 'TO',
+  AbrielsBTCaccount: `Abriel's BTC account`,
+  accountaddress2: '139ZVZumF************GvfqwFG3GdTZ8',
+  yoursending: 'You are sending 0.02223 BTC',
+  Networkfee: 'Network fee:',
+  fee: '0.000002 BTC',
+  Enterrequestamount: 'Enter request amount',
 
-  // chat screen 
+  // chat screen
 
-  Chats:'Chats',
-  Chat_search_placeholder:'Search by message or name…',
+  Chats: 'Chats',
+  Chat_search_placeholder: 'Search by message or name…',
 
   //rewards
-  Rewards:'Rewards'
+  Rewards: 'Rewards',
+  Congrats: 'Congrats!',
+  rewardsPrice: '150 ViPay',
+  rewardDescription: 'Lorem ipsum dolor sit amet, consectet adipiscing elit.',
+  Share: 'Share',
 
+  Totalrewards: 'Total rewards',
+  TotalrewardsValue: '5,60,332',
+  TotalrewardsPrice: '$1,658.50',
 
+  Expires: 'Expires 27 Feb, 2022',
+
+  rewardFullDesc:
+    'Duis vitae magna enim. In sed sagittis justo, a consequat lorem. Integer pharetra, erat id porttitor ullamcorper, orci nisl feugiat augue, in condimentum tortor nisi nonma.',
+
+    SharewithFriend:'Share with Friend',
 };

@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   },
   cryptoDetailsCard: {
     // flex: 0.2,
+    backgroundColor:colors.white,
     height:moderateScale(96),
     // borderWidth:0.1,
     shadowColor: '#42D0B7',
