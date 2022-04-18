@@ -27,7 +27,9 @@ export default {
     REQUESTSELECTCRYPTO:'RequestSelectCrypto',
     REQUESTENTERAMOUNT:'RequestEnterAmount',
     CHATUSERSLIST:'ChatUsersList',
-    REWARDS:'Rewards'
+    REWARDS:'Rewards',
+    CHAT:'Chat',
+    
     
 
     

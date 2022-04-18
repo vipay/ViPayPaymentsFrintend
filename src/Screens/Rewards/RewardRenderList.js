@@ -44,13 +44,15 @@ export default RewardRenderList;
 const styles = StyleSheet.create({
   conatiner: {
    
-    height: moderateScale(200),
+    // height: moderateScale(200),
     // width: 160,
     width:'48%',
     // backgroundColor: colors.E8F5FF,  
     borderRadius: 16,
-    marginTop:moderateScale(8),
-    marginHorizontal:moderateScale(4)
+    marginBottom:moderateScale(8),
+    marginHorizontal:moderateScale(4),
+    // marginBottom:20,
+
   },
   logoView: {
     flexDirection: 'row',
@@ -74,12 +76,14 @@ const styles = StyleSheet.create({
     ...commonStyles.fontSize18,
     fontFamily: fontFamily.RocGroteskBold,
     color: colors.OBSIDIAN,
-    height: 32,
+    // height: 32,
+    lineHeight:32
   },
   rewardDescription: {
     ...commonStyles.fontSize13,
     fontFamily: fontFamily.poppinsRegular,
     color: colors.grayprice,
+    lineHeight:20
   },
   share: {
     ...commonStyles.fontSize14,
@@ -87,6 +91,10 @@ const styles = StyleSheet.create({
     color: colors.Blue,
     marginTop: moderateScale(24),
     marginLeft: moderateScale(16),
+    lineHeight:21,
+    marginBottom:16
+
+    
   },
   imgbg: {
     position: 'absolute',
@@ -94,8 +102,8 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     height: 95,
-
     width: 95,
+    // backgroundColor:"red"
   },
   bgimg: {
     flex: 1,

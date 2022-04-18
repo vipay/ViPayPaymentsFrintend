@@ -50,6 +50,10 @@ export {default as SendEnterAmount} from './SendEnterAmount/SendEnterAmount';
  
  // rewards
   export { default as Rewards} from './Rewards/Rewards';
+
+  //chat 
+  export { default as Chat} from './Chat/Chat';
+  
   
 
 

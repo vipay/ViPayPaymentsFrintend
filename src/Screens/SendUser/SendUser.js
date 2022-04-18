@@ -62,7 +62,8 @@ const SendUser = ({navigation}) => {
               <Text style={styles.buttontxt}>{strings.request}</Text>
             </Pressable>
           </View>
-          <Pressable style={styles.messagebtn}>
+          <Pressable style={styles.messagebtn}
+          onPress ={() => navigation.navigate(navigationStrings.CHAT)}>
               <View style={styles.messageborder}>
                   <Image source={imagePath.ic_message}/>
               </View>

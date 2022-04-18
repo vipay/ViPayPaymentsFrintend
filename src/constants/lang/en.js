@@ -153,4 +153,31 @@ export default {
     'Duis vitae magna enim. In sed sagittis justo, a consequat lorem. Integer pharetra, erat id porttitor ullamcorper, orci nisl feugiat augue, in condimentum tortor nisi nonma.',
 
     SharewithFriend:'Share with Friend',
+
+    //chat 
+    chatUserName:'Josef Fransis',
+
+    // profile
+    Myprofile:'My profile',
+    ViPaybalance:'ViPay balance',
+    profileBalnce:'500.75 ViPay',
+    ProfileName:'Flora Becker',
+    ProfileId:'6585484226@vipay',
+    ProfileEmail:'florabecker09@gmail.com',
+    MyQRcode:'My QR code',
+    Transactionhistory:'Transaction history',
+    Savedwallet:'Saved wallet',
+    RedeemVoucherCode:'Redeem voucher/code',
+    Referrals:'Referrals',
+    HelpSupport:'Help & Support',
+    Screenlock: 'Screen lock',
+    ChangePIN:'Change PIN',
+    AboutViPay:'About ViPay',
+    Logout:'Logout',
+    appversion:'App Version 1.34.004',
+    Anysuggestions:'Any suggestions?',
+    MyQRcode:'My QR code',
+    MyQRDesc:'Scan this code to pay me',
+    OpenCodeScanner:'Open Code Scanner',
+    
 };

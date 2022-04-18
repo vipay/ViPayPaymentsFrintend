@@ -18,7 +18,10 @@ import {
   SendEnterAmount,
   RequestSelectCrypto,
   RequestEnterAmount,
+  Chat,
+  Profile
 } from '../Screens';
+// import{  } from '../Screens';
 import * as Screens from './../Screens/index';
 import ConfirmPin from '../Screens/ConfirmPin/ConfirmPin';
 import CryptoDetails from '../Screens/CryptoDetails/CryptoDetails';
@@ -103,6 +106,16 @@ export default function (Stack, isFirstTime) {
       <Stack.Screen
         name={navigationStrings.REQUESTENTERAMOUNT}
         component={RequestEnterAmount}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name={navigationStrings.CHAT}
+        component={Chat}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.PROFILE}
+        component={Profile}
         options={{headerShown: false}}
       />
 

@@ -119,7 +119,32 @@ export default {
   reward_bg_wave:require('../assets/images/reward_bg_wave.png'),
   reward_logo :require('../assets/images/reward_logo.png'),
 
-  ic_expire_time: require('../assets/images/ic_expire_time.png')
+  ic_expire_time: require('../assets/images/ic_expire_time.png'),
+
+  ic_send_active:require ('../assets/images/ic_send_active.png'),
+  ic_camera_gallery :require('../assets/images/ic_camera_gallery.png'),
+  ic_edit: require ('../assets/images/ic_edit.png'),
+
+
+  //profile icons
+  ic_my_qr : require('../assets/images/ic_my_qr.png'),
+  ic_transaction_history : require('../assets/images/ic_transaction_history.png'),
+  ic_saved_wallet : require('../assets/images/ic_saved_wallet.png'),
+  ic_redeem : require('../assets/images/ic_redeem.png'),
+  ic_referrals : require('../assets/images/ic_referrals.png'),
+  ic_help : require('../assets/images/ic_help.png'),
+  ic_screen_lock : require('../assets/images/ic_screen_lock.png'),
+  ic_change_pin : require('../assets/images/ic_change_pin.png'),
+  ic_logout : require('../assets/images/ic_logout.png'),
+  ic_about_vipay: require('../assets/images/ic_about_vipay.png'),
+  switch_off: require('../assets/images/switch_off.png'),
+  switch_on : require('../assets/images/switch_on.png'),
+
+  //my qr
+  my_qr_bg : require('../assets/images/my_qr_bg.png'),
+  ic_white_close: require('../assets/images/ic_white_close.png'),
+  ic_scanner: require('../assets/images/ic_scanner.png'),
+  
 
   
 };

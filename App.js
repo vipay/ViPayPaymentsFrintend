@@ -10,12 +10,14 @@ import {getFirstTime, getUserData} from './src/utils/utils';
 import fontFamily from './src/styles/fontFamily';
 import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
-
+import {StatusBar} from 'react-native'
 import EnterAmountComp from './src/Components/EnterAmountComp';
 import SendEnterAmount from './src/Screens/SendEnterAmount/SendEnterAmount';
 import ChatUserRenderList from './src/Screens/ChatUsersList/ChatUserRenderList';
 import RewardRenderList from './src/Screens/Rewards/RewardRenderList';
-import { Rewards } from './src/Screens';
+import { Profile, Rewards } from './src/Screens';
+import { MyQr } from './src/Screens/MyQr/MyQr';
+
 
 
 const {dispatch} = store;
@@ -50,9 +52,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <Routes />
-       {/* <RewardRenderList/> */}
-       {/* <Rewards/> */}
+        {/* <StatusBar translucent/> */}
+        {/* <Routes /> */}
+       <MyQr/>
         <FlashMessage
           titleStyle={{
             marginRight: moderateScale(5),

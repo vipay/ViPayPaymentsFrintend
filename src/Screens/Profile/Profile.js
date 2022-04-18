@@ -1,25 +1,137 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {month} from 'is_js';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import HeaderComp from '../../Components/HeaderComp';
+import {ProfileListComp} from '../../Components/ProfileListComp';
+import WrapperContainer from '../../Components/WrapperContainer';
+import imagePath from '../../constants/imagePath';
+import strings from '../../constants/lang';
+import colors from '../../styles/colors';
+import {moderateScale} from '../../styles/responsiveSize';
+import styles from './styles';
 
-// create a component
-const Profile = () => {
-    return (
-        <View style={styles.container}>
-            <Text>Profile</Text>
+const Profile = ({navigation}) => {
+  const goBack = () => {
+    navigation.goBack();
+  };
+  return (
+    <WrapperContainer>
+      <View style={styles.container}>
+        <View style={{backgroundColor: colors.white}}>
+          <HeaderComp
+            text={strings.Myprofile}
+            headerStyle={{backgroundColor: colors.white}}
+            onBackPress={goBack}
+          />
         </View>
-    );
+        <ScrollView>
+          <View style={styles.bgimgView}>
+            <ImageBackground
+              style={styles.profilepic}
+              source={imagePath.profile3}>
+              <View style={styles.profilecont}>
+                <View>
+                  <Text style={styles.ViPaybalance}>
+                    {strings.ViPaybalance}
+                  </Text>
+                  <Text style={styles.profileBalnce}>
+                    {strings.profileBalnce}
+                  </Text>
+                </View>
+                <TouchableOpacity>
+                  <Image
+                    style={styles.camera}
+                    source={imagePath.ic_camera_gallery}
+                  />
+                </TouchableOpacity>
+              </View>
+            </ImageBackground>
+          </View>
+          <View style={styles.profiledetails}>
+            <View style={styles.editicon}>
+              <Text style={styles.ProfileName}>{strings.ProfileName}</Text>
+              <TouchableOpacity>
+                <Image source={imagePath.ic_edit} />
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.ProfileId}>{strings.ProfileId}</Text>
+            <Text style={styles.ProfileEmail}>{strings.ProfileEmail}</Text>
+          </View>
+          <ProfileListComp
+            logoicon={imagePath.ic_my_qr}
+            txt={strings.MyQRcode}
+            icon={imagePath.ic_gray_arrow}
+            container={{marginTop: moderateScale(8)}}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_transaction_history}
+            txt={strings.Transactionhistory}
+            icon={imagePath.ic_gray_arrow}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_saved_wallet}
+            txt={strings.Savedwallet}
+            icon={imagePath.ic_gray_arrow}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_redeem}
+            txt={strings.RedeemVoucherCode}
+            icon={imagePath.ic_gray_arrow}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_referrals}
+            txt={strings.Referrals}
+            icon={imagePath.ic_gray_arrow}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_help}
+            txt={strings.HelpSupport}
+            icon={imagePath.ic_gray_arrow}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_screen_lock}
+            txt={strings.Screenlock}
+            icon={imagePath.switch_on}
+            container={{marginTop: moderateScale(8)}}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_change_pin}
+            txt={strings.ChangePIN}
+            icon={imagePath.ic_gray_arrow}
+          />
+
+          <ProfileListComp
+            logoicon={imagePath.ic_about_vipay}
+            txt={strings.AboutViPay}
+            icon={imagePath.ic_gray_arrow}
+          />
+          <ProfileListComp
+            logoicon={imagePath.ic_logout}
+            txt={strings.Logout}
+            icon={false}
+            appversion={strings.appversion}
+            container={{marginTop: moderateScale(8)}}
+          />
+          <View style={styles.anySuggestionView}>
+            <TouchableOpacity>
+            <Text style={styles.Anysuggestions}>
+              {strings.Anysuggestions}
+              </Text>
+              </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
+    </WrapperContainer>
+  );
 };
-
-// define your styles
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
-    },
-});
-
-//make this component available to the app
 export default Profile;

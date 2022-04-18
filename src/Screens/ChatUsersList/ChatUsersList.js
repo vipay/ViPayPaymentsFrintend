@@ -20,7 +20,7 @@ import colors from '../../styles/colors';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import ChatUserRenderList from './ChatUserRenderList';
 
-const ChatUsersList = () => {
+const ChatUsersList = ({navigation}) => {
   const data = [
     {
       id: 1,
@@ -88,9 +88,9 @@ const ChatUsersList = () => {
         key={index}
         item={item}
         index={index}
-        // onPress={() =>
-        //   navigation.navigate(navigationStrings.TRANSACTIONDETAILS)
-        // }
+        onPress={() =>
+          navigation.navigate(navigationStrings.CHAT)
+        }
       />
     );
   };

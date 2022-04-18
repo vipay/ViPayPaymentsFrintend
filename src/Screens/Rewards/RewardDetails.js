@@ -15,6 +15,7 @@ import strings from '../../constants/lang';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
 import ButtonComp from '../../Components/ButtonComp';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const RewardDetails = ({onPressCross}) => {
   return (
@@ -42,6 +43,7 @@ const RewardDetails = ({onPressCross}) => {
         </View>
       </View>
       <View style={styles.subContainer2}>
+        <ScrollView>
         <View style={styles.logo}>
           <Image source={imagePath.ic_prime} />
           <Text style={styles.price}>{strings.rewardsPrice}</Text>
@@ -52,6 +54,7 @@ const RewardDetails = ({onPressCross}) => {
             <Text style={styles.expiretxt}>{strings.Expires}</Text>
         </View>
         <Text style={styles.rewardDes}>{strings.rewardFullDesc}</Text> 
+        </ScrollView>
         <View style={styles.btn}>
         <ButtonComp  btnText={strings.SharewithFriend} />
         </View>
@@ -87,8 +90,9 @@ const styles = StyleSheet.create({
   },
   main: {
     backgroundColor: colors.E8F5FF,
-    height: moderateScale(184),
-    width: moderateScale(184),
+    // height: moderateScale(184),
+    // width: moderateScale(184),
+    width:'50%',
     borderRadius: 16,
     paddingHorizontal: moderateScale(16),
   },
@@ -109,18 +113,17 @@ const styles = StyleSheet.create({
     color: colors.grayprice,
   },
   rewardDescription: {
-    // textAlign:'center',
+    // textAlign:'auto',
 
     ...commonStyles.fontSize14,
     fontFamily: fontFamily.poppinsRegular,
     color: colors.grayprice,
     marginTop: moderateScale(16),
+    marginBottom:moderateScale(24),
+    lineHeight:22,
     // backgroundColor:'red',
   },
   logo: {
-    // flex: 0.1,
-    // backgroundColor:'red',
-    // margin: moderateScale(24),
     marginHorizontal:moderateScale(24),
     marginTop:moderateScale(24),
     flexDirection: 'row',
@@ -170,21 +173,14 @@ const styles = StyleSheet.create({
       color:colors.grayprice,
       marginHorizontal:moderateScale(24),
       marginTop:moderateScale(16),
+      marginBottom:moderateScale(52),
   },
   btn:{
-    // backgroundColor:'red',
+   
     flex:1,
-    // flexDirection:'row',
-      // marginTop:moderateScale(22),
       justifyContent:'flex-end',
-      paddingBottom:34,
-      // alignContent:'flex-end',
-      // alignItems:'center',
-      // alignSelf:'baseline',
+      paddingBottom:moderateScale(24),
       marginHorizontal:moderateScale(24),
-    // justifyContent:'flex-end',
-    // marginBottom:24
-    // alignSelf:'center'
   }
 
 });

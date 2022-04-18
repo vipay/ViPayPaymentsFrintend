@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
   },
   imgbgView: {
     height: moderateScale(152),
-    width:moderateScale(328),
+    width: moderateScale(328),
     marginHorizontal: moderateScale(24),
-   
+
     shadowColor: '#42D0B7',
     shadowOffset: {
       width: 0,
@@ -37,11 +37,10 @@ const styles = StyleSheet.create({
     elevation: 13,
     marginTop: moderateScale(8),
     borderRadius: 18,
-   
   },
   imgbg: {
     height: '100%',
-    width:'100%',
+    width: '100%',
   },
 
   flatList: {
@@ -49,34 +48,32 @@ const styles = StyleSheet.create({
     marginHorizontal: moderateScale(24),
     flex: 1,
   },
-  rewardcard:{
+  rewardcard: {
     //   flex:1,
-      margin:moderateScale(24)
+    margin: moderateScale(24),
   },
-  Totalrewards:{
-      ...commonStyles.fontSize16,
-      fontFamily:fontFamily.poppinsRegular,
-      color:colors.white,
-
-  },
-  TotalrewardsValue:{
-    ...commonStyles.fontSize32,
-    fontFamily:fontFamily.RocGroteskBold,
-    color:colors.white,
-    marginTop:moderateScale(8)
-
-  },
-  logoView:{
-      flexDirection:'row',
-      justifyContent:'space-between'
-  },
-  TotalrewardsPrice:{
+  Totalrewards: {
     ...commonStyles.fontSize16,
-    fontFamily:fontFamily.poppinsRegular,
-    color:colors.white,
-    height:32,
-    alignItems:'center',
-
-  }
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.white,
+  },
+  TotalrewardsValue: {
+    ...commonStyles.fontSize32,
+    fontFamily: fontFamily.RocGroteskBold,
+    color: colors.white,
+    marginTop: moderateScale(8),
+  },
+  logoView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  TotalrewardsPrice: {
+    ...commonStyles.fontSize16,
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.white,
+    height: 32,
+    alignItems: 'center',
+    marginTop: 6,
+  },
 });
 export default styles;

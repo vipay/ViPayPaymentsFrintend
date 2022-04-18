@@ -104,7 +104,9 @@ const Home = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={imagePath.logo_title_header}></Image>
+        <Pressable onPress={() => navigation.navigate(navigationStrings.PROFILE)}>
         <Image style={styles.profilepic} source={imagePath.profile}/>
+        </Pressable>
       </View>
 
       {/* home card */}

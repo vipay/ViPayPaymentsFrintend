@@ -1,12 +1,17 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Pressable,
+} from 'react-native';
 import {moderateScale, moderateScaleVertical} from '../styles/responsiveSize';
 import colors from '../styles/colors';
 import imagePath from '../constants/imagePath';
 import commonStyles from '../styles/commonStyles';
 import fontFamily from '../styles/fontFamily';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-
 export default function HeaderComp({
   text,
   onBackPress,
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
     // height:moderateScale(62),
     justifyContent: 'space-between',
     marginHorizontal: moderateScale(24),
-    marginVertical:moderateScaleVertical(16)
+    marginVertical: moderateScaleVertical(16),
   },
   textStyle: {
     ...commonStyles.fontSize18,

@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Search = () => {
     return (
         <View style={styles.container}>
-            <Text>chat coming soon </Text>
+            <Text></Text>
         </View>
     );
 };
