@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   codefieldView: {
-    flexDirection:"row",
+    flexDirection: 'row',
     flex: 1,
     // backgroundColor:"red"
     // backgroundColor:"red",
@@ -59,15 +59,10 @@ const styles = StyleSheet.create({
     color: colors.OBSIDIAN,
     fontFamily: fontFamily.poppinsRegular,
   },
-  cellcon:{
-    
-    // backgroundColor:'red',
-    flex:1,
-    // justifyContent:"space-between",
-    // alignContent:"space-between"
-    // alignSelf:'stretch',
-
-  }
+  cellcon: {
+    flex: 1,
+  },
+  
 });
 
 export default styles;

@@ -17,7 +17,7 @@ import imagePath from '../constants/imagePath';
 import commonStyles from '../styles/commonStyles';
 import fontFamily from '../styles/fontFamily';
 
-const FlatListRender = ({item, index, onlistpress}) => {
+const FlatListRender = ({item, index, onlistpress,}) => {
   return (
     <Pressable onPress={onlistpress}>
       <View style={styles.R_container}>
@@ -34,7 +34,7 @@ const FlatListRender = ({item, index, onlistpress}) => {
   );
 };
 
-const SelectCryptoComp = ({data, onlistpress, onBackPress}) => {
+const SelectCryptoComp = ({data, onlistpress, onBackPress,headerString}) => {
   const renderItem = ({item, index}) => {
     return (
       <FlatListRender
@@ -50,7 +50,7 @@ const SelectCryptoComp = ({data, onlistpress, onBackPress}) => {
     <View style={styles.container}>
       <HeaderComp
         onBackPress={onBackPress}
-        text={strings.Selectcrypto}
+        text={headerString}
         // headerStyle={{marginVertical: moderateScaleVertical(16)}}
       />
       <View style={styles.Searchbar}>

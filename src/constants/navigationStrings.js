@@ -29,6 +29,17 @@ export default {
     CHATUSERSLIST:'ChatUsersList',
     REWARDS:'Rewards',
     CHAT:'Chat',
+    MYQR:'MyQr',
+    REDEEMVOUCHER:'RedeemVoucher',
+    ABOUTVIPAY:'AboutViPay',
+    CHANGEPIN:'ChangePin',
+    TRANSACTIONHISTORY:'TransactionHistory',
+    EDITPROFILE:'EditProfile',
+    REFERRALS:'Referrals',
+    HELPSUPPORT:'HelpSupport',
+
+    
+    
     
     
 

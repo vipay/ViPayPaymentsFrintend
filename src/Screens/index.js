@@ -21,41 +21,65 @@ export {default as ConfirmPin} from './ConfirmPin/ConfirmPin';
 //Main Screen
 export {default as CryptoDetails} from './CryptoDetails/CryptoDetails';
 // terms and conditions
-export { default as TermsConditions} from './TermsConditions/TermsConditions';
+export {default as TermsConditions} from './TermsConditions/TermsConditions';
 
 //privacy policy
-export{ default as PrivacyPolicy} from './PrivacyPolicy/PrivacyPolicy';
+export {default as PrivacyPolicy} from './PrivacyPolicy/PrivacyPolicy';
 
 //transaction details
 
 export {default as TransactionDetails} from './TransactionDetails/TransactionDetails';
- 
+
 //SEND screen
 export {default as Send} from './Send/Send';
 // SEND USER
 export {default as SendUser} from './SendUser/SendUser';
- 
-// send select crypto 
+
+// send select crypto
 export {default as SendSelectCrypto} from './SendSelectCrypto/SendSelectCrypto';
-// send enter aount 
+// send enter aount
 export {default as SendEnterAmount} from './SendEnterAmount/SendEnterAmount';
 // request select crypto
- export {default as RequestSelectCrypto} from './RequestSelectCrypto/RequestSelectCrypto';
- // request enter amount 
- export {default as RequestEnterAmount} from './RequestEnterAmount/RequestEnterAmount';
+export {default as RequestSelectCrypto} from './RequestSelectCrypto/RequestSelectCrypto';
+// request enter amount
+export {default as RequestEnterAmount} from './RequestEnterAmount/RequestEnterAmount';
 
- // chat users list
+// chat users list
 
- export {default as ChatUsersList} from './ChatUsersList/ChatUsersList';
+export {default as ChatUsersList} from './ChatUsersList/ChatUsersList';
+
+// rewards
+export {default as Rewards} from './Rewards/Rewards';
+
+//chat
+export {default as Chat} from './Chat/Chat';
+
+//my QR
+
+export {default as MyQr} from './MyQr/MyQr';
+
+//redeem voucher
+
+export {default as RedeemVoucher} from './RedeemVoucher/RedeemVoucher';
+
+//AboutViPay
+
+export {default as AboutViPay} from './AboutViPay/AboutViPay';
+
+// change pin
+export {default as ChangePin} from './ChangePin/ChangePin';
+
+//Transaction History
+export {default as TransactionHistory} from './TransactionHistory/TransactionHistory';
+
+// edit profile
+
+export {default as EditProfile} from './EditProfile/EditProfile';
+
+//refferals
+
+export {default as Referrals} from './Referrals/Referrals';
+
+//HelpSupport
  
- // rewards
-  export { default as Rewards} from './Rewards/Rewards';
-
-  //chat 
-  export { default as Chat} from './Chat/Chat';
-  
-  
-
-
-
-
+export {default as HelpSupport} from './HelpSupport/HelpSupport';

@@ -58,6 +58,8 @@ const styles = StyleSheet.create({
     ...commonStyles.fontSize18,
     fontFamily: fontFamily.RocGroteskBold,
     color: colors.OBSIDIAN,
+    lineHeight:23,
+    
   },
   ProfileId: {
     ...commonStyles.fontSize12,

@@ -144,6 +144,9 @@ export default {
   my_qr_bg : require('../assets/images/my_qr_bg.png'),
   ic_white_close: require('../assets/images/ic_white_close.png'),
   ic_scanner: require('../assets/images/ic_scanner.png'),
+
+  ic_about_logo:require('../assets/images/ic_about_logo.png'),
+  referrals_card: require('../assets/images/referrals_card.png')
   
 
   

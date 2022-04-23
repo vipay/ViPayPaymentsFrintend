@@ -16,8 +16,10 @@ import {ProfileListComp} from '../../Components/ProfileListComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
+import navigationStrings from '../../constants/navigationStrings';
 import colors from '../../styles/colors';
 import {moderateScale} from '../../styles/responsiveSize';
+
 import styles from './styles';
 
 const Profile = ({navigation}) => {
@@ -60,7 +62,8 @@ const Profile = ({navigation}) => {
           <View style={styles.profiledetails}>
             <View style={styles.editicon}>
               <Text style={styles.ProfileName}>{strings.ProfileName}</Text>
-              <TouchableOpacity>
+              <TouchableOpacity  onPress={() => navigation.navigate(navigationStrings.EDITPROFILE)}
+              >
                 <Image source={imagePath.ic_edit} />
               </TouchableOpacity>
             </View>
@@ -71,13 +74,17 @@ const Profile = ({navigation}) => {
             logoicon={imagePath.ic_my_qr}
             txt={strings.MyQRcode}
             icon={imagePath.ic_gray_arrow}
+            onPress={() => navigation.navigate(navigationStrings.MYQR)}
             container={{marginTop: moderateScale(8)}}
+            
           />
           <ProfileListComp
             logoicon={imagePath.ic_transaction_history}
             txt={strings.Transactionhistory}
             icon={imagePath.ic_gray_arrow}
+            onPress={() => navigation.navigate(navigationStrings.TRANSACTIONHISTORY)}
           />
+          
           <ProfileListComp
             logoicon={imagePath.ic_saved_wallet}
             txt={strings.Savedwallet}
@@ -86,39 +93,46 @@ const Profile = ({navigation}) => {
           <ProfileListComp
             logoicon={imagePath.ic_redeem}
             txt={strings.RedeemVoucherCode}
+            onPress={() => navigation.navigate(navigationStrings.REDEEMVOUCHER)}
             icon={imagePath.ic_gray_arrow}
           />
           <ProfileListComp
             logoicon={imagePath.ic_referrals}
             txt={strings.Referrals}
             icon={imagePath.ic_gray_arrow}
+            onPress={() => navigation.navigate(navigationStrings.REFERRALS)}
           />
           <ProfileListComp
             logoicon={imagePath.ic_help}
             txt={strings.HelpSupport}
             icon={imagePath.ic_gray_arrow}
+            onPress={() => navigation.navigate(navigationStrings.HELPSUPPORT)}
           />
           <ProfileListComp
             logoicon={imagePath.ic_screen_lock}
             txt={strings.Screenlock}
             icon={imagePath.switch_on}
             container={{marginTop: moderateScale(8)}}
+
           />
           <ProfileListComp
             logoicon={imagePath.ic_change_pin}
             txt={strings.ChangePIN}
             icon={imagePath.ic_gray_arrow}
+            onPress={() => navigation.navigate(navigationStrings.CHANGEPIN)}
           />
 
           <ProfileListComp
             logoicon={imagePath.ic_about_vipay}
             txt={strings.AboutViPay}
+            onPress={() => navigation.navigate(navigationStrings.ABOUTVIPAY)}
             icon={imagePath.ic_gray_arrow}
           />
           <ProfileListComp
             logoicon={imagePath.ic_logout}
             txt={strings.Logout}
             icon={false}
+            onPress={() => navigation.navigate(navigationStrings.LOGIN)}
             appversion={strings.appversion}
             container={{marginTop: moderateScale(8)}}
           />

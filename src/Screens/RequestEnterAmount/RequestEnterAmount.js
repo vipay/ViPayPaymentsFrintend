@@ -32,7 +32,7 @@ const RequestEnterAmount = ({navigation})=> {
           </View> */}
           <ButtonComp
             btnText={strings.request}
-            onPress={() => refRBSheet.current.open()}
+            // onPress={() => refRBSheet.current.open()}
           />
         </View>
         {/* <RBSheet

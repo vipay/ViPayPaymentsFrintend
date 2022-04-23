@@ -21,15 +21,18 @@ import {moderateScale} from '../../styles/responsiveSize';
 import styles from './styles';
 import QRCode from 'react-native-qrcode-svg';
 
-export const MyQr = ({}) => {
+const MyQr = ({navigation}) => {
+    const goBack = () => {
+        navigation.goBack();
+      };
   return (
     <View style={styles.conatiner}>
-      <StatusBar translucent backgroundColor="transparent" />
-
+      {/* <StatusBar barStyle='dark-content' translucent backgroundColor="transparent" /> */}
+<View>
       <ImageBackground style={styles.bgimg} source={imagePath.my_qr_bg}>
         <View style={styles.header}>
           <Text style={styles.MyQRcode}>{strings.MyQRcode}</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={goBack}>
             <Image source={imagePath.ic_white_close} />
           </TouchableOpacity>
         </View>
@@ -57,6 +60,8 @@ export const MyQr = ({}) => {
         </View>
         </Pressable>
       </ImageBackground>
+      </View>
     </View>
   );
 };
+export default MyQr;

@@ -97,8 +97,7 @@ const Login = ({navigation}) => {
 
               <Text style={styles.termsCond}>{strings.termsConditiontxt3}</Text>
               <TouchableWithoutFeedback
-                onPress={() =>
-                  navigation.navigate(navigationStrings.PRIVACYPOLICY)
+                onPress={() =>navigation.navigate(navigationStrings.PRIVACYPOLICY)
                 }>
                 <Text style={styles.terms}>{strings.termsConditiontxt4}</Text>
               </TouchableWithoutFeedback>

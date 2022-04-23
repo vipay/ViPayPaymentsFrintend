@@ -110,8 +110,10 @@ const SendSelectCrypto = ({navigation}) => {
     <WrapperContainer>
       <View style={styles.container}>
         <SelectCryptoComp
+        
         data={data}
         onlistpress={() => navigation.navigate(navigationStrings.SENDENTERAMOUNT)}
+        headerString={strings.Selectcrypto}
         onBackPress={goBack}
         />
       </View>

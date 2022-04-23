@@ -19,9 +19,10 @@ export const ProfileListComp = ({
   icon = true,
   container,
   appversion,
+  onPress
 }) => {
   return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
     <View style={{...styles.container, ...container}}>
       <Image source={logoicon} />
       <View style={styles.icon}>
@@ -38,7 +39,7 @@ export const ProfileListComp = ({
 };
 const styles = StyleSheet.create({
   container: {
-    // height: moderateScale(64),
+    height: moderateScale(64),
     backgroundColor: colors.white,
     flexDirection: 'row',
     paddingLeft: moderateScale(24),
@@ -46,23 +47,26 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: moderateScale(16),
+    height:64,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical:16,
     paddingRight:24,
     borderBottomWidth: 1,
     borderBottomColor: colors.F1F1F2,
+    alignItems:'center',
+
   },
   txt: {
     ...commonStyles.fontSize15,
     fontFamily: fontFamily.poppinsRegular,
     color: colors.OBSIDIAN,
-    height: 32,
+    // height: 32,
   },
   appversion: {
     ...commonStyles.fontSize13,
     fontFamily: fontFamily.poppinsRegular,
     color: colors.grayprice,
+  
   },
 });

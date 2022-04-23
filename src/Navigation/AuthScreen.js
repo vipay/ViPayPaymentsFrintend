@@ -1,27 +1,5 @@
 import React from 'react';
 import navigationStrings from '../constants/navigationStrings';
-import {
-  InitialAuth,
-  Login,
-  CreatePin,
-  Signup,
-  OtpVerification,
-  ForgotPassword,
-  OnBoarding,
-  Home,
-  TermsConditions,
-  PrivacyPolicy,
-  TransactionDetails,
-  Send,
-  SendUser,
-  SendSelectCrypto,
-  SendEnterAmount,
-  RequestSelectCrypto,
-  RequestEnterAmount,
-  Chat,
-  Profile
-} from '../Screens';
-// import{  } from '../Screens';
 import * as Screens from './../Screens/index';
 import ConfirmPin from '../Screens/ConfirmPin/ConfirmPin';
 import CryptoDetails from '../Screens/CryptoDetails/CryptoDetails';
@@ -39,87 +17,125 @@ export default function (Stack, isFirstTime) {
 
       <Stack.Screen
         name={navigationStrings.ON_BOARDING}
-        component={OnBoarding}
+        component={Screens.OnBoarding}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.LOGIN}
-        component={Login}
+        component={Screens.Login}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.TERMSCONDITIONS}
-        component={TermsConditions}
+        component={Screens.TermsConditions}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.PRIVACYPOLICY}
-        component={PrivacyPolicy}
-        options={{headerShown: false}}
+        component={Screens.PrivacyPolicy}
+        options={{ScreensheaderShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.CREATEPIN}
-        component={CreatePin}
+        component={Screens.CreatePin}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.CONFIRMPIN}
-        component={ConfirmPin}
+        component={Screens.ConfirmPin}
         options={{headerShown: false}}
       />
 
       <Stack.Screen
         name={navigationStrings.CRYPTODETAILS}
-        component={CryptoDetails}
+        component={Screens.CryptoDetails}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.TRANSACTIONDETAILS}
-        component={TransactionDetails}
+        component={Screens.TransactionDetails}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.SEND}
-        component={Send}
+        component={Screens.Send}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.SENDUSER}
-        component={SendUser}
+        component={Screens.SendUser}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.SENDSELECTCRYPTO}
-        component={SendSelectCrypto}
+        component={Screens.SendSelectCrypto}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.SENDENTERAMOUNT}
-        component={SendEnterAmount}
+        component={Screens.SendEnterAmount}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.REQUESTSELECTCRYPTO}
-        component={RequestSelectCrypto}
+        component={Screens.RequestSelectCrypto}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.REQUESTENTERAMOUNT}
-        component={RequestEnterAmount}
+        component={Screens.RequestEnterAmount}
         options={{headerShown: false}}
       />
        <Stack.Screen
         name={navigationStrings.CHAT}
-        component={Chat}
+        component={Screens.Chat}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.PROFILE}
-        component={Profile}
+        component={Screens.Profile}
         options={{headerShown: false}}
       />
-
-
+      <Stack.Screen
+        name={navigationStrings.MYQR}
+        component={Screens.MyQr}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.REDEEMVOUCHER}
+        component={Screens.RedeemVoucher}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.ABOUTVIPAY}
+        component={Screens.AboutViPay}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.CHANGEPIN}
+        component={Screens.ChangePin}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name={navigationStrings.TRANSACTIONHISTORY}
+        component={Screens.TransactionHistory}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.EDITPROFILE}
+        component={Screens.EditProfile}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name={navigationStrings.REFERRALS}
+        component={Screens.Referrals}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.HELPSUPPORT}
+        component={Screens.HelpSupport}
+        options={{headerShown: false}}
+      />
 
 
 
@@ -127,12 +143,12 @@ export default function (Stack, isFirstTime) {
 
       <Stack.Screen
         name={navigationStrings.OTP_VERIFICATION}
-        component={OtpVerification}
+        component={Screens.OtpVerification}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.FORGOT_PASSWORD}
-        component={ForgotPassword}
+        component={Screens.ForgotPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen

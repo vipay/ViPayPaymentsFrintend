@@ -34,8 +34,6 @@ const CreatePin = ({navigation}) => {
             codeLength={4}
             cellSpacing={21}
             containerStyle={styles.cellcon}
-            // autoFocus={true}
-            // keyboardInput={'number-pad'}
             cellStyleFocused={styles.cellouter}
             value={pass}
             keyboardType={
@@ -47,7 +45,6 @@ const CreatePin = ({navigation}) => {
               console.log(password, pass, 'passwordpasswordpassword');
             }}
           />
-          {/* <TextInput keyboardType='numbers-and-punctuation'/> */}
         </View>
         <View style={styles.btnview}>
           <ButtonComp

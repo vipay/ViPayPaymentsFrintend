@@ -110,6 +110,7 @@ const RequestSelectCrypto = ({navigation}) => {
     <WrapperContainer>
       <View style={styles.container}>
         <SelectCryptoComp
+        headerString={strings.Selectcrypto}
         data={data}
         onlistpress={() => navigation.navigate(navigationStrings.REQUESTENTERAMOUNT)}
         onBackPress={goBack}

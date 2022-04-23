@@ -44,6 +44,8 @@ export default {
   FCEFE7:'#FCEFE7',
   FBF6D9:'#FBF6D9',
   EDFFF1:"#EDFFF1",
+  g878787:'#878787',
+  g929292:'#929292',
   
 
 
