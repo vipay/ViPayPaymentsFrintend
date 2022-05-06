@@ -46,7 +46,7 @@ export default function (Stack, isFirstTime) {
         options={{headerShown: false}}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name={navigationStrings.CRYPTODETAILS}
         component={Screens.CryptoDetails}
         options={{headerShown: false}}
@@ -135,7 +135,7 @@ export default function (Stack, isFirstTime) {
         name={navigationStrings.HELPSUPPORT}
         component={Screens.HelpSupport}
         options={{headerShown: false}}
-      />
+      /> */}
 
 
 

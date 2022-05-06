@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
   },
   getotp: {
     ...commonStyles.fontSize15,
-    color: colors.lightgray,
+    // color: colors.lightgray,
+    color:'red',
     alignSelf: 'center',
     fontFamily: fontFamily.poppinsRegular,
     // backgroundColor:'yellow',

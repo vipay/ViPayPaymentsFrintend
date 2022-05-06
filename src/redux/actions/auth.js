@@ -1,7 +1,7 @@
 import store from '../store';
-import { setUserData, apiPost, clearUserData } from '../../utils/utils';
+import { setUserData, apiPost, clearUserData, apiGet, apiPut } from '../../utils/utils';
 import types from '../types';
-import { LOGIN_API, SIGNUP_API, SOCIAL_LOGIN, FORGOT_PASSWORD } from '../../config/urls';
+import { LOGIN_API, SIGNUP_API, SOCIAL_LOGIN, FORGOT_PASSWORD, TUTORIALS_LIST, LOGIN_WITH_MOBILE, OTP_VERIFICTION, RESEND_OTP } from '../../config/urls';
 const { dispatch } = store;
 
 const saveUserData = (data) => {
@@ -16,10 +16,10 @@ export function signUp(data) {
 }
 
 
-export const login = (data) => {
+export const login = (data,headers) => {
   console.log(data, 'the given data')
   return new Promise((resolve, reject) => {
-    apiPost(LOGIN_API, data)
+    apiPost(OTP_VERIFICTION, data,headers)
       .then((res) => {
         saveUserData(res.data);
         setUserData(res.data).then((suc) => {
@@ -63,3 +63,26 @@ export function logout() {
   clearUserData();
 }
 
+
+export function list_tutorials() {
+  return apiGet(TUTORIALS_LIST)
+}
+export function login_with_mobile(data) {
+  return new Promise((resolve, reject) => {
+    apiPost(LOGIN_WITH_MOBILE, data)
+      .then((res) => {
+        console.log(res)
+        resolve(res);
+      })
+      .catch((error) => {
+        console.log(error)
+        reject(error);
+      });
+  }); 
+}
+// export function otp_verification(data) {
+//   return apiPost(OTP_VERIFICTION, data)
+// }
+export function resend_otp(data) {
+  return apiPut(RESEND_OTP, data)
+}

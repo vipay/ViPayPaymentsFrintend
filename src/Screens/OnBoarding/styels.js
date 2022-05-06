@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
 
   imgstyle: {
     alignSelf: 'center',
-    // height:moderateScale(300),
-    // width:moderateScale(264)
+    height:moderateScale(300),
+    width:moderateScale(264)
    
   },
 onboardcontentView: {
@@ -62,7 +62,7 @@ onboardcontentView: {
     width: 40,
     height: 8,
     borderRadius: 4,
-    marginHorizontal:moderateScale(8)
+    marginHorizontal:moderateScale(4) 
 
   },
   inactiveStyle: {
@@ -70,11 +70,12 @@ onboardcontentView: {
     height: 8,
     borderRadius: 4,
     backgroundColor: colors.BABABD,
-    marginHorizontal:moderateScale(8)
+    marginHorizontal:moderateScale(4)
   },
   dotsView: {
     flex: 0.1,
     alignItems: 'center',
+    flexDirection:"row",
    
     justifyContent:'center'
     

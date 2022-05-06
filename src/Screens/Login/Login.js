@@ -18,13 +18,57 @@ import styles from './styles';
 import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-// import {} from 'react-native-gesture-handler';
+import {login, login_with_mobile} from '../../redux/actions/auth';
+import actions from '../../redux/actions';
 
-// create a component
+
+
 const Login = ({navigation}) => {
   const [countryCode, setcountryCode] = useState('AE');
   const [iso2, setiso2] = useState();
-  const [callingCode, setcallingCode] = useState('91');
+  const [callingCode, setcallingCode] = useState('971');
+  const [state, setState] = useState({
+    phoneNO:'',
+    otp,
+    auth:''
+  });
+  const {phoneNO, otp, auth} = state;
+  const updateState = data => setState(state => ({...state, ...data}));
+  {
+    console.log(callingCode, 'bajdbjasb');
+  }
+
+  const ongetOtp = () => {
+    let apidata = {country_code: callingCode, phone_no: phoneNO};
+    
+     actions. login_with_mobile(apidata)
+     .then(data => {
+        console.log(data, 'acute');
+        updateState({auth:data.data.access_token})
+      
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const onsignin=()=>{
+
+    let apidata={otp:otp}
+    let header={authorization:auth}
+    login(apidata,header)
+    .then(data=>
+      {console.log(data, 'khabjshcb')
+
+      }
+    )
+    .catch(
+      errr=>
+      {
+        console.log(errr)
+      }
+    )
+  }
 
   const countryChange = data => {
     setcountryCode({iso2: data.cca2});
@@ -47,17 +91,17 @@ const Login = ({navigation}) => {
                     withFilter
                     countryCode={countryCode}
                     withFlagButton={false}
-                    withCallingCode
+                    withCallingCode={callingCode}
                     withCallingCodeButton={true}
                     cca2={iso2}
                     // containerButtonStyle={styles.countrycode}
                     theme={styles.countrycode}
                     // style={styles.countrycode}
                     onSelect={country => {
-                      // console.log.apply('country',country);
+                      // console.log('country',country);
                       const {cca2, callingCode} = country;
                       setcountryCode(cca2);
-                      setcallingCode(cca2);
+                      setcallingCode(country.callingCode);
                     }}
                   />
                 </View>
@@ -67,11 +111,12 @@ const Login = ({navigation}) => {
                   keyboardType={'numeric'}
                   maxLength={16}
                   // autoFocus
+                  onChangeText={value => updateState({phoneNO: value})}
                   placeholderTextColor={colors.lightgray}
                   placeholder={strings.placeholderPHNO}
                 />
               </View>
-              <TouchableOpacity style={styles.getotp}>
+              <TouchableOpacity style={styles.getotp} onPress={ongetOtp}>
                 <Text style={styles.getotp}>{strings.getotp}</Text>
               </TouchableOpacity>
             </View>
@@ -83,6 +128,7 @@ const Login = ({navigation}) => {
                   placeholderTextColor={colors.lightgray}
                   keyboardType={'numeric'}
                   maxLength={6}
+                  onChangeText={value => updateState({otp: value})}
                 />
               </View>
             </View>
@@ -97,14 +143,17 @@ const Login = ({navigation}) => {
 
               <Text style={styles.termsCond}>{strings.termsConditiontxt3}</Text>
               <TouchableWithoutFeedback
-                onPress={() =>navigation.navigate(navigationStrings.PRIVACYPOLICY)
+                onPress={() =>
+                  navigation.navigate(navigationStrings.PRIVACYPOLICY)
                 }>
                 <Text style={styles.terms}>{strings.termsConditiontxt4}</Text>
               </TouchableWithoutFeedback>
             </Text>
             <ButtonComp
               btnText={strings.signin}
-              onPress={() => navigation.navigate(navigationStrings.CREATEPIN)}
+              // onPress={() => navigation.navigate(navigationStrings.CREATEPIN)
+              onPress={onsignin}
+              // }
             />
           </View>
         </KeyboardAwareScrollView>
