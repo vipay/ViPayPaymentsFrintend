@@ -38,7 +38,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {!!userData?.access_token ? (
+        {true ? (
           <>{MainStack(Stack)}</>
         ) : (
           <>{AuthScreen(Stack, isFirstTime)}</>

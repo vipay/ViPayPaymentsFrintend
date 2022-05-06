@@ -1,5 +1,14 @@
-import React, {Component, useState} from 'react';
-import {View, Text, StyleSheet, Image, Keyboard, Platform} from 'react-native';
+import React, {Component, useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Keyboard,
+  Platform,
+  Alert,
+  BackHandler,
+} from 'react-native';
 import WrapperContainer from '../../Components/WrapperContainer';
 import styles from './styles';
 import imagePath from '../../constants/imagePath';
@@ -11,9 +20,68 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
-
-const CreatePin = ({navigation}) => {
+import {showError} from '../../helper/helperFunctions';
+import {useIsFocused} from '@react-navigation/native';
+const CreatePin = ({navigation, route}) => {
   const [pass, setPass] = useState('');
+  const isFocused = useIsFocused();
+  const [auth, setauth] = useState('');
+  useEffect(() => {
+    setauth(route.params.auth);
+  }, []);
+
+  // useEffect(() => {
+  //   isFocused &&
+  //     BackHandler.addEventListener('hardwareBackPress', () => backAction());
+  //   return () =>
+  //     BackHandler.removeEventListener('hardwareBackPress', () => backAction());
+  // }, []);
+
+  // console.log('isFocusedisFocusedisFocused', isFocused);
+
+  // const backAction = () => {
+  //   if (isFocused) {
+  //    Aler
+  //   }
+  // };
+
+  // const backAction = () => {
+  //   if (isFocused) {
+  //     Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+  //       {
+  //         text: 'Cancel',
+  //         onPress: () => null,
+  //         style: 'cancel',
+  //       },
+  //       {text: 'YES', onPress: () => BackHandler.exitApp()},
+  //     ]);
+  //     return true;
+  //   }
+  //   navigation.goBack();
+  //   return true
+  // };
+
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', backAction);
+  //   return () =>
+  //     BackHandler.removeEventListener('hardwareBackPress', () => {
+  //       return false;
+  //     });
+  // }, []);
+
+  const onPressContinue = () => {
+    if (pass.length < 4) {
+      showError(
+        pass.length == 0 ? 'Please enter the pin ' : 'Pin must be 4 Digit',
+      );
+    } else {
+      // console.log(pass,'vakbcks')
+      navigation.navigate(navigationStrings.CONFIRMPIN, {
+        pin: pass,
+        auth: auth,
+      });
+    }
+  };
 
   return (
     <WrapperContainer>
@@ -49,7 +117,8 @@ const CreatePin = ({navigation}) => {
         <View style={styles.btnview}>
           <ButtonComp
             btnText={strings.CONTINUE}
-            onPress={() => navigation.navigate(navigationStrings.CONFIRMPIN)}
+            // onPress={() => navigation.navigate(navigationStrings.CONFIRMPIN)}
+            onPress={onPressContinue}
           />
         </View>
       </View>

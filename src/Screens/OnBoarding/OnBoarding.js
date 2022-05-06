@@ -119,7 +119,7 @@ var indicator = [];
           <ButtonComp
             btnText={strings.getstarted}
             style={styles.getstartedbtn}
-            onPress={() => navigation.navigate(navigationStrings.LOGIN)}
+            onPress={() => navigation.replace(navigationStrings.LOGIN)}
           />
         </View>
       </View>

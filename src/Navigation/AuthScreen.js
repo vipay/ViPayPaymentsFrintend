@@ -151,11 +151,11 @@ export default function (Stack, isFirstTime) {
         component={Screens.ForgotPassword}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name={navigationStrings.HOME_TAB}
         component={TabRoutes}
         options={{headerShown: false}}
-      />
+      /> */}
     </>
   );
 }

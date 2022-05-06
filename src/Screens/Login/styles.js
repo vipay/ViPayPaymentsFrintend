@@ -80,8 +80,10 @@ const styles = StyleSheet.create({
   },
   getotp: {
     ...commonStyles.fontSize15,
-    // color: colors.lightgray,
-    color:'red',
+
+    color: colors.lightgray,
+
+    // color:'red',
     alignSelf: 'center',
     fontFamily: fontFamily.poppinsRegular,
     // backgroundColor:'yellow',
@@ -133,7 +135,18 @@ const styles = StyleSheet.create({
     fontFamily:fontFamily.poppinsRegular,
     
 
-  }
+  },
+  activegetotp: {
+    ...commonStyles.fontSize15,
+    
+    color: colors.OBSIDIAN,
+
+    // color:'red',
+    alignSelf: 'center',
+    fontFamily: fontFamily.poppinsRegular,
+    // backgroundColor:'yellow',
+    padding:0
+  },
 });
 
 export default styles;

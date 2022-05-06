@@ -1,7 +1,7 @@
 import store from '../store';
 import { setUserData, apiPost, clearUserData, apiGet, apiPut } from '../../utils/utils';
 import types from '../types';
-import { LOGIN_API, SIGNUP_API, SOCIAL_LOGIN, FORGOT_PASSWORD, TUTORIALS_LIST, LOGIN_WITH_MOBILE, OTP_VERIFICTION, RESEND_OTP } from '../../config/urls';
+import { LOGIN_API, SIGNUP_API, SOCIAL_LOGIN, FORGOT_PASSWORD, TUTORIALS_LIST, LOGIN_WITH_MOBILE, OTP_VERIFICTION, RESEND_OTP, SET_LOGIN_PIN } from '../../config/urls';
 const { dispatch } = store;
 
 const saveUserData = (data) => {
@@ -21,10 +21,10 @@ export const login = (data,headers) => {
   return new Promise((resolve, reject) => {
     apiPost(OTP_VERIFICTION, data,headers)
       .then((res) => {
-        saveUserData(res.data);
-        setUserData(res.data).then((suc) => {
-          resolve(res);
-        });
+        // saveUserData(res.data);
+        // setUserData(res.data).then((suc) => {
+        // });
+        resolve(res);
       })
       .catch((error) => {
         reject(error);
@@ -85,4 +85,8 @@ export function login_with_mobile(data) {
 // }
 export function resend_otp(data) {
   return apiPut(RESEND_OTP, data)
+}
+
+export function loginpin(data, headers) {
+  return apiPost(SET_LOGIN_PIN, data, headers)
 }
