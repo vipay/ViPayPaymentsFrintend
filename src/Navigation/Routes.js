@@ -33,12 +33,13 @@ const Stack = createStackNavigator();
 // const Stack = createSharedElementStackNavigator();
 export default function Routes() {
   const userData = useSelector(state => state.auth.userData);
+  {console.log(userData,"gdsjcjhb")}
   const isFirstTime = useSelector(state => state.isFirstTime.isFirstTime);
-  console.log(isFirstTime, 'ghijtrsdytfuigyouyguhij');
+  // console.log(isFirstTime, 'ghijtrsdytfuigyouyguhij');
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {true ? (
+      {!!userData?.access_token ? (
           <>{MainStack(Stack)}</>
         ) : (
           <>{AuthScreen(Stack, isFirstTime)}</>

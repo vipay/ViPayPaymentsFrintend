@@ -8,8 +8,9 @@ import ButtonComp from '../../Components/ButtonComp';
 import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
-import {showError} from '../../helper/helperFunctions';
+import {showError, showSuccess} from '../../helper/helperFunctions';
 import {loginpin} from '../../redux/actions/auth';
+import { shouldBeUseWeb } from 'react-native-reanimated/src/reanimated2/PlatformChecker';
 
 const ConfirmPin = ({navigation, route}) => {
   const [confirmpass, setconfirmPass] = useState('');
@@ -41,12 +42,14 @@ const ConfirmPin = ({navigation, route}) => {
       loginpin(apidata, header)
         .then(data => {
           console.log(data);
+          showSuccess('Pin Created Successfully')
           navigation.navigate(navigationStrings.HOME_TAB);
         })
         .catch(err => {
           console.log(err);
         });
     } else {
+      showError("Pin Does't match" )
       console.log('unmatch');
     }
   };

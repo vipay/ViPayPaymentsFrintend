@@ -9,7 +9,8 @@ export const FORGOT_PASSWORD = getApiUrl("/forgot_password");
 export const TUTORIALS_LIST= getApiUrl('/User/list_tutorials');
 export const LOGIN_WITH_MOBILE= getApiUrl('/User/login_with_mobile');
 export const OTP_VERIFICTION=getApiUrl('/User/otp_verification');
-export const RESEND_OTP=getApiUrl('/User/otp_verification');
+export const RESEND_OTP=getApiUrl('/User/resend_otp');
 export const SET_LOGIN_PIN=getApiUrl('/User/set_login_pin');
+
 
 

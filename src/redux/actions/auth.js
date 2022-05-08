@@ -1,7 +1,8 @@
 import store from '../store';
-import { setUserData, apiPost, clearUserData, apiGet, apiPut } from '../../utils/utils';
+import { setUserData, apiPost, clearUserData, apiGet, apiPut ,getUserData} from '../../utils/utils';
 import types from '../types';
 import { LOGIN_API, SIGNUP_API, SOCIAL_LOGIN, FORGOT_PASSWORD, TUTORIALS_LIST, LOGIN_WITH_MOBILE, OTP_VERIFICTION, RESEND_OTP, SET_LOGIN_PIN } from '../../config/urls';
+import { useState } from 'react';
 const { dispatch } = store;
 
 const saveUserData = (data) => {
@@ -11,9 +12,21 @@ const saveUserData = (data) => {
   });
 };
 
+
 export function signUp(data) {
   return apiPost(SIGNUP_API, data);
 }
+
+const init = async () => {
+    try {
+const userData = await getUserData()
+saveUserData(userData);
+console.log(userData, 'ashbk')
+    }
+    catch (error) {
+          console.log(error)
+        }
+  }
 
 
 export const login = (data,headers) => {
@@ -22,8 +35,6 @@ export const login = (data,headers) => {
     apiPost(OTP_VERIFICTION, data,headers)
       .then((res) => {
         // saveUserData(res.data);
-        // setUserData(res.data).then((suc) => {
-        // });
         resolve(res);
       })
       .catch((error) => {
@@ -39,7 +50,7 @@ export function socialLogin(data) {
       console.log("res from action", res)
       if (res) {
         console.log("yashu enter")
-        saveUserData(res.user)
+        // saveUserData(res.user)
         setUserData(res.user).then(saved => {
           reslove(res);
         })
@@ -71,8 +82,10 @@ export function login_with_mobile(data) {
   return new Promise((resolve, reject) => {
     apiPost(LOGIN_WITH_MOBILE, data)
       .then((res) => {
-        console.log(res)
-        resolve(res);
+        setUserData(res.data).then((suc) => {
+          resolve(res);
+          console.log(res)
+        });
       })
       .catch((error) => {
         console.log(error)
@@ -87,6 +100,20 @@ export function resend_otp(data) {
   return apiPut(RESEND_OTP, data)
 }
 
-export function loginpin(data, headers) {
-  return apiPost(SET_LOGIN_PIN, data, headers)
-}
+// export function loginpin(data, headers) {
+//   return apiPost(SET_LOGIN_PIN, data, headers)
+// }
+
+export const loginpin = (data,headers) => {
+  console.log(data, 'the given data')
+  return new Promise((resolve, reject) => {
+    apiPost(SET_LOGIN_PIN, data,headers)
+      .then((res) => {
+        resolve(res);
+        init()
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};

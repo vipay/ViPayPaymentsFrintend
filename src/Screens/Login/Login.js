@@ -5,8 +5,8 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
+  Pressable,
 } from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
 import navigationStrings from '../../constants/navigationStrings';
@@ -17,37 +17,49 @@ import colors from '../../styles/colors';
 import styles from './styles';
 import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-import {login, login_with_mobile} from '../../redux/actions/auth';
+import {login, login_with_mobile, resend_otp} from '../../redux/actions/auth';
 import actions from '../../redux/actions';
-import {showError, showSuccess, otpTimerCounter} from '../../helper/helperFunctions';
+import {
+  showError,
+  showSuccess,
+  otpTimerCounter,
+} from '../../helper/helperFunctions';
 import BackgroundTimer from 'react-native-background-timer';
+import {
+  setUserData,
+  apiPost,
+  clearUserData,
+  apiGet,
+  apiPut,
+  getUserData,
+} from '../../utils/utils';
+import store from '../../redux/store';
+import types from '../../redux/types';
 
+const {dispatch} = store;
 const Login = ({navigation}) => {
   const [countryCode, setcountryCode] = useState('AE');
   const [iso2, setiso2] = useState();
   const [callingCode, setcallingCode] = useState('971');
   const [activeOtp, setActiveOtp] = useState(false);
-  
- 
-
-
 
   const [state, setState] = useState({
     phoneNO: '',
     otp: '',
     auth: '',
-    resend:false,
-    counter:0,
-    showtimer:false
+    resend: false,
+    counter: 0,
+    showtimer: false,
+    pincheck: false,
   });
   const {phoneNO, otp, auth, resend, counter, showtimer} = state;
   const updateState = data => setState(state => ({...state, ...data}));
 
   useEffect(() => {
     if (!!counter) startTimer();
-    else {BackgroundTimer.stopBackgroundTimer();
-      updateState({showtimer: false})
+    else {
+      BackgroundTimer.stopBackgroundTimer();
+      updateState({showtimer: false});
     }
     return () => {
       BackgroundTimer.stopBackgroundTimer();
@@ -55,52 +67,89 @@ const Login = ({navigation}) => {
   }, [counter]);
   const startTimer = () => {
     BackgroundTimer.runBackgroundTimer(() => {
-      updateState({counter: counter - 1})
-    }, 1000)
-  }
+      updateState({counter: counter - 1});
+    }, 1000);
+  };
   const ongetOtp = () => {
-    if (phoneNO.length < 7) {
+    if (phoneNO.length < 9) {
     } else {
-      updateState({showtimer :true, counter:30, resend:true})
-      let apidata = {country_code: callingCode, phone_no: phoneNO};
+      updateState({showtimer: true, counter: 30, resend: true});
+      let apidata = {country_code: callingCode.toString(), phone_no: phoneNO};
+      // {console.log(callingCode.toString())}
 
-      actions
-        .login_with_mobile(apidata)
-        .then(data => {
-          showSuccess('OTP sent successfully');
-          console.log(data);
-          updateState({auth: data.data.access_token});
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      if (resend == true) {
+        // {console.log('resend')}
+        resend_otp(apidata)
+          .then(data => {
+            showSuccess('OTP resent successfully');
+            console.log(data);
+            updateState({auth: data.data.access_token});
+          })
+          .catch(err => {
+            console.log(err);
+            ``;
+          });
+      } else {
+        // {console.log('send')}
+        actions
+          .login_with_mobile(apidata)
+          .then(data => {
+            showSuccess('OTP sent successfully');
+            console.log(data);
+            updateState({
+              auth: data.data.access_token,
+              pincheck: data.data.pin_genrated,
+            });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    }
+  };
+
+  const saveUserData = data => {
+    dispatch({
+      type: types.LOGIN,
+      payload: data,
+    });
+  };
+
+  const init = async () => {
+    try {
+      const userData = await getUserData();
+      saveUserData(userData);
+      console.log(userData, 'ashbk');
+    } catch (error) {
+      console.log(error);
     }
   };
 
   const onsignin = () => {
-    if (phoneNO.length < 7) {
+    if (phoneNO.length < 9) {
       showError(
         phoneNO.length == 0
           ? 'Please enter Phone number'
           : 'Please enter Correct Phone number',
       );
     } else if (otp.length < 6) {
-      showError(
-        otp.length == 0 ? 'Please enter OTP' : 'Please enter valid OTP`',
-      );
+      showError(otp.length == 0 ? 'Please enter OTP' : 'OTP must be 6 Digits');
     } else {
       let apidata = {otp: otp};
       let header = {authorization: auth};
       login(apidata, header)
         .then(data => {
           console.log(data);
-          showSuccess('Login Successful')
-          navigation.replace(navigationStrings.CREATEPIN,{auth:auth});
+          showSuccess('Login Successful');
+          if (state.pincheck == false) {
+            navigation.replace(navigationStrings.CREATEPIN, {auth: auth});
+          } else {
+            init();
+          }
         })
         .catch(errr => {
           console.log(errr);
-          showError("Incorret OTP")
-        
+          showError('Incorret OTP');
         });
     }
   };
@@ -129,12 +178,13 @@ const Login = ({navigation}) => {
                     withCallingCode={callingCode}
                     withCallingCodeButton={true}
                     cca2={iso2}
-                    // containerButtonStyle={styles.countrycode}
                     theme={styles.countrycode}
-                    // style={styles.countrycode}
+                    excludeCountries={['AQ', 'BV', 'TF', 'HM', 'UM']}
                     onSelect={country => {
                       // console.log('country',country);
                       const {cca2, callingCode} = country;
+                      updateState({showtimer: false, resend: false});
+
                       setcountryCode(cca2);
                       setcallingCode(country.callingCode);
                     }}
@@ -144,11 +194,16 @@ const Login = ({navigation}) => {
                 <TextInput
                   style={styles.phoneNo}
                   keyboardType={'numeric'}
-                  maxLength={16}
+                  maxLength={9}
                   // autoFocus
                   onChangeText={value => {
-                    updateState({phoneNO: value});
-                    value.length > 6 ? setActiveOtp(true) : setActiveOtp(false);
+                    updateState({
+                      phoneNO: value,
+                      showtimer: false,
+                      resend: false,
+                    });
+                    // get otp activates when enter value is 9
+                    value.length > 8 ? setActiveOtp(true) : setActiveOtp(false);
                   }}
                   placeholderTextColor={colors.lightgray}
                   placeholder={strings.placeholderPHNO}
@@ -156,10 +211,11 @@ const Login = ({navigation}) => {
               </View>
               <Pressable style={styles.getotp} onPress={ongetOtp}>
                 <Text style={activeOtp ? styles.activegetotp : styles.getotp}>
-                {showtimer
-                  ? (counter < 10 ? '00:0' : '00:') + counter
-                  : resend? 'Resend':strings.getotp}
-                
+                  {showtimer
+                    ? (counter < 10 ? '00:0' : '00:') + counter
+                    : resend
+                    ? 'Resend'
+                    : strings.getotp}
                 </Text>
               </Pressable>
             </View>
@@ -192,16 +248,9 @@ const Login = ({navigation}) => {
                 <Text style={styles.terms}>{strings.termsConditiontxt4}</Text>
               </TouchableWithoutFeedback>
             </Text>
-            
-            <Text>
-              
-            </Text>
-            <ButtonComp
-              btnText={strings.signin}
-              // onPress={() => navigation.navigate(navigationStrings.CREATEPIN)
-              onPress={onsignin}
-              // }
-            />
+
+            <Text></Text>
+            <ButtonComp btnText={strings.signin} onPress={onsignin} />
           </View>
         </KeyboardAwareScrollView>
       </View>

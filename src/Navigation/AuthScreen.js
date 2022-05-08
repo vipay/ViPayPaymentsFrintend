@@ -33,7 +33,7 @@ export default function (Stack, isFirstTime) {
       <Stack.Screen
         name={navigationStrings.PRIVACYPOLICY}
         component={Screens.PrivacyPolicy}
-        options={{ScreensheaderShown: false}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name={navigationStrings.CREATEPIN}
@@ -140,7 +140,7 @@ export default function (Stack, isFirstTime) {
 
 
 
-
+{/* 
       <Stack.Screen
         name={navigationStrings.OTP_VERIFICATION}
         component={Screens.OtpVerification}
@@ -150,7 +150,7 @@ export default function (Stack, isFirstTime) {
         name={navigationStrings.FORGOT_PASSWORD}
         component={Screens.ForgotPassword}
         options={{headerShown: false}}
-      />
+      /> */}
       {/* <Stack.Screen
         name={navigationStrings.HOME_TAB}
         component={TabRoutes}

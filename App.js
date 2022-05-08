@@ -19,30 +19,32 @@ import EditProfile from './src/Screens/EditProfile/EditProfile';
 const {dispatch} = store;
 
 const App = () => {
-  // const init = async () => {
-  //   try {
-  //     const userData = await getUserData();
-  //     const isFirstTime = await getFirstTime();
-  //     if (userData && !!userData.token) {
-  //       console.log("enter")
-  //       dispatch({
-  //         type: types.LOGIN,
-  //         payload: userData,
-  //       });
-  //     }
-  //     if (!!isFirstTime) {
-  //       actions.isFirstTime(true)
-  //     }
-  //     console.log('is first time app.js', isFirstTime)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  const init = async () => {
+    try {
+      const userData = await getUserData();
+      const isFirstTime = await getFirstTime();
+      console.log(userData)
+      if (userData && !!userData.token) {
+        console.log("enter")
+        dispatch({
+          type: types.LOGIN,
+          payload: userData,
+        });
+      }
+      if (!!isFirstTime) {
+        actions.isFirstTime(true)
+      }
+      console.log('is first time app.js', isFirstTime)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
     }, 1500);
+    init()
   }, []);
 
   return (
