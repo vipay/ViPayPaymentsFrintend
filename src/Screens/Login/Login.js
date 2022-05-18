@@ -54,6 +54,9 @@ const Login = ({navigation}) => {
   });
   const {phoneNO, otp, auth, resend, counter, showtimer} = state;
   const updateState = data => setState(state => ({...state, ...data}));
+  
+ 
+  
 
   useEffect(() => {
     if (!!counter) startTimer();

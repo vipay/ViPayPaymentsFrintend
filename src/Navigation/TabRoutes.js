@@ -13,6 +13,7 @@ import {
   Profile,
   ChatUsersList,
   Rewards,
+  Contact,
 } from '../Screens';
 import {
   moderateScale,
@@ -125,8 +126,8 @@ const TabRoutes = props => {
         }}
       />
       <BottomTab.Screen
-        name={navigationStrings.NOTIFICATION}
-        component={Notification}
+        name={navigationStrings.CONTACTS}
+        component={Contact}
         options={{
           tabBarIcon: ({focused}) => {
             return focused ? (

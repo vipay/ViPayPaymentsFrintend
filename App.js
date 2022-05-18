@@ -15,6 +15,7 @@ import TransactionhistoryRenderList from './src/Screens/TransactionHistory/Trans
 import HelpSupport from './src/Screens/HelpSupport/HelpSupport';
 import Referrals from './src/Screens/Referrals/Referrals'
 import EditProfile from './src/Screens/EditProfile/EditProfile';
+import ChatBottomComp from './src/Components/ChatBottomComp';
 
 const {dispatch} = store;
 
@@ -23,8 +24,8 @@ const App = () => {
     try {
       const userData = await getUserData();
       const isFirstTime = await getFirstTime();
-      console.log(userData)
-      if (userData && !!userData.token) {
+      console.log(userData,'userData')
+      if (userData && !!userData.access_token) {
         console.log("enter")
         dispatch({
           type: types.LOGIN,
@@ -55,7 +56,7 @@ const App = () => {
         {/* <HelpSupport/> */}
         {/* <Referrals/> */}
         {/* <EditProfile/> */}
-        
+        {/* <ChatBottomComp/> */}
 
         <FlashMessage
           titleStyle={{

@@ -17,6 +17,8 @@ import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
+import actions from '../../redux/actions';
+import { logout } from '../../redux/actions/auth';
 import colors from '../../styles/colors';
 import {moderateScale} from '../../styles/responsiveSize';
 
@@ -26,6 +28,11 @@ const Profile = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };
+
+  const LOGOUT=()=>
+  {
+    actions.logout()    
+  }
   return (
     <WrapperContainer>
       <View style={styles.container}>
@@ -132,7 +139,7 @@ const Profile = ({navigation}) => {
             logoicon={imagePath.ic_logout}
             txt={strings.Logout}
             icon={false}
-            onPress={() => navigation.navigate(navigationStrings.LOGIN)}
+            onPress={LOGOUT}
             appversion={strings.appversion}
             container={{marginTop: moderateScale(8)}}
           />

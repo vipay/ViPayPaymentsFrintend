@@ -83,3 +83,5 @@ export {default as Referrals} from './Referrals/Referrals';
 //HelpSupport
  
 export {default as HelpSupport} from './HelpSupport/HelpSupport';
+
+export {default as Contact} from './Contact/Contact';

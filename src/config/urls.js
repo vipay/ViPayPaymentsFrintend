@@ -11,6 +11,16 @@ export const LOGIN_WITH_MOBILE= getApiUrl('/User/login_with_mobile');
 export const OTP_VERIFICTION=getApiUrl('/User/otp_verification');
 export const RESEND_OTP=getApiUrl('/User/resend_otp');
 export const SET_LOGIN_PIN=getApiUrl('/User/set_login_pin');
+export const ADDCONTACTS=getApiUrl('/User/add_contacts');
+export const LISTCONTACTS=getApiUrl('/User/list_contacts');
+export const LIST_MESSAGE=getApiUrl('/User/list_messages');
+export const LIST_CHATS= getApiUrl('/User/list_chats');
+export const SEND_MESSAGE= getApiUrl('/User/send_messages');
+export const EDIT_PROFILE= getApiUrl('/User/edit_profile');
+export const LOGOUT= getApiUrl('/User/log_out');
+
+
+
 
 
 

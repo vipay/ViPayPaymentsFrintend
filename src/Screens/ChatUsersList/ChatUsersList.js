@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -19,78 +19,48 @@ import {TextInput} from 'react-native-gesture-handler';
 import colors from '../../styles/colors';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import ChatUserRenderList from './ChatUserRenderList';
+import actions from '../../redux/actions';
 
 const ChatUsersList = ({navigation}) => {
-  const data = [
-    {
-      id: 1,
-      profileimg: imagePath.profile2,
-      name: 'Liani Fesso',
-      time: 'Just now',
-      message: 'Thank you for the BTC 👍 ',
-    },
-    {
-      id: 2,
-      profileimg: imagePath.profile3,
-      name: 'Josef Fransis',
-      time: '5 mins',
-      message: 'See on next weekend! ',
-      status: imagePath.ic_sent_check,
-    },
-    {
-      id: 3,
-      profileimg: imagePath.profile4,
-      name: 'Adrim Dhoke',
-      time: '4 hrs',
-      message: 'Hi Bro.. How are you? ',
-    },
-    {
-      id: 4,
-      profileimg: imagePath.profile5,
-      name: 'Anni Nikola',
-      time: 'Yesterday',
-      message:
-        'Actually I wanted to check with you about your online business plan on… ',
-    },
-    {
-      id: 5,
-      profileimg: imagePath.profile6,
-      name: 'Rushan Janne',
-      time: '17 Feb, 2022',
-      message: 'Requesting 400 TRX',
-    },
-    {
-      id: 6,
-      profileimg: imagePath.profile5,
-      name: 'Mitchell Curtis',
-      time: '17 Feb, 2022',
-      message: 'I am good. You tell?',
-      status: imagePath.ic_read_check,
-    },
-    {
-      id: 7,
-      profileimg: imagePath.profile3,
-      name: 'Betty Dixon',
-      time: '16 Feb, 2022',
-      message: 'Ok, have a good day!',
-    },
-    {
-      id: 8,
-      profileimg: imagePath.profile4,
-      name: 'Karen Castillo',
-      time: '16 Feb, 2022',
-      message: 'Ok, have a good day!',
-    },
-  ];
+  const [data, setdata] = useState([]);
+
+  // useEffect(() => {
+  //   const unsubscribe = navigation.addListener('focus', async () => {
+  //     chatlist();
+  //     })
+      
+  //     return unsubscribe;
+   
+  // }, []);
+  useEffect(() => {
+    chatlist();
+    const timer = setInterval(() => {
+      chatlist();
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const chatlist = () => {
+    actions
+      .listchats()
+      .then(res => {
+        // console.log(res.data, 'whbdcbxj');
+        setdata(res.data);
+        console.log(data, 'ajhgcjhb');
+        // navigation.navigate(navigationStrings.CHAT)
+      })
+      .catch();
+  };
+
   const renderItem = ({item, index}) => {
+    console.log(item.reciver_id._id, 'dgcj');
     return (
       <ChatUserRenderList
         key={index}
         item={item}
         index={index}
-        onPress={() =>
-          navigation.navigate(navigationStrings.CHAT)
-        }
+        // onPress={() =>
+        //   navigation.navigate(navigationStrings.CHAT,{userid:item.reciver_id._id})
       />
     );
   };

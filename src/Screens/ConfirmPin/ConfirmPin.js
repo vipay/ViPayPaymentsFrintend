@@ -43,7 +43,7 @@ const ConfirmPin = ({navigation, route}) => {
         .then(data => {
           console.log(data);
           showSuccess('Pin Created Successfully')
-          navigation.navigate(navigationStrings.HOME_TAB);
+          // navigation.navigate(navigationStrings.HOME_TAB);
         })
         .catch(err => {
           console.log(err);

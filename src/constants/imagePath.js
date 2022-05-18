@@ -146,8 +146,15 @@ export default {
   ic_scanner: require('../assets/images/ic_scanner.png'),
 
   ic_about_logo:require('../assets/images/ic_about_logo.png'),
-  referrals_card: require('../assets/images/referrals_card.png')
+  referrals_card: require('../assets/images/referrals_card.png'),
   
+// chat 
+
+ic_send_inactive: require('../assets/images/ic_send_inactive.png'),
+ic_send_active: require ('../assets/images/ic_send_active.png'),
+ic_arrow_white :require('../assets/images/ic_arrow_white.png'),
+ic_user_placeholder: require('../assets/images/ic_user_placeholder.png'),
+ic_profile_placeholder: require('../assets/images/ic_profile_placeholder.png'),
 
   
 };

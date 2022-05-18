@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   ProfileName:{
       ...commonStyles.fontSize15,
       fontFamily:fontFamily.poppinsRegular,
-      color:colors.g878787
+    //   color:colors.g878787
+    color:colors.OBSIDIAN
   },
   vipayidtxt:{
       ...commonStyles.fontSize12,

@@ -37,6 +37,7 @@ export default {
     EDITPROFILE:'EditProfile',
     REFERRALS:'Referrals',
     HELPSUPPORT:'HelpSupport',
+    CONTACTS:'Contacts',
 
     
     

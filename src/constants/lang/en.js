@@ -214,6 +214,10 @@ export default {
     Number:'658 548 4226',
     Update:'Update',
     Verifyyouremail:'Verify your email',
-    VerifyyouremailDesc:'We sent 6-Digit OTP on your email.'
+    VerifyyouremailDesc:'We sent 6-Digit OTP on your email.',
+    Contacts:'Contacts',
+    SearchContact:'Search by name…'
+    
+
     
 };
