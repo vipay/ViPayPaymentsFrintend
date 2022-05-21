@@ -17,7 +17,8 @@ import fontFamily from '../styles/fontFamily';
 import {moderateScale} from '../styles/responsiveSize';
 import ButtonComp from './ButtonComp';
 const VerifyEmail = props => {
-  const {showModal, renderModal} = props;
+  const {showModal, 
+    renderModal} = props;
   const [active, setactive] = useState(false);
 
   return (
