@@ -35,7 +35,8 @@ import {
 } from '../../utils/utils';
 import store from '../../redux/store';
 import types from '../../redux/types';
-
+import {Magic} from '@magic-sdk/react-native';
+import Moralis from 'moralis/react-native.js';
 const {dispatch} = store;
 const Login = ({navigation}) => {
   const [countryCode, setcountryCode] = useState('AE');
@@ -51,12 +52,60 @@ const Login = ({navigation}) => {
     counter: 0,
     showtimer: false,
     pincheck: false,
+    number: '',
   });
-  const {phoneNO, otp, auth, resend, counter, showtimer} = state;
+  const {phoneNO, otp, auth, resend, counter, showtimer, number} = state;
   const updateState = data => setState(state => ({...state, ...data}));
-  
- 
-  
+  // const magicClient = new Magic('pk_live_C2F574A0CB64CC57');
+  console.log(number, 'hhhhhh');
+  const magicClient = new Magic('pk_live_1421890C80C60FED');
+  // const Moralis = useMoralis();
+
+  // const DID = magicClient.auth.loginWithSMS({
+  //   // phoneNumber:"+"+callingCode+phoneNO ,
+  //   // phoneNumber:'+916284393246',
+  //   phoneNumber:'+918968124604',
+
+  // });
+
+  useEffect(() => {
+    Moralis.authenticate({
+      provider: 'magicLink',
+      email: 'yashvichadha@gmail.com',
+      apiKey: 'pk_live_1421890C80C60FED',
+      network: 'kovan',
+      onComplete: id => {
+        console.log('idididididid', id);
+      },
+      onError: error => {
+        console.log('idididididid', error);
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    // magicClient.auth
+    //   .loginWithEmailOTP({
+    //     email: 'yashvichadha@gmai.com',
+    //   })
+    //   .then(e => {
+    //     console.log('magicClientmagicClient', e);
+    //   })
+    //   .catch(error => {
+    //     console.log('aaa', error);
+    //   });
+    // magicClient.auth
+    //   .loginWithMagicLink({
+    //     email: 'yashvichadha@gmail.com',
+    //     showUI: true,
+    //   })
+    //   .then(e => {
+    //     console.log('magicClientmagicClient', e);
+    //   })
+    //   .catch(error => {
+    //     console.log('aaa', error);
+    //   });
+  }, []);
 
   useEffect(() => {
     if (!!counter) startTimer();
@@ -74,12 +123,11 @@ const Login = ({navigation}) => {
     }, 1000);
   };
   const ongetOtp = () => {
-    if (phoneNO.length < 9) {
+    if (phoneNO.length < 10) {
     } else {
       updateState({showtimer: true, counter: 30, resend: true});
       let apidata = {country_code: callingCode.toString(), phone_no: phoneNO};
       // {console.log(callingCode.toString())}
-
       if (resend == true) {
         // {console.log('resend')}
         resend_otp(apidata)
@@ -93,20 +141,35 @@ const Login = ({navigation}) => {
             ``;
           });
       } else {
-        // {console.log('send')}
-        actions
-          .login_with_mobile(apidata)
-          .then(data => {
-            showSuccess('OTP sent successfully');
-            console.log(data);
-            updateState({
-              auth: data.data.access_token,
-              pincheck: data.data.pin_genrated,
-            });
+        console.log('sendsendsendsendsendsendsend');
+        console.log(callingCode);
+        updateState({number: '+' + callingCode + phoneNO});
+        const phNumber = '+' + callingCode + phoneNO.toString();
+        const DID = magicClient.auth
+          .loginWithSMS({
+            phoneNumber: '+916284393246',
           })
-          .catch(err => {
-            console.log(err);
+          .then(otp => {
+            console.log('DIDDIDDIDDIDDID', otp);
+          })
+          .catch(error => {
+            console.log('otpotpotpotp', error);
           });
+
+        showSuccess('otp send successfully');
+        // actions
+        //   .login_with_mobile(apidata)
+        //   .then(data => {
+        //     showSuccess('OTP sent successfully');
+        //     console.log(data);
+        //     updateState({
+        //       auth: data.data.access_token,
+        //       pincheck: data.data.pin_genrated,
+        //     });
+        //   })
+        //   .catch(err => {
+        //     console.log(err);
+        //   });
       }
     }
   };
@@ -129,7 +192,7 @@ const Login = ({navigation}) => {
   };
 
   const onsignin = () => {
-    if (phoneNO.length < 9) {
+    if (phoneNO.length < 10) {
       showError(
         phoneNO.length == 0
           ? 'Please enter Phone number'
@@ -193,11 +256,12 @@ const Login = ({navigation}) => {
                     }}
                   />
                 </View>
+
                 <Text style={styles.inputline} />
                 <TextInput
                   style={styles.phoneNo}
                   keyboardType={'numeric'}
-                  maxLength={9}
+                  maxLength={10}
                   // autoFocus
                   onChangeText={value => {
                     updateState({
@@ -224,14 +288,15 @@ const Login = ({navigation}) => {
             </View>
             <View>
               <View style={styles.otpholder}>
-                <TextInput
+                <magicClient.Relayer></magicClient.Relayer>
+                {/* <TextInput
                   style={styles.otp}
                   placeholder={strings.placeholderOTP}
                   placeholderTextColor={colors.lightgray}
                   keyboardType={'numeric'}
                   maxLength={6}
                   onChangeText={value => updateState({otp: value})}
-                />
+                /> */}
               </View>
             </View>
             <Text style={styles.termsCond}>
