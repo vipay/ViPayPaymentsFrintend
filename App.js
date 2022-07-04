@@ -32,7 +32,7 @@ const App = () => {
       const userData = await getUserData();
       const isFirstTime = await getFirstTime();
       console.log(userData, 'userData');
-      if (userData && !!userData.access_token) {
+      if (!!userData && !!userData.token) {
         console.log('enter');
         dispatch({
           type: types.LOGIN,

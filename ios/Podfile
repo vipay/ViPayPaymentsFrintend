@@ -17,6 +17,8 @@ target 'ViPay' do
 
   pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'ViPayTests' do
     inherit! :complete
     # Pods for testing

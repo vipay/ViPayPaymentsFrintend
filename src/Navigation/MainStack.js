@@ -103,6 +103,31 @@ export default function (Stack) {
         component={Screens.HelpSupport}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name={navigationStrings.SENDWALLET}
+        component={Screens.SendWallet}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.SENDWALLETENTERAMOUNT}
+        component={Screens.SendWalletEnterAmount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.SENDUCID}
+        component={Screens.SendUCID}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.SENDUCIDENTERAMOUNT}
+        component={Screens.SendUCIDEnterAmount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.SEARCH}
+        component={Screens.Search}
+        options={{headerShown: false}}
+      />
 
 
     </>

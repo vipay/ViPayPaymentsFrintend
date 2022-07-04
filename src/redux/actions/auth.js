@@ -25,15 +25,29 @@ import {
   SEND_MESSAGE,
   EDIT_PROFILE,
   LOGOUT,
+  CONTACT,
+  LOGIN,
+  SET_PIN,
+  EDIT_PROFILE_,
+  IMAGEUPLOAD
 } from '../../config/urls';
 import {useState} from 'react';
 import { showSuccess } from '../../helper/helperFunctions';
+import {Magic} from '@magic-sdk/react-native';
+const magicClient = new Magic('pk_live_1421890C80C60FED');
+
 const {dispatch} = store;
 
 const saveUserData = data => {
   dispatch({
     type: types.LOGIN,
     payload: data,
+  });
+};
+const clearreduxdata = data => {
+  dispatch({
+    type: types.CLEAR_REDUX_STATE,
+    payload: {},
   });
 };
 
@@ -92,17 +106,19 @@ export function forgotPassword(data) {
 }
 
 export function logout() {
-  apiPut(LOGOUT)
-  .then(res=>
-    {
-      showSuccess('Logout Successful')
-    })
-  .catch( err=>
-    {
-      console.log(err,'logout error')
-    })
-  dispatch({type: types.CLEAR_REDUX_STATE});
+  // apiPut(LOGOUT)
+  // .then(res=>
+  //   {
+  //     showSuccess('Logout Successful')
+  //   })
+  // .catch( err=>
+  //   {
+  //     console.log(err,'logout error')
+  //   })
+  // dispatch({type: types.CLEAR_REDUX_STATE});
+  magicClient.user.logout()
   clearUserData();
+  clearreduxdata();
 }
 
 export function list_tutorials() {
@@ -110,7 +126,7 @@ export function list_tutorials() {
 }
 export function login_with_mobile(data) {
   return new Promise((resolve, reject) => {
-    apiPost(LOGIN_WITH_MOBILE, data)
+    apiPost(LOGIN, data, {'accept-language': "en"})
       .then(res => {
         setUserData(res.data).then(suc => {
           resolve(res);
@@ -137,7 +153,7 @@ export function resend_otp(data) {
 export const loginpin = (data, headers) => {
   console.log(data, 'the given data');
   return new Promise((resolve, reject) => {
-    apiPost(SET_LOGIN_PIN, data, headers)
+    (SET_PIN, data, {'Accept-Language': "en",headers})
       .then(res => {
         resolve(res);
         init();
@@ -149,7 +165,7 @@ export const loginpin = (data, headers) => {
 };
 
 export function addContacts(data) {
-  return apiPut(ADDCONTACTS, data);
+  return apiPost(CONTACT, data,{'accept-language': "en"});
 }
 export function listcontact() {
   return apiGet(LISTCONTACTS);
@@ -166,8 +182,15 @@ export function sendMessage(data) {
   return apiPost(SEND_MESSAGE, data);
 }
 export function edit_profile(data) {
-  return apiPut(EDIT_PROFILE, data);
+  return apiPut(EDIT_PROFILE_, data, {'accept-language': "en"});
+}
+export function imageUpload(data) {
+  return apiPut(IMAGEUPLOAD, data, {'accept-language': "en"});
 }
 // export function logout(data) {
 //   return apiPut(LOGOUT, data);
 // }
+
+export function addContact(data) {
+  return apiPut(CONTACT, data);
+}

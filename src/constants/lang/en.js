@@ -216,7 +216,11 @@ export default {
     Verifyyouremail:'Verify your email',
     VerifyyouremailDesc:'We sent 6-Digit OTP on your email.',
     Contacts:'Contacts',
-    SearchContact:'Search by name…'
+    SearchContact:'Search by name…',
+
+    SendBitcoin:"Send Bitcoin",
+    Recipientaddress:'Recipient address',
+    UCIDaddress:"UCID address"
     
 
     

@@ -39,7 +39,7 @@ const ConfirmPin = ({navigation, route}) => {
 
       let apidata = {pin: confirmpass};
       let header = {authorization: auth};
-      loginpin(apidata, header)
+      loginpin({pin:confirmpass}, header)
         .then(data => {
           console.log(data);
           showSuccess('Pin Created Successfully')
@@ -47,10 +47,12 @@ const ConfirmPin = ({navigation, route}) => {
         })
         .catch(err => {
           console.log(err);
+          // navigation.navigate(navigationStrings.HOME_TAB);
         });
     } else {
       showError("Pin Does't match" )
       console.log('unmatch');
+      // navigation.navigate(navigationStrings.HOME_TAB);
     }
   };
 

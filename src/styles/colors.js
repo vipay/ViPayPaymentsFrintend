@@ -17,7 +17,7 @@ export default {
   blackOpacity80: 'rgba(0,0,0,0.8)',
   blackOpacity90: 'rgba(0,0,0,0.9)',
 
-  white: '#FFFFFFFF',
+  white: '#FFFFFF',
   whiteOpacity25: 'rgba(255, 255, 255, 0.2)',
   whiteOpacity50: 'rgba(255, 255, 255, 0.5)',
   whiteOpacity70: 'rgba(255, 255, 255, 0.7)',
@@ -46,6 +46,7 @@ export default {
   EDFFF1:"#EDFFF1",
   g878787:'#878787',
   g929292:'#929292',
+  green:"#34C759",
   
 
 

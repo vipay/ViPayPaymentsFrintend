@@ -103,6 +103,50 @@ btn:{
     // backgroundColor:'red',
     justifyContent:'flex-end',
     marginBottom:moderateScale(24)
-}
+},
+inputfield: {
+    flexDirection: 'row',
+    backgroundColor: colors.grayinput,
+    marginTop: moderateScale(16),
+    paddingRight:moderateScale(16),
+    justifyContent: 'space-between',
+    borderRadius: 16,
+    height: moderateScale(56),
+    alignItems: 'center',
+    marginHorizontal:moderateScale(24)
+   
+  },
+  subinputfield: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+  countrypicker: {
+    // marginHorizontal:moderateScale(16),
+    flex: 0.4,
+    paddingHorizontal:moderateScale(8),
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+//   countrycode:{
+//     ...commonStyles.fontSize15,
+//     fontFamily:fontFamily.poppinsRegular,
+    
+
+//   },
+  inputline: {
+    borderLeftWidth: 1,
+    borderColor: colors.D9D9D9,
+    backgroundColor: colors.D9D9D9,
+  },
+  phoneNo: {
+    ...commonStyles.fontSize15,
+    color: colors.OBSIDIAN,
+    marginLeft: moderateScale(15),
+    fontFamily: fontFamily.poppinsRegular,
+    flex: 1,
+    padding:0,
+    
+  },
 })
 export default styles;

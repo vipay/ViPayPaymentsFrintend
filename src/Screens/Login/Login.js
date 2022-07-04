@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component, useState, useEffect, Suspense} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Pressable,
+  Modal,
 } from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
 import navigationStrings from '../../constants/navigationStrings';
@@ -32,11 +33,14 @@ import {
   apiGet,
   apiPut,
   getUserData,
+  removeItem,
+  clearAsyncStorate,
 } from '../../utils/utils';
 import store from '../../redux/store';
 import types from '../../redux/types';
 import {Magic} from '@magic-sdk/react-native';
 import Moralis from 'moralis/react-native.js';
+import Loader from '../../Components/Loader';
 const {dispatch} = store;
 const Login = ({navigation}) => {
   const [countryCode, setcountryCode] = useState('AE');
@@ -53,40 +57,39 @@ const Login = ({navigation}) => {
     showtimer: false,
     pincheck: false,
     number: '',
+    visiblity: false,
+    DID: '',
+    loader: 'true',
   });
-  const {phoneNO, otp, auth, resend, counter, showtimer, number} = state;
+  const {
+    phoneNO,
+    otp,
+    auth,
+    resend,
+    counter,
+    showtimer,
+    number,
+    visiblity,
+    DID,
+    loader,
+  } = state;
   const updateState = data => setState(state => ({...state, ...data}));
-  // const magicClient = new Magic('pk_live_C2F574A0CB64CC57');
+  // const magicClient = new Magic('pk_live_1421890C80C60FED');
   console.log(number, 'hhhhhh');
-  const magicClient = new Magic('pk_live_1421890C80C60FED');
+  const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
   // const Moralis = useMoralis();
 
   // const DID = magicClient.auth.loginWithSMS({
   //   // phoneNumber:"+"+callingCode+phoneNO ,
   //   // phoneNumber:'+916284393246',
-  //   phoneNumber:'+918968124604',
+  //   phoneNumber:'+919872032929',
 
   // });
 
   useEffect(() => {
-    Moralis.authenticate({
-      provider: 'magicLink',
-      email: 'yashvichadha@gmail.com',
-      apiKey: 'pk_live_1421890C80C60FED',
-      network: 'kovan',
-      onComplete: id => {
-        console.log('idididididid', id);
-      },
-      onError: error => {
-        console.log('idididididid', error);
-      },
-    });
-  }, []);
-
-  useEffect(() => {
     // magicClient.auth
     //   .loginWithEmailOTP({
-    //     email: 'yashvichadha@gmai.com',
+    //     email: 'yashvistackgeeks@gmail.com',
     //   })
     //   .then(e => {
     //     console.log('magicClientmagicClient', e);
@@ -127,9 +130,8 @@ const Login = ({navigation}) => {
     } else {
       updateState({showtimer: true, counter: 30, resend: true});
       let apidata = {country_code: callingCode.toString(), phone_no: phoneNO};
-      // {console.log(callingCode.toString())}
+
       if (resend == true) {
-        // {console.log('resend')}
         resend_otp(apidata)
           .then(data => {
             showSuccess('OTP resent successfully');
@@ -141,22 +143,38 @@ const Login = ({navigation}) => {
             ``;
           });
       } else {
-        console.log('sendsendsendsendsendsendsend');
         console.log(callingCode);
         updateState({number: '+' + callingCode + phoneNO});
         const phNumber = '+' + callingCode + phoneNO.toString();
+        updateState({visiblity: true});
+        console.log(DID,'sadfgfhg')
         const DID = magicClient.auth
+
           .loginWithSMS({
-            phoneNumber: '+916284393246',
+            phoneNumber: phNumber,
           })
-          .then(otp => {
-            console.log('DIDDIDDIDDIDDID', otp);
+
+          .then(access => {
+            console.log('DIDDIDDIDDIDDID', access);
+            updateState({visiblity: false, DID: access});
+            showSuccess;
           })
           .catch(error => {
             console.log('otpotpotpotp', error);
+            updateState({visiblity: false});
           });
 
-        showSuccess('otp send successfully');
+        // const DIDD = magicClient.auth
+        //   .loginWithEmailOTP({
+        //     email: 'yashvichadha@gmail.com',
+        //   })
+        //   .then(res => {
+        //     console.log('EmailEmailEmailEmailEmailEmail', res);
+        //   })
+        //   .catch( error =>{
+        //     console.log('errorrerrorrerrorrerrorr', error)
+        //   })
+        // showSuccess('otp send successfully');
         // actions
         //   .login_with_mobile(apidata)
         //   .then(data => {
@@ -175,6 +193,7 @@ const Login = ({navigation}) => {
   };
 
   const saveUserData = data => {
+    console.log(data);
     dispatch({
       type: types.LOGIN,
       payload: data,
@@ -185,38 +204,91 @@ const Login = ({navigation}) => {
     try {
       const userData = await getUserData();
       saveUserData(userData);
-      console.log(userData, 'ashbk');
+      console.log(userData, 'ashbk%%%%%%%%%%%%%%');
     } catch (error) {
       console.log(error);
     }
   };
 
   const onsignin = () => {
-    if (phoneNO.length < 10) {
+    if (phoneNO.length < 8) {
       showError(
         phoneNO.length == 0
           ? 'Please enter Phone number'
           : 'Please enter Correct Phone number',
       );
-    } else if (otp.length < 6) {
-      showError(otp.length == 0 ? 'Please enter OTP' : 'OTP must be 6 Digits');
     } else {
-      let apidata = {otp: otp};
-      let header = {authorization: auth};
-      login(apidata, header)
-        .then(data => {
-          console.log(data);
-          showSuccess('Login Successful');
-          if (state.pincheck == false) {
-            navigation.replace(navigationStrings.CREATEPIN, {auth: auth});
-          } else {
-            init();
-          }
+      // const diddd = magicClient.user.logout();
+      updateState({number: '+' + callingCode + phoneNO});
+      const phNumber = '+' + callingCode + phoneNO.toString();
+      updateState({visiblity: true, loader: true});
+      // const DIDD = magicClient.auth
+      //     .loginWithEmailOTP({
+      //       email: 'yashvichadha@gmail.com',
+      //     })
+      //     .then(res => {
+      //       console.log('EmailEmailEmailEmailEmailEmail', res);
+      //     })
+      //     .catch( error =>{
+      //       console.log('errorrerrorrerrorrerrorr', error)
+      //     })
+      // const l = magicClient.user.logout()
+      // res=>
+      // {
+      //   try{
+      //     removeTokenCookie(res)
+      //     try{
+      //       magicClient.user.logoutByIssuer(user.issuer)
+      //     }
+      //     catch(error){
+      //       console.log(error,'errrr')
+      //     }
+      //   }
+      //   catch{
+      //     console.log('xdtcfvgbhknj')
+      //   }
+      // }
+      setTimeout(() => {
+        updateState({loader: false});
+      }, 5000);
+
+      console.log(phNumber,"phNumberdeewfwef");
+      const DID = magicClient.auth
+        .loginWithSMS({
+          phoneNumber: phNumber,
         })
-        .catch(errr => {
-          console.log(errr);
-          showError('Incorret OTP');
-        });
+        .then(access => {
+          console.log('DIDDIDDIDDIDDID', access);
+          updateState({visiblity: false, loader: false});
+
+          login_with_mobile({token: access})
+            .then(res => {
+              console.log(res, 'success');
+              if (res.data.pin == 'Vi') {
+                navigation.navigate(navigationStrings.CREATEPIN, {
+                  auth: res.data.token,
+                });
+              } else {
+                init();
+              }
+            })
+            .catch(err => {
+              console.log(err, 'error');
+              console.log('something went wrong');
+            });
+        })
+        .catch(error => {
+          updateState({visiblity: false});
+          // navigation.navigate(navigationStrings.LOGIN)
+          console.log('otpotpotpotp', error);
+          updateState({visiblity: false});
+          // updateState({loader:false});
+          showError('Something went wrong try again');
+          // clearAsyncStorate();
+
+        })
+        
+        
     }
   };
 
@@ -225,7 +297,7 @@ const Login = ({navigation}) => {
     setcountryCode('+' + data.callingCode[0]);
   };
   return (
-    <WrapperContainer>
+    <WrapperContainer isLoading={loader}>
       <View style={styles.container}>
         <KeyboardAwareScrollView>
           <View style={styles.mainContainer}>
@@ -261,7 +333,7 @@ const Login = ({navigation}) => {
                 <TextInput
                   style={styles.phoneNo}
                   keyboardType={'numeric'}
-                  maxLength={10}
+                  maxLength={14}
                   // autoFocus
                   onChangeText={value => {
                     updateState({
@@ -276,7 +348,7 @@ const Login = ({navigation}) => {
                   placeholder={strings.placeholderPHNO}
                 />
               </View>
-              <Pressable style={styles.getotp} onPress={ongetOtp}>
+              {/* <Pressable style={styles.getotp} onPress={ongetOtp}>
                 <Text style={activeOtp ? styles.activegetotp : styles.getotp}>
                   {showtimer
                     ? (counter < 10 ? '00:0' : '00:') + counter
@@ -284,21 +356,9 @@ const Login = ({navigation}) => {
                     ? 'Resend'
                     : strings.getotp}
                 </Text>
-              </Pressable>
+              </Pressable> */}
             </View>
-            <View>
-              <View style={styles.otpholder}>
-                <magicClient.Relayer></magicClient.Relayer>
-                {/* <TextInput
-                  style={styles.otp}
-                  placeholder={strings.placeholderOTP}
-                  placeholderTextColor={colors.lightgray}
-                  keyboardType={'numeric'}
-                  maxLength={6}
-                  onChangeText={value => updateState({otp: value})}
-                /> */}
-              </View>
-            </View>
+
             <Text style={styles.termsCond}>
               {strings.termsConditiontxt1}
               <TouchableWithoutFeedback
@@ -321,6 +381,27 @@ const Login = ({navigation}) => {
             <ButtonComp btnText={strings.signin} onPress={onsignin} />
           </View>
         </KeyboardAwareScrollView>
+      </View>
+
+      <View>
+        <Modal visible={visiblity} transparent>
+          <View style={{flex: 1, justifyContent: 'center'}}>
+            <View style={{flex: 0.7}}>
+              <magicClient.Relayer />
+            </View>
+          </View>
+        </Modal>
+        {/* <View style={styles.otpholder}> */}
+
+        {/* <TextInput
+                  style={styles.otp}
+                  placeholder={strings.placeholderOTP}
+                  placeholderTextColor={colors.lightgray}
+                  keyboardType={'numeric'}
+                  maxLength={6}
+                  onChangeText={value => updateState({otp: value})}
+                /> */}
+        {/* </View> */}
       </View>
     </WrapperContainer>
   );

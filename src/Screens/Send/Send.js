@@ -124,6 +124,7 @@ const Send = ({navigation}) => {
           image={imagePath.searchblack}
           imagestyle={{height: moderateScale(24), width: moderateScale(24)}}
           onBackPress={goBack}
+          onPress={()=> navigation.navigate(navigationStrings.SEARCH)}
     headerStyle={{marginVertical:moderateScale(16)}}
 
         />
@@ -133,7 +134,7 @@ const Send = ({navigation}) => {
              resizeMode="contain"
              style={styles.bgImg} source={imagePath.sendBg}>
               <View style={styles.ButtonsView}>
-                <Pressable style={styles.pressable}>
+                <Pressable style={styles.pressable} onPress={()=> navigation.navigate(navigationStrings.SENDWALLET)}>
                   <Image source={imagePath.ic_wallet_white} />
                   <Text style={styles.buttonTxt}>{strings.Wallet}</Text>
                 </Pressable>
@@ -141,7 +142,7 @@ const Send = ({navigation}) => {
                   <Image source={imagePath.scan} />
                   <Text style={styles.buttonTxt}>{strings.scan}</Text>
                 </Pressable>
-                <Pressable style={styles.pressable}>
+                <Pressable style={styles.pressable}  onPress={()=> navigation.navigate(navigationStrings.SENDUCID)}>
                   <Image source={imagePath.ucid} />
                   <Text style={styles.buttonTxt}>{strings.ucid}</Text>
                 </Pressable>

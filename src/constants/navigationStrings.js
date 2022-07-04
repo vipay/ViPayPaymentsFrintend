@@ -38,6 +38,13 @@ export default {
     REFERRALS:'Referrals',
     HELPSUPPORT:'HelpSupport',
     CONTACTS:'Contacts',
+    SENDWALLET:'SendWallet',
+    SENDWALLETENTERAMOUNT:'SendWalletEnterAmount',
+    SENDUCID:'SendUCID',
+    SENDUCIDENTERAMOUNT:'SendUCIDEnterAmount',
+
+
+
 
     
     

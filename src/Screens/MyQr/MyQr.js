@@ -43,7 +43,7 @@ const MyQr = ({navigation}) => {
             <Image style={styles.img} source={imagePath.profile3} />
           </View>
           <View style={styles.qrView}>
-            <QRCode size={216} value="https://stackgeeks.com/" 
+            <QRCode size={216} value="93466777777@vipay" 
             style={styles.qr}/>
           </View>
           </View>

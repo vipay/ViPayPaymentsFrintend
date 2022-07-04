@@ -4,6 +4,7 @@ package com.vipay;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.imagepicker.ImagePickerPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.ocetnik.timer.BackgroundTimerPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;

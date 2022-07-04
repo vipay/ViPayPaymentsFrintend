@@ -17,11 +17,11 @@ import imagePath from '../constants/imagePath';
 import commonStyles from '../styles/commonStyles';
 import fontFamily from '../styles/fontFamily';
 
-const FlatListRender = ({item, index, onlistpress,}) => {
+const FlatListRender = ({item, index, onlistpress,logostyle}) => {
   return (
     <Pressable onPress={onlistpress}>
       <View style={styles.R_container}>
-        <Image source={item.logo} />
+        <Image source={item.logo} style={logostyle} />
         <View style={styles.R_subconatiner}>
           <View style={styles.R_textview}>
             <Text style={styles.R_name}>{item.name}</Text>
@@ -34,7 +34,7 @@ const FlatListRender = ({item, index, onlistpress,}) => {
   );
 };
 
-const SelectCryptoComp = ({data, onlistpress, onBackPress,headerString}) => {
+const SelectCryptoComp = ({data, onlistpress, onBackPress,headerString, logostyle}) => {
   const renderItem = ({item, index}) => {
     return (
       <FlatListRender
@@ -43,6 +43,7 @@ const SelectCryptoComp = ({data, onlistpress, onBackPress,headerString}) => {
         index={index}
         // onPress={() => navigation.navigate(navigationStrings.CRYPTODETAILS)}
         onlistpress={onlistpress}
+        logostyle={logostyle}
       />
     );
   };

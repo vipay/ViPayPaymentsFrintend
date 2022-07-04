@@ -134,7 +134,7 @@ const Home = ({navigation}) => {
               <Image source={imagePath.scan} />
               <Text style={styles.txtstylehomecard}>{strings.scan}</Text>
             </Pressable>
-            <Pressable style={styles.pressable}>
+            <Pressable style={styles.pressable} onPress={()=>navigation.navigate(navigationStrings.SEND)}>
               <Image source={imagePath.ucid} />
               <Text style={styles.txtstylehomecard}>{strings.ucid}</Text>
             </Pressable>

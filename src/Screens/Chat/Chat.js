@@ -107,61 +107,61 @@ const Chat = ({navigation, route}) => {
     );
   };
 
-  useEffect(() => {
-    getMessages();
-    const timer = setInterval(() => {
-      getMessages();
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
+  // useEffect(() => {
+  //   getMessages();
+  //   const timer = setInterval(() => {
+  //     getMessages();
+  //   }, 3000);
+  //   return () => clearInterval(timer);
+  // }, []);
 
-  const onSend = useCallback(async (messages = []) => {
-    let apiData = {
-      user_id: route.params.userid,
-      message: messages[0].text,
-      message_type: 'TEXT',
-    };
+  // const onSend = useCallback(async (messages = []) => {
+  //   let apiData = {
+  //     user_id: route.params.userid,
+  //     message: messages[0].text,
+  //     message_type: 'TEXT',
+  //   };
 
-    sendMessage(apiData)
-      .then(data => console.log(data, 'sdvjbdsjhbj'))
-      .catch(err => console.log(err, 'bjhbjbh'));
-    setMessages(previousMessages =>
-      GiftedChat.append(previousMessages, messages),
-    );
-  });
+  //   sendMessage(apiData)
+  //     .then(data => console.log(data, 'sdvjbdsjhbj'))
+  //     .catch(err => console.log(err, 'bjhbjbh'));
+  //   setMessages(previousMessages =>
+  //     GiftedChat.append(previousMessages, messages),
+  //   );
+  // });
 
-  async function getMessages() {
-    try {
-      let query = route.params.userid;
+  // async function getMessages() {
+  //   try {
+  //     let query = route.params.userid;
 
-      actions
-        .listmessage(query)
-        .then(res => {
-          console.log(res.data, 'JNKJBHHHDCS');
-          const messages =
-            res.data.length > 0
-              ? res.data.map((data, index) => {
-                  let message = {
-                    _id: data?._id,
-                    text: data?.message,
-                    createdAt: data?.time,
-                    user: {
-                      _id: data.sender_id != null ? data.sender_id._id : '0',
-                    },
-                    index: index,
-                  };
+  //     actions
+  //       .listmessage(query)
+  //       .then(res => {
+  //         console.log(res.data, 'JNKJBHHHDCS');
+  //         const messages =
+  //           res.data.length > 0
+  //             ? res.data.map((data, index) => {
+  //                 let message = {
+  //                   _id: data?._id,
+  //                   text: data?.message,
+  //                   createdAt: data?.time,
+  //                   user: {
+  //                     _id: data.sender_id != null ? data.sender_id._id : '0',
+  //                   },
+  //                   index: index,
+  //                 };
 
-                  return message;
-                })
-              : [];
+  //                 return message;
+  //               })
+  //             : [];
 
-          setMessages(messages);
-        })
-        .catch(err => console.log(err));
-    } catch (error) {
-      console.log('error riased', error);
-    }
-  }
+  //         setMessages(messages);
+  //       })
+  //       .catch(err => console.log(err));
+  //   } catch (error) {
+  //     console.log('error riased', error);
+  //   }
+  // }
 
   return (
     <WrapperContainer>
@@ -176,7 +176,7 @@ const Chat = ({navigation, route}) => {
         <GiftedChat
           messages={messages}
           // alignTop={true}
-          onSend={messages => onSend(messages)}
+          // onSend={messages => onSend(messages)}
           user={{
             _id: id,
           }}

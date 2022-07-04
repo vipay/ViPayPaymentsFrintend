@@ -32,25 +32,25 @@ const ChatUsersList = ({navigation}) => {
   //     return unsubscribe;
    
   // }, []);
-  useEffect(() => {
-    chatlist();
-    const timer = setInterval(() => {
-      chatlist();
-    }, 2000);
-    return () => clearInterval(timer);
-  }, []);
+  // useEffect(() => {
+  //   chatlist();
+  //   const timer = setInterval(() => {
+  //     chatlist();
+  //   }, 2000);
+  //   return () => clearInterval(timer);
+  // }, []);
 
-  const chatlist = () => {
-    actions
-      .listchats()
-      .then(res => {
-        // console.log(res.data, 'whbdcbxj');
-        setdata(res.data);
-        console.log(data, 'ajhgcjhb');
-        // navigation.navigate(navigationStrings.CHAT)
-      })
-      .catch();
-  };
+  // const chatlist = () => {
+  //   actions
+  //     .listchats()
+  //     .then(res => {
+  //       // console.log(res.data, 'whbdcbxj');
+  //       setdata(res.data);
+  //       console.log(data, 'ajhgcjhb');
+  //       // navigation.navigate(navigationStrings.CHAT)
+  //     })
+  //     .catch();
+  // };
 
   const renderItem = ({item, index}) => {
     console.log(item.reciver_id._id, 'dgcj');

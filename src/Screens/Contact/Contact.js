@@ -53,14 +53,14 @@ const Contact = ({navigation}) => {
     
   // }, [])
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', async () => {
-      listContats();
-      })
+  // useEffect(() => {
+  //   const unsubscribe = navigation.addListener('focus', async () => {
+  //     listContats();
+  //     })
       
-      return unsubscribe;
+  //     return unsubscribe;
    
-  }, []);
+  // }, []);
 
   useEffect(() => {
     if (isIOS()) {
@@ -73,20 +73,20 @@ const Contact = ({navigation}) => {
     } else {
       test();
     }
-    listContats()
+    // listContats()
   }, []);
 
-  const listContats = () => {
-    listcontact()
-      .then(res => {
-        console.log(res.data);
-        updateState({data: res.data});
-      })
-      .catch(error => {
-        console.log(error);
-        updateState({isLoading: false});
-      });
-  };
+  // const listContats = () => {
+  //   listcontact()
+  //     .then(res => {
+  //       console.log(res.data);
+  //       updateState({data: res.data});
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //       updateState({isLoading: false});
+  //     });
+  // };
 
   const test = async () => {
     try {
@@ -121,26 +121,27 @@ const Contact = ({navigation}) => {
     } catch (error) {}
   };
 
-  var newPerson = {
-    familyName: 'Jung',
-    givenName: 'Carl',
-    middleName: '',
-  };
+  // var newPerson = {
+  //   familyName: 'Jung',
+  //   givenName: 'Carl',
+  //   middleName: '',
+  // };
 
   const addcontact = contactArray => {
     const aa = [];
     const bb = contactArray.map(item => {
       aa.push({
-        mobile_number:
+        phone:
           item.phoneNumbers.length > 0 &&
           item.phoneNumbers[0].number.toString().replace(/-|  /g, '').trim(),
         name: item.givenName,
       });
     });
     // actions.
-    let apidata = {data: aa};
+    let apidata = {list:aa};
     // return
-    addContacts(apidata)
+    console.log(apidata,'cccccccccccccccrsedtfygubhinjljkhjgh')
+    addContacts({list : aa})
       .then(res => {
         console.log(res, 'abcsscs');
         // showSuccess('Contact sync successful ');

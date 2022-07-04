@@ -83,5 +83,23 @@ export {default as Referrals} from './Referrals/Referrals';
 //HelpSupport
  
 export {default as HelpSupport} from './HelpSupport/HelpSupport';
-
+// contact
 export {default as Contact} from './Contact/Contact';
+// send wallet
+export {default as SendWallet} from './SendWallet/SendWallet';
+
+export {default as SendWalletEnterAmount} from './SendWalletEnterAmount/SendWalletEnterAmount';
+
+//SendUCID
+export {default as SendUCID} from './SendUCID/SendUCID';
+
+//SendUCIDEnterAmount
+export {default as SendUCIDEnterAmount} from './SendUCIDEnterAmount/SendUCIDEnterAmount';
+
+
+
+
+
+
+
+

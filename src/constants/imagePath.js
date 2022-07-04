@@ -155,6 +155,10 @@ ic_send_active: require ('../assets/images/ic_send_active.png'),
 ic_arrow_white :require('../assets/images/ic_arrow_white.png'),
 ic_user_placeholder: require('../assets/images/ic_user_placeholder.png'),
 ic_profile_placeholder: require('../assets/images/ic_profile_placeholder.png'),
+ic_wallet_blue : require('../assets/images/ic_wallet_blue.png'),
+ic_green_check: require('../assets/images/ic_green_check.png'),
+
+
 
   
 };
