@@ -77,14 +77,6 @@ const Login = ({navigation}) => {
   // const magicClient = new Magic('pk_live_1421890C80C60FED');
   console.log(number, 'hhhhhh');
   const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
-  // const Moralis = useMoralis();
-
-  // const DID = magicClient.auth.loginWithSMS({
-  //   // phoneNumber:"+"+callingCode+phoneNO ,
-  //   // phoneNumber:'+916284393246',
-  //   phoneNumber:'+919872032929',
-
-  // });
 
   useEffect(() => {
     // magicClient.auth
