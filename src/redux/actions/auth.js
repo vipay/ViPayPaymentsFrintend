@@ -29,7 +29,8 @@ import {
   LOGIN,
   SET_PIN,
   EDIT_PROFILE_,
-  IMAGEUPLOAD
+  IMAGEUPLOAD,
+  CHANGEPASSWORD
 } from '../../config/urls';
 import {useState} from 'react';
 import { showSuccess } from '../../helper/helperFunctions';
@@ -183,6 +184,9 @@ export function sendMessage(data) {
 }
 export function edit_profile(data) {
   return apiPut(EDIT_PROFILE_, data, {'accept-language': "en"});
+}
+export function Change_Password(data) {
+  return apiPut(CHANGEPASSWORD, data, {'accept-language': "en"});
 }
 export function imageUpload(data) {
   return apiPut(IMAGEUPLOAD, data, {'accept-language': "en"});

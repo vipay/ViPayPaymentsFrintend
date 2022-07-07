@@ -27,6 +27,8 @@ export const LOGIN= getApiUrll('/session/v1/login');
 export const SET_PIN= getApiUrll('/user/v1/set-pin');
 export const EDIT_PROFILE_= getApiUrll('/user/v1/edit-profile');
 export const IMAGEUPLOAD= getApiUrll('/user/v1/update-profile-pic');
+export const CHANGEPASSWORD= getApiUrll('/user/v1/change-pin');
+
 
 
 

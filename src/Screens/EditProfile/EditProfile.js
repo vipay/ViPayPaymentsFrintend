@@ -230,6 +230,9 @@ const EditProfile = ({navigation}) => {
         <View style={styles.bgView}>
           <TextInput
             style={styles.ProfileName}
+            placeholder={'Full Name'}
+            placeholderTextColor={colors.lightgray}
+
             onChangeText={value => updateState({name: value})}
             value={state.name}></TextInput>
         </View>
@@ -241,6 +244,8 @@ const EditProfile = ({navigation}) => {
           <TextInput
             onChangeText={value => updateState({email: value, changed: true})}
             value={state.email}
+            placeholderTextColor={colors.lightgray}
+            placeholder={"Email"}
             style={styles.ProfileEmail}></TextInput>
         </View>
 

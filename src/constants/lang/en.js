@@ -49,6 +49,7 @@ export default {
 
   //create pin
   createPinHeading: 'Create security pin ',
+  EnterPinHeading: 'Enter security pin ',
   createPinSubHeading: 'Code help keep your account safe and secure.',
   CONTINUE: 'Continue',
 
