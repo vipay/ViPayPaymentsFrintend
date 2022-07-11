@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   View,
   Text,
@@ -21,15 +21,22 @@ import ButtonComp from '../../Components/ButtonComp';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import HeaderComp from '../../Components/HeaderComp';
 import colors from '../../styles/colors';
+import AddAddress from '../../Components/AddAddress';
+
 
 // import { Image } from 'react-native-svg';
 
 const heightt = Dimensions.get('window').height;
 
 const SendWalletEnterAmount = ({navigation}) => {
+const [isVisbile, setisVisbile] = useState(false);
+
   //   const refRBSheet = useRef();
   const goBack = () => {
     navigation.goBack();
+  };
+  const onaddnew = () => {
+    setisVisbile(!isVisbile);
   };
   return (
     <WrapperContainer>
@@ -48,7 +55,9 @@ const SendWalletEnterAmount = ({navigation}) => {
               <Image source={imagePath.ic_scanner} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.addAdress}>
+        <AddAddress isvisible={isVisbile} close={onaddnew} />
+
+          <TouchableOpacity style={styles.addAdress} onPress={onaddnew}>
             <Text style={styles.add}>Add this address to wallet list</Text>
             <Image source={imagePath.ic_wallet_blue} />
           </TouchableOpacity>

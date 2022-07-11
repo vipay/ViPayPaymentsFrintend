@@ -81,7 +81,7 @@ export {default as EditProfile} from './EditProfile/EditProfile';
 export {default as Referrals} from './Referrals/Referrals';
 
 //HelpSupport
- 
+
 export {default as HelpSupport} from './HelpSupport/HelpSupport';
 // contact
 export {default as Contact} from './Contact/Contact';
@@ -96,10 +96,14 @@ export {default as SendUCID} from './SendUCID/SendUCID';
 //SendUCIDEnterAmount
 export {default as SendUCIDEnterAmount} from './SendUCIDEnterAmount/SendUCIDEnterAmount';
 
+//SavedWallet
 
+export {default as SavedWallet} from './SavedWallet/SavedWallet';
 
+//SelectWallet
 
+export {default as SelectWallet} from './SelectWallet/SelectWallet';
 
+//LoginPin
 
-
-
+export {default as LoginPin} from './LoginPin/LoginPin';

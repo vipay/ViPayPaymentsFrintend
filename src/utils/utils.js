@@ -149,3 +149,18 @@ export async function getFirstTime() {
 export async function clearUserData() {
   return AsyncStorage.removeItem('userData');
 }
+
+
+
+export function setScreenLock(data) {
+  data = JSON.stringify(data);
+  return AsyncStorage.setItem('screenlock', data);
+}
+
+export async function getScreenLock() {
+  return new Promise((resolve, reject) => {
+    AsyncStorage.getItem('screenlock').then(data => {
+      resolve(JSON.parse(data));
+    });
+  });
+}

@@ -6,7 +6,7 @@ import store from './src/redux/store';
 import {moderateScale, textScale} from './src/styles/responsiveSize';
 import FlashMessage from 'react-native-flash-message';
 import types from './src/redux/types';
-import {getFirstTime, getUserData} from './src/utils/utils';
+import {getFirstTime, getScreenLock, getUserData} from './src/utils/utils';
 import fontFamily from './src/styles/fontFamily';
 import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
@@ -48,10 +48,19 @@ const App = () => {
     }
   };
 
+  const loginPIn = () => {
+    getScreenLock()
+      .then(res => {
+        actions.loginPin(res)
+        console.log(res,"PPPPPPPOLLLLLOCK")
+      })
+  };
+
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
     }, 1500);
+    loginPIn();
     init();
   }, []);
 
@@ -64,12 +73,6 @@ const App = () => {
       <Provider store={store}>
         <SafeAreaProvider>
           <Routes />
-          {/* <TransactionhistoryRenderList/> */}
-          {/* <HelpSupport/> */}
-          {/* <Referrals/> */}
-          {/* <EditProfile/> */}
-          {/* <ChatBottomComp/> */}
-
           <FlashMessage
             titleStyle={{
               marginRight: moderateScale(5),

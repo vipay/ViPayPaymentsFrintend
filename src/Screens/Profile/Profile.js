@@ -1,6 +1,6 @@
 //import liraries
 import {month} from 'is_js';
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
   Text,
@@ -21,6 +21,7 @@ import actions from '../../redux/actions';
 import { logout } from '../../redux/actions/auth';
 import colors from '../../styles/colors';
 import {moderateScale} from '../../styles/responsiveSize';
+import { setScreenLock } from '../../utils/utils';
 
 import styles from './styles';
 
@@ -28,6 +29,15 @@ const Profile = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };
+  const [screenlock, setscreenlock] = useState(false)
+
+  const onscreenlock=()=>
+  {
+    setScreenLock(!screenlock).then(
+      res=>console.log(res,"locklock")
+    )
+    setscreenlock(!screenlock)
+  }
 
   const LOGOUT=()=>
   {
@@ -96,6 +106,7 @@ const Profile = ({navigation}) => {
             logoicon={imagePath.ic_saved_wallet}
             txt={strings.Savedwallet}
             icon={imagePath.ic_gray_arrow}
+            onPress={() => navigation.navigate(navigationStrings.SAVEDWALLET)}
           />
           <ProfileListComp
             logoicon={imagePath.ic_redeem}
@@ -118,8 +129,10 @@ const Profile = ({navigation}) => {
           <ProfileListComp
             logoicon={imagePath.ic_screen_lock}
             txt={strings.Screenlock}
-            icon={imagePath.switch_on}
+            icon={screenlock==true?
+              imagePath.switch_on:imagePath.switch_off}
             container={{marginTop: moderateScale(8)}}
+            onPress={onscreenlock}
 
           />
           <ProfileListComp

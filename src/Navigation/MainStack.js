@@ -3,17 +3,24 @@ import navigationStrings from '../constants/navigationStrings';
 import TabRoutes from './TabRoutes';
 import * as Screens from './../Screens/index';
 
-export default function (Stack) {
+export default function (Stack,screenLock) {
+
   return (
     <>
+    {/* { !!screenLock &&
+     <Stack.Screen
+        name={navigationStrings.LOGINPIN}
+        component={Screens.LoginPin}
+        options={{headerShown: false}}
+      />
+    } */}
       <Stack.Screen
         name={navigationStrings.HOME_TAB}
         component={TabRoutes}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
 
-
-        <Stack.Screen
+      <Stack.Screen
         name={navigationStrings.CRYPTODETAILS}
         component={Screens.CryptoDetails}
         options={{headerShown: false}}
@@ -53,7 +60,7 @@ export default function (Stack) {
         component={Screens.RequestEnterAmount}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={navigationStrings.CHAT}
         component={Screens.Chat}
         options={{headerShown: false}}
@@ -83,7 +90,7 @@ export default function (Stack) {
         component={Screens.ChangePin}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={navigationStrings.TRANSACTIONHISTORY}
         component={Screens.TransactionHistory}
         options={{headerShown: false}}
@@ -93,7 +100,7 @@ export default function (Stack) {
         component={Screens.EditProfile}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={navigationStrings.REFERRALS}
         component={Screens.Referrals}
         options={{headerShown: false}}
@@ -128,9 +135,16 @@ export default function (Stack) {
         component={Screens.Search}
         options={{headerShown: false}}
       />
-
-
+      <Stack.Screen
+        name={navigationStrings.SAVEDWALLET}
+        component={Screens.SavedWallet}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.SELECTWALLET}
+        component={Screens.SelectWallet}
+        options={{headerShown: false}}
+      />
     </>
   );
 }
-

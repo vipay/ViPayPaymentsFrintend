@@ -159,6 +159,7 @@ ic_wallet_blue : require('../assets/images/ic_wallet_blue.png'),
 ic_green_check: require('../assets/images/ic_green_check.png'),
 
 
+ic_add_new_white: require('../assets/images/ic_add_new_white.png'),
 
   
 };

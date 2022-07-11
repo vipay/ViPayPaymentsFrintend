@@ -242,7 +242,7 @@ const Login = ({navigation}) => {
       // }
       setTimeout(() => {
         updateState({loader: false});
-      }, 5000);
+      }, 10000);
 
       console.log(phNumber,"phNumberdeewfwef");
       const DID = magicClient.auth

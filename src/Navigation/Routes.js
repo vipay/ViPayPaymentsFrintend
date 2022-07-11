@@ -35,12 +35,14 @@ export default function Routes() {
   const userData = useSelector(state => state.auth.userData);
   {console.log(userData,"gdsjcjhb")}
   const isFirstTime = useSelector(state => state.isFirstTime.isFirstTime);
+  const screenLock = useSelector(state => state.loginPin.screenLock);
+  console.log(screenLock,"screenLockscreenLockscreenLockscreenLock")
   // console.log(isFirstTime, 'ghijtrsdytfuigyouyguhij');
   return (
     <NavigationContainer>
       <Stack.Navigator>
       {!!userData?.token ? (
-          <>{MainStack(Stack)}</>
+          <>{MainStack(Stack, screenLock)}</>
         ) : (
           <>{AuthScreen(Stack, isFirstTime)}</>
         )}

@@ -24,36 +24,35 @@ import {showError} from '../../helper/helperFunctions';
 import {useIsFocused} from '@react-navigation/native';
 const LoginPin = ({navigation, route}) => {
   const [pass, setPass] = useState('');
-  const isFocused = useIsFocused();
-  const [auth, setauth] = useState('');
-  useEffect(() => {
-    setauth(route.params.auth);
-  }, []);
 
-  const onPressContinue = () => {
-    if (pass.length < 4) {
-      showError(
-        pass.length == 0 ? 'Please enter the pin ' : 'Pin must be 4 Digit',
-      );
-    } else {
-      // console.log(pass,'vakbcks')
-      navigation.navigate(navigationStrings.CONFIRMPIN, {
-        pin: pass,
-        auth: auth,
-      });
-    }
-  };
+  
+  // const isFocused = useIsFocused();
+  // const [auth, setauth] = useState('');
+  // useEffect(() => {
+  //   setauth(route.params.auth);
+  // }, []);
+
+  // const onPressContinue = () => {
+  //   if (pass.length < 4) {
+  //     showError(
+  //       pass.length == 0 ? 'Please enter the pin ' : 'Pin must be 4 Digit',
+  //     );
+  //   } else {
+  //     // console.log(pass,'vakbcks')
+  //     navigation.navigate(navigationStrings.CONFIRMPIN, {
+  //       pin: pass,
+  //       auth: auth,
+  //     });
+  //   }
+  // };
 
   return (
     <WrapperContainer>
       <View style={styles.container}>
         <Image source={imagePath.logo_header} />
-        <Text style={styles.CreatePinHeading}>{strings.createPinHeading}</Text>
-        <Text style={styles.CreatePinSubheading}>
-          {strings.createPinSubHeading}
-        </Text>
-        {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss()} accessible={false}> */}
+        <Text style={styles.CreatePinHeading}>{strings.EnterPinHeading}</Text>
         <View style={styles.codefieldView}>
+          
           <SmoothPinCodeInput
             password
             mask={<View style={styles.customMask} />}
@@ -79,7 +78,7 @@ const LoginPin = ({navigation, route}) => {
           <ButtonComp
             btnText={strings.CONTINUE}
             // onPress={() => navigation.navigate(navigationStrings.CONFIRMPIN)}
-            onPress={onPressContinue}
+            // onPress={onPressContinue}
           />
         </View>
       </View>

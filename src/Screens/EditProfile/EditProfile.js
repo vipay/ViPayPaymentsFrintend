@@ -152,7 +152,7 @@ const EditProfile = ({navigation}) => {
 
       setTimeout(() => {
         updateState({loader: false});
-      }, 5000);
+      }, 10000);
 
       magicClient.auth
         .loginWithEmailOTP({

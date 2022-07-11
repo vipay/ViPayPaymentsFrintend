@@ -144,6 +144,7 @@ const Contact = ({navigation}) => {
     addContacts({list : aa})
       .then(res => {
         console.log(res, 'abcsscs');
+        // updateState({data:res.data})
         // showSuccess('Contact sync successful ');
       })
       .catch(error => {
