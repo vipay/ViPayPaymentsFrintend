@@ -51,7 +51,8 @@ const App = () => {
   const loginPIn = () => {
     getScreenLock()
       .then(res => {
-        actions.loginPin(res)
+        let result = {screenLock:res,isShow:true}
+        actions.loginPin(result)
         console.log(res,"PPPPPPPOLLLLLOCK")
       })
   };

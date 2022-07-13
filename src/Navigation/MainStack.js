@@ -6,14 +6,15 @@ import * as Screens from './../Screens/index';
 export default function (Stack,screenLock) {
 
   return (
-    <>
-    {/* { !!screenLock &&
+    <> 
+    { (!!screenLock.screenLock && !!screenLock.isShow) 
+    &&
      <Stack.Screen
         name={navigationStrings.LOGINPIN}
         component={Screens.LoginPin}
         options={{headerShown: false}}
       />
-    } */}
+    }
       <Stack.Screen
         name={navigationStrings.HOME_TAB}
         component={TabRoutes}

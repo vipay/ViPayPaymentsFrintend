@@ -37,18 +37,15 @@ export default {
   low_red: '#E60023',
   grayprice: '#7C7C7C',
   F1F1F2: '#F1F1F2',
-  shadow:'rgba(37,51,75,0.1)',
-  backround:'rgba(255,255,255,0.8)',
-  shadowbg:'rgba(67, 208, 182, 0.03)',
-  E8F5FF:'#E8F5FF',
-  FCEFE7:'#FCEFE7',
-  FBF6D9:'#FBF6D9',
-  EDFFF1:"#EDFFF1",
-  g878787:'#878787',
-  g929292:'#929292',
-  green:"#34C759",
-  
-
-
-  
+  shadow: 'rgba(37,51,75,0.1)',
+  backround: 'rgba(255,255,255,0.8)',
+  shadowbg: 'rgba(67, 208, 182, 0.03)',
+  E8F5FF: '#E8F5FF',
+  FCEFE7: '#FCEFE7',
+  FBF6D9: '#FBF6D9',
+  EDFFF1: '#EDFFF1',
+  g878787: '#878787',
+  g929292: '#929292',
+  green: '#34C759',
+  C4C4C6: '#C4C4C6',
 };

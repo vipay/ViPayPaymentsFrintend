@@ -20,39 +20,47 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
-import {showError} from '../../helper/helperFunctions';
+import {showError, showSuccess} from '../../helper/helperFunctions';
 import {useIsFocused} from '@react-navigation/native';
+import actions from '../../redux/actions';
+import { getScreenLock } from '../../utils/utils';
 const LoginPin = ({navigation, route}) => {
   const [pass, setPass] = useState('');
 
+
+  const loginPIn = () => {
+    getScreenLock()
+      .then(res => {
+        let result = {screenLock:res,isShow:false}
+        actions.loginPin(result)
+        console.log(res,"PPPPPPPOLLLLLOCK")
+      })
+  };
+
+  const checkpin = () => {
   
-  // const isFocused = useIsFocused();
-  // const [auth, setauth] = useState('');
-  // useEffect(() => {
-  //   setauth(route.params.auth);
-  // }, []);
 
-  // const onPressContinue = () => {
-  //   if (pass.length < 4) {
-  //     showError(
-  //       pass.length == 0 ? 'Please enter the pin ' : 'Pin must be 4 Digit',
-  //     );
-  //   } else {
-  //     // console.log(pass,'vakbcks')
-  //     navigation.navigate(navigationStrings.CONFIRMPIN, {
-  //       pin: pass,
-  //       auth: auth,
-  //     });
-  //   }
-  // };
-
+    actions
+    .pin_check({pin:pass})
+    .then( res=>
+      {
+        loginPIn()
+        navigation.navigate(navigationStrings.HOME_TAB)
+        console.log(res,'sucess')
+        
+      })
+    .catch(err=>
+      {
+        console.log(err,'errorrr at login pin')
+        showError('you Entered Incorrect Pin Try Again')
+      })
+  };
   return (
     <WrapperContainer>
       <View style={styles.container}>
         <Image source={imagePath.logo_header} />
         <Text style={styles.CreatePinHeading}>{strings.EnterPinHeading}</Text>
         <View style={styles.codefieldView}>
-          
           <SmoothPinCodeInput
             password
             mask={<View style={styles.customMask} />}
@@ -77,6 +85,7 @@ const LoginPin = ({navigation, route}) => {
         <View style={styles.btnview}>
           <ButtonComp
             btnText={strings.CONTINUE}
+            onPress={checkpin}
             // onPress={() => navigation.navigate(navigationStrings.CONFIRMPIN)}
             // onPress={onPressContinue}
           />

@@ -30,6 +30,11 @@ import actions from '../../redux/actions';
 import {Magic} from '@magic-sdk/react-native';
 import CountryPicker, {getCallingCode} from 'react-native-country-picker-modal';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import FastImage from 'react-native-fast-image';
+
+// import {create} from 'ipfs-http-client';
+
+// const client = create('https://ipfs.infura.io:5001');
 
 const EditProfile = ({navigation}) => {
   const goBack = () => {
@@ -58,6 +63,7 @@ const EditProfile = ({navigation}) => {
     changed: false,
     loader: false,
     response,
+    profilepic: '',
   });
   const {
     name,
@@ -74,19 +80,27 @@ const EditProfile = ({navigation}) => {
     changed,
     loader,
     response,
+    profilepic,
   } = state;
   const updateState = data => setState(state => ({...state, ...data}));
 
+  useEffect(() => {
+    getdata();
+    updateState({name: data.name, email: data.email});
+  }, []);
   const getdata = () => {
     let apidata = {defaultArgument: 'NA'};
 
     actions
       .edit_profile(apidata)
       .then(res => {
-
-        updateState({name: res.data.name, email: res.data.email});
+        updateState({
+          name: res.data.name,
+          email: res.data.email,
+          profilepic: res.data.profilePic.data,
+        });
         // showSuccess('Update Successful')
-
+        // console.log(res.data.profilePic.data, 'profileeeeeeeeee');
         console.log(res, 'show sucess');
       })
       .catch(err => {
@@ -103,39 +117,58 @@ const EditProfile = ({navigation}) => {
       if (response.didCancel) {
         return;
       } else {
-        updateState({response: response, localimage: response.assets[0].uri});
-        console.log(response,'fxcgvhbj');
+        console.log(response.assets[0], 'responseresponseresponse');
         imageUpload(response);
       }
     });
   };
 
-  const imageUpload=(response)=>
-
-  {
-    actions.imageUpload({profilePic:dataform(response)})
-    .then(
-       res=>
-       {
-         console.log(res,'image base 64')
-       }
-    )
-    .catch( err=>
-      {
-        console.log(err,'something wrong')
+  const imageUpload = response => {
+    let apidata = dataform(response);
+    console.log(apidata, 'apidataapidataapidata');
+    actions
+      .imageUpload(apidata)
+      .then(res => {
+        console.log(res, 'image base 64');
       })
-  }
+      .catch(err => {
+        console.log(err, 'something wrong');
+      });
+  };
   const dataform = response => {
     let imagePath = response.assets[0].uri;
     const imgData = new FormData();
-    imgData.append('file', {
+    imgData.append('profilePic', {
       uri: imagePath,
       name: 'image.png',
       fileName: 'image',
       type: 'image/png',
     });
-    return imgData;
+
+    console.log('.....imgData....', imgData);
+    return JSON.stringify([{
+      'profilePic': {
+        uri: imagePath,
+        name: 'image.png',
+        fileName: 'image',
+        type: 'image/png',
+      },
+
+    }
+      
+    ]);
   };
+
+  // const ipfsupload = async response => {
+  //   console.log("ipfsuploadipfsuploadipfsupload")
+  //   try {
+  //     const added = await client.add(response.assets[0].uri);
+  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+  //     // updateFileUrl(url);
+  //   } catch (error) {
+  //     console.log('Error uploading file: ', error);
+  //   }
+  // };
 
   const editprofile = () => {
     let apidata = {name: name};
@@ -165,9 +198,8 @@ const EditProfile = ({navigation}) => {
           actions
             .edit_profile({name: name, emailOTPVerificationDIDToken: e})
             .then(res => {
-              // updateState({name: res.data.name,email: res.data.email })
               showSuccess('Update Successful');
-              // toggleModal()
+
               console.log(res, 'show sucess');
               updateState({visiblity: false, loader: false});
             })
@@ -197,15 +229,6 @@ const EditProfile = ({navigation}) => {
     }
   };
 
-  useEffect(() => {
-    // data.email==null?data.email='':null
-    // data.name==null?data.name='':null
-    getdata();
-    updateState({name: data.name, email: data.email});
-  }, []);
-
-  //  console.log(data,'edittttt profile')
-
   const [activee, setactivee] = useState(false);
   const toggleModal = () => {
     setactivee(!activee);
@@ -217,7 +240,14 @@ const EditProfile = ({navigation}) => {
 
         <TouchableOpacity onPress={chooseFile}>
           <View style={styles.changepic}>
-            <Image style={styles.profilepic} source={imagePath.profile3} />
+            <FastImage
+              style={styles.profilepic}
+              source={
+                profilepic == null
+                  ? imagePath.ic_profile_placeholder
+                  : {uri: `data:image/jpg;base64,${profilepic}`}
+              }
+            />
             <View style={styles.textView}>
               <Text style={styles.Changeprofilepicture}>
                 {strings.Changeprofilepicture}
@@ -232,7 +262,6 @@ const EditProfile = ({navigation}) => {
             style={styles.ProfileName}
             placeholder={'Full Name'}
             placeholderTextColor={colors.lightgray}
-
             onChangeText={value => updateState({name: value})}
             value={state.name}></TextInput>
         </View>
@@ -245,7 +274,7 @@ const EditProfile = ({navigation}) => {
             onChangeText={value => updateState({email: value, changed: true})}
             value={state.email}
             placeholderTextColor={colors.lightgray}
-            placeholder={"Email"}
+            placeholder={'Email'}
             style={styles.ProfileEmail}></TextInput>
         </View>
 

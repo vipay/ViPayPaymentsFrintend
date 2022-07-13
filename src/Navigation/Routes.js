@@ -35,7 +35,7 @@ export default function Routes() {
   const userData = useSelector(state => state.auth.userData);
   {console.log(userData,"gdsjcjhb")}
   const isFirstTime = useSelector(state => state.isFirstTime.isFirstTime);
-  const screenLock = useSelector(state => state.loginPin.screenLock);
+  const screenLock = useSelector(state => state.loginPin);
   console.log(screenLock,"screenLockscreenLockscreenLockscreenLock")
   // console.log(isFirstTime, 'ghijtrsdytfuigyouyguhij');
   return (

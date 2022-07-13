@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Image,
- 
-} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Image} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import styles from './styles';
 
@@ -25,9 +18,8 @@ import colors from '../../styles/colors';
 import ContactRenderList from '../../Components/ContactRenderList';
 import strings from '../../constants/lang';
 import imagePath from '../../constants/imagePath';
-import { TextInput } from 'react-native-gesture-handler';
-
-
+import {TextInput} from 'react-native-gesture-handler';
+import { useIsFocused } from '@react-navigation/native';
 
 const Contact = ({navigation}) => {
   const {userData} = useSelector(state => state.auth);
@@ -36,33 +28,24 @@ const Contact = ({navigation}) => {
     contacts: [],
     data: [],
     id: '',
+    loader: false,
+    
   });
+
+  const {contacts, data, id, loader} = state;
   const updateState = data => {
     setState(state => ({...state, ...data}));
   };
+
+
   function isIOS() {
     return Platform.OS === 'ios' ? true : false;
   }
-  // useEffect(() => {
 
-  //   const unsubscribe = navigation.addListener('focus', async () => {
-  //     listContats()
-  //     })
-      
-  //     return unsubscribe;
-    
-  // }, [])
-
-  // useEffect(() => {
-  //   const unsubscribe = navigation.addListener('focus', async () => {
-  //     listContats();
-  //     })
-      
-  //     return unsubscribe;
-   
-  // }, []);
+  let isFocused = useIsFocused();
 
   useEffect(() => {
+    updateState({loader: true});
     if (isIOS()) {
       Contacts.getAll().then(contacts => {
         updateState({
@@ -73,20 +56,7 @@ const Contact = ({navigation}) => {
     } else {
       test();
     }
-    // listContats()
-  }, []);
-
-  // const listContats = () => {
-  //   listcontact()
-  //     .then(res => {
-  //       console.log(res.data);
-  //       updateState({data: res.data});
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //       updateState({isLoading: false});
-  //     });
-  // };
+  }, [isFocused]);
 
   const test = async () => {
     try {
@@ -120,73 +90,72 @@ const Contact = ({navigation}) => {
       }
     } catch (error) {}
   };
-
-  // var newPerson = {
-  //   familyName: 'Jung',
-  //   givenName: 'Carl',
-  //   middleName: '',
-  // };
-
   const addcontact = contactArray => {
     const aa = [];
     const bb = contactArray.map(item => {
       aa.push({
         phone:
           item.phoneNumbers.length > 0 &&
-          item.phoneNumbers[0].number.toString().replace(/-|  /g, '').trim(),
+          item.phoneNumbers[0].number.toString().replace(/-| /g, '').trim(),
         name: item.givenName,
       });
     });
-    // actions.
-    let apidata = {list:aa};
-    // return
-    console.log(apidata,'cccccccccccccccrsedtfygubhinjljkhjgh')
-    addContacts({list : aa})
+
+   
+    addContacts({list: aa})
       .then(res => {
         console.log(res, 'abcsscs');
-        // updateState({data:res.data})
-        // showSuccess('Contact sync successful ');
+        updateState({data: res.data, loader: false});
       })
       .catch(error => {
         console.log(error);
+        updateState({
+          loader: false,
+        });
       });
   };
-
+  let alpahet = '';
   const renderItem = ({item, index}) => {
+    const showalphabet = () => {
+      if (alpahet != item.nameInContacts.substring(0, 1)) {
+        alpahet = item.nameInContacts.substring(0, 1);
+        return true;
+      } else {
+        return false;
+      }
+    };
     return (
       <ContactRenderList
         key={index}
         item={item}
         index={index}
-        // onPress={() =>
-        //   navigation.navigate(navigationStrings.SENDUSER)
-        // }
+        char={item.nameInContacts.substring(0, 1)}
+        show={showalphabet()}
       />
     );
   };
 
-  const {data} = state;
   return (
-    <WrapperContainer>
-     <View>
-       <Text style={styles.Contact}>{strings.Contacts}</Text>
-       <View style={styles.search}>
-         <TextInput
-         placeholder={strings.SearchContact}
-         placeholderTextColor={colors.lightgray}
-         style={styles.input}
-         ></TextInput>
-         <Image source={imagePath.searchgrey} />
+    <WrapperContainer isLoading={loader}>
+      <View>
+        <Text style={styles.Contact}>{strings.Contacts}</Text>
+        <View style={styles.search}>
+          <TextInput
+            placeholder={strings.SearchContact}
+            placeholderTextColor={colors.lightgray}
+            style={styles.input}></TextInput>
+          <Image source={imagePath.searchgrey} />
+        </View>
 
-       </View>
-       
-      <FlatList
-        data={state.data}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderItem}
-        // initialNumToRender={10}
-        // contentContainerStyle={{flexGrow: 1}}
-      />
+        <FlatList
+          data={data.sort((a, b) =>
+            a.nameInContacts.localeCompare(b.nameInContacts),
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={<View style={{height: 140}} />}
+        />
       </View>
     </WrapperContainer>
   );

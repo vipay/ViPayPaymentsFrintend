@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     height: moderateScale(48),
     width: moderateScale(48),
     borderRadius: 24,
+
   },
   textView: {
     flex: 1,

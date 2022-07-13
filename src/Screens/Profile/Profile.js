@@ -1,6 +1,6 @@
 //import liraries
 import {month} from 'is_js';
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 import HeaderComp from '../../Components/HeaderComp';
 import {ProfileListComp} from '../../Components/ProfileListComp';
 import WrapperContainer from '../../Components/WrapperContainer';
@@ -18,10 +19,10 @@ import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
 import actions from '../../redux/actions';
-import { logout } from '../../redux/actions/auth';
+import {logout} from '../../redux/actions/auth';
 import colors from '../../styles/colors';
 import {moderateScale} from '../../styles/responsiveSize';
-import { setScreenLock } from '../../utils/utils';
+import {setScreenLock} from '../../utils/utils';
 
 import styles from './styles';
 
@@ -29,20 +30,25 @@ const Profile = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };
-  const [screenlock, setscreenlock] = useState(false)
 
-  const onscreenlock=()=>
-  {
-    setScreenLock(!screenlock).then(
-      res=>console.log(res,"locklock")
-    )
-    setscreenlock(!screenlock)
-  }
+  const lock = useSelector(state => state.loginPin.screenLock);
 
-  const LOGOUT=()=>
-  {
-    actions.logout()    
-  }
+  console.log(lock, 'locklocklocklocklock');
+  useEffect(() => {
+    setscreenlock(lock);
+  }, []);
+  const [screenlock, setscreenlock] = useState(false);
+
+  const onscreenlock = () => {
+    let result = {screenLock:!screenlock,isShow:false}
+    actions.loginPin(result);
+    setScreenLock(!screenlock).then(res => console.log(res, 'locklock'));
+    setscreenlock(!screenlock);
+  };
+
+  const LOGOUT = () => {
+    actions.logout();
+  };
   return (
     <WrapperContainer>
       <View style={styles.container}>
@@ -79,8 +85,10 @@ const Profile = ({navigation}) => {
           <View style={styles.profiledetails}>
             <View style={styles.editicon}>
               <Text style={styles.ProfileName}>{strings.ProfileName}</Text>
-              <TouchableOpacity  onPress={() => navigation.navigate(navigationStrings.EDITPROFILE)}
-              >
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate(navigationStrings.EDITPROFILE)
+                }>
                 <Image source={imagePath.ic_edit} />
               </TouchableOpacity>
             </View>
@@ -93,15 +101,16 @@ const Profile = ({navigation}) => {
             icon={imagePath.ic_gray_arrow}
             onPress={() => navigation.navigate(navigationStrings.MYQR)}
             container={{marginTop: moderateScale(8)}}
-            
           />
           <ProfileListComp
             logoicon={imagePath.ic_transaction_history}
             txt={strings.Transactionhistory}
             icon={imagePath.ic_gray_arrow}
-            onPress={() => navigation.navigate(navigationStrings.TRANSACTIONHISTORY)}
+            onPress={() =>
+              navigation.navigate(navigationStrings.TRANSACTIONHISTORY)
+            }
           />
-          
+
           <ProfileListComp
             logoicon={imagePath.ic_saved_wallet}
             txt={strings.Savedwallet}
@@ -129,11 +138,11 @@ const Profile = ({navigation}) => {
           <ProfileListComp
             logoicon={imagePath.ic_screen_lock}
             txt={strings.Screenlock}
-            icon={screenlock==true?
-              imagePath.switch_on:imagePath.switch_off}
+            icon={
+              screenlock == true ? imagePath.switch_on : imagePath.switch_off
+            }
             container={{marginTop: moderateScale(8)}}
             onPress={onscreenlock}
-
           />
           <ProfileListComp
             logoicon={imagePath.ic_change_pin}
@@ -158,10 +167,10 @@ const Profile = ({navigation}) => {
           />
           <View style={styles.anySuggestionView}>
             <TouchableOpacity>
-            <Text style={styles.Anysuggestions}>
-              {strings.Anysuggestions}
+              <Text style={styles.Anysuggestions}>
+                {strings.Anysuggestions}
               </Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>

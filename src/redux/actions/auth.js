@@ -30,7 +30,8 @@ import {
   SET_PIN,
   EDIT_PROFILE_,
   IMAGEUPLOAD,
-  CHANGEPASSWORD
+  CHANGEPASSWORD,
+  PINCHECK
 } from '../../config/urls';
 import {useState} from 'react';
 import { showSuccess } from '../../helper/helperFunctions';
@@ -184,6 +185,9 @@ export function sendMessage(data) {
 }
 export function edit_profile(data) {
   return apiPut(EDIT_PROFILE_, data, {'accept-language': "en"});
+}
+export function pin_check(data) {
+  return apiPost(PINCHECK, data, {'accept-language': "en"});
 }
 export function Change_Password(data) {
   return apiPut(CHANGEPASSWORD, data, {'accept-language': "en"});
