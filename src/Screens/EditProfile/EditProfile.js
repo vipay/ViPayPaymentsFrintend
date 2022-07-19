@@ -2,35 +2,35 @@ import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
-  ImageBackground,
-  Pressable,
   TouchableOpacity,
-  StatusBar,
   TextInput,
   Modal,
 } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
 import HeaderComp from '../../Components/HeaderComp';
-import {ProfileListComp} from '../../Components/ProfileListComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
 import colors from '../../styles/colors';
-import {moderateScale} from '../../styles/responsiveSize';
 import styles from './styles';
-import QRCode from 'react-native-qrcode-svg';
 import ButtonComp from '../../Components/ButtonComp';
-import navigationStrings from '../../constants/navigationStrings';
-import VerifyEmail from '../../Components/VerifyEmail';
 import {useSelector} from 'react-redux';
 import {showError, showSuccess} from '../../helper/helperFunctions';
 import actions from '../../redux/actions';
 import {Magic} from '@magic-sdk/react-native';
-import CountryPicker, {getCallingCode} from 'react-native-country-picker-modal';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import FastImage from 'react-native-fast-image';
+import {useMoralisFile, use} from 'react-moralis';
+// import Moralis from 'moralis';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+const Moralis = require('moralis/react-native.js');
+
+Moralis.setAsyncStorage(AsyncStorage);
+
+// import { Moralis } from 'moralis'
+
+const RNFS = require('react-native-fs');
 
 // import {create} from 'ipfs-http-client';
 
@@ -42,11 +42,6 @@ const EditProfile = ({navigation}) => {
   };
   const data = useSelector(state => state.auth.userData);
   const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
-  const [countryCode, setcountryCode] = useState('AE');
-  const [iso2, setiso2] = useState();
-  const [callingCode, setcallingCode] = useState('971');
-  const [activeOtp, setActiveOtp] = useState(false);
-
   const [state, setState] = useState({
     name: '',
     email: '',
@@ -64,6 +59,8 @@ const EditProfile = ({navigation}) => {
     loader: false,
     response,
     profilepic: '',
+    imagedata: '',
+    base644: '',
   });
   const {
     name,
@@ -81,13 +78,21 @@ const EditProfile = ({navigation}) => {
     loader,
     response,
     profilepic,
+    imagedata,
+    base644,
   } = state;
   const updateState = data => setState(state => ({...state, ...data}));
 
+  useFocusEffect(
+    React.useCallback(() => {
+      getdata();
+    },[])
+  )
   useEffect(() => {
     getdata();
     updateState({name: data.name, email: data.email});
   }, []);
+
   const getdata = () => {
     let apidata = {defaultArgument: 'NA'};
 
@@ -97,16 +102,15 @@ const EditProfile = ({navigation}) => {
         updateState({
           name: res.data.name,
           email: res.data.email,
-          profilepic: res.data.profilePic.data,
+          // profilepic: res?.data?.profilePic.data,
         });
-        // showSuccess('Update Successful')
-        // console.log(res.data.profilePic.data, 'profileeeeeeeeee');
         console.log(res, 'show sucess');
       })
       .catch(err => {
         console.log(err);
       });
   };
+
   const chooseFile = () => {
     let options = {
       maxWidth: 500,
@@ -117,47 +121,97 @@ const EditProfile = ({navigation}) => {
       if (response.didCancel) {
         return;
       } else {
-        console.log(response.assets[0], 'responseresponseresponse');
-        imageUpload(response);
+        console.log(response, 'responseresponseresponse');
+        updateState({imagedata: response.assets[0].uri.replace('file://', '')});
+        // imageUpload(response);
+        base();
       }
     });
   };
+  console.log(imagedata, 'imagedataimagedataimagedata');
 
-  const imageUpload = response => {
-    let apidata = dataform(response);
-    console.log(apidata, 'apidataapidataapidata');
-    actions
-      .imageUpload(apidata)
+  const base = async () => {
+    RNFS.readFile(imagedata, 'base64')
       .then(res => {
-        console.log(res, 'image base 64');
+        // let urlString = 'data:image/jpeg;base64,' + res;
+        // console.log(res, 'jhhhhhhh');
+        // console.log(urlString, 'urlStringurlStringurlString');
+        // updateState({base644: res});
+        // uploadFile(res.toString());
       })
       .catch(err => {
-        console.log(err, 'something wrong');
+        console.log(err, 'errrrrrrrr');
       });
   };
-  const dataform = response => {
-    let imagePath = response.assets[0].uri;
-    const imgData = new FormData();
-    imgData.append('profilePic', {
-      uri: imagePath,
-      name: 'image.png',
-      fileName: 'image',
-      type: 'image/png',
-    });
 
-    console.log('.....imgData....', imgData);
-    return JSON.stringify([{
-      'profilePic': {
-        uri: imagePath,
-        name: 'image.png',
-        fileName: 'image',
-        type: 'image/png',
-      },
+  // const {saveFile} = useMoralisFile();
+  // const uploadFile = async () => {
+  //   const base64 =
+  //   "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCACWAMgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAf/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC6Aj6CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==";
 
-    }
-      
-    ]);
-  };
+  //   // const image =
+  //   //   'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCACWAMgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAf/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC6Aj6CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==';
+  //   // const file = new Moralis.File('image.png', {base64: image});
+  //   // await file.saveIPFS();
+
+  //   // console.log(file, 'imageeeee');
+
+  //   saveFile(
+  //     'myfile.txt',
+  //     {base64},
+  //     {
+  //       type: 'base64',
+  //       saveIPFS: true,
+  //       onSuccess: result => console.log(result.ipfs(), 'ipfsss'),
+  //       metadata:ress=> console.log(ress,'jdc'),
+  //       onError: error => console.log(error, 'erroroorrr'),
+  //       onComplete: res => console.log(res, 'oncomplete'),
+  //     },
+  //   );
+  // };
+
+  // const imageUpload = response => {
+  //   let apidata = dataform(response);
+  //   console.log(apidata, 'apidataapidataapidata');
+  //   actions
+  //     .imageUpload(apidata)
+  //     .then(res => {
+  //       console.log(res, 'image base 64');
+  //     })
+  //     .catch(err => {
+  //       console.log(err, 'something wrong');
+  //     });
+  // };
+  // const dataform = response => {
+  //   let imagePath = response.assets[0].uri;
+  //   const imgData = new FormData();
+  //   imgData.append('profilePic', {
+  //     uri: imagePath,
+  //     name: 'image.png',
+  //     fileName: 'image',
+  //     type: 'image/png',
+  //   });
+
+  //   console.log('.....imgData....', imgData);
+  //   return JSON.stringify([
+  //     {
+  //       profilePic: {
+  //         uri: imagePath,
+  //         name: 'image.png',
+  //         fileName: 'image',
+  //         type: 'image/png',
+  //       },
+  //     },
+  //   ]);
+  // };
+
+  // const {saveFile} = useMoralisFile();
+  // console.log(imagedata, 'imagedataimagedataimagedata');
+  // const file = new Moralis.File(imagedata.fileName, imagedata);
+  // file.saveIPFS();
+  // console.log(file.ipfs(), 'ipfssssssssssssss');
+
+  // console.log(file.ipfs(), file.hash(), 'thrreeeeeehcdhvhgwdvhgvwehg');
 
   // const ipfsupload = async response => {
   //   console.log("ipfsuploadipfsuploadipfsupload")
@@ -233,6 +287,8 @@ const EditProfile = ({navigation}) => {
   const toggleModal = () => {
     setactivee(!activee);
   };
+
+  console.log(profilepic.length, 'piiiiiccccccccc');
   return (
     <WrapperContainer isLoading={loader}>
       <View style={styles.container}>
@@ -242,11 +298,12 @@ const EditProfile = ({navigation}) => {
           <View style={styles.changepic}>
             <FastImage
               style={styles.profilepic}
-              source={
-                profilepic == null
-                  ? imagePath.ic_profile_placeholder
-                  : {uri: `data:image/jpg;base64,${profilepic}`}
-              }
+              source={imagePath.ic_profile_placeholder}
+              // source={
+              //   profilepic.length == 0
+              //     ? imagePath.ic_profile_placeholder
+              //     : {uri: `data:image/jpg;base64,${profilepic}`}
+              // }
             />
             <View style={styles.textView}>
               <Text style={styles.Changeprofilepicture}>
@@ -277,51 +334,6 @@ const EditProfile = ({navigation}) => {
             placeholder={'Email'}
             style={styles.ProfileEmail}></TextInput>
         </View>
-
-        {/* <View style={styles.inputfield}>
-              <View style={styles.subinputfield}>
-                <View style={styles.countrypicker}>
-                  <CountryPicker
-                    withFilter
-                    countryCode={countryCode}
-                    withFlagButton={false}
-                    withCallingCode={callingCode}
-                    withCallingCodeButton={true}
-                    cca2={iso2}
-                    theme={styles.countrycode}
-                    excludeCountries={['AQ', 'BV', 'TF', 'HM', 'UM']}
-                    onSelect={country => {
-                      // console.log('country',country);
-                      const {cca2, callingCode} = country;
-                      updateState({showtimer: false, resend: false});
-
-                      setcountryCode(cca2);
-                      setcallingCode(country.callingCode);
-                    }}
-                  />
-                </View>
-
-                <Text style={styles.inputline} />
-                <TextInput
-                  style={styles.phoneNo}
-                  keyboardType={'numeric'}
-                  maxLength={14}
-                  // autoFocus
-                  onChangeText={value => {
-                    updateState({
-                      phoneNO: value,
-                      showtimer: false,
-                      resend: false,
-                    });
-                    // get otp activates when enter value is 9
-                    value.length > 8 ? setActiveOtp(true) : setActiveOtp(false);
-                  }}
-                  placeholderTextColor={colors.lightgray}
-                  placeholder={strings.placeholderPHNO}
-                />
-              </View>
-             
-            </View> */}
 
         <View style={styles.phoneView}>
           {/* <Text style={styles.countrycode}>{'+' + data.country_code}</Text>

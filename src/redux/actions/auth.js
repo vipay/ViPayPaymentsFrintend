@@ -31,13 +31,14 @@ import {
   EDIT_PROFILE_,
   IMAGEUPLOAD,
   CHANGEPASSWORD,
-  PINCHECK
+  PINCHECK,
+  HELPSUPPORT,
+  SAVEADDRESS,
 } from '../../config/urls';
 import {useState} from 'react';
-import { showSuccess } from '../../helper/helperFunctions';
+import {showSuccess} from '../../helper/helperFunctions';
 import {Magic} from '@magic-sdk/react-native';
-const magicClient = new Magic('pk_live_1421890C80C60FED');
-
+const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
 const {dispatch} = store;
 
 const saveUserData = data => {
@@ -107,28 +108,18 @@ export function forgotPassword(data) {
   return apiPost(FORGOT_PASSWORD, data);
 }
 
-export function logout() {
-  // apiPut(LOGOUT)
-  // .then(res=>
-  //   {
-  //     showSuccess('Logout Successful')
-  //   })
-  // .catch( err=>
-  //   {
-  //     console.log(err,'logout error')
-  //   })
-  // dispatch({type: types.CLEAR_REDUX_STATE});
-  magicClient.user.logout()
+export const logout = async () => {
+  
   clearUserData();
   clearreduxdata();
-}
+};
 
 export function list_tutorials() {
   return apiGet(TUTORIALS_LIST);
 }
 export function login_with_mobile(data) {
   return new Promise((resolve, reject) => {
-    apiPost(LOGIN, data, {'accept-language': "en"})
+    apiPost(LOGIN, data, {'accept-language': 'en'})
       .then(res => {
         setUserData(res.data).then(suc => {
           resolve(res);
@@ -155,7 +146,7 @@ export function resend_otp(data) {
 export const loginpin = (data, headers) => {
   console.log(data, 'the given data');
   return new Promise((resolve, reject) => {
-    (SET_PIN, data, {'Accept-Language': "en",headers})
+    (SET_PIN, data, {'Accept-Language': 'en', headers})
       .then(res => {
         resolve(res);
         init();
@@ -167,14 +158,14 @@ export const loginpin = (data, headers) => {
 };
 
 export function addContacts(data) {
-  return apiPost(CONTACT, data,{'accept-language': "en"});
+  return apiPost(CONTACT, data, {'accept-language': 'en'});
 }
 export function listcontact() {
   return apiGet(LISTCONTACTS);
 }
 
 export function listmessage(query) {
-  return apiGet(LIST_MESSAGE + "?user_id=" + query);
+  return apiGet(LIST_MESSAGE + '?user_id=' + query);
 }
 
 export function listchats() {
@@ -184,21 +175,23 @@ export function sendMessage(data) {
   return apiPost(SEND_MESSAGE, data);
 }
 export function edit_profile(data) {
-  return apiPut(EDIT_PROFILE_, data, {'accept-language': "en"});
+  return apiPut(EDIT_PROFILE_, data, {'accept-language': 'en'});
 }
 export function pin_check(data) {
-  return apiPost(PINCHECK, data, {'accept-language': "en"});
+  return apiPost(PINCHECK, data, {'accept-language': 'en'});
 }
 export function Change_Password(data) {
-  return apiPut(CHANGEPASSWORD, data, {'accept-language': "en"});
+  return apiPut(CHANGEPASSWORD, data, {'accept-language': 'en'});
 }
 export function imageUpload(data) {
-  return apiPut(IMAGEUPLOAD, data, {'accept-language': "en"});
+  return apiPut(IMAGEUPLOAD, data, {'accept-language': 'en'});
 }
-// export function logout(data) {
-//   return apiPut(LOGOUT, data);
-// }
-
+export function helpSupport(data) {
+  return apiPost(HELPSUPPORT, data, {'accept-language': 'en'});
+}
+export function SaveAddress(data) {
+  return apiPost(SAVEADDRESS, data, {'accept-language': 'en'});
+}
 export function addContact(data) {
   return apiPut(CONTACT, data);
 }

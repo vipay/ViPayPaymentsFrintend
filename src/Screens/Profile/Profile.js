@@ -1,4 +1,3 @@
-//import liraries
 import {month} from 'is_js';
 import React, {Component, useEffect, useState} from 'react';
 import {
@@ -23,31 +22,53 @@ import {logout} from '../../redux/actions/auth';
 import colors from '../../styles/colors';
 import {moderateScale} from '../../styles/responsiveSize';
 import {setScreenLock} from '../../utils/utils';
-
+import {Magic} from '@magic-sdk/react-native';
 import styles from './styles';
+import {Singleton} from '../../config/magicConfig';
 
 const Profile = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };
 
+  const magic = Singleton.getInstance();
+
+  // const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
+
   const lock = useSelector(state => state.loginPin.screenLock);
 
-  console.log(lock, 'locklocklocklocklock');
   useEffect(() => {
     setscreenlock(lock);
   }, []);
   const [screenlock, setscreenlock] = useState(false);
 
   const onscreenlock = () => {
-    let result = {screenLock:!screenlock,isShow:false}
+    let result = {screenLock: !screenlock, isShow: false};
     actions.loginPin(result);
     setScreenLock(!screenlock).then(res => console.log(res, 'locklock'));
     setscreenlock(!screenlock);
   };
 
-  const LOGOUT = () => {
-    actions.logout();
+  const LOGOUT = async () => {
+    // console.log('actions.logout();', await magic.user.getIdToken());
+    console.log('logoutttttttttt',magic.user.logout());
+    magic.user.logout()
+    .then()
+    .catch()
+    actions.logout()
+    // try {
+    //   magic.user
+    //     .logout()
+    //     .then(res => {
+    //       console.log(res, 'logou logout');
+    //       // actions.logout();
+    //     })
+    //     .catch(err => {
+    //       console.log(err, 'erroeerrrrrr');
+    //     });
+    // } catch (error) {
+    //   console.log('errorerrorerror', error);
+    // }
   };
   return (
     <WrapperContainer>

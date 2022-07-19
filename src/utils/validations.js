@@ -16,6 +16,9 @@ const checkMinLength = (val, minLength, key) => {
 	}
 };
 
+
+
+
 export default function (data) {
 	let error = '';
 	const {

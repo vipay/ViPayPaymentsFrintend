@@ -6,3 +6,4 @@ export const staticUserImageUrl =
 
 export const applicationID = 'j5ojMrHiSlMQ9SJplllQkKf0mN8bYMOcz3mi5Bg1';
 export const serverUrl = 'https://ijyktqtfyobw.usemoralis.com:2053/server';
+export const magic_live = 'pk_live_FBAA2C5CB588AEE2';

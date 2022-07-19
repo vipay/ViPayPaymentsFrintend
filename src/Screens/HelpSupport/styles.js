@@ -40,8 +40,10 @@ const styles = StyleSheet.create({
 
   },
   messageinput:{
-    // flex:1
-    marginHorizontal:moderateScale(16)
+    flex:1,
+    marginHorizontal:moderateScale(16),
+    // backgroundColor:"red",
+    textAlignVertical:'top'
     
 
   },
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
     // justifyContent:'center',
     paddingHorizontal:moderateScale(16),
-    flexDirection:"row"
+    // flexDirection:"row"
 
   },
   text:{

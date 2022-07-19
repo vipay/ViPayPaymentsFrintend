@@ -1,4 +1,3 @@
-//import liraries
 import React, {Component, useState, useEffect, Suspense} from 'react';
 import {
   View,
@@ -6,7 +5,6 @@ import {
   Image,
   TextInput,
   TouchableWithoutFeedback,
-  Pressable,
   Modal,
 } from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
@@ -19,28 +17,11 @@ import styles from './styles';
 import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {login, login_with_mobile, resend_otp} from '../../redux/actions/auth';
-import actions from '../../redux/actions';
-import {
-  showError,
-  showSuccess,
-  otpTimerCounter,
-} from '../../helper/helperFunctions';
-import BackgroundTimer from 'react-native-background-timer';
-import {
-  setUserData,
-  apiPost,
-  clearUserData,
-  apiGet,
-  apiPut,
-  getUserData,
-  removeItem,
-  clearAsyncStorate,
-} from '../../utils/utils';
+import {showError} from '../../helper/helperFunctions';
 import store from '../../redux/store';
 import types from '../../redux/types';
-import {Magic} from '@magic-sdk/react-native';
-import Moralis from 'moralis/react-native.js';
-import Loader from '../../Components/Loader';
+import {Singleton} from '../../config/magicConfig';
+import {getUserData} from '../../utils/utils';
 const {dispatch} = store;
 const Login = ({navigation}) => {
   const [countryCode, setcountryCode] = useState('AE');
@@ -74,115 +55,8 @@ const Login = ({navigation}) => {
     loader,
   } = state;
   const updateState = data => setState(state => ({...state, ...data}));
-  // const magicClient = new Magic('pk_live_1421890C80C60FED');
-  console.log(number, 'hhhhhh');
-  const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
 
-  useEffect(() => {
-    // magicClient.auth
-    //   .loginWithEmailOTP({
-    //     email: 'yashvistackgeeks@gmail.com',
-    //   })
-    //   .then(e => {
-    //     console.log('magicClientmagicClient', e);
-    //   })
-    //   .catch(error => {
-    //     console.log('aaa', error);
-    //   });
-    // magicClient.auth
-    //   .loginWithMagicLink({
-    //     email: 'yashvichadha@gmail.com',
-    //     showUI: true,
-    //   })
-    //   .then(e => {
-    //     console.log('magicClientmagicClient', e);
-    //   })
-    //   .catch(error => {
-    //     console.log('aaa', error);
-    //   });
-  }, []);
-
-  useEffect(() => {
-    if (!!counter) startTimer();
-    else {
-      BackgroundTimer.stopBackgroundTimer();
-      updateState({showtimer: false});
-    }
-    return () => {
-      BackgroundTimer.stopBackgroundTimer();
-    };
-  }, [counter]);
-  const startTimer = () => {
-    BackgroundTimer.runBackgroundTimer(() => {
-      updateState({counter: counter - 1});
-    }, 1000);
-  };
-  const ongetOtp = () => {
-    if (phoneNO.length < 10) {
-    } else {
-      updateState({showtimer: true, counter: 30, resend: true});
-      let apidata = {country_code: callingCode.toString(), phone_no: phoneNO};
-
-      if (resend == true) {
-        resend_otp(apidata)
-          .then(data => {
-            showSuccess('OTP resent successfully');
-            console.log(data);
-            updateState({auth: data.data.access_token});
-          })
-          .catch(err => {
-            console.log(err);
-            ``;
-          });
-      } else {
-        console.log(callingCode);
-        updateState({number: '+' + callingCode + phoneNO});
-        const phNumber = '+' + callingCode + phoneNO.toString();
-        updateState({visiblity: true});
-        console.log(DID,'sadfgfhg')
-        const DID = magicClient.auth
-
-          .loginWithSMS({
-            phoneNumber: phNumber,
-          })
-
-          .then(access => {
-            console.log('DIDDIDDIDDIDDID', access);
-            updateState({visiblity: false, DID: access});
-            showSuccess;
-          })
-          .catch(error => {
-            console.log('otpotpotpotp', error);
-            updateState({visiblity: false});
-          });
-
-        // const DIDD = magicClient.auth
-        //   .loginWithEmailOTP({
-        //     email: 'yashvichadha@gmail.com',
-        //   })
-        //   .then(res => {
-        //     console.log('EmailEmailEmailEmailEmailEmail', res);
-        //   })
-        //   .catch( error =>{
-        //     console.log('errorrerrorrerrorrerrorr', error)
-        //   })
-        // showSuccess('otp send successfully');
-        // actions
-        //   .login_with_mobile(apidata)
-        //   .then(data => {
-        //     showSuccess('OTP sent successfully');
-        //     console.log(data);
-        //     updateState({
-        //       auth: data.data.access_token,
-        //       pincheck: data.data.pin_genrated,
-        //     });
-        //   })
-        //   .catch(err => {
-        //     console.log(err);
-        //   });
-      }
-    }
-  };
+  const magic = Singleton.getInstance();
 
   const saveUserData = data => {
     console.log(data);
@@ -191,7 +65,6 @@ const Login = ({navigation}) => {
       payload: data,
     });
   };
-
   const init = async () => {
     try {
       const userData = await getUserData();
@@ -202,7 +75,7 @@ const Login = ({navigation}) => {
     }
   };
 
-  const onsignin = () => {
+  const onsignin = async () => {
     if (phoneNO.length < 8) {
       showError(
         phoneNO.length == 0
@@ -210,84 +83,47 @@ const Login = ({navigation}) => {
           : 'Please enter Correct Phone number',
       );
     } else {
-      // const diddd = magicClient.user.logout();
-      updateState({number: '+' + callingCode + phoneNO});
       const phNumber = '+' + callingCode + phoneNO.toString();
       updateState({visiblity: true, loader: true});
-      // const DIDD = magicClient.auth
-      //     .loginWithEmailOTP({
-      //       email: 'yashvichadha@gmail.com',
-      //     })
-      //     .then(res => {
-      //       console.log('EmailEmailEmailEmailEmailEmail', res);
-      //     })
-      //     .catch( error =>{
-      //       console.log('errorrerrorrerrorrerrorr', error)
-      //     })
-      // const l = magicClient.user.logout()
-      // res=>
-      // {
-      //   try{
-      //     removeTokenCookie(res)
-      //     try{
-      //       magicClient.user.logoutByIssuer(user.issuer)
-      //     }
-      //     catch(error){
-      //       console.log(error,'errrr')
-      //     }
-      //   }
-      //   catch{
-      //     console.log('xdtcfvgbhknj')
-      //   }
-      // }
       setTimeout(() => {
         updateState({loader: false});
       }, 10000);
-
-      console.log(phNumber,"phNumberdeewfwef");
-      const DID = magicClient.auth
+      magic.auth
         .loginWithSMS({
           phoneNumber: phNumber,
         })
         .then(access => {
-          console.log('DIDDIDDIDDIDDID', access);
+          updateState({visiblity: false, loader: true});
+          console.log(access, 'DIDDIDDIDDIDDIDDID');
+          try {
+            const res = login_with_mobile({token: access})
+              .then(res => {
+                if (res.data.pin == 'Vi') {
+                  navigation.navigate(navigationStrings.CREATEPIN, {
+                    auth: res.data.token,
+                  });
+                  updateState({loader: false});
+                } else {
+                  init();
+                  updateState({loader: false});
+                }
+              })
+              .catch(err => {
+                console.log(err, ' error at api');
+              });
+          } catch (error) {
+            console.log('errorerror', error);
+            updateState({visiblity: false, loader: false});
+            showError('Something went wrong try again');
+          }
+        })
+        .catch(err => {
+          console.log(err, 'errorrr');
           updateState({visiblity: false, loader: false});
-
-          login_with_mobile({token: access})
-            .then(res => {
-              console.log(res, 'success');
-              if (res.data.pin == 'Vi') {
-                navigation.navigate(navigationStrings.CREATEPIN, {
-                  auth: res.data.token,
-                });
-              } else {
-                init();
-              }
-            })
-            .catch(err => {
-              console.log(err, 'error');
-              console.log('something went wrong');
-            });
-        })
-        .catch(error => {
-          updateState({visiblity: false});
-          // navigation.navigate(navigationStrings.LOGIN)
-          console.log('otpotpotpotp', error);
-          updateState({visiblity: false});
-          // updateState({loader:false});
-          showError('Something went wrong try again');
-          // clearAsyncStorate();
-
-        })
-        
-        
+        });
     }
   };
 
-  const countryChange = data => {
-    setcountryCode({iso2: data.cca2});
-    setcountryCode('+' + data.callingCode[0]);
-  };
   return (
     <WrapperContainer isLoading={loader}>
       <View style={styles.container}>
@@ -311,10 +147,8 @@ const Login = ({navigation}) => {
                     theme={styles.countrycode}
                     excludeCountries={['AQ', 'BV', 'TF', 'HM', 'UM']}
                     onSelect={country => {
-                      // console.log('country',country);
                       const {cca2, callingCode} = country;
                       updateState({showtimer: false, resend: false});
-
                       setcountryCode(cca2);
                       setcallingCode(country.callingCode);
                     }}
@@ -340,15 +174,6 @@ const Login = ({navigation}) => {
                   placeholder={strings.placeholderPHNO}
                 />
               </View>
-              {/* <Pressable style={styles.getotp} onPress={ongetOtp}>
-                <Text style={activeOtp ? styles.activegetotp : styles.getotp}>
-                  {showtimer
-                    ? (counter < 10 ? '00:0' : '00:') + counter
-                    : resend
-                    ? 'Resend'
-                    : strings.getotp}
-                </Text>
-              </Pressable> */}
             </View>
 
             <Text style={styles.termsCond}>
@@ -370,7 +195,12 @@ const Login = ({navigation}) => {
             </Text>
 
             <Text></Text>
-            <ButtonComp btnText={strings.signin} onPress={onsignin} />
+            <ButtonComp
+              btnText={strings.signin}
+              onPress={() => {
+                onsignin();
+              }}
+            />
           </View>
         </KeyboardAwareScrollView>
       </View>
@@ -378,22 +208,11 @@ const Login = ({navigation}) => {
       <View>
         <Modal visible={visiblity} transparent>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <View style={{flex: 0.7}}>
-              <magicClient.Relayer />
+            <View style={{flex: 1}}>
+              <magic.Relayer />
             </View>
           </View>
         </Modal>
-        {/* <View style={styles.otpholder}> */}
-
-        {/* <TextInput
-                  style={styles.otp}
-                  placeholder={strings.placeholderOTP}
-                  placeholderTextColor={colors.lightgray}
-                  keyboardType={'numeric'}
-                  maxLength={6}
-                  onChangeText={value => updateState({otp: value})}
-                /> */}
-        {/* </View> */}
       </View>
     </WrapperContainer>
   );

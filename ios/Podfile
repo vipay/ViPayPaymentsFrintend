@@ -19,6 +19,14 @@ target 'ViPay' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
   target 'ViPayTests' do
     inherit! :complete
     # Pods for testing

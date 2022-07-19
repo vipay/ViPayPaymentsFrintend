@@ -82,6 +82,7 @@ const ChatUsersList = ({navigation}) => {
         <View style={styles.flatList}>
           <FlatList
             data={data}
+            
             keyExtractor={(_, index) => index.toString()}
             renderItem={renderItem}
           />

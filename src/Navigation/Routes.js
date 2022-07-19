@@ -25,7 +25,10 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useSelector} from 'react-redux';
-import {createSharedElementStackNavigator, create} from 'react-navigation-shared-element';
+import {
+  createSharedElementStackNavigator,
+  create,
+} from 'react-navigation-shared-element';
 import AuthScreen from './AuthScreen';
 import MainStack from './MainStack';
 import TabRoutes from './TabRoutes';
@@ -33,15 +36,13 @@ const Stack = createStackNavigator();
 // const Stack = createSharedElementStackNavigator();
 export default function Routes() {
   const userData = useSelector(state => state.auth.userData);
-  {console.log(userData,"gdsjcjhb")}
   const isFirstTime = useSelector(state => state.isFirstTime.isFirstTime);
   const screenLock = useSelector(state => state.loginPin);
-  console.log(screenLock,"screenLockscreenLockscreenLockscreenLock")
   // console.log(isFirstTime, 'ghijtrsdytfuigyouyguhij');
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      {!!userData?.token ? (
+        {!!userData?.token ? (
           <>{MainStack(Stack, screenLock)}</>
         ) : (
           <>{AuthScreen(Stack, isFirstTime)}</>

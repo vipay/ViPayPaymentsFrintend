@@ -15,8 +15,19 @@ import imagePath from '../constants/imagePath';
 import commonStyles from '../styles/commonStyles';
 import fontFamily from '../styles/fontFamily';
 import ButtonComp from './ButtonComp';
+import {showError, showSuccess} from '../helper/helperFunctions';
+import actions from '../redux/actions';
 
 const AddAddress = ({isvisible, close}) => {
+  const [selectindex, setselectindex] = useState(-1);
+  const [state, setState] = useState({
+    walletAddress: '',
+    walletlable: '',
+    selected: '',
+  });
+
+  const {walletAddress, walletlable, selected} = state;
+  const updateState = data => setState(state => ({...state, ...data}));
   const networks = [
     {
       name: 'Bitcoin',
@@ -41,13 +52,51 @@ const AddAddress = ({isvisible, close}) => {
     },
   ];
 
+  const selectedNetwork = (index, item) => {
+    setselectindex(index);
+    updateState({selected: item.name});
+  };
+
+  const onSave = () => {
+    if (walletAddress.length == 0) {
+      showError(`Wallet Address can't be empty`);
+    } else if (walletlable.length == 0) {
+      showError(`Wallet Lable can't be empty`);
+    } else if (selected.length == 0) {
+      showError(`select a network`);
+    } else {
+      let Apidata = {
+        walletAddress: walletAddress,
+        walletLabel: walletlable,
+        network: selected,
+      };
+      actions
+        .SaveAddress(Apidata)
+        .then(res => {
+          console.log(res, 'SaveAddressSaveAddress');
+          showSuccess('Address Saved Successfully');
+          close();
+          setselectindex(-1);
+          updateState({
+            walletAddress: '',
+            walletlable: '',
+          });
+        })
+        .catch(error => {
+          console.log(error, 'errorerrorerror at save address');
+          showError('Something went wrong try again later');
+          close();
+        });
+    }
+  };
+
   return (
     <WrapperContainer>
       <Modal visible={isvisible} transparent>
         <View style={styles.container}>
           <View style={styles.main}>
             <View style={styles.heading}>
-              <Text style={styles.header}>{'Add address'}</Text>
+              <Text style={styles.header}>{'Add new address'}</Text>
               <TouchableOpacity onPress={() => close()}>
                 <Image source={imagePath.ic_gray_cross} />
               </TouchableOpacity>
@@ -57,6 +106,8 @@ const AddAddress = ({isvisible, close}) => {
                 style={styles.inputxt}
                 placeholder="Wallet address"
                 placeholderTextColor={colors.lightgray}
+                onChangeText={value => updateState({walletAddress: value})}
+                value={walletAddress}
               />
             </View>
             <View style={styles.input}>
@@ -64,6 +115,8 @@ const AddAddress = ({isvisible, close}) => {
                 style={styles.inputxt}
                 placeholder="Wallet label"
                 placeholderTextColor={colors.lightgray}
+                onChangeText={value => updateState({walletlable: value})}
+                value={walletlable}
               />
             </View>
 
@@ -72,17 +125,22 @@ const AddAddress = ({isvisible, close}) => {
             <View style={styles.list}>
               {networks.map((item, index) => {
                 return (
-                  <View style={styles.tiles}>
-                    <Text style={styles.networks}>{item.name}</Text>
-                  </View>
+                  <TouchableOpacity
+                    style={styles.tiles}
+                    onPress={() => selectedNetwork(index, item)}>
+                    <Text
+                      style={
+                        selectindex == index
+                          ? styles.networksdark
+                          : styles.networks
+                      }>
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
                 );
               })}
             </View>
-            <ButtonComp
-              btnText="Save"
-              btnStyle={styles.btn}
-              onPress={() => close()}
-            />
+            <ButtonComp btnText="Save" btnStyle={styles.btn} onPress={onSave} />
           </View>
         </View>
       </Modal>
@@ -143,6 +201,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: 8,
     borderColor: colors.C4C4C6,
+    lineHeight: 24,
+    paddingVertical: 8,
+    paddingLeft: moderateScale(16),
+    paddingRight: moderateScale(16),
+  },
+  networksdark: {
+    ...commonStyles.fontSize14,
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.white,
+    borderWidth: 1,
+    textAlign: 'center',
+    borderRadius: 8,
+    borderColor: colors.Blue,
+    backgroundColor: colors.Blue,
     lineHeight: 24,
     paddingVertical: 8,
     paddingLeft: moderateScale(16),

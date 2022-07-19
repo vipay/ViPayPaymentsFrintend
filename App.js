@@ -10,16 +10,12 @@ import {getFirstTime, getScreenLock, getUserData} from './src/utils/utils';
 import fontFamily from './src/styles/fontFamily';
 import actions from './src/redux/actions';
 import SplashScreen from 'react-native-splash-screen';
-import {StatusBar} from 'react-native';
-import TransactionhistoryRenderList from './src/Screens/TransactionHistory/TransactionhistoryRenderList';
-import HelpSupport from './src/Screens/HelpSupport/HelpSupport';
-import Referrals from './src/Screens/Referrals/Referrals';
-import EditProfile from './src/Screens/EditProfile/EditProfile';
-import ChatBottomComp from './src/Components/ChatBottomComp';
+import {StatusBar, View} from 'react-native';
 import {MoralisProvider} from 'react-moralis';
 import {applicationID, serverUrl} from './src/constants/constants';
 import Moralis from 'moralis/react-native.js';
-
+import magicLink from './src/config/magicConfig';
+import {HelpSupport} from './src/Screens';
 const {dispatch} = store;
 
 const App = () => {
@@ -49,12 +45,11 @@ const App = () => {
   };
 
   const loginPIn = () => {
-    getScreenLock()
-      .then(res => {
-        let result = {screenLock:res,isShow:true}
-        actions.loginPin(result)
-        console.log(res,"PPPPPPPOLLLLLOCK")
-      })
+    getScreenLock().then(res => {
+      let result = {screenLock: res, isShow: true};
+      actions.loginPin(result);
+      console.log(res, 'PPPPPPPOLLLLLOCK');
+    });
   };
 
   useEffect(() => {
@@ -69,11 +64,11 @@ const App = () => {
     <MoralisProvider
       initializeOnMount={true}
       serverUrl={serverUrl}
-      // environment={'native'}
       appId={applicationID}>
       <Provider store={store}>
         <SafeAreaProvider>
           <Routes />
+          {/* <HelpSupport/> */}
           <FlashMessage
             titleStyle={{
               marginRight: moderateScale(5),
