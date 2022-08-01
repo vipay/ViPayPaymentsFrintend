@@ -23,7 +23,7 @@ import FastImage from 'react-native-fast-image';
 import {useMoralisFile, use} from 'react-moralis';
 // import Moralis from 'moralis';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFocusEffect } from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 const Moralis = require('moralis/react-native.js');
 
 Moralis.setAsyncStorage(AsyncStorage);
@@ -86,11 +86,11 @@ const EditProfile = ({navigation}) => {
   useFocusEffect(
     React.useCallback(() => {
       getdata();
-    },[])
-  )
+    }, []),
+  );
   useEffect(() => {
     getdata();
-    updateState({name: data.name, email: data.email});
+    updateState({name: data.name, email: data.email, loader: true});
   }, []);
 
   const getdata = () => {
@@ -100,14 +100,18 @@ const EditProfile = ({navigation}) => {
       .edit_profile(apidata)
       .then(res => {
         updateState({
-          name: res.data.name,
+          name: res.data.name == 'Vi' ? null : res.data.name,
           email: res.data.email,
+          loader: false,
           // profilepic: res?.data?.profilePic.data,
         });
         console.log(res, 'show sucess');
       })
       .catch(err => {
         console.log(err);
+        updateState({
+          loader: false,
+        });
       });
   };
 
@@ -270,10 +274,8 @@ const EditProfile = ({navigation}) => {
       actions
         .edit_profile({name: name})
         .then(res => {
-          // updateState({name: res.data.name,email: res.data.email })
           showSuccess('Update Successful');
           updateState({visiblity: false, loader: false});
-          // toggleModal()
           console.log(res, 'show sucess');
         })
         .catch(err => {
@@ -299,11 +301,6 @@ const EditProfile = ({navigation}) => {
             <FastImage
               style={styles.profilepic}
               source={imagePath.ic_profile_placeholder}
-              // source={
-              //   profilepic.length == 0
-              //     ? imagePath.ic_profile_placeholder
-              //     : {uri: `data:image/jpg;base64,${profilepic}`}
-              // }
             />
             <View style={styles.textView}>
               <Text style={styles.Changeprofilepicture}>
@@ -336,8 +333,6 @@ const EditProfile = ({navigation}) => {
         </View>
 
         <View style={styles.phoneView}>
-          {/* <Text style={styles.countrycode}>{'+' + data.country_code}</Text>
-          <Text style={styles.line} /> */}
           <Text style={styles.Number}>{data.phone}</Text>
         </View>
         <Modal visible={visiblity} transparent>
@@ -345,14 +340,13 @@ const EditProfile = ({navigation}) => {
             style={{
               flex: 1,
               justifyContent: 'center',
-              // backgroundColor: 'green',
             }}>
             <View style={{flex: 0.7}}>
               <magicClient.Relayer />
             </View>
           </View>
         </Modal>
-        {/* <VerifyEmail showModal={activee} renderModal={toggleModal} /> */}
+
         <View style={styles.btn}>
           <ButtonComp btnText={strings.Update} onPress={editprofile} />
         </View>

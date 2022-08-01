@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "520928136833",
+    "project_id": "vipay-892d0",
+    "storage_bucket": "vipay-892d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520928136833:android:59aeca1e6bd8c310588780",
+        "android_client_info": {
+          "package_name": "com.vipay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520928136833-goh57t5lfj170d79qpt58isku21uijr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwLhEM5BI7w35xxkEuVjflp0jqpjW8cVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520928136833-goh57t5lfj170d79qpt58isku21uijr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

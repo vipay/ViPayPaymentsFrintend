@@ -19,7 +19,7 @@ import ContactRenderList from '../../Components/ContactRenderList';
 import strings from '../../constants/lang';
 import imagePath from '../../constants/imagePath';
 import {TextInput} from 'react-native-gesture-handler';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 
 const Contact = ({navigation}) => {
   const {userData} = useSelector(state => state.auth);
@@ -29,14 +29,13 @@ const Contact = ({navigation}) => {
     data: [],
     id: '',
     loader: false,
-    
+    filterdata: [],
   });
 
-  const {contacts, data, id, loader} = state;
+  const {contacts, data, id, loader, filterdata} = state;
   const updateState = data => {
     setState(state => ({...state, ...data}));
   };
-
 
   function isIOS() {
     return Platform.OS === 'ios' ? true : false;
@@ -57,6 +56,19 @@ const Contact = ({navigation}) => {
       test();
     }
   }, [isFocused]);
+  console.log(data, 'ebcjhbjhbjbhjbj');
+
+  const filterinput = value => {
+    console.log(value, 'filterinputfilterinput');
+    let arr = [...data];
+    let filterarr = arr.filter((item, index) => {
+      return (
+        item.nameInContacts.search(value) != -1 ||
+        item.phoneInContacts.search(value) != -1
+      );
+    });
+    updateState({filterdata: filterarr});
+  };
 
   const test = async () => {
     try {
@@ -101,11 +113,10 @@ const Contact = ({navigation}) => {
       });
     });
 
-   
     addContacts({list: aa})
       .then(res => {
         console.log(res, 'abcsscs');
-        updateState({data: res.data, loader: false});
+        updateState({data: res.data, loader: false, filterdata: res.data});
       })
       .catch(error => {
         console.log(error);
@@ -143,12 +154,13 @@ const Contact = ({navigation}) => {
           <TextInput
             placeholder={strings.SearchContact}
             placeholderTextColor={colors.lightgray}
-            style={styles.input}></TextInput>
+            style={styles.input}
+            onChangeText={filterinput}></TextInput>
           <Image source={imagePath.searchgrey} />
         </View>
 
         <FlatList
-          data={data.sort((a, b) =>
+          data={filterdata.sort((a, b) =>
             a.nameInContacts.localeCompare(b.nameInContacts),
           )}
           keyExtractor={(item, index) => index.toString()}

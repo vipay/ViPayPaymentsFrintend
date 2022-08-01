@@ -51,11 +51,9 @@ const Profile = ({navigation}) => {
 
   const LOGOUT = async () => {
     // console.log('actions.logout();', await magic.user.getIdToken());
-    console.log('logoutttttttttt',magic.user.logout());
-    magic.user.logout()
-    .then()
-    .catch()
-    actions.logout()
+    console.log('logoutttttttttt', magic.user.logout());
+    magic.user.logout().then().catch();
+    actions.logout();
     // try {
     //   magic.user
     //     .logout()
@@ -187,7 +185,10 @@ const Profile = ({navigation}) => {
             container={{marginTop: moderateScale(8)}}
           />
           <View style={styles.anySuggestionView}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(navigationStrings.HELPSUPPORT)
+              }>
               <Text style={styles.Anysuggestions}>
                 {strings.Anysuggestions}
               </Text>

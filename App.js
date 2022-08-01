@@ -16,10 +16,47 @@ import {applicationID, serverUrl} from './src/constants/constants';
 import Moralis from 'moralis/react-native.js';
 import magicLink from './src/config/magicConfig';
 import {HelpSupport} from './src/Screens';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+
+import {
+  notificationListener,
+  requestUserPermission,
+} from './src/utils/notificationServices';
 const {dispatch} = store;
 
 const App = () => {
+  const initialLink = () => {
+    dynamicLinks().onLink(onLink);
+    dynamicLinks()
+      .getInitialLink()
+      .then(async link => {
+        console.log(link, 'data sarra');
+        navigationMethod(link.url);
+      });
+  };
+  const onLink = ({url}) => {
+    console.log('onLink url', url, Date.now());
+    Platform.OS === 'ios' && navigationMethod(url);
+    Platform.OS === 'android' && navigationMethod(url);
+  };
+  const navigationMethod = link => {
+    var url = link;
+    var regex = /[?&]([^=#]+)=([^&#]*)/g,
+      params = {},
+      match;
+    while ((match = regex.exec(url))) {
+      params[match[1]] = match[2];
+    }
+    // console.log(params, 'pollller');
+
+    actions.userId(params.userid)
+  };
+
+  //////////////////////////
   const init = async () => {
+    requestUserPermission();
+    notificationListener();
+    initialLink();
     try {
       Moralis.start({
         appId: applicationID,

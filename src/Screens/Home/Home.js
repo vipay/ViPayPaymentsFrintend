@@ -19,7 +19,7 @@ import {
 import HomeRenderList from './HomeRenderList';
 import styles from './styles';
 import WrapperContainer from '../../Components/WrapperContainer';
-
+import {useSelector} from 'react-redux';
 
 // create a component
 const Home = ({navigation}) => {
@@ -86,13 +86,23 @@ const Home = ({navigation}) => {
     },
   ];
   const renderItem = ({item, index}) => {
-    return <HomeRenderList key={index} item={item} index={index} 
-    onPress={() => navigation.navigate(navigationStrings.CRYPTODETAILS)} />;
+    return (
+      <HomeRenderList
+        key={index}
+        item={item}
+        index={index}
+        onPress={() => navigation.navigate(navigationStrings.CRYPTODETAILS)}
+      />
+    );
   };
+
+  console.log(
+    useSelector(state => state),
+    'dxtcfvygbuhinjomk,',
+  );
 
   const Button = ({}) => {
     return (
-      
       <Pressable style={styles.pressable}>
         <Image source={imagePath.send} />
         <Text style={styles.txtstylehomecard}>{strings.send}</Text>
@@ -101,56 +111,60 @@ const Home = ({navigation}) => {
   };
   return (
     <WrapperContainer>
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={imagePath.logo_title_header}></Image>
-        <Pressable onPress={() => navigation.navigate(navigationStrings.PROFILE)}>
-        <Image style={styles.profilepic} source={imagePath.profile}/>
-        </Pressable>
-      </View>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image source={imagePath.logo_title_header}></Image>
+          <Pressable
+            onPress={() => navigation.navigate(navigationStrings.PROFILE)}>
+            <Image style={styles.profilepic} source={imagePath.profile} />
+          </Pressable>
+        </View>
 
-      {/* home card */}
-      <View style={styles.imghomecard}>
-        <ImageBackground
-          source={imagePath.home_card}
-          resizeMode='center'
-          style={styles.bgimg}>
-          <View style={styles.viewTotalValue}>
-            <Text style={styles.totalvalue}>{strings.totalvalue}</Text>
-            <Text style={styles.value}>{strings.value}</Text>
-          </View>
-          <View style={styles.homecardLine}></View>
-          <View style={styles.homecardButtons}>
-            <Pressable style={styles.pressable}
-            onPress={()=>navigation.navigate(navigationStrings.SEND)}>
-              <Image source={imagePath.send} />
-              <Text style={styles.txtstylehomecard}>{strings.send}</Text>
-            </Pressable>
-            <Pressable style={styles.pressable}>
-              <Image source={imagePath.receive} />
-              <Text style={styles.txtstylehomecard}>{strings.receive}</Text>
-            </Pressable>
-            <Pressable style={styles.pressable}>
-              <Image source={imagePath.scan} />
-              <Text style={styles.txtstylehomecard}>{strings.scan}</Text>
-            </Pressable>
-            <Pressable style={styles.pressable} onPress={()=>navigation.navigate(navigationStrings.SEND)}>
-              <Image source={imagePath.ucid} />
-              <Text style={styles.txtstylehomecard}>{strings.ucid}</Text>
-            </Pressable>
-          </View>
-        </ImageBackground>
+        {/* home card */}
+        <View style={styles.imghomecard}>
+          <ImageBackground
+            source={imagePath.home_card}
+            resizeMode="center"
+            style={styles.bgimg}>
+            <View style={styles.viewTotalValue}>
+              <Text style={styles.totalvalue}>{strings.totalvalue}</Text>
+              <Text style={styles.value}>{strings.value}</Text>
+            </View>
+            <View style={styles.homecardLine}></View>
+            <View style={styles.homecardButtons}>
+              <Pressable
+                style={styles.pressable}
+                onPress={() => navigation.navigate(navigationStrings.SEND)}>
+                <Image source={imagePath.send} />
+                <Text style={styles.txtstylehomecard}>{strings.send}</Text>
+              </Pressable>
+              <Pressable style={styles.pressable}>
+                <Image source={imagePath.receive} />
+                <Text style={styles.txtstylehomecard}>{strings.receive}</Text>
+              </Pressable>
+              <Pressable style={styles.pressable}>
+                <Image source={imagePath.scan} />
+                <Text style={styles.txtstylehomecard}>{strings.scan}</Text>
+              </Pressable>
+              <Pressable
+                style={styles.pressable}
+                onPress={() => navigation.navigate(navigationStrings.SEND)}>
+                <Image source={imagePath.ucid} />
+                <Text style={styles.txtstylehomecard}>{strings.ucid}</Text>
+              </Pressable>
+            </View>
+          </ImageBackground>
+        </View>
+        {/* flatist */}
+        <View style={styles.flatList}>
+          <FlatList
+            data={data}
+            style={{marginTop: moderateScale(24)}}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={renderItem}
+          />
+        </View>
       </View>
-      {/* flatist */}
-      <View style={styles.flatList}>
-      <FlatList
-          data={data}
-          style={{marginTop: moderateScale(24)}}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={renderItem}
-        />
-      </View>
-    </View>
     </WrapperContainer>
   );
 };

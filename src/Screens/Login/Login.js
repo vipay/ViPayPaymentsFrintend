@@ -22,6 +22,8 @@ import store from '../../redux/store';
 import types from '../../redux/types';
 import {Singleton} from '../../config/magicConfig';
 import {getUserData} from '../../utils/utils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useSelector} from 'react-redux';
 const {dispatch} = store;
 const Login = ({navigation}) => {
   const [countryCode, setcountryCode] = useState('AE');
@@ -58,6 +60,11 @@ const Login = ({navigation}) => {
 
   const magic = Singleton.getInstance();
 
+  // console.log(useSelector(state=>state),'dxtcfvygbuhinjomk,')
+
+  const user_id = useSelector(state => state.userId.userId);
+  console.log(user_id, 'userIduserIduserIduserIduserId');
+
   const saveUserData = data => {
     console.log(data);
     dispatch({
@@ -76,6 +83,7 @@ const Login = ({navigation}) => {
   };
 
   const onsignin = async () => {
+    let fcmToken = await AsyncStorage.getItem('fcmToken');
     if (phoneNO.length < 8) {
       showError(
         phoneNO.length == 0
@@ -96,7 +104,11 @@ const Login = ({navigation}) => {
           updateState({visiblity: false, loader: true});
           console.log(access, 'DIDDIDDIDDIDDIDDID');
           try {
-            const res = login_with_mobile({token: access})
+            const res = login_with_mobile({
+              token: access,
+              deviceId: String(fcmToken),
+              referredBy: user_id,
+            })
               .then(res => {
                 if (res.data.pin == 'Vi') {
                   navigation.navigate(navigationStrings.CREATEPIN, {
@@ -148,7 +160,7 @@ const Login = ({navigation}) => {
                     excludeCountries={['AQ', 'BV', 'TF', 'HM', 'UM']}
                     onSelect={country => {
                       const {cca2, callingCode} = country;
-                      updateState({showtimer: false, resend: false});
+
                       setcountryCode(cca2);
                       setcallingCode(country.callingCode);
                     }}

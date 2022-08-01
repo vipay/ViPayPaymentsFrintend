@@ -34,6 +34,7 @@ import {
   PINCHECK,
   HELPSUPPORT,
   SAVEADDRESS,
+  REDEEMVOUCHER,
 } from '../../config/urls';
 import {useState} from 'react';
 import {showSuccess} from '../../helper/helperFunctions';
@@ -109,7 +110,6 @@ export function forgotPassword(data) {
 }
 
 export const logout = async () => {
-  
   clearUserData();
   clearreduxdata();
 };
@@ -191,6 +191,9 @@ export function helpSupport(data) {
 }
 export function SaveAddress(data) {
   return apiPost(SAVEADDRESS, data, {'accept-language': 'en'});
+}
+export function redeemVoucher(query,data) {
+  return apiGet(REDEEMVOUCHER + query,data, {'accept-language': 'en'});
 }
 export function addContact(data) {
   return apiPut(CONTACT, data);

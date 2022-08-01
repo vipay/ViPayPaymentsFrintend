@@ -20,8 +20,9 @@ const HelpSupport = ({navigation}) => {
     Email: '',
     Message: '',
     data: {},
+    loader: false,
   });
-  const {name, phoneNo, Email, Message, data} = state;
+  const {name, phoneNo, Email, Message, data, loader} = state;
   const updateState = data => setState(state => ({...state, ...data}));
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const HelpSupport = ({navigation}) => {
   }, []);
 
   const getData = () => {
+    updateState({loader: true});
     let apidata = {defaultArgument: 'NA'};
 
     actions
@@ -39,9 +41,12 @@ const HelpSupport = ({navigation}) => {
           phoneNo: res.data.phone,
           Email: res.data.email,
           data: res.data,
+          loader: false,
         });
       })
-      .catch(err => {});
+      .catch(err => {
+        updateState({loader: false});
+      });
   };
 
   const onsubmit = () => {
@@ -56,6 +61,7 @@ const HelpSupport = ({navigation}) => {
     } else if (Message.trim().length == 0) {
       showError(`Message Can't be Empty`);
     } else {
+      updateState({loader: true});
       let Apidata = {
         name: name,
         phone: phoneNo,
@@ -70,10 +76,12 @@ const HelpSupport = ({navigation}) => {
           showSuccess(
             'Your request submitted successfully. Our team get back to you shortly',
           );
+          updateState({loader: false});
         })
         .catch(err => {
           console.log(err, 'erroroororoorhelpSupport');
           showError('Something went wrong try again later');
+          updateState({loader: false});
         });
     }
   };
@@ -85,7 +93,7 @@ const HelpSupport = ({navigation}) => {
   };
 
   return (
-    <WrapperContainer>
+    <WrapperContainer isLoading={loader}>
       <View style={styles.container}>
         <HeaderComp text={strings.HelpSupport} onBackPress={goBack} />
         <View style={styles.helpform}>
