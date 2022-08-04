@@ -62,7 +62,7 @@ const Login = ({navigation}) => {
 
   // console.log(useSelector(state=>state),'dxtcfvygbuhinjomk,')
 
-  const user_id = useSelector(state => state.userId.userId);
+  const user_id = useSelector(state => state?.userId?.userId);
   console.log(user_id, 'userIduserIduserIduserIduserId');
 
   const saveUserData = data => {
@@ -104,10 +104,12 @@ const Login = ({navigation}) => {
           updateState({visiblity: false, loader: true});
           console.log(access, 'DIDDIDDIDDIDDIDDID');
           try {
+
+            let userrefer = !!user_id ? {referredBy :user_id} : null
             const res = login_with_mobile({
               token: access,
               deviceId: String(fcmToken),
-              referredBy: user_id,
+              ...userrefer
             })
               .then(res => {
                 if (res.data.pin == 'Vi') {
@@ -121,7 +123,9 @@ const Login = ({navigation}) => {
                 }
               })
               .catch(err => {
-                console.log(err, ' error at api');
+                  updateState({loader: false});
+                  console.log(err, ' error at api');
+                  showError('Something Went wrong')
               });
           } catch (error) {
             console.log('errorerror', error);

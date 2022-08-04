@@ -13,7 +13,7 @@ import imagePath from '../../constants/imagePath';
 import colors from '../../styles/colors';
 import styles from './styles';
 
-const Search = () => {
+const Search = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };

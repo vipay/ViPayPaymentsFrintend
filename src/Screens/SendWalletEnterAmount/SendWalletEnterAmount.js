@@ -1,35 +1,28 @@
-import React, {useRef, useState} from 'react';
+import { useIsFocused } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  Dimensions,
-  TextInput,
-  TouchableOpacity,
-  Image,
+  Dimensions, Image, Text, TextInput,
+  TouchableOpacity, View
 } from 'react-native';
+import AddAddress from '../../Components/AddAddress';
+import ButtonComp from '../../Components/ButtonComp';
+import HeaderComp from '../../Components/HeaderComp';
+import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
+import navigationStrings from '../../constants/navigationStrings';
+import colors from '../../styles/colors';
 import {
-  moderateScale,
-  moderateScaleVertical,
+  moderateScale
 } from '../../styles/responsiveSize';
 import styles from './styles';
-import WrapperContainer from '../../Components/WrapperContainer';
-import navigationStrings from '../../constants/navigationStrings';
-import EnterAmountComp from '../../Components/EnterAmountComp';
-import ButtonComp from '../../Components/ButtonComp';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import HeaderComp from '../../Components/HeaderComp';
-import colors from '../../styles/colors';
-import AddAddress from '../../Components/AddAddress';
-
 
 // import { Image } from 'react-native-svg';
 
 const heightt = Dimensions.get('window').height;
 
-const SendWalletEnterAmount = ({navigation}) => {
-const [isVisbile, setisVisbile] = useState(false);
+const SendWalletEnterAmount = ({navigation, route}) => {
+  const [isVisbile, setisVisbile] = useState(false);
 
   //   const refRBSheet = useRef();
   const goBack = () => {
@@ -38,29 +31,47 @@ const [isVisbile, setisVisbile] = useState(false);
   const onaddnew = () => {
     setisVisbile(!isVisbile);
   };
+
+  const [walletAddress, setwalletAddress] = useState();
+
+  const focus = useIsFocused();
+  useEffect(() => {
+    !!route.params?.Address ? setwalletAddress(route.params?.Address) : null;
+  }, [focus, route.params?.Address]);
+
+  // const walletAddress = route.params.Address;
+  console.log(walletAddress, 'walletAddresswalletAddress');
   return (
     <WrapperContainer>
       <View style={styles.container}>
-        <HeaderComp text={strings.SendBitcoin} onBackPress={goBack}/>
+        <HeaderComp text={strings.SendBitcoin} onBackPress={goBack} />
         <View style={styles.subcontin}>
           <Text style={styles.Recipientaddress}>
             {strings.Recipientaddress}
           </Text>
           <View style={styles.inputfield}>
             <TextInput
-              placeholder='Address'
+              placeholder="Address"
               style={styles.input}
-              placeholderTextColor={colors.grayprice}></TextInput>
+              placeholderTextColor={colors.grayprice}
+              onChangeText={value => setwalletAddress(value)}
+              value={walletAddress}></TextInput>
             <TouchableOpacity>
               <Image source={imagePath.ic_scanner} />
             </TouchableOpacity>
           </View>
-        <AddAddress isvisible={isVisbile} close={onaddnew} />
+          <AddAddress isvisible={isVisbile} close={onaddnew} />
 
-          <TouchableOpacity style={styles.addAdress} onPress={onaddnew}>
-            <Text style={styles.add}>Add this address to wallet list</Text>
-            <Image source={imagePath.ic_wallet_blue} />
-          </TouchableOpacity>
+          <View style={styles.walletlisting}>
+            <TouchableOpacity style={styles.addAdress} onPress={onaddnew}>
+              <Text style={styles.add}>Add this address to wallet list</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wallet}
+              onPress={() => navigation.navigate(navigationStrings.WALLETLIST)}>
+              <Image source={imagePath.ic_wallet_blue} />
+            </TouchableOpacity>
+          </View>
 
           <Text style={styles.amountBTC}>Amount BTC</Text>
 
@@ -71,35 +82,33 @@ const [isVisbile, setisVisbile] = useState(false);
 
           <View style={styles.inputfield}>
             <TextInput
-            placeholder='Amount'
-            keyboardType='numeric'
-            placeholderTextColor={colors.grayprice}
-            style={styles.input}>
-              
-
-            </TextInput>
+              placeholder="Amount"
+              keyboardType="numeric"
+              placeholderTextColor={colors.grayprice}
+              style={styles.input}></TextInput>
             <Text>BTC</Text>
           </View>
         </View>
         <View style={styles.bottomView1}>
-            <Text style={styles.current}>{'Current Price'}</Text>
-            <View>
-            <Text style={styles.AvailableValue}>{"20,086.70 $ "+"10043.35 $"}</Text>
-            </View>
-            
+          <Text style={styles.current}>{'Current Price'}</Text>
+          <View>
+            <Text style={styles.AvailableValue}>
+              {'20,086.70 $ ' + '10043.35 $'}
+            </Text>
           </View>
+        </View>
         {/* <View style={styles.buttonView}>
           
           
         </View> */}
         {/* <View style={styles.buttonView}> */}
-          <View style={styles.bottomView}>
-            <Text style={styles.Available}>{strings.Available}</Text>
-            <Text style={styles.AvailableValue}>{strings.AvailableValue}</Text>
-          </View>
-          
+        <View style={styles.bottomView}>
+          <Text style={styles.Available}>{strings.Available}</Text>
+          <Text style={styles.AvailableValue}>{strings.AvailableValue}</Text>
+        </View>
+
         {/* </View> */}
-       
+
         {/* <RBSheet
           ref={refRBSheet}
           closeOnDragDown={false}
@@ -121,11 +130,15 @@ const [isVisbile, setisVisbile] = useState(false);
           />
         </RBSheet> */}
       </View>
-      <View style={{marginHorizontal:moderateScale(24), marginBottom:moderateScale(24)}}>
-      <ButtonComp
-            btnText={strings.send}
-            // onPress={() => refRBSheet.current.open()}
-          />
+      <View
+        style={{
+          marginHorizontal: moderateScale(24),
+          marginBottom: moderateScale(24),
+        }}>
+        <ButtonComp
+          btnText={strings.send}
+          // onPress={() => refRBSheet.current.open()}
+        />
       </View>
     </WrapperContainer>
   );

@@ -3,18 +3,16 @@ import navigationStrings from '../constants/navigationStrings';
 import TabRoutes from './TabRoutes';
 import * as Screens from './../Screens/index';
 
-export default function (Stack,screenLock) {
-
+export default function (Stack, screenLock) {
   return (
-    <> 
-    { (!!screenLock.screenLock && !!screenLock.isShow) 
-    &&
-     <Stack.Screen
-        name={navigationStrings.LOGINPIN}
-        component={Screens.LoginPin}
-        options={{headerShown: false}}
-      />
-    }
+    <>
+      {!!screenLock.screenLock && !!screenLock.isShow && (
+        <Stack.Screen
+          name={navigationStrings.LOGINPIN}
+          component={Screens.LoginPin}
+          options={{headerShown: false}}
+        />
+      )}
       <Stack.Screen
         name={navigationStrings.HOME_TAB}
         component={TabRoutes}
@@ -144,6 +142,16 @@ export default function (Stack,screenLock) {
       <Stack.Screen
         name={navigationStrings.SELECTWALLET}
         component={Screens.SelectWallet}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.WALLETLIST}
+        component={Screens.WalletList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={navigationStrings.CONFIRMSCREENLOCK}
+        component={Screens.ConfirmScreenLock}
         options={{headerShown: false}}
       />
     </>

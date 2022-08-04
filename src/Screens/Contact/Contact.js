@@ -1,25 +1,17 @@
 import {StyleSheet, Text, View, FlatList, Image} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import styles from './styles';
-
 import {PermissionsAndroid} from 'react-native';
 import Contacts from 'react-native-contacts';
 import WrapperContainer from '../../Components/WrapperContainer';
 import {addContacts, listcontact} from '../../redux/actions/auth';
-import actions from '../../redux/actions';
-import {showSuccess, showError} from '../../helper/helperFunctions';
 import {useSelector} from 'react-redux';
-import {
-  moderateScale,
-  moderateScaleVertical,
-} from '../../styles/responsiveSize';
-import commonStyles from '../../styles/commonStyles';
 import colors from '../../styles/colors';
 import ContactRenderList from '../../Components/ContactRenderList';
 import strings from '../../constants/lang';
 import imagePath from '../../constants/imagePath';
 import {TextInput} from 'react-native-gesture-handler';
-import {useIsFocused} from '@react-navigation/native';
+import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 
 const Contact = ({navigation}) => {
   const {userData} = useSelector(state => state.auth);
@@ -41,21 +33,35 @@ const Contact = ({navigation}) => {
     return Platform.OS === 'ios' ? true : false;
   }
 
-  let isFocused = useIsFocused();
-
-  useEffect(() => {
-    updateState({loader: true});
-    if (isIOS()) {
-      Contacts.getAll().then(contacts => {
-        updateState({
-          contacts: contacts,
+  useFocusEffect(
+    useCallback(() => {
+      updateState({loader: true});
+      if (isIOS()) {
+        Contacts.getAll().then(contacts => {
+          updateState({
+            contacts: contacts,
+          });
+          addcontact(contacts);
         });
-        addcontact(contacts);
-      });
-    } else {
-      test();
-    }
-  }, [isFocused]);
+      } else {
+        test();
+      }
+    }, []),
+  );
+
+  // useEffect(() => {
+  //   updateState({loader: true});
+  //   if (isIOS()) {
+  //     Contacts.getAll().then(contacts => {
+  //       updateState({
+  //         contacts: contacts,
+  //       });
+  //       addcontact(contacts);
+  //     });
+  //   } else {
+  //     test();
+  //   }
+  // }, []);
   console.log(data, 'ebcjhbjhbjbhjbj');
 
   const filterinput = value => {

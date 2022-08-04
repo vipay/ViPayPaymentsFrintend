@@ -1,12 +1,11 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
-import WrapperContainer from '../../Components/WrapperContainer';
+import React, { useState } from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import AddAddress from '../../Components/AddAddress';
 import HeaderComp from '../../Components/HeaderComp';
+import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import styles from './styles';
-import {FlatList} from 'react-native-gesture-handler';
-import ButtonComp from '../../Components/ButtonComp';
-import AddAddress from '../../Components/AddAddress';
 
 const SelectWallet = ({navigation}) => {
   //<---------------static data for listing--------------------------->
@@ -53,9 +52,11 @@ const SelectWallet = ({navigation}) => {
         <View style={styles.main}>
           <View style={styles.subview}>
             <Text style={styles.name}>{item.item.name}</Text>
-            <Image style={styles.profile} source={item.item.profile} />
+            {/* <Image style={styles.profile} source={item.item.profile} /> */}
           </View>
-          <Text numberOfLines={1} style={styles.address}>{item.item.address}</Text>
+          <Text numberOfLines={1} style={styles.address}>
+            {item.item.address}
+          </Text>
         </View>
       </TouchableOpacity>
     );

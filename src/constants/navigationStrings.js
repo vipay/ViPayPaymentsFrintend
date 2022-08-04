@@ -44,5 +44,7 @@ export default {
   SENDUCIDENTERAMOUNT: 'SendUCIDEnterAmount',
   SAVEDWALLET: 'SavedWallet',
   SELECTWALLET: 'SelectWallet',
-  LOGINPIN:"LoginPin",
+  LOGINPIN: 'LoginPin',
+  WALLETLIST: 'WalletList',
+  CONFIRMSCREENLOCK: 'ConfirmScreenLock',
 };

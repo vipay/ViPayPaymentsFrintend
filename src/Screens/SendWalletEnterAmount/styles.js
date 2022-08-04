@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   bottomView: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginHorizontal:moderateScale(24),
+    marginHorizontal: moderateScale(24),
 
     // alignItems:"center"
     // backgroundColor:"red"
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   bottomView1: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginHorizontal:moderateScale(24),
-    marginTop:moderateScale(24),
+    marginHorizontal: moderateScale(24),
+    marginTop: moderateScale(24),
 
     // alignItems:"center"
     // backgroundColor:"red"
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginHorizontal: moderateScale(24),
     backgroundColor: colors.white,
     // marginBottom: moderateScale(16),
-    marginTop:moderateScale(16)
+    marginTop: moderateScale(16),
   },
   Available: {
     ...commonStyles.fontSize15,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     // alignItems:'center'
     alignSelf: 'center',
   },
-  current:{
+  current: {
     ...commonStyles.fontSize15,
     fontFamily: fontFamily.poppinsRegular,
     color: colors.grayprice,
@@ -117,6 +117,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: moderateScale(24),
   },
-
+  walletlisting: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  wallet:{
+    marginRight:moderateScale(24)
+  }
 });
 export default styles;

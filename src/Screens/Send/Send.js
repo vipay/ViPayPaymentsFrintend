@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -20,144 +20,121 @@ import HeaderComp from '../../Components/HeaderComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import navigationStrings from '../../constants/navigationStrings';
 import SendRenderList from './SendRenderList';
+import contactSync from '../../utils/contactSync';
+import {addContacts} from '../../redux/actions/auth';
+import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 
 const Send = ({navigation}) => {
-  const data = [
-    {
-      id: 1,
-      profilepic: imagePath.profile,
-      name: 'Alfred Wolfe',
-      phoneNo: '+971 568 256 8874',
-      user: true,
-    },
-    {
-      id: 2,
-      profilepic: imagePath.profile3,
-      name: 'Abriel Ramirez',
-      phoneNo: '+971 684 987 6479',
-      user: true,
-    },
-    {
-      id: 3,
-      profilepic: imagePath.profile4,
-      name: 'Adrim Dhoke',
-      phoneNo: '+971 567 265 8742',
-      user: true,
-    },
-    {
-      id: 4,
-      profilepic: imagePath.profile5,
-      name: 'Anni Nikola',
-      phoneNo: '+971 287 654 2688',
-      user: false,
-    },
-    {
-      id: 5,
-      profilepic: imagePath.profile6,
-      name: 'Allie Wright',
-      phoneNo: '+971 658 254 1103',
-      user: true,
-    },
-    {
-      id: 6,
-      profilepic: imagePath.profile2,
-      name: 'Blice Lloyd',
-      phoneNo: '+971 658 924 2233',
-      user: false,
-    },
-    {
-      id: 7,
-      profilepic: imagePath.profile5,
-      name: 'Betty Dixon',
-      phoneNo: '+971 445 658 3321',
-      user: true,
-    },
-    {
-      id: 8,
-      profilepic: imagePath.profile2,
-      name: 'Blice Lloyd',
-      phoneNo: '+971 658 924 2233',
-      user: false,
-    },
-    {
-      id: 9,
-      profilepic: imagePath.profile5,
-      name: 'Betty Dixon',
-      phoneNo: '+971 445 658 3321',
-      user: true,
-    },
-    {
-      id: 10,
-      profilepic: imagePath.profile2,
-      name: 'Blice Lloyd',
-      phoneNo: '+971 658 924 2233',
-      user: true,
-    },
-    {
-      id: 11,
-      profilepic: imagePath.profile5,
-      name: 'Betty Dixon',
-      phoneNo: '+971 445 658 3321',
-      user: true,
-    },
-  ];
   const goBack = () => {
     navigation.goBack();
   };
+
+  const [data, setdata] = useState([]);
+  const [getdata, setgetdata] = useState([]);
+  const [loader, setloader] = useState(false);
+
+  useEffect(() => {}, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getCont();
+      setloader(true);
+    }, []),
+  );
+  const getCont = async () => {
+    const contact = await contactSync();
+    contactApi(contact);
+
+    setgetdata(contact);
+  };
+  // contact sync
+
+  console.log(getdata, 'getdatagetdatagetdatagetdata');
+
+  const contactApi = data => {
+    let apiData = {list: data};
+    console.log(apiData, 'apiDataapiData');
+    addContacts(apiData)
+      .then(res => {
+        console.log(res, 'contacts from api');
+        setdata(res.data);
+        setloader(false);
+      })
+      .catch(error => {
+        console.log(error);
+        setloader(false);
+      });
+  };
+  let alpahet = '';
   const renderItem = ({item, index}) => {
+    const showalphabet = () => {
+      if (alpahet != item.nameInContacts.substring(0, 1)) {
+        alpahet = item.nameInContacts.substring(0, 1);
+        return true;
+      } else {
+        return false;
+      }
+    };
     return (
       <SendRenderList
         key={index}
         item={item}
         index={index}
-        onPress={() =>
-          navigation.navigate(navigationStrings.SENDUSER)
-        }
+        onPress={() => navigation.navigate(navigationStrings.SENDUSER)}
+        show={showalphabet()}
+        char={item.nameInContacts.substring(0, 1)}
       />
     );
   };
   return (
-    <WrapperContainer>
+    <WrapperContainer isLoading={loader}>
       <View style={styles.container}>
         <HeaderComp
           text={strings.send}
           image={imagePath.searchblack}
           imagestyle={{height: moderateScale(24), width: moderateScale(24)}}
           onBackPress={goBack}
-          onPress={()=> navigation.navigate(navigationStrings.SEARCH)}
-    headerStyle={{marginVertical:moderateScale(16)}}
-
+          onPress={() => navigation.navigate(navigationStrings.SEARCH)}
+          headerStyle={{marginVertical: moderateScale(16)}}
         />
         <View style={styles.sendBg}>
           {/* <View style={styles.bgImgView}> */}
-            <ImageBackground
-             resizeMode="contain"
-             style={styles.bgImg} source={imagePath.sendBg}>
-              <View style={styles.ButtonsView}>
-                <Pressable style={styles.pressable} onPress={()=> navigation.navigate(navigationStrings.SENDWALLET)}>
-                  <Image source={imagePath.ic_wallet_white} />
-                  <Text style={styles.buttonTxt}>{strings.Wallet}</Text>
-                </Pressable>
-                <Pressable style={styles.pressable}>
-                  <Image source={imagePath.scan} />
-                  <Text style={styles.buttonTxt}>{strings.scan}</Text>
-                </Pressable>
-                <Pressable style={styles.pressable}  onPress={()=> navigation.navigate(navigationStrings.SENDUCID)}>
-                  <Image source={imagePath.ucid} />
-                  <Text style={styles.buttonTxt}>{strings.ucid}</Text>
-                </Pressable>
-              </View>
-            </ImageBackground>
+          <ImageBackground
+            resizeMode="contain"
+            style={styles.bgImg}
+            source={imagePath.sendBg}>
+            <View style={styles.ButtonsView}>
+              <Pressable
+                style={styles.pressable}
+                onPress={() =>
+                  navigation.navigate(navigationStrings.SENDWALLET)
+                }>
+                <Image source={imagePath.ic_wallet_white} />
+                <Text style={styles.buttonTxt}>{strings.Wallet}</Text>
+              </Pressable>
+              <Pressable style={styles.pressable}>
+                <Image source={imagePath.scan} />
+                <Text style={styles.buttonTxt}>{strings.scan}</Text>
+              </Pressable>
+              <Pressable
+                style={styles.pressable}
+                onPress={() => navigation.navigate(navigationStrings.SENDUCID)}>
+                <Image source={imagePath.ucid} />
+                <Text style={styles.buttonTxt}>{strings.ucid}</Text>
+              </Pressable>
+            </View>
+          </ImageBackground>
           {/* </View> */}
         </View>
         <View style={styles.flatList}>
-            <Text style={styles.a}>A</Text>
-            <FlatList
-              data={data}
-              keyExtractor={(_, index) => index.toString()}
-              renderItem={renderItem}
-            />
-          </View>
+          <FlatList
+            data={data.sort((a, b) =>
+              a.nameInContacts.localeCompare(b.nameInContacts),
+            )}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={renderItem}
+          />
+        </View>
       </View>
     </WrapperContainer>
   );

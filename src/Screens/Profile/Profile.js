@@ -30,23 +30,16 @@ const Profile = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
   };
-
   const magic = Singleton.getInstance();
-
-  // const magicClient = new Magic('pk_live_FBAA2C5CB588AEE2');
-
   const lock = useSelector(state => state.loginPin.screenLock);
 
   useEffect(() => {
     setscreenlock(lock);
-  }, []);
+  }, [lock]);
   const [screenlock, setscreenlock] = useState(false);
 
   const onscreenlock = () => {
-    let result = {screenLock: !screenlock, isShow: false};
-    actions.loginPin(result);
-    setScreenLock(!screenlock).then(res => console.log(res, 'locklock'));
-    setscreenlock(!screenlock);
+    navigation.navigate(navigationStrings.CONFIRMSCREENLOCK);
   };
 
   const LOGOUT = async () => {

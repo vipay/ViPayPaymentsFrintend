@@ -107,3 +107,8 @@ export {default as SelectWallet} from './SelectWallet/SelectWallet';
 //LoginPin
 
 export {default as LoginPin} from './LoginPin/LoginPin';
+
+//WalletList
+export {default as WalletList} from './WalletList/WalletList';
+// ConfirmScreenLock
+export {default as ConfirmScreenLock} from './ConfirmScreenLock/ConfirmScreenLock';
