@@ -10,26 +10,26 @@ import {
 } from '../../styles/responsiveSize';
 
 const styles = StyleSheet.create({
-
-    container: {
-        flex: 1,
-        backgroundColor:colors.white
-    },
-    input:{
-        height:moderateScale(56),
-        backgroundColor:colors.grayinput,
-        marginHorizontal:moderateScale(24),
-        borderRadius:16,
-        justifyContent:'center'
-
-    },
-    txtinput:{
-        marginLeft:moderateScale(16)
-    },
-    main:{
-        marginHorizontal:moderateScale(24),
-        marginBottom:moderateScale(32),
-    }
-
-})
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+  input: {
+    height: moderateScale(56),
+    backgroundColor: colors.grayinput,
+    marginHorizontal: moderateScale(24),
+    borderRadius: 16,
+    justifyContent: 'center',
+  },
+  txtinput: {
+    marginLeft: moderateScale(16),
+    ...commonStyles.fontSize15,
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.OBSIDIAN,
+  },
+  main: {
+    marginHorizontal: moderateScale(24),
+    marginBottom: moderateScale(32),
+  },
+});
 export default styles;

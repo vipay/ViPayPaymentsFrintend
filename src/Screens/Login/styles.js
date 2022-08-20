@@ -52,6 +52,12 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(24),
     color: colors.gray,
   },
+  welcomeback1: {
+    ...commonStyles.fontSize16,
+    fontFamily: fontFamily.poppinsRegular,
+    marginTop: moderateScale(24),
+    color: colors.white,
+  },
   welcomebacktxt: {
     fontSize: 24,
     color: colors.OBSIDIAN,

@@ -21,7 +21,7 @@ import {Magic} from '@magic-sdk/react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import FastImage from 'react-native-fast-image';
 import {useMoralisFile, use} from 'react-moralis';
-// import Moralis from 'moralis';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useFocusEffect} from '@react-navigation/native';
 const Moralis = require('moralis/react-native.js');
@@ -60,7 +60,8 @@ const EditProfile = ({navigation}) => {
     response,
     profilepic: '',
     imagedata: '',
-    base644: '',
+    base64: '',
+    imageLink,
   });
   const {
     name,
@@ -79,7 +80,8 @@ const EditProfile = ({navigation}) => {
     response,
     profilepic,
     imagedata,
-    base644,
+    base64,
+    imageLink,
   } = state;
   const updateState = data => setState(state => ({...state, ...data}));
 
@@ -103,7 +105,7 @@ const EditProfile = ({navigation}) => {
           name: res.data.name == 'Vi' ? null : res.data.name,
           email: res.data.email,
           loader: false,
-          // profilepic: res?.data?.profilePic.data,
+          profilepic: res?.data?.profilePic.data,
         });
         console.log(res, 'show sucess');
       })
@@ -128,7 +130,7 @@ const EditProfile = ({navigation}) => {
         console.log(response, 'responseresponseresponse');
         updateState({imagedata: response.assets[0].uri.replace('file://', '')});
         // imageUpload(response);
-        base();
+        base(imagedata);
       }
     });
   };
@@ -140,93 +142,64 @@ const EditProfile = ({navigation}) => {
         // let urlString = 'data:image/jpeg;base64,' + res;
         // console.log(res, 'jhhhhhhh');
         // console.log(urlString, 'urlStringurlStringurlString');
-        // updateState({base644: res});
-        // uploadFile(res.toString());
+        // updateState({base64: res});
+
+        const optionsipfs = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-API-Key':
+              'L7E7GWDNurxjTmDMoPQLODiyJJQEJ6BRxIgTA4FBrImbJx2Vf3oMyHt3FxDfCN29',
+          },
+          body: JSON.stringify([
+            {path: 'PROFILE_PIC' + name + makeid(), content: res},
+          ]),
+        };
+
+        fetch(
+          'https://deep-index.moralis.io/api/v2/ipfs/uploadFolder',
+          optionsipfs,
+        )
+          .then(response => response.json())
+          .then(response => {
+            console.log(
+              response[0].path,
+              'responseresponseresponseresponsebdhjcj',
+            );
+            // updateState({imageLink: response[0].path});
+            imageUploadd(response[0].path);
+          })
+          .catch(err => console.error(err, 'upload error'));
       })
       .catch(err => {
         console.log(err, 'errrrrrrrr');
       });
   };
+  console.log(imageLink, 'shbdjhbdjfbjh');
 
-  // const {saveFile} = useMoralisFile();
-  // const uploadFile = async () => {
-  //   const base64 =
-  //   "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCACWAMgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAf/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC6Aj6CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==";
+  function makeid() {
+    var text = '';
+    var possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  //   // const image =
-  //   //   'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCACWAMgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAf/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC6Aj6CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2Q==';
-  //   // const file = new Moralis.File('image.png', {base64: image});
-  //   // await file.saveIPFS();
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-  //   // console.log(file, 'imageeeee');
-
-  //   saveFile(
-  //     'myfile.txt',
-  //     {base64},
-  //     {
-  //       type: 'base64',
-  //       saveIPFS: true,
-  //       onSuccess: result => console.log(result.ipfs(), 'ipfsss'),
-  //       metadata:ress=> console.log(ress,'jdc'),
-  //       onError: error => console.log(error, 'erroroorrr'),
-  //       onComplete: res => console.log(res, 'oncomplete'),
-  //     },
-  //   );
-  // };
-
-  // const imageUpload = response => {
-  //   let apidata = dataform(response);
-  //   console.log(apidata, 'apidataapidataapidata');
-  //   actions
-  //     .imageUpload(apidata)
-  //     .then(res => {
-  //       console.log(res, 'image base 64');
-  //     })
-  //     .catch(err => {
-  //       console.log(err, 'something wrong');
-  //     });
-  // };
-  // const dataform = response => {
-  //   let imagePath = response.assets[0].uri;
-  //   const imgData = new FormData();
-  //   imgData.append('profilePic', {
-  //     uri: imagePath,
-  //     name: 'image.png',
-  //     fileName: 'image',
-  //     type: 'image/png',
-  //   });
-
-  //   console.log('.....imgData....', imgData);
-  //   return JSON.stringify([
-  //     {
-  //       profilePic: {
-  //         uri: imagePath,
-  //         name: 'image.png',
-  //         fileName: 'image',
-  //         type: 'image/png',
-  //       },
-  //     },
-  //   ]);
-  // };
-
-  // const {saveFile} = useMoralisFile();
-  // console.log(imagedata, 'imagedataimagedataimagedata');
-  // const file = new Moralis.File(imagedata.fileName, imagedata);
-  // file.saveIPFS();
-  // console.log(file.ipfs(), 'ipfssssssssssssss');
-
-  // console.log(file.ipfs(), file.hash(), 'thrreeeeeehcdhvhgwdvhgvwehg');
-
-  // const ipfsupload = async response => {
-  //   console.log("ipfsuploadipfsuploadipfsupload")
-  //   try {
-  //     const added = await client.add(response.assets[0].uri);
-  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-  //     // updateFileUrl(url);
-  //   } catch (error) {
-  //     console.log('Error uploading file: ', error);
-  //   }
-  // };
+    return text.substring(0, 6);
+  }
+  const imageUploadd = path => {
+    let apidata = {profilePic: path};
+    console.log(apidata, 'kbdsbdbsjdbjhb');
+    actions
+      .imageUpload(apidata)
+      .then(res => {
+        console.log(res, 'imageUploadimageUploadimageUpload');
+      })
+      .catch(err => {
+        console.log(err, 'imageUploadimageUploadimageUpload');
+      });
+  };
 
   const editprofile = () => {
     let apidata = {name: name};
@@ -300,7 +273,11 @@ const EditProfile = ({navigation}) => {
           <View style={styles.changepic}>
             <FastImage
               style={styles.profilepic}
-              source={imagePath.ic_profile_placeholder}
+              source={
+                profilepic == null
+                  ? imagePath.ic_profile_placeholder
+                  : {uri: `data:image/jpg;base64,${profilepic}`}
+              }
             />
             <View style={styles.textView}>
               <Text style={styles.Changeprofilepicture}>

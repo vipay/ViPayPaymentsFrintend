@@ -9,90 +9,82 @@ import {
   moderateScaleVertical,
 } from '../../styles/responsiveSize';
 
-
 const styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
-    backgroundColor:colors.white,   
+    backgroundColor: colors.white,
   },
-  inputfieldStyle:{
-    height:moderateScale(56),
-    backgroundColor:colors.grayinput,
-    marginHorizontal:moderateScale(24),
-    borderRadius:16,
-    marginTop:moderateScale(16),
-    justifyContent:'center',
-    paddingHorizontal:moderateScale(16)
-
+  inputfieldStyle: {
+    height: moderateScale(56),
+    backgroundColor: colors.grayinput,
+    marginHorizontal: moderateScale(24),
+    borderRadius: 16,
+    marginTop: moderateScale(16),
+    justifyContent: 'center',
+    paddingHorizontal: moderateScale(16),
   },
-  input:{
-    marginHorizontal:moderateScale(16),
-    lineHeight:23,
-    
+  input: {
+    marginHorizontal: moderateScale(16),
+    lineHeight: 23,
   },
-  message:{
-    height:moderateScale(144),
-    backgroundColor:colors.grayinput,
-    marginHorizontal:moderateScale(24),
-    borderRadius:16,
-    marginTop:moderateScale(16),
+  message: {
+    height: moderateScale(144),
+    backgroundColor: colors.grayinput,
+    marginHorizontal: moderateScale(24),
+    borderRadius: 16,
+    marginTop: moderateScale(16),
     // justifyContent:'center'
-
   },
-  messageinput:{
-    flex:1,
-    marginHorizontal:moderateScale(16),
+  messageinput: {
+    flex: 1,
+    marginHorizontal: moderateScale(16),
     // backgroundColor:"red",
-    textAlignVertical:'top'
-    
-
+    textAlignVertical: 'top',
+    ...commonStyles.fontSize15,
+    fontFamily: fontFamily.poppinsRegular,
+    colors: colors.OBSIDIAN,
   },
-  helpdesc:{
-    marginHorizontal:moderateScale(24),
-    marginTop:moderateScale(16),
+  helpdesc: {
+    marginHorizontal: moderateScale(24),
+    marginTop: moderateScale(16),
     ...commonStyles.fontSize14,
-    fontFamily:fontFamily.poppinsRegular,
-    color:colors.grayprice,
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.grayprice,
   },
-  helpform:{
-    flex:1,
+  helpform: {
+    flex: 1,
     // backgroundColor:'red'
   },
-  btn:{
-    flex:1,
-    marginHorizontal:moderateScale(24),
-    marginBottom:moderateScale(24),
-    justifyContent:"flex-end",
-    alignItems:'flex-end',
+  btn: {
+    flex: 1,
+    marginHorizontal: moderateScale(24),
+    marginBottom: moderateScale(24),
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     // backgroundColor:'yellow',
     // alignSelf:'flex-end'
-
   },
-  inputfieldnumer:{
-    height:moderateScale(56),
-    backgroundColor:colors.grayinput,
-    marginHorizontal:moderateScale(24),
-    borderRadius:16,
-    marginTop:moderateScale(16),
-    alignItems:"center",
+  inputfieldnumer: {
+    height: moderateScale(56),
+    backgroundColor: colors.grayinput,
+    marginHorizontal: moderateScale(24),
+    borderRadius: 16,
+    marginTop: moderateScale(16),
+    alignItems: 'center',
     // justifyContent:'center',
-    paddingHorizontal:moderateScale(16),
+    paddingHorizontal: moderateScale(16),
     // flexDirection:"row"
-
   },
-  text:{
+  text: {
     ...commonStyles.fontSize15,
-    fontFamily:fontFamily.poppinsRegular,
-    color:colors.OBSIDIAN,
-
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.OBSIDIAN,
   },
-  line:{
-    borderLeftWidth:1,
-    borderColor:colors.D9D9D9,
-    height:moderateScale(40),
-    marginHorizontal:moderateScale(16)
-
-  }
-
-})
+  line: {
+    borderLeftWidth: 1,
+    borderColor: colors.D9D9D9,
+    height: moderateScale(40),
+    marginHorizontal: moderateScale(16),
+  },
+});
 export default styles;

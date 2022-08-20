@@ -1,29 +1,13 @@
-import React, {Component, useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ImageBackground,
-  Pressable,
-  TouchableOpacity,
-  StatusBar,
-  TextInput,
-} from 'react-native';
+import React, {useState} from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
-import {ScrollView} from 'react-native-gesture-handler';
-import HeaderComp from '../../Components/HeaderComp';
-import {ProfileListComp} from '../../Components/ProfileListComp';
-import WrapperContainer from '../../Components/WrapperContainer';
-import imagePath from '../../constants/imagePath';
-import strings from '../../constants/lang';
-import colors from '../../styles/colors';
-import {moderateScale} from '../../styles/responsiveSize';
-import styles from './styles';
-import QRCode from 'react-native-qrcode-svg';
 import ButtonComp from '../../Components/ButtonComp';
-import navigationStrings from '../../constants/navigationStrings';
+import HeaderComp from '../../Components/HeaderComp';
+import WrapperContainer from '../../Components/WrapperContainer';
+import strings from '../../constants/lang';
+import {showError, showSuccess} from '../../helper/helperFunctions';
 import actions from '../../redux/actions';
+import styles from './styles';
 
 const ChangePin = ({navigation}) => {
   const goBack = () => {
@@ -34,23 +18,20 @@ const ChangePin = ({navigation}) => {
   const [confirmpass, setConfirmpass] = useState('');
   const [show, setshow] = useState(false);
 
-  console.log(pass,'old pin', confirmpass,'new pin')
+  console.log(pass, 'old pin', confirmpass, 'new pin');
 
-  const Changepassword=()=>
-  {
-
-    actions.Change_Password({oldPin: pass,newPin:confirmpass})
-    .then(
-      res=>
-      {
-        console.log(res,'tcdfgvh')
-      }
-    )
-    .catch( err=>
-      {
-        console.log(err,'tyhegdehdb ')
+  const Changepassword = () => {
+    actions
+      .Change_Password({oldPin: pass, newPin: confirmpass})
+      .then(res => {
+        console.log(res, 'tcdfgvh');
+        showSuccess('Pin changes sucessfully ');
       })
-  }
+      .catch(err => {
+        console.log(err, 'tyhegdehdb ');
+        showError('Your old pin Does`t match please try again ');
+      });
+  };
 
   return (
     <WrapperContainer>

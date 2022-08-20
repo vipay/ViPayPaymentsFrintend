@@ -104,12 +104,11 @@ const Login = ({navigation}) => {
           updateState({visiblity: false, loader: true});
           console.log(access, 'DIDDIDDIDDIDDIDDID');
           try {
-
-            let userrefer = !!user_id ? {referredBy :user_id} : null
+            let userrefer = !!user_id ? {referredBy: user_id} : null;
             const res = login_with_mobile({
               token: access,
               deviceId: String(fcmToken),
-              ...userrefer
+              ...userrefer,
             })
               .then(res => {
                 if (res.data.pin == 'Vi') {
@@ -123,9 +122,9 @@ const Login = ({navigation}) => {
                 }
               })
               .catch(err => {
-                  updateState({loader: false});
-                  console.log(err, ' error at api');
-                  showError('Something Went wrong')
+                updateState({loader: false});
+                console.log(err, ' error at api');
+                showError('Something Went wrong');
               });
           } catch (error) {
             console.log('errorerror', error);
@@ -224,7 +223,16 @@ const Login = ({navigation}) => {
       <View>
         <Modal visible={visiblity} transparent>
           <View style={{flex: 1, justifyContent: 'center'}}>
-            <View style={{flex: 1}}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: colors.blackOpacity50,
+              }}>
+              <Text style={styles.welcomeback1}>
+                Secure Login is in progress.
+              </Text>
               <magic.Relayer />
             </View>
           </View>

@@ -226,5 +226,5 @@ export default {
   Recipientaddress: 'Recipient address',
   UCIDaddress: 'UCID address',
 
-  ForgotPass: 'Forgot password ?',
+  ForgotPass: 'Forgot pin ?',
 };
