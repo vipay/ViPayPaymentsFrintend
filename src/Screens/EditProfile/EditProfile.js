@@ -32,10 +32,6 @@ Moralis.setAsyncStorage(AsyncStorage);
 
 const RNFS = require('react-native-fs');
 
-// import {create} from 'ipfs-http-client';
-
-// const client = create('https://ipfs.infura.io:5001');
-
 const EditProfile = ({navigation}) => {
   const goBack = () => {
     navigation.goBack();
@@ -105,7 +101,7 @@ const EditProfile = ({navigation}) => {
           name: res.data.name == 'Vi' ? null : res.data.name,
           email: res.data.email,
           loader: false,
-          profilepic: res?.data?.profilePic.data,
+          profilepic: res?.data?.profilePic,
         });
         console.log(res, 'show sucess');
       })
@@ -128,22 +124,13 @@ const EditProfile = ({navigation}) => {
         return;
       } else {
         console.log(response, 'responseresponseresponse');
-        updateState({imagedata: response.assets[0].uri.replace('file://', '')});
-        // imageUpload(response);
-        base(imagedata);
+        base(response.assets[0].uri.replace('file://', ''));
       }
     });
   };
-  console.log(imagedata, 'imagedataimagedataimagedata');
-
-  const base = async () => {
-    RNFS.readFile(imagedata, 'base64')
+  const base = async val => {
+    RNFS.readFile(val, 'base64')
       .then(res => {
-        // let urlString = 'data:image/jpeg;base64,' + res;
-        // console.log(res, 'jhhhhhhh');
-        // console.log(urlString, 'urlStringurlStringurlString');
-        // updateState({base64: res});
-
         const optionsipfs = {
           method: 'POST',
           headers: {
@@ -167,7 +154,7 @@ const EditProfile = ({navigation}) => {
               response[0].path,
               'responseresponseresponseresponsebdhjcj',
             );
-            // updateState({imageLink: response[0].path});
+
             imageUploadd(response[0].path);
           })
           .catch(err => console.error(err, 'upload error'));
@@ -176,7 +163,6 @@ const EditProfile = ({navigation}) => {
         console.log(err, 'errrrrrrrr');
       });
   };
-  console.log(imageLink, 'shbdjhbdjfbjh');
 
   function makeid() {
     var text = '';
@@ -189,12 +175,13 @@ const EditProfile = ({navigation}) => {
     return text.substring(0, 6);
   }
   const imageUploadd = path => {
-    let apidata = {profilePic: path};
+    let apidata = {profilePicUrl: path};
     console.log(apidata, 'kbdsbdbsjdbjhb');
     actions
-      .imageUpload(apidata)
+      .edit_profile(apidata)
       .then(res => {
         console.log(res, 'imageUploadimageUploadimageUpload');
+        getdata();
       })
       .catch(err => {
         console.log(err, 'imageUploadimageUploadimageUpload');
@@ -202,7 +189,6 @@ const EditProfile = ({navigation}) => {
   };
 
   const editprofile = () => {
-    let apidata = {name: name};
     if (name == null) {
       showError("Name Can't be Empty");
     } else if (name.length == 0) {
@@ -263,7 +249,6 @@ const EditProfile = ({navigation}) => {
     setactivee(!activee);
   };
 
-  console.log(profilepic.length, 'piiiiiccccccccc');
   return (
     <WrapperContainer isLoading={loader}>
       <View style={styles.container}>
@@ -276,7 +261,7 @@ const EditProfile = ({navigation}) => {
               source={
                 profilepic == null
                   ? imagePath.ic_profile_placeholder
-                  : {uri: `data:image/jpg;base64,${profilepic}`}
+                  : {uri: profilepic}
               }
             />
             <View style={styles.textView}>

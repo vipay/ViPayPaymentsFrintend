@@ -25,14 +25,29 @@ import {setScreenLock} from '../../utils/utils';
 import {Magic} from '@magic-sdk/react-native';
 import styles from './styles';
 import {Singleton} from '../../config/magicConfig';
+import {launchImageLibrary} from 'react-native-image-picker';
+import LinearGradient from 'react-native-linear-gradient';
+const RNFS = require('react-native-fs');
 
 const Profile = ({navigation}) => {
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    vipayId: '',
+    profilePic: '',
+  });
+  const {name, email, vipayId, profilePic} = state;
+  const updateState = data => setState(state => ({...state, ...data}));
+
+  //---------go back --------------
   const goBack = () => {
     navigation.goBack();
   };
+
   const magic = Singleton.getInstance();
   const lock = useSelector(state => state.loginPin.screenLock);
 
+  // ----- use effect screen lock ---------------
   useEffect(() => {
     setscreenlock(lock);
   }, [lock]);
@@ -41,6 +56,31 @@ const Profile = ({navigation}) => {
   const onscreenlock = () => {
     navigation.navigate(navigationStrings.CONFIRMSCREENLOCK);
   };
+
+  // ----------------- user data use effect----------
+  useEffect(() => {
+    getuserdata();
+  }, []);
+
+  // ----------------- api call get user data ----------------
+  const getuserdata = () => {
+    let apidata = {defaultArgument: 'NA'};
+    actions
+      .edit_profile(apidata)
+      .then(res => {
+        console.log(res, 'svdbfjbjhsdbjf');
+        updateState({
+          name: res.data.name,
+          email: res.data.email,
+          profilePic: res.data.profilePic,
+        });
+      })
+      .catch(err => {
+        console.log(err, 'sdjvjhbsjfbjb');
+      });
+  };
+
+  // ------------------- logout function -------------
 
   const LOGOUT = async () => {
     // console.log('actions.logout();', await magic.user.getIdToken());
@@ -61,6 +101,89 @@ const Profile = ({navigation}) => {
     //   console.log('errorerrorerror', error);
     // }
   };
+
+  // -----------------------image picker-----------------
+
+  const chooseFile = () => {
+    let options = {
+      maxWidth: 500,
+      maxHeight: 500,
+      quality: 1,
+    };
+    launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        return;
+      } else {
+        console.log(response, 'responseresponseresponse');
+        base(response.assets[0].uri.replace('file://', ''));
+      }
+    });
+  };
+
+  //--------------------- base 64 and ipfs upload --------------
+
+  const base = async val => {
+    RNFS.readFile(val, 'base64')
+      .then(res => {
+        const optionsipfs = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-API-Key':
+              'L7E7GWDNurxjTmDMoPQLODiyJJQEJ6BRxIgTA4FBrImbJx2Vf3oMyHt3FxDfCN29',
+          },
+          body: JSON.stringify([
+            {path: 'PROFILE_PIC' + name + makeid(), content: res},
+          ]),
+        };
+
+        fetch(
+          'https://deep-index.moralis.io/api/v2/ipfs/uploadFolder',
+          optionsipfs,
+        )
+          .then(response => response.json())
+          .then(response => {
+            console.log(
+              response[0].path,
+              'responseresponseresponseresponsebdhjcj',
+            );
+
+            imageUploadd(response[0].path);
+          })
+          .catch(err => console.error(err, 'upload error'));
+      })
+      .catch(err => {
+        console.log(err, 'errrrrrrrr');
+      });
+  };
+  //---------------- random value for image path---------------
+  function makeid() {
+    var text = '';
+    var possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text.substring(0, 6);
+  }
+
+  //----------------image upload to api ------------------
+  const imageUploadd = path => {
+    let apidata = {profilePicUrl: path};
+    console.log(apidata, 'kbdsbdbsjdbjhb');
+    actions
+      .edit_profile(apidata)
+      .then(res => {
+        console.log(res, 'imageUploadimageUploadimageUpload');
+        getuserdata();
+      })
+      .catch(err => {
+        console.log(err, 'imageUploadimageUploadimageUpload');
+      });
+  };
+
   return (
     <WrapperContainer>
       <View style={styles.container}>
@@ -75,28 +198,36 @@ const Profile = ({navigation}) => {
           <View style={styles.bgimgView}>
             <ImageBackground
               style={styles.profilepic}
-              source={imagePath.profile3}>
-              <View style={styles.profilecont}>
-                <View>
-                  <Text style={styles.ViPaybalance}>
-                    {strings.ViPaybalance}
-                  </Text>
-                  <Text style={styles.profileBalnce}>
-                    {strings.profileBalnce}
-                  </Text>
-                </View>
-                <TouchableOpacity>
-                  <Image
-                    style={styles.camera}
-                    source={imagePath.ic_camera_gallery}
-                  />
-                </TouchableOpacity>
-              </View>
+              source={
+                !!profilePic
+                  ? {uri: profilePic}
+                  : imagePath.my_profile_placeholder
+              }>
+              <LinearGradient
+                colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
+                style={styles.profilecont}>
+                {/* <View style={styles.profilecont}> */}
+                  <View>
+                    <Text style={styles.ViPaybalance}>
+                      {strings.ViPaybalance}
+                    </Text>
+                    <Text style={styles.profileBalnce}>
+                      {strings.profileBalnce}
+                    </Text>
+                  </View>
+                  <TouchableOpacity onPress={chooseFile}>
+                    <Image
+                      style={styles.camera}
+                      source={imagePath.ic_camera_gallery}
+                    />
+                  </TouchableOpacity>
+                {/* </View> */}
+              </LinearGradient>
             </ImageBackground>
           </View>
           <View style={styles.profiledetails}>
             <View style={styles.editicon}>
-              <Text style={styles.ProfileName}>{strings.ProfileName}</Text>
+              <Text style={styles.ProfileName}>{name}</Text>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate(navigationStrings.EDITPROFILE)
@@ -105,7 +236,7 @@ const Profile = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <Text style={styles.ProfileId}>{strings.ProfileId}</Text>
-            <Text style={styles.ProfileEmail}>{strings.ProfileEmail}</Text>
+            <Text style={styles.ProfileEmail}>{email}</Text>
           </View>
           <ProfileListComp
             logoicon={imagePath.ic_my_qr}

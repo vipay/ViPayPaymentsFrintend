@@ -17,14 +17,15 @@ const styles = StyleSheet.create({
   profilepic: {
     height: '100%',
     width: '100%',
+    justifyContent: 'flex-end',
   },
   profilecont: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    marginHorizontal: moderateScale(24),
-    marginVertical: moderateScale(16),
+    paddingHorizontal: moderateScale(24),
+    paddingVertical: moderateScale(16),
   },
   ViPaybalance: {
     ...commonStyles.fontSize12,
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
   bgimgView: {
     //   height:'100%',
     height: moderateScale(376),
+    // justifyContent:"flex-end"
     // backgroundColor: 'red',
   },
   camera: {
@@ -58,8 +60,7 @@ const styles = StyleSheet.create({
     ...commonStyles.fontSize18,
     fontFamily: fontFamily.RocGroteskBold,
     color: colors.OBSIDIAN,
-    lineHeight:23,
-    
+    lineHeight: 23,
   },
   ProfileId: {
     ...commonStyles.fontSize12,
@@ -72,17 +73,16 @@ const styles = StyleSheet.create({
     color: colors.grayprice,
     marginBottom: moderateScale(8),
   },
-  anySuggestionView:{
-    height:moderateScale(64),
-    alignItems:'center',
-    justifyContent:'center'
+  anySuggestionView: {
+    height: moderateScale(64),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  Anysuggestions:{
+  Anysuggestions: {
     ...commonStyles.fontSize15,
-    fontFamily:fontFamily.poppinsRegular,
-    color:colors.Blue,
-    textDecorationLine:'underline'
-    
-  }
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.Blue,
+    textDecorationLine: 'underline',
+  },
 });
 export default styles;
