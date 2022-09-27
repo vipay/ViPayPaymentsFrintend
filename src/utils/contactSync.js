@@ -1,6 +1,15 @@
-
 import {PermissionsAndroid} from 'react-native';
 import Contacts from 'react-native-contacts';
+
+Contacts.checkPermission().then(permission => {
+  if (permission === 'undefined') {
+    Contacts.requestPermission().then(permission => {});
+  }
+  if (permission === 'authorized') {
+  }
+  if (permission === 'denied') {
+  }
+});
 
 const contactSync = async () => {
   try {
@@ -15,7 +24,7 @@ const contactSync = async () => {
       },
     );
     if (andoidContactPermission === PermissionsAndroid.RESULTS.GRANTED) {
-     let tsttt= Contacts.getAll()
+      let tsttt = Contacts.getAll()
         .then(res => {
           console.log('contacts+++', res);
           var availNumber = res.filter((item, i) => {
@@ -29,8 +38,8 @@ const contactSync = async () => {
         .catch(e => {
           console.log(e, 'errorcontacts');
         });
-        console.log(tsttt,'datadstadstadstd')
-        return tsttt
+      console.log(tsttt, 'datadstadstadstd');
+      return tsttt;
     } else {
       console.log('Contacts permission denied');
     }

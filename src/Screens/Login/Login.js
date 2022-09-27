@@ -111,7 +111,7 @@ const Login = ({navigation}) => {
               ...userrefer,
             })
               .then(res => {
-                if (res.data.pin == 'Vi') {
+                if (res.data.pin == null) {
                   navigation.navigate(navigationStrings.CREATEPIN, {
                     auth: res.data.token,
                   });

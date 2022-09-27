@@ -30,3 +30,5 @@ export const PINCHECK = getApiUrll('/user/v1/verify-pin');
 export const HELPSUPPORT = getApiUrll('/user/v1/raise-support-query');
 export const SAVEADDRESS = getApiUrll('/user/v1/save-wallet');
 export const REDEEMVOUCHER = getApiUrll('/user/v1/redeem-voucher');
+export const LISTSAVEDWALLET = getApiUrll('/user/v1/list-saved-wallet');
+export const LISTREFERRED = getApiUrll('/user/v1/list-referred-users');

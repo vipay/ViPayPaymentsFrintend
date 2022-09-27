@@ -21,6 +21,8 @@ export default function HeaderComp({
   textStyle,
   imagestyle,
   backicon,
+  image1,
+  onpressImage1,
 }) {
   return (
     <View style={{...styles.headerStyle, ...headerStyle}}>
@@ -33,9 +35,14 @@ export default function HeaderComp({
         </Pressable>
         <Text style={{...styles.textStyle, ...textStyle}}>{text}</Text>
       </View>
-      <Pressable onPress={onPress}>
-        <Image style={{...styles.imagestyle, ...imagestyle}} source={image} />
-      </Pressable>
+      <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity style={styles.image1} onPress={onpressImage1}>
+          <Image source={image1} />
+        </TouchableOpacity>
+        <Pressable onPress={onPress}>
+          <Image style={{...styles.imagestyle, ...imagestyle}} source={image} />
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -44,8 +51,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     flexDirection: 'row',
-    // backgroundColor:'red',
-    // height:moderateScale(62),
     justifyContent: 'space-between',
     marginHorizontal: moderateScale(24),
     marginVertical: moderateScaleVertical(16),
@@ -63,5 +68,8 @@ const styles = StyleSheet.create({
     height: moderateScale(32),
     width: moderateScale(32),
     // borderRadius: 12,
+  },
+  image1: {
+    marginRight: moderateScale(16),
   },
 });

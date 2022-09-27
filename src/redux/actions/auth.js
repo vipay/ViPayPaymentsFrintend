@@ -35,6 +35,8 @@ import {
   HELPSUPPORT,
   SAVEADDRESS,
   REDEEMVOUCHER,
+  LISTSAVEDWALLET,
+  LISTREFERRED,
 } from '../../config/urls';
 import {useState} from 'react';
 import {showSuccess} from '../../helper/helperFunctions';
@@ -146,7 +148,7 @@ export function resend_otp(data) {
 export const loginpin = (data, headers) => {
   console.log(data, 'the given data');
   return new Promise((resolve, reject) => {
-    (SET_PIN, data, {'Accept-Language': 'en', headers})
+    apiPut(SET_PIN, data, {'Accept-Language': 'en'}, headers)
       .then(res => {
         resolve(res);
         init();
@@ -177,6 +179,12 @@ export function sendMessage(data) {
 export function edit_profile(data) {
   return apiPut(EDIT_PROFILE_, data, {'accept-language': 'en'});
 }
+export function listsavedwallet(data) {
+  return apiGet(LISTSAVEDWALLET, data, {'accept-language': 'en'});
+}
+export function listreferred(data) {
+  return apiGet(LISTREFERRED, data, {'accept-language': 'en'});
+}
 export function pin_check(data) {
   return apiPost(PINCHECK, data, {'accept-language': 'en'});
 }
@@ -192,8 +200,8 @@ export function helpSupport(data) {
 export function SaveAddress(data) {
   return apiPost(SAVEADDRESS, data, {'accept-language': 'en'});
 }
-export function redeemVoucher(query,data) {
-  return apiGet(REDEEMVOUCHER + query,data, {'accept-language': 'en'});
+export function redeemVoucher(query, data) {
+  return apiGet(REDEEMVOUCHER + query, data, {'accept-language': 'en'});
 }
 export function addContact(data) {
   return apiPut(CONTACT, data);

@@ -1,5 +1,5 @@
 import {month} from 'is_js';
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useCallback, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -27,6 +27,7 @@ import styles from './styles';
 import {Singleton} from '../../config/magicConfig';
 import {launchImageLibrary} from 'react-native-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
+import {useFocusEffect} from '@react-navigation/native';
 const RNFS = require('react-native-fs');
 
 const Profile = ({navigation}) => {
@@ -62,6 +63,12 @@ const Profile = ({navigation}) => {
     getuserdata();
   }, []);
 
+  useFocusEffect(
+    useCallback(() => {
+      getuserdata();
+    }, []),
+  );
+
   // ----------------- api call get user data ----------------
   const getuserdata = () => {
     let apidata = {defaultArgument: 'NA'};
@@ -73,6 +80,7 @@ const Profile = ({navigation}) => {
           name: res.data.name,
           email: res.data.email,
           profilePic: res.data.profilePic,
+          vipayId: res?.data?.vipayId,
         });
       })
       .catch(err => {
@@ -134,7 +142,7 @@ const Profile = ({navigation}) => {
               'L7E7GWDNurxjTmDMoPQLODiyJJQEJ6BRxIgTA4FBrImbJx2Vf3oMyHt3FxDfCN29',
           },
           body: JSON.stringify([
-            {path: 'PROFILE_PIC' + name + makeid(), content: res},
+            {path: 'PROFILE_PIC/' + name + makeid(), content: res},
           ]),
         };
 
@@ -207,27 +215,29 @@ const Profile = ({navigation}) => {
                 colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
                 style={styles.profilecont}>
                 {/* <View style={styles.profilecont}> */}
-                  <View>
-                    <Text style={styles.ViPaybalance}>
-                      {strings.ViPaybalance}
-                    </Text>
-                    <Text style={styles.profileBalnce}>
-                      {strings.profileBalnce}
-                    </Text>
-                  </View>
-                  <TouchableOpacity onPress={chooseFile}>
-                    <Image
-                      style={styles.camera}
-                      source={imagePath.ic_camera_gallery}
-                    />
-                  </TouchableOpacity>
+                <View>
+                  <Text style={styles.ViPaybalance}>
+                    {strings.ViPaybalance}
+                  </Text>
+                  <Text style={styles.profileBalnce}>
+                    {strings.profileBalnce}
+                  </Text>
+                </View>
+                <TouchableOpacity onPress={chooseFile}>
+                  <Image
+                    style={styles.camera}
+                    source={imagePath.ic_camera_gallery}
+                  />
+                </TouchableOpacity>
                 {/* </View> */}
               </LinearGradient>
             </ImageBackground>
           </View>
           <View style={styles.profiledetails}>
             <View style={styles.editicon}>
-              <Text style={styles.ProfileName}>{name}</Text>
+              <Text style={styles.ProfileName}>
+                {!!name ? name : 'Vipay user'}
+              </Text>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate(navigationStrings.EDITPROFILE)
@@ -235,7 +245,7 @@ const Profile = ({navigation}) => {
                 <Image source={imagePath.ic_edit} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.ProfileId}>{strings.ProfileId}</Text>
+            <Text style={styles.ProfileId}>{vipayId}</Text>
             <Text style={styles.ProfileEmail}>{email}</Text>
           </View>
           <ProfileListComp

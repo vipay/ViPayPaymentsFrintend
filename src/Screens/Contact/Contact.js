@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, FlatList, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState, useEffect, useCallback} from 'react';
 import styles from './styles';
 import {PermissionsAndroid} from 'react-native';
@@ -12,6 +19,8 @@ import strings from '../../constants/lang';
 import imagePath from '../../constants/imagePath';
 import {TextInput} from 'react-native-gesture-handler';
 import {useFocusEffect, useIsFocused} from '@react-navigation/native';
+import actions from '../../redux/actions';
+import contactSync from '../../utils/contactSync';
 
 const Contact = ({navigation}) => {
   const {userData} = useSelector(state => state.auth);
@@ -33,36 +42,38 @@ const Contact = ({navigation}) => {
     return Platform.OS === 'ios' ? true : false;
   }
 
-  useFocusEffect(
-    useCallback(() => {
-      updateState({loader: true});
-      if (isIOS()) {
-        Contacts.getAll().then(contacts => {
-          updateState({
-            contacts: contacts,
-          });
-          addcontact(contacts);
-        });
-      } else {
-        test();
-      }
-    }, []),
-  );
+  const contactdata = useSelector(state => state?.contactsaved?.data);
+  useEffect(() => {
+    contactdata?.length > 0 ? getContactREDUX() : getCont();
+  }, []);
 
-  // useEffect(() => {
-  //   updateState({loader: true});
-  //   if (isIOS()) {
-  //     Contacts.getAll().then(contacts => {
-  //       updateState({
-  //         contacts: contacts,
-  //       });
-  //       addcontact(contacts);
-  //     });
-  //   } else {
-  //     test();
-  //   }
-  // }, []);
-  console.log(data, 'ebcjhbjhbjbhjbj');
+  const getContactREDUX = () => {
+    updateState({data: contactdata, filterdata: contactdata});
+  };
+  //==========>>>>>>>>> contact sync========>>>>>>>>
+  const getCont = async () => {
+    updateState({loader: true});
+    const contact = await contactSync();
+    contactApi(contact);
+  };
+
+  // contact sync api
+
+  const contactApi = data => {
+    let apiData = {list: data};
+    console.log(apiData, 'apiDataapiData');
+    addContacts(apiData)
+      .then(res => {
+        console.log(res, 'contacts from api');
+        updateState({data: res.data, filterdata: res.data, loader: false});
+        actions.contactsaved(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+        updateState({loader: false});
+        // setloader(false);
+      });
+  };
 
   const filterinput = value => {
     console.log(value, 'filterinputfilterinput');
@@ -76,62 +87,9 @@ const Contact = ({navigation}) => {
     updateState({filterdata: filterarr});
   };
 
-  const test = async () => {
-    try {
-      const andoidContactPermission = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-        {
-          title: 'Contacts Permission',
-          message: 'This app would like to view your contacts.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-      if (andoidContactPermission === PermissionsAndroid.RESULTS.GRANTED) {
-        Contacts.getAll()
-          .then(res => {
-            console.log('contacts+++', res);
-            var availNumber = res.filter((item, i) => {
-              if (item.phoneNumbers?.length > 0) {
-                return item;
-              }
-            });
-            console.log('avail number', availNumber);
-            addcontact(availNumber);
-          })
-          .catch(e => {
-            console.log(e, 'errorcontacts');
-          });
-      } else {
-        console.log('Contacts permission denied');
-      }
-    } catch (error) {}
-  };
-  const addcontact = contactArray => {
-    const aa = [];
-    const bb = contactArray.map(item => {
-      aa.push({
-        phone:
-          item.phoneNumbers.length > 0 &&
-          item.phoneNumbers[0].number.toString().replace(/-| /g, '').trim(),
-        name: item.givenName,
-      });
-    });
-
-    addContacts({list: aa})
-      .then(res => {
-        console.log(res, 'abcsscs');
-        updateState({data: res.data, loader: false, filterdata: res.data});
-      })
-      .catch(error => {
-        console.log(error);
-        updateState({
-          loader: false,
-        });
-      });
-  };
+  //------------------render itemmm--------------->>>>>>
   let alpahet = '';
+
   const renderItem = ({item, index}) => {
     const showalphabet = () => {
       if (alpahet != item.nameInContacts.substring(0, 1)) {
@@ -155,7 +113,12 @@ const Contact = ({navigation}) => {
   return (
     <WrapperContainer isLoading={loader}>
       <View>
-        <Text style={styles.Contact}>{strings.Contacts}</Text>
+        <View style={styles.header}>
+          <Text style={styles.Contact}>{strings.Contacts}</Text>
+          <TouchableOpacity onPress={getCont}>
+            <Image source={imagePath.ic_refresh} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.search}>
           <TextInput
             placeholder={strings.SearchContact}

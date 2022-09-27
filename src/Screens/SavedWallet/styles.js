@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   adress: {
     ...commonStyles.fontSize14,
     fontFamily: fontFamily.poppinsRegular,
-    color: colors.OBSIDIAN,
+    color: colors.grayprice,
   },
   addbtn: {
     height: moderateScale(48),

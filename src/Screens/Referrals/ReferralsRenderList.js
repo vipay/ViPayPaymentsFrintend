@@ -1,26 +1,25 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import moment from 'moment';
 import React from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import imagePath from '../../constants/imagePath';
-import {
-  moderateScale,
-  moderateScaleVertical,
-} from '../../styles/responsiveSize';
-import {combineReducers} from 'redux';
+import {momentTime} from '../../helper/helperFunctions';
+import colors from '../../styles/colors';
 import commonStyles from '../../styles/commonStyles';
 import fontFamily from '../../styles/fontFamily';
-import colors from '../../styles/colors';
-import {getItem} from '../../utils/utils';
+import {moderateScale} from '../../styles/responsiveSize';
 
 const ReferralsRenderList = ({item, index}) => {
   return (
     <View style={styles.conatiner}>
-      <Image style={styles.profile} source={item.profilepic} />
+      <Image style={styles.profile} source={imagePath.ic_user_placeholder} />
       <View style={styles.subview}>
         <View style={styles.nameview}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.time}>{item.time}</Text>
+          <Text style={styles.name}>{item._id}</Text>
+          <Text style={styles.time}>
+            {moment(item.createdAt).format('DD MMM, YY • hh:mm a')}
+          </Text>
         </View>
-        <Text style={styles.value}>{item.value}</Text>
+        <Text style={styles.value}>{item.referrerBonus}</Text>
       </View>
     </View>
   );

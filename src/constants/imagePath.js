@@ -158,4 +158,5 @@ export default {
 
   ic_add_new_white: require('../assets/images/ic_add_new_white.png'),
   my_profile_placeholder: require('../assets/images/my_profile_placeholder.png'),
+  ic_refresh: require('../assets/images/ic_refresh.png'),
 };

@@ -1,5 +1,5 @@
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import WrapperContainer from '../../Components/WrapperContainer';
 import HeaderComp from '../../Components/HeaderComp';
 import imagePath from '../../constants/imagePath';
@@ -8,32 +8,39 @@ import {FlatList} from 'react-native-gesture-handler';
 import ButtonComp from '../../Components/ButtonComp';
 import AddAddress from '../../Components/AddAddress';
 import navigationStrings from '../../constants/navigationStrings';
+import actions from '../../redux/actions';
+import {useFocusEffect} from '@react-navigation/native';
 
 const SavedWallet = ({navigation}) => {
   //<---------------static data for listing--------------------------->
   const [isVisbile, setisVisbile] = useState(false);
-  const data = [
-    {
-      name: 'Binance wallet',
-      addresscount: 5,
-    },
-    {
-      name: 'BTC wallet',
-      addresscount: 8,
-    },
-    {
-      name: 'Ethereum wallet',
-      addresscount: 2,
-    },
-    {
-      name: 'Ripple wallet',
-      addresscount: 6,
-    },
-    {
-      name: 'USDT Tether wallet',
-      addresscount: 12,
-    },
-  ];
+
+  const [state, setState] = useState({
+    data: [],
+  });
+
+  const {data} = state;
+  const updateState = data => {
+    setState(state => ({...state, ...data}));
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      listwallet();
+    }, []),
+  );
+
+  const listwallet = () => {
+    actions
+      .listsavedwallet()
+      .then(res => {
+        updateState({data: res.data});
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   const goBack = () => {
     navigation.goBack();
@@ -42,15 +49,20 @@ const SavedWallet = ({navigation}) => {
     setisVisbile(!isVisbile);
   };
 
-  const renderItem = (item, index) => {
+  const renderItem = item => {
     console.log(item, 'kkkkkkk');
     return (
-      <TouchableOpacity onPress={()=> navigation.navigate(navigationStrings.SELECTWALLET)}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate(navigationStrings.SELECTWALLET, {
+            data: item?.item?.wallets,
+          })
+        }>
         <View style={styles.main}>
           <View>
-            <Text style={styles.name}>{item?.item.name}</Text>
+            <Text style={styles.name}>{item?.item?._id + ' wallet'}</Text>
             <Text style={styles.adress}>
-              {'Added address : ' + item.item.addresscount}
+              {'Added address : ' + item?.item?.wallets.length}
             </Text>
           </View>
           <Image source={imagePath.ic_gray_arrow} />

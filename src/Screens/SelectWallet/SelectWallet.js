@@ -1,42 +1,45 @@
-import React, { useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import AddAddress from '../../Components/AddAddress';
 import HeaderComp from '../../Components/HeaderComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import styles from './styles';
 
-const SelectWallet = ({navigation}) => {
+const SelectWallet = ({navigation, route}) => {
+  const data = route?.params.data;
+
+  console.log(data, 'datattttttaaaaa');
   //<---------------static data for listing--------------------------->
   const [isVisbile, setisVisbile] = useState(false);
-  const data = [
-    {
-      name: 'Liani Fesso',
-      profile: imagePath.profile,
-      address: '139ZVZumF************GvfqwFG3GdTZ8',
-    },
-    {
-      name: 'Josef Fransis',
-      profile: imagePath.profile2,
-      address: '465RFHtyT************DjgetEY7HiQS7',
-    },
-    {
-      name: 'Adrim Dhoke',
-      profile: imagePath.profile3,
-      address: '594THUkeG************YwapjRQ5JfHW5',
-    },
-    {
-      name: 'Anni Nikola',
-      profile: imagePath.profile4,
-      address: '279YWHopQ************GwqttWG7KqFJ9',
-    },
-    {
-      name: 'Rushan Janne',
-      profile: imagePath.profile5,
-      address: '564YWQheU************KqtslRU5YwKR5',
-    },
-  ];
+  // const data = [
+  //   {
+  //     name: 'Liani Fesso',
+  //     profile: imagePath.profile,
+  //     address: '139ZVZumF************GvfqwFG3GdTZ8',
+  //   },
+  //   {
+  //     name: 'Josef Fransis',
+  //     profile: imagePath.profile2,
+  //     address: '465RFHtyT************DjgetEY7HiQS7',
+  //   },
+  //   {
+  //     name: 'Adrim Dhoke',
+  //     profile: imagePath.profile3,
+  //     address: '594THUkeG************YwapjRQ5JfHW5',
+  //   },
+  //   {
+  //     name: 'Anni Nikola',
+  //     profile: imagePath.profile4,
+  //     address: '279YWHopQ************GwqttWG7KqFJ9',
+  //   },
+  //   {
+  //     name: 'Rushan Janne',
+  //     profile: imagePath.profile5,
+  //     address: '564YWQheU************KqtslRU5YwKR5',
+  //   },
+  // ];
 
   const goBack = () => {
     navigation.goBack();
@@ -45,17 +48,17 @@ const SelectWallet = ({navigation}) => {
     setisVisbile(!isVisbile);
   };
 
-  const renderItem = (item, index) => {
-    console.log(item, 'kkkkkkk');
+  const renderItem = item => {
+    console.log(item, 'kkkkffffkkk');
     return (
       <TouchableOpacity>
         <View style={styles.main}>
           <View style={styles.subview}>
-            <Text style={styles.name}>{item.item.name}</Text>
+            <Text style={styles.name}>{item.item.userId}</Text>
             {/* <Image style={styles.profile} source={item.item.profile} /> */}
           </View>
           <Text numberOfLines={1} style={styles.address}>
-            {item.item.address}
+            {item.item.walletAddress}
           </Text>
         </View>
       </TouchableOpacity>

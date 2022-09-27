@@ -137,7 +137,8 @@ const HelpSupport = ({navigation}) => {
           </View>
           <Text style={styles.helpdesc}>{strings.helpdesc}</Text>
           <View style={styles.btn}>
-            <ButtonComp btnText={strings.Submit} onPress={onsubmit} />
+            <Butto
+            nComp btnText={strings.Submit} onPress={onsubmit} />
           </View>
         </View>
       </View>

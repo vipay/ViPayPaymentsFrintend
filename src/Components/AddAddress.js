@@ -6,6 +6,8 @@ import {
   Modal,
   TouchableOpacity,
   TextInput,
+  Pressable,
+  ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
 import WrapperContainer from './WrapperContainer';
@@ -93,56 +95,64 @@ const AddAddress = ({isvisible, close}) => {
   return (
     <WrapperContainer>
       <Modal visible={isvisible} transparent>
-        <View style={styles.container}>
-          <View style={styles.main}>
-            <View style={styles.heading}>
-              <Text style={styles.header}>{'Add new address'}</Text>
-              <TouchableOpacity onPress={() => close()}>
-                <Image source={imagePath.ic_gray_cross} />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.input}>
-              <TextInput
-                style={styles.inputxt}
-                placeholder="Wallet address"
-                placeholderTextColor={colors.lightgray}
-                onChangeText={value => updateState({walletAddress: value})}
-                value={walletAddress}
-              />
-            </View>
-            <View style={styles.input}>
-              <TextInput
-                style={styles.inputxt}
-                placeholder="Wallet label"
-                placeholderTextColor={colors.lightgray}
-                onChangeText={value => updateState({walletlable: value})}
-                value={walletlable}
-              />
-            </View>
+        <Pressable style={styles.container} onPress={() => close()}>
+          <ScrollView
+            contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
+            keyboardDismissMode={'interactive'}>
+            <Pressable style={styles.main}>
+              <View style={styles.heading}>
+                <Text style={styles.header}>{'Add new address'}</Text>
+                <TouchableOpacity onPress={() => close()}>
+                  <Image source={imagePath.ic_gray_cross} />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.input}>
+                <TextInput
+                  style={styles.inputxt}
+                  placeholder="Wallet address"
+                  placeholderTextColor={colors.lightgray}
+                  onChangeText={value => updateState({walletAddress: value})}
+                  value={walletAddress}
+                />
+              </View>
+              <View style={styles.input}>
+                <TextInput
+                  style={styles.inputxt}
+                  placeholder="Wallet label"
+                  placeholderTextColor={colors.lightgray}
+                  onChangeText={value => updateState({walletlable: value})}
+                  value={walletlable}
+                />
+              </View>
 
-            <Text style={styles.title}>Select Network</Text>
+              <Text style={styles.title}>Select Network</Text>
 
-            <View style={styles.list}>
-              {networks.map((item, index) => {
-                return (
-                  <TouchableOpacity
-                    style={styles.tiles}
-                    onPress={() => selectedNetwork(index, item)}>
-                    <Text
-                      style={
-                        selectindex == index
-                          ? styles.networksdark
-                          : styles.networks
-                      }>
-                      {item.name}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-            <ButtonComp btnText="Save" btnStyle={styles.btn} onPress={onSave} />
-          </View>
-        </View>
+              <View style={styles.list}>
+                {networks.map((item, index) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.tiles}
+                      onPress={() => selectedNetwork(index, item)}>
+                      <Text
+                        style={
+                          selectindex == index
+                            ? styles.networksdark
+                            : styles.networks
+                        }>
+                        {item.name}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+              <ButtonComp
+                btnText="Save"
+                btnStyle={styles.btn}
+                onPress={onSave}
+              />
+            </Pressable>
+          </ScrollView>
+        </Pressable>
       </Modal>
     </WrapperContainer>
   );

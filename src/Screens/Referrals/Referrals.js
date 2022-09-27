@@ -1,32 +1,17 @@
-import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ImageBackground,
-  Pressable,
-  TouchableOpacity,
-  StatusBar,
-  TextInput,
-  FlatList,
-} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import {useFocusEffect} from '@react-navigation/native';
+import React, {useCallback, useState} from 'react';
+import {FlatList, Image, ImageBackground, Text, View} from 'react-native';
+import Share from 'react-native-share';
+import {useSelector} from 'react-redux';
+import ButtonComp from '../../Components/ButtonComp';
 import HeaderComp from '../../Components/HeaderComp';
-import {ProfileListComp} from '../../Components/ProfileListComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
-import colors from '../../styles/colors';
-import {moderateScale} from '../../styles/responsiveSize';
-import styles from './styles';
-import QRCode from 'react-native-qrcode-svg';
-import ButtonComp from '../../Components/ButtonComp';
-import navigationStrings from '../../constants/navigationStrings';
+import actions from '../../redux/actions';
 import ReferralsRenderList from './ReferralsRenderList';
-import dynamicLinks from '@react-native-firebase/dynamic-links';
-import Share from 'react-native-share';
-import {useSelector} from 'react-redux';
+import styles from './styles';
 
 export function generateDeepLink(userid) {
   try {
@@ -54,65 +39,32 @@ export function generateDeepLink(userid) {
 }
 
 const Referrals = ({navigation}) => {
-  const data = [
-    {
-      id: 1,
-      profilepic: imagePath.profile2,
-      name: 'Abriel Ramirez',
-      time: 'Today  •  9:41 am',
-      value: '75.00',
-    },
-    {
-      id: 2,
-      profilepic: imagePath.profile3,
-      name: 'Liani Fesso',
-      time: 'Today  •  8:00 am',
-      value: '50.25',
-    },
-    {
-      id: 3,
-      profilepic: imagePath.profile4,
-      name: 'Josef Fransis',
-      time: 'Yesterday  •  7:13 pm',
-      value: '10.85',
-    },
-    {
-      id: 4,
-      profilepic: imagePath.profile5,
-      name: 'Adrim Dhoke',
-      time: '19 Feb, 2022  •  2:30 pm',
-      value: '100.87',
-    },
+  const [state, setState] = useState({
+    data: [],
+  });
+  const {data} = state;
+  const updateState = data => {
+    setState(state => ({...state, ...data}));
+  };
 
-    {
-      id: 5,
-      profilepic: imagePath.profile6,
-      name: 'Anni Nikola',
-      time: '19 Feb, 2022  •  12:59 pm',
-      value: '275.48',
-    },
-    {
-      id: 6,
-      profilepic: imagePath.profile2,
-      name: 'Adrim Dhoke',
-      time: '19 Feb, 2022  •  2:30 pm',
-      value: '100.87',
-    },
-    {
-      id: 7,
-      profilepic: imagePath.profile6,
-      name: 'Anni Nikola',
-      time: '19 Feb, 2022  •  12:59 pm',
-      value: '275.48',
-    },
-    {
-      id: 8,
-      profilepic: imagePath.profile3,
-      name: 'Liani Fesso',
-      time: 'Today  •  8:00 am',
-      value: '50.25',
-    },
-  ];
+  useFocusEffect(
+    useCallback(() => {
+      listreferrals();
+    }, []),
+  );
+
+  const listreferrals = () => {
+    actions
+      .listreferred()
+      .then(res => {
+        updateState({data: res.data});
+        console.log(res, 'litttttts');
+      })
+      .catch(err => {
+        console.log(err, 'errrrrrrrr');
+      });
+  };
+
   const goBack = () => {
     navigation.goBack();
   };
@@ -129,6 +81,15 @@ const Referrals = ({navigation}) => {
       />
     );
   };
+
+  const emptylist = () => {
+    return (
+      <View style={styles.emptyView}>
+        <Text style={styles.emptylist}>No Referrls</Text>
+      </View>
+    );
+  };
+
   return (
     <WrapperContainer>
       <View style={styles.container}>
@@ -148,9 +109,11 @@ const Referrals = ({navigation}) => {
 
         <View style={styles.flatList}>
           <FlatList
-            data={data}
+            // data={data}
             keyExtractor={(_, index) => index.toString()}
             renderItem={renderItem}
+            ListEmptyComponent={emptylist}
+            contentContainerStyle={{flexGrow: 1}}
           />
         </View>
 

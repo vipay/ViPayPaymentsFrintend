@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component} from 'react';
+import React, {Component, useCallback, useState} from 'react';
 import {
   View,
   Text,
@@ -20,9 +20,40 @@ import HomeRenderList from './HomeRenderList';
 import styles from './styles';
 import WrapperContainer from '../../Components/WrapperContainer';
 import {useSelector} from 'react-redux';
+import actions from '../../redux/actions';
+import {useFocusEffect} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 
 // create a component
 const Home = ({navigation}) => {
+  const [state, setState] = useState({
+    profilePic: '',
+  });
+  const {profilePic} = state;
+  const updateState = data => setState(state => ({...state, ...data}));
+
+  // ----------------- api call get user data ----------------
+  const getuserdata = () => {
+    let apidata = {defaultArgument: 'NA'};
+    actions
+      .edit_profile(apidata)
+      .then(res => {
+        console.log(res, 'svdbfjbjhsdbjf');
+        updateState({
+          profilePic: res.data.profilePic,
+        });
+      })
+      .catch(err => {
+        console.log(err, 'sdjvjhbsjfbjb');
+      });
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getuserdata();
+    }, []),
+  );
+
   const data = [
     {
       id: 1,
@@ -116,7 +147,14 @@ const Home = ({navigation}) => {
           <Image source={imagePath.logo_title_header}></Image>
           <Pressable
             onPress={() => navigation.navigate(navigationStrings.PROFILE)}>
-            <Image style={styles.profilepic} source={imagePath.profile} />
+            <FastImage
+              style={styles.profilepic}
+              source={
+                !!profilePic
+                  ? {uri: profilePic}
+                  : imagePath.ic_profile_placeholder
+              }
+            />
           </Pressable>
         </View>
 

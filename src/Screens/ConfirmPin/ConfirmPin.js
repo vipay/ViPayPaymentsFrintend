@@ -10,7 +10,7 @@ import navigationStrings from '../../constants/navigationStrings';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 import {showError, showSuccess} from '../../helper/helperFunctions';
 import {loginpin} from '../../redux/actions/auth';
-import { shouldBeUseWeb } from 'react-native-reanimated/src/reanimated2/PlatformChecker';
+import {shouldBeUseWeb} from 'react-native-reanimated/src/reanimated2/PlatformChecker';
 
 const ConfirmPin = ({navigation, route}) => {
   const [confirmpass, setconfirmPass] = useState('');
@@ -37,12 +37,15 @@ const ConfirmPin = ({navigation, route}) => {
     if (pass === confirmpass) {
       console.log('match');
 
-      let apidata = {pin: confirmpass};
+      // let apidata = {pin: confirmpass};
       let header = {authorization: auth};
-      loginpin({pin:confirmpass}, header)
+      console.log(header, 'fbhdfbjhb');
+      loginpin({pin: confirmpass}, header)
+        // alert('therr')
         .then(data => {
-          console.log(data);
-          showSuccess('Pin Created Successfully')
+          console.log(data, 'pinnnn');
+          showSuccess('Pin Created Successfully');
+
           // navigation.navigate(navigationStrings.HOME_TAB);
         })
         .catch(err => {
@@ -50,7 +53,7 @@ const ConfirmPin = ({navigation, route}) => {
           // navigation.navigate(navigationStrings.HOME_TAB);
         });
     } else {
-      showError("Pin Does't match" )
+      showError("Pin Does't match");
       console.log('unmatch');
       // navigation.navigate(navigationStrings.HOME_TAB);
     }

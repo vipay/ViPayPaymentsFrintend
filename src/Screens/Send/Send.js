@@ -1,5 +1,5 @@
 import {useFocusEffect} from '@react-navigation/native';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   FlatList,
   Image,
@@ -10,11 +10,13 @@ import {
   View,
 } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import {useSelector} from 'react-redux';
 import HeaderComp from '../../Components/HeaderComp';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import strings from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
+import actions from '../../redux/actions';
 import {addContacts} from '../../redux/actions/auth';
 import colors from '../../styles/colors';
 import {moderateScale} from '../../styles/responsiveSize';
@@ -40,22 +42,25 @@ const Send = ({navigation}) => {
   const {searchToggle, searchQuery, filterdata, data} = state;
   const updateState = data => setstate(state => ({...state, ...data}));
 
-  useFocusEffect(
-    useCallback(() => {
-      getCont();
-      setloader(true);
-    }, []),
-  );
+  const contactdata = useSelector(state => state?.contactsaved?.data);
+  useEffect(() => {
+    contactdata?.length > 0 ? getContactREDUX() : getCont();
+  }, []);
+
+  const getContactREDUX = () => {
+    updateState({data: contactdata, filterdata: contactdata});
+  };
+
+  //==========>>>>>>>>> contact sync========>>>>>>>>
   const getCont = async () => {
+    setloader(true);
     const contact = await contactSync();
     contactApi(contact);
 
-    setgetdata(contact);
+    // setgetdata(contact);
   };
 
-  // contact sync
-
-  console.log(getdata, 'getdatagetdatagetdatagetdata');
+  // contact sync api
 
   const contactApi = data => {
     let apiData = {list: data};
@@ -63,7 +68,9 @@ const Send = ({navigation}) => {
     addContacts(apiData)
       .then(res => {
         console.log(res, 'contacts from api');
+
         updateState({data: res.data, filterdata: res.data});
+        actions.contactsaved(res.data);
         setloader(false);
       })
       .catch(error => {
@@ -71,7 +78,10 @@ const Send = ({navigation}) => {
         setloader(false);
       });
   };
+
+  //=--------------reder item------------
   let alpahet = '';
+
   const renderItem = ({item, index}) => {
     const showalphabet = () => {
       if (alpahet != item.nameInContacts.substring(0, 1)) {
@@ -95,12 +105,11 @@ const Send = ({navigation}) => {
   //-------------- back for search-------------
   const onBackPress = () => {
     updateState({searchToggle: false});
-    updateState({searchQuery: '',filterdata: data});
+    updateState({searchQuery: '', filterdata: data});
   };
   // --------------clear search field
   const onClear = () => {
-    updateState({searchQuery: '',filterdata: data});
-
+    updateState({searchQuery: '', filterdata: data});
   };
   /// ---------------------
 
@@ -141,10 +150,12 @@ const Send = ({navigation}) => {
             image={imagePath.searchblack}
             imagestyle={{height: moderateScale(24), width: moderateScale(24)}}
             onBackPress={goBack}
+            image1={imagePath.ic_refresh}
             // onPress={() => navigation.navigate(navigationStrings.SEARCH)}
             onPress={() => {
               updateState({searchToggle: true});
             }}
+            onpressImage1={getCont}
             headerStyle={{marginVertical: moderateScale(16)}}
           />
         )}

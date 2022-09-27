@@ -195,10 +195,10 @@ export default {
   Termsandconditions: 'Terms and conditions',
 
   //change pin
-  Changepassword: 'Change password',
+  Changepassword: 'Change pin',
 
-  Oldpassword: 'Old password',
-  Newpassword: 'New password',
+  Oldpassword: 'Old pin',
+  Newpassword: 'New pin',
   Show: 'Show',
   Submit: 'Submit',
 

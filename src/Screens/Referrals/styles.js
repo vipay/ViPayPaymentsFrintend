@@ -41,33 +41,37 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(24),
     flex: 1,
   },
-  btn:{
-      marginHorizontal:moderateScale(24),
-      marginBottom:moderateScale(24),
-      marginTop:moderateScale(8)
+  btn: {
+    marginHorizontal: moderateScale(24),
+    marginBottom: moderateScale(24),
+    marginTop: moderateScale(8),
   },
-  card:{
-    margin:moderateScale(24),
+  card: {
+    margin: moderateScale(24),
   },
-  Totalrewards:{
-      ...commonStyles.fontSize16,
-      fontFamily:fontFamily.poppinsRegular,
-      color:colors.white,
-
-
+  Totalrewards: {
+    ...commonStyles.fontSize16,
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.white,
   },
-  reward:{
-      ...commonStyles.fontSize32,
-      fontFamily:fontFamily.RocGroteskBold,
-      color:colors.white,
-      marginTop:moderateScale(8)
+  reward: {
+    ...commonStyles.fontSize32,
+    fontFamily: fontFamily.RocGroteskBold,
+    color: colors.white,
+    marginTop: moderateScale(8),
   },
-  logo:{
-      
-   
-      alignSelf:'flex-end'
-     
-
-  }
+  logo: {
+    alignSelf: 'flex-end',
+  },
+  emptylist: {
+    ...commonStyles.fontSize15,
+    fontFamily: fontFamily.poppinsRegular,
+    color: colors.OBSIDIAN,
+  },
+  emptyView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 export default styles;
